@@ -1,0 +1,22 @@
+---
+author:
+  - name: Ian G. Taylor
+    code: 1
+    first: I
+    middle: G
+    family: Taylor
+  - name: Vladlena Gertseva
+    code: 1
+    first: V
+    middle: ''
+    family: Gertseva
+author_list: Taylor, I.G., V. Gertseva
+affiliation:
+  - code: 1
+    address: Northwest Fisheries Science Center, U.S. Department of Commerce, National
+      Oceanic and Atmospheric Administration, National Marine Fisheries Service, 2725
+      Montlake Boulevard East, Seattle, Washington 98112
+address: ^1^Northwest Fisheries Science Center, U.S. Department of Commerce, National
+  Oceanic and Atmospheric Administration, National Marine Fisheries Service, 2725
+  Montlake Boulevard East, Seattle, Washington 98112
+---

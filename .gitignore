@@ -1,3 +1,5 @@
+### default github .gitignore template for R language repositories
+
 # History files
 .Rhistory
 .Rapp.history
@@ -37,3 +39,19 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+### additional stuff adapted from 
+# https://github.com/pfmc-assessments/lingcod/blob/main/.gitignore
+
+# knitr and R markdown default cache directories
+*_cache/
+/cache/
+/doc/_bookdown_files/
+/doc/_main.tex
+/doc/_main.md
+
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+*.upa
+*.log
