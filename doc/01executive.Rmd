@@ -13,7 +13,7 @@ executive[["stock"]] <- paste0("This assessment reports the status of ",
 
 ## Catches{-}
 
-Replace text with
+Adding text here for example.
 trends and current levels.
 Include Table for last 10 years.
 Include Figure with long-term estimates.
