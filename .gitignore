@@ -49,6 +49,7 @@ vignettes/*.pdf
 /doc/_bookdown_files/
 /doc/_main.tex
 /doc/_main.md
+/models/
 
 # Temporary files created by R markdown
 *.utf8.md
