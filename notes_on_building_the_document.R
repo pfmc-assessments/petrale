@@ -12,7 +12,7 @@ setwd("..")
 
 # specifying the base model
 setwd("doc") # assumes working directory is already in "petrale"
-base <- "../models/2021.001.001_new_endyr" # relative to "docs"
+base <- "../models/2023.001.001_new_endyr" # relative to "docs"
 # creating the standard r4ss plots
 mod_base <- SS_output(base)
 SS_plots(mod_base)
@@ -22,7 +22,7 @@ sa4ss::read_model(
     mod_loc = base,
 	create_plots = FALSE, 
     fecund_mult = 'mt',
-	save_loc = "tables"
+	save_loc = "tex_tables"
 )
 
 # load the Rdata file for the base model created by sa4ss::read_model() 

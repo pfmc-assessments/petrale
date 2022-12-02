@@ -20,7 +20,7 @@ Include Figure with long-term estimates.
 
 \clearpage
 
-\input{tables/a_Catches_ES.tex}
+\input{tex_tables/a_Catches_ES.tex}
 
 ```{r, results = 'asis'}
 add_figure(
@@ -57,7 +57,7 @@ description of uncertainty.
 Include Table for last 10 years.
 Include Figure with long-term estimates.
 
-\input{tables/b_SSB_ES.tex}
+\input{tex_tables/b_SSB_ES.tex}
 
 ```{r, results = 'asis'}
 add_figure(
@@ -85,7 +85,7 @@ Include Table for last 10 years.
 Include Figure with long-term estimates.
 
 
-\input{tables/c_Recr_ES.tex}
+\input{tex_tables/c_Recr_ES.tex}
 
 ```{r, results = 'asis'}
 add_figure(
@@ -109,7 +109,7 @@ total catch divided by exploitable biomass or SPR harvest rate.
 Include Table for last 10 years.
 Include Figure with trend in f relative to target vs. trend in biomass relative to the target.
 
-\input{tables/d_SPR_ES.tex}
+\input{tex_tables/d_SPR_ES.tex}
 
 ```{r, results = 'asis'}
 add_figure(
@@ -148,7 +148,7 @@ fishery selectivities and with steepness fixed at 0.80",
 label = 'es-yield')
 ```
 
-\input{tables/e_ReferencePoints_ES.tex}
+\input{tex_tables/e_ReferencePoints_ES.tex}
 
 \clearpage
 
