@@ -56,3 +56,6 @@ vignettes/*.pdf
 *.knit.md
 *.upa
 *.log
+
+# vscode settings
+.vscode/settings.json
