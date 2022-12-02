@@ -18,6 +18,19 @@ trends and current levels.
 Include Table for last 10 years.
 Include Figure with long-term estimates.
 
+\clearpage
+
+\input{tables/a_Catches_ES.tex}
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "catch2 landings stacked.png"), 
+caption = "Landings by fleet used in the base model where catches in metric tons by fleet are stacked",
+label = 'es-catch')
+```
+
+\clearpage
+
 ## Data and assessment{-}
 
 This assessment uses the stock assessment framework
@@ -44,6 +57,25 @@ description of uncertainty.
 Include Table for last 10 years.
 Include Figure with long-term estimates.
 
+\input{tables/b_SSB_ES.tex}
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots",
+"ts7_Spawning_biomass_(mt)_with_95_asymptotic_intervals_intervals.png"), 
+caption = "Estimated time series of spawning output (circles and line: median; light broken lines: 95 percent intervals) for the base model",
+label = 'es-ssb')
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "ts9_Relative_spawning_biomass_intervals.png"), 
+caption = "Estimated time series of fraction of unfished spawning output (circles and line: median; light broken lines: 95 percent intervals) for the base model",
+label = 'es-depl')
+```
+
+\clearpage
+
 ## Recruitment{-}
 
 Replace text with
@@ -52,12 +84,41 @@ description of uncertainty.
 Include Table for last 10 years.
 Include Figure with long-term estimates.
 
+
+\input{tables/c_Recr_ES.tex}
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png"), 
+caption = "Estimated time series of age-0 recruits (1000s) for the base model with 95 percent intervals",
+label = 'es-recruits')
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "recdevs2_withbars.png"), 
+caption = "Estimated time series of recruitment deviations",
+label = 'es-rec-devs')
+```
+
+\clearpage
 ## Exploitation status{-}
 
 Replace text with
 total catch divided by exploitable biomass or SPR harvest rate.
 Include Table for last 10 years.
 Include Figure with trend in f relative to target vs. trend in biomass relative to the target.
+
+\input{tables/d_SPR_ES.tex}
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "SPR2_minusSPRseries.png"), 
+caption = "Estimated 1 - relative spawning ratio (SPR) by year for the base model. The management target is plotted as a red horizontal line and values above this reflect harvest in excess of the proxy harvest rate",
+label = 'es-1-spr')
+```
+
+\clearpage
 
 ## Ecosystem considerations{-}
 
@@ -71,6 +132,25 @@ Note which, if any, ecosystem factors are used in the assessment and how (e.g., 
 Replace text with
 management targets and definition of overfishing, including the harvest rate that brings the stock to equilibrium at $B_{40\%}$, i.e., the $B_{MSY}$ proxy and the equilibrium stock size that results from fishing at the default harvest rate, i.e., the $F_{MSY}$ proxy.
 Include Table of estimated reference points for ssb, SPR, exploitation rate, and yield based on SSB proxy for MSY, SPR proxy for MSY, and estimated MSY values.
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "SPR4_phase.png"), 
+caption = "Phase plot of estimated 1-SPR versus fraction unfished for the base model",
+label = 'es-phase')
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc, "plots", "yield2_yield_curve_with_refpoints.png"), 
+caption = "Equilibrium yield curve for the base case model. Values are based on the 2020
+fishery selectivities and with steepness fixed at 0.80",
+label = 'es-yield')
+```
+
+\input{tables/e_ReferencePoints_ES.tex}
+
+\clearpage
 
 ## Management performance{-}
 
