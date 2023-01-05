@@ -2,7 +2,7 @@
 # (only had to be run once, or after significant change to sa4ss package)
 remotes::install_github("pfmc-assessments/sa4ss")
 library(sa4ss)
-setwd("doc")
+setwd("documents")
 sa4ss::draft(authors = c("Ian G. Taylor", "Vladlena Gertseva"), 
              create_dir = FALSE,
              species = "petrale sole",
@@ -11,7 +11,7 @@ sa4ss::draft(authors = c("Ian G. Taylor", "Vladlena Gertseva"),
 setwd("..")
 
 # specifying the base model
-setwd("doc") # assumes working directory is already in "petrale"
+setwd("documents") # assumes working directory is already in "petrale"
 base <- "../models/2023.005.001" # relative to "docs"
 # creating the standard r4ss plots
 mod_base <- SS_output(base)
@@ -29,7 +29,7 @@ sa4ss::read_model(
 load("00mod.Rdata")
 
 # clean out old version of file that gets compiled into the PDF
-setwd("doc") # skip this if already in "doc"
+setwd("documents") # skip this if already in "documents"
 if(file.exists("_main.Rmd")){
 	file.remove("_main.Rmd")
 }

@@ -1,0 +1,29 @@
+\clearpage
+# Figures
+
+<!-- ====================================================================== --> 
+<!-- *******************    Assessment Map      *************************** --> 
+<!-- ====================================================================== --> 
+
+
+<!-- ====================================================================== -->  
+<!-- ****************** Catches Used in the Model ************************* --> 
+<!-- ====================================================================== -->  
+
+```{r, catch-figures-r4ss, results = "asis"}
+sa4ss::add_figure(
+filein = file.path(mod_loc, "plots", "catch2 landings stacked.png"), 
+caption = "Landings (mt) by fleet used in the base model.",
+label = "catch-figures-r4ss"
+)
+
+sa4ss::add_figure(
+filein = file.path(mod_loc, "plots", "catch16 landings + dead discards.png"), 
+caption = "Landings plus dead discards (mt) by fleet as estimated in the base model.",
+label = "catchdiscard-figures-r4ss"
+)
+```
+
+<!-- ====================================================================== --> 
+<!-- ******************* Data Used in the Model *************************** --> 
+<!-- ====================================================================== --> 
