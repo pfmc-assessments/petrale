@@ -190,7 +190,7 @@ quantile(Pdata$Age, na.rm = TRUE)
 # This shows only fish with length and age
 ggplot(Pdata, aes(x = Age, y = lengthcm)) +
 	scale_colour_viridis_d() + 
-    geom_jitter(aes(col = SEX), size = 2, alpha = 0.2) +
+    geom_jitter(aes(col = SEX), size = 2, alpha = 0.2)
 
 # Save the filtered data
 save(Pdata, file = "data-raw/Cleaned_PacFIN.PTRL.bds.8.Feb.2023.Rda")
@@ -209,6 +209,7 @@ Pdata = getGearGroup(Pdata)
 #    602     56     37 186838     78 
 
 # TODO: trawl only samples vs. all samples?
+# ANSWER: use all fish, not just trawl. Non-trawl is about 5%
 
 Pdata$usegear = paste('TRAWL',Pdata$season,sep=".")
 
