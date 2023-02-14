@@ -19,7 +19,8 @@ library(nwfscSurvey)
 # Load in the PacFIN bds data
 # requested via https://github.com/pfmc-assessments/PacFIN.Utilities/issues/87
 bds_file <- "PacFIN.PTRL.bds.27.Jan.2023.RData"
-load(file.path("data-raw", bds_file)
+dir <- "data-raw"
+load(file.path(dir, bds_file))
 
 # The cleanPacFIN function retains records that are
 # randomly collected based on sampling protocols, removes
@@ -147,14 +148,14 @@ CV1 <- 0.1
 CV2 <- 0.1
 # rename columns for what's expected by est_growth()
 Pdata$Length_cm <- Pdata$lengthcm
-Pdata$Sex <- Pdata$SEX # presumably needed for est_growth()
+Pdata$Sex <- Pdata$SEX
 
 # estimate growth (adds columns "Lhat_low","Lhat_pred", "Lhat_high" to Pdat)
 Pdata <- nwfscSurvey::est_growth(
   dat = Pdata,
   Par = data.frame(K = k, Linf = Linf, L0 = L0, CV0 = CV1, CV1 = CV2),
   sdFactor = 4, # four standard deviations
-  dir = "data-raw/PacFIN.Utilities"
+  dir = file.path(dir, "pacfin")
 ) # where to write Rdata file with estimates
 
 # flag as outliers
@@ -194,7 +195,7 @@ quantile(Pdata$Age, na.rm = TRUE)
 #    2    5    7    8   27
 
 # Save the filtered data
-save(Pdata, file = "data-raw/Cleaned_PacFIN.PTRL.bds.10.Feb.2023.Rda")
+save(Pdata, file = file.path(dir, "Cleaned_PacFIN.PTRL.bds.10.Feb.2023.Rda"))
 # load("data-raw/Cleaned_PacFIN.PTRL.bds.10.Feb.2023.Rda")
 
 # Create separate data frame with seasons and adjusted years
@@ -205,6 +206,7 @@ save(Pdata, file = "data-raw/Cleaned_PacFIN.PTRL.bds.10.Feb.2023.Rda")
 # "SAMPLE_YEAR" and "year" columns are not changed
 Pdata_seas <- getSeason(Pdata, season_type = 1, yearUp = c(11, 12))
 
+# look at distribution of gears
 table(Pdata$geargroup)
 #   HKL    NET    POT    TWL    TWS 
 #   602     56     37 186838     78 
@@ -216,16 +218,16 @@ Pdata_seas$fleet[Pdata_seas$state == "CA"] <- "CA"
 
 # Fleets for annual model
 Pdata$geargroup = "ALL"
-Pdata$fleet[Pdata$state != "CA"] = paste0("WA_OR", "_", Pdata$geargroup)
-Pdata$fleet[Pdata$state == "CA"] = paste0("CA", "_", Pdata$geargroup)
+Pdata$fleet[Pdata$state != "CA"] = "WA_OR_ALL" # where "ALL" is the geargroup
+Pdata$fleet[Pdata$state == "CA"] = "CA_ALL"
 
 # Load in the catches by state for expansion
 # annual catch
-catch_annual <- read.csv("data-raw/pacfin/commercial_catch_by_state.csv")
-colnames(catch_annual) <- c("Year", "CA_1", "OR_1", "WA_1")
+catch_annual <- read.csv(file.path(dir, "pacfin", "commercial_catch_by_state.csv"))
+colnames(catch_annual) <- c("Year", "CA_ALL", "OR_ALL", "WA_ALL")
 
 # seasonal catch
-catch_seas <- read.csv("data-raw/pacfin/catch_file_season fleets.csv")
+catch_seas <- read.csv(file.path(dir, "pacfin", "catch_file_season fleets.csv"))
 # rename catch file headers to CA_2 CA_1 WA_OR_2 WA_OR_1
 catch_seas <- catch_seas %>%
   dplyr::rename_with(~ gsub("Winter", 1, .x)) %>%
@@ -239,20 +241,20 @@ table(Pdata_seas$stratification)
 #    CA_1    CA_2 WA_OR_1 WA_OR_2
 #   20629   36889   39393   90700
 
-dir.create("data-raw/pacfin/plots_seas", recursive = TRUE)
-dir.create("data-raw/pacfin/plots_annual", recursive = TRUE)
+dir.create(file.path(dir, "pacfin", "plots_seas"), recursive = TRUE)
+dir.create(file.path(dir, "pacfin", "plots_annual"), recursive = TRUE)
 
 # First stage expansion: expand comps to the trip level
 # seasonal
 Pdata_exp1_seas <- getExpansion_1(
   Pdata = Pdata_seas,
-  plot = "data-raw/pacfin/plots_seas",
+  plot = file.path(dir, "pacfin", "plots_seas"),
   fa = fa, fb = fb, ma = ma, mb = mb, ua = ua, ub = ub
 )
 # annual
 Pdata_exp1_annual <- getExpansion_1(
   Pdata = Pdata,
-  plot = "data-raw/pacfin/plots_annual",
+  plot = file.path(dir, "pacfin", "plots_annual"),
   fa = fa, fb = fb, ma = ma, mb = mb, ua = ua, ub = ub
 )
 
@@ -264,7 +266,7 @@ Pdata_exp2_seas <- getExpansion_2(
   Catch = catch_seas,
   Units = "MT",
   # stratification.cols = "stratification",
-  savedir = "data-raw/pacfin/plots_seas"
+  savedir = file.path(dir, "pacfin", "plots_seas")
 )
 
 Pdata_exp2_annual <- getExpansion_2(
@@ -272,7 +274,7 @@ Pdata_exp2_annual <- getExpansion_2(
   Catch = catch_annual,
   Units = "MT",
   stratification.cols = c("state", "geargroup"),
-  savedir = "data-raw/pacfin/plots_annual"
+  savedir = file.path(dir, "pacfin", "plots_annual")
 )
 
 
@@ -295,12 +297,30 @@ length_comps_annual <- getComps(
   Pdata = Pdata_exp2_annual[!is.na(Pdata_exp2_annual$lengthcm), ],
   Comps = "LEN"
 )
+table(length_comps_annual$fleet, length_comps_annual$season)
+#                1
+#   CA_ALL     832
+#   WA_OR_ALL 1875
+table(length_comps_seas$fleet, length_comps_seas$season)
+#            1    2
+#   CA     699  737
+#   WA_OR 1434 1725
 
 table(Pdata$SOURCE_AGID, Pdata$SEX)
+#         F     M     U
+#   C 14832 34414  8272
+#   O 27352 24952   178
+#   W 37724 38510  1377
 
+# stacked bar plot showing length by sex
 Pdata$count <- 1
 ggplot(Pdata, aes(x = lengthcm, y = count, fill = SEX)) +
   geom_histogram(aes(y = count), position = "stack", stat = "identity") +
+  scale_fill_viridis_d()
+
+# distributions as lines showing length by sex
+ggplot(Pdata, aes(lengthcm, color = SEX)) +
+  geom_freqpoly(binwidth = 1) +
   scale_fill_viridis_d()
 
 ####################################################################################################
@@ -318,40 +338,48 @@ ggplot(Pdata, aes(x = lengthcm, y = count, fill = SEX)) +
 
 len_bins <- seq(12, 62, 2)
 # remove .Rdata extension from bds file name to include in CSV file names
+# results in something like "PacFIN.PTRL.bds.27.Jan.2023"
 out_name <- sub(pattern = "(.*)\\..*$", replacement = "\\1", bds_file)
 
+# seasonal length comps for SS3
 writeComps(
   inComps = length_comps_seas,
-  fname = file.path("data-raw/pacfin/forSS_seas/", paste0("Lengths_", out_name, ".csv")),
+  fname = file.path(dir, "pacfin", "forSS_seas", paste0("Lengths_", out_name, ".csv")),
   lbins = len_bins,
   sum1 = TRUE,
+  month = c(1, 7), # new input added 14 Feb 2023: https://github.com/pfmc-assessments/PacFIN.Utilities/pull/90
   partition = 2,
   digits = 4,
   dummybins = FALSE
 )
+# annual length comps for SS3
 writeComps(
   inComps = length_comps_annual,
-  fname = file.path("data-raw/pacfin/forSS_annual/", paste0("Lengths_", out_name, ".csv")),
+  fname = file.path(dir, "pacfin", "forSS_annual", paste0("Lengths_", out_name, ".csv")),
   lbins = len_bins,
   sum1 = TRUE,
   partition = 2,
   digits = 4,
   dummybins = FALSE
 )
-
-# TODO: Ian stopped here on 10 Feb, continue here
 
 ##########################################################
 # Calculate the expansion for age data
 ##########################################################
 
-Pdata_exp$Final_Sample_Size <- capValues(Pdata_exp$Expansion_Factor_1_A * Pdata_exp$Expansion_Factor_2)
+Pdata_exp2_seas$Final_Sample_Size <- capValues(Pdata_exp2_seas$Expansion_Factor_1_A * Pdata_exp2_seas$Expansion_Factor_2)
+Pdata_exp2_annual$Final_Sample_Size <- capValues(Pdata_exp2_annual$Expansion_Factor_1_A * Pdata_exp2_annual$Expansion_Factor_2)
 
-age_comps <- getComps(
-  Pdata_exp[!is.na(Pdata_exp$Age), ],
+# TODO: continue here Ian
+
+age_comps_seas <- getComps(
+  Pdata_exp2_seas[!is.na(Pdata_exp2_seas$Age), ],
   Comps = "Age"
 )
-
+age_comps_annual <- getComps(
+  Pdata_exp2_annual[!is.na(Pdata_exp2_annual$Age), ],
+  Comps = "Age"
+)
 ##########################################################
 # Create the age compositions
 ##########################################################
@@ -359,8 +387,19 @@ age_comps <- getComps(
 age_bins <- 1:17
 
 writeComps(
-  inComps = age_comps,
-  fname = file.path(dir, "pacfin", "forSS", paste0("Age_", out_name, ".csv")),
+  inComps = age_comps_seas,
+  fname = file.path(dir, "pacfin", "forSS_seas", paste0("Age_", out_name, ".csv")),
+  abins = age_bins,
+  sum1 = TRUE,
+  month = c(1,7), # new input added 14 Feb 2023: https://github.com/pfmc-assessments/PacFIN.Utilities/pull/90
+  partition = 2,
+  digits = 4,
+  dummybins = FALSE
+)
+
+writeComps(
+  inComps = age_comps_annual,
+  fname = file.path(dir, "pacfin", "forSS_annual", paste0("Age_", out_name, ".csv")),
   abins = age_bins,
   sum1 = TRUE,
   partition = 2,
@@ -370,8 +409,12 @@ writeComps(
 
 # Create condition-age-at-length compositions just in case
 # you want to explore them
-caal_comps <- getComps(
-  Pdata = Pdata_exp[!is.na(Pdata_exp$age), ],
+caal_comps_seas <- getComps(
+  Pdata = Pdata_exp2_seas[!is.na(Pdata_exp2_seas$age), ],
+  Comps = "AAL"
+)
+caal_comps_annual <- getComps(
+  Pdata = Pdata_exp2_annual[!is.na(Pdata_exp2_annual$age), ],
   Comps = "AAL"
 )
 
