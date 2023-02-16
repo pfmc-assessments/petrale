@@ -410,17 +410,28 @@ writeComps(
 # Create condition-age-at-length compositions just in case
 # you want to explore them
 caal_comps_seas <- getComps(
-  Pdata = Pdata_exp2_seas[!is.na(Pdata_exp2_seas$age), ],
+  Pdata = Pdata_exp2_seas[!is.na(Pdata_exp2_seas$Age), ],
   Comps = "AAL"
 )
 caal_comps_annual <- getComps(
-  Pdata = Pdata_exp2_annual[!is.na(Pdata_exp2_annual$age), ],
+  Pdata = Pdata_exp2_annual[!is.na(Pdata_exp2_annual$Age), ],
   Comps = "AAL"
 )
 
 writeComps(
-  inComps = caal_comps,
-  fname = file.path(dir, "pacfin", "forSS", paste0("CAAL_", out_name, ".csv")),
+  inComps = caal_comps_seas,
+  fname = file.path(dir, "pacfin", "forSS_seas", paste0("CAAL_", out_name, ".csv")),
+  lbins = len_bins,
+  abins = age_bins,
+  sum1 = TRUE,
+  month = c(1, 7),
+  partition = 2,
+  dummybins = FALSE
+)
+
+writeComps(
+  inComps = caal_comps_annual,
+  fname = file.path(dir, "pacfin", "forSS_annual", paste0("CAAL_", out_name, ".csv")),
   lbins = len_bins,
   abins = age_bins,
   sum1 = TRUE,
@@ -432,8 +443,10 @@ writeComps(
 # Let's format the csv files for direct use in SS3
 #####################################################################################
 
+if (FALSE) {
+  
 out <- read.csv(
-  file.path(dir, "pacfin", "forSS", paste0("Lengths_", out_name, ".csv")),
+  file.path(dir, "pacfin", "forSS_seas", paste0("Lengths_", out_name, ".csv")),
   skip = 3,
   header = TRUE
 )
@@ -572,3 +585,5 @@ colnames(samples) <- c(
   "Winter_S_NTows", "Winter_S_Nfish", "Summer_S_NTows", "Summer_S_Nfish"
 )
 write.csv(samples, file = paste0(getwd(), "/forSS/Fishery_Age_Samples.csv"), row.names = TRUE)
+
+}
