@@ -198,6 +198,111 @@ quantile(Pdata$Age, na.rm = TRUE)
 save(Pdata, file = file.path(dir, "Cleaned_PacFIN.PTRL.bds.10.Feb.2023.Rda"))
 # load("data-raw/Cleaned_PacFIN.PTRL.bds.10.Feb.2023.Rda")
 
+# Deal with Petrale's complex age error assumptions
+table(Pdata$AGE_METHOD1, useNA = "always")
+#      1      2      9      B     BB      N      S   <NA>
+#  11300   5945   1245   7160   2127     43  31258 128533
+# codes explained at
+# https://pacfin.psmfc.org/pacfin_pub/table_cols.php
+Pdata$agemethod <- Pdata$AGE_METHOD1
+Pdata$agemethod[Pdata$agemethod %in% c("1", "B", "BB")] <- "B"
+Pdata$agemethod[Pdata$agemethod %in% c("2", "S")] <- "S"
+# Group failed ages with no ages
+# 9 = "unable"
+# N = "not aged"
+Pdata$agemethod[Pdata$agemethod %in% c("9")] <- NA
+Pdata$agemethod[Pdata$agemethod %in% c("N")] <- NA
+
+# There are years with blank agemethod - do this to be easily trackable
+Pdata$agemethod[!Pdata$agemethod %in% c("B", "S")] <- "U"
+table(Pdata$agemethod, useNA = "always")
+#      B      S      U   <NA>
+#  20587  37203 129821      0
+
+# code below maps various ageing codes to a shorter list, copied from
+# https://github.com/pfmc-assessments/PacFIN.Utilities/blob/main/R/getAge.R#L113-L125
+# which uses code from
+# https://pacfin.psmfc.org/pacfin_pub/table_cols.php
+# For Petrale, these are all "B", "S", or NA
+Pdata <- Pdata %>%
+  dplyr::mutate(dplyr::across(
+    # dplyr::matches("AGE_CODE|AGE_M"),
+    # todo: uncomment above when FINAL_FISH_AGE_CODE has correct codes rather than
+    # duplicates of the final age
+    dplyr::matches("AGE_M"),
+    ~ dplyr::case_when(
+      .x %in% c("B", "BB", 1) ~ "B",
+      .x %in% c("S", "SR", 2) ~ "S",
+      .x %in% c("T", "TS", "X", 4) ~ "T",
+      .x %in% c("O", 5) ~ "O",
+      .x %in% c("L", 6) ~ "L",
+      .x %in% c("N", 9) ~ NA, # WDFW "N-not aged" ODFW: "9-unable"
+      TRUE ~ as.character(.x)
+    )
+  ))
+
+# Assign an ageing method of "B" if any of the 3 methods listed is "B"
+# Assign an ageing method of "S" if any of the 3 methods listed is "S" and there is no "B" among them
+# Assign to NA if there are none at all
+Pdata <- Pdata %>%
+  dplyr::mutate(
+    agemethod =
+      dplyr::case_when(
+        AGE_METHOD1 %in% "B" | AGE_METHOD2 %in% "B" | AGE_METHOD3 %in% "B" ~ "B", # if any B
+        AGE_METHOD1 %in% "S" | AGE_METHOD2 %in% "S" | AGE_METHOD3 %in% "S" ~ "S", # if any S but no B
+        TRUE ~ NA
+      ) # neither B nor S in any column
+  )
+
+# Define ageing error vector based on Petrale reading methods
+Pdata$ageerr <- NA
+Pdata$ageerr[!is.na(Pdata$Age)] <- -99
+# 2 = CAP BB; 3 = CAP surface; 4 = CAP Combo; 5 = WDFW Combo; 6 = WDFW Surface; 7 = WDFW BB; 8 = CAP pre-1990 surface
+
+# CAP Lab reads the California ages
+# California
+# Early CA ages need to wait for CalCOM data
+Pdata$ageerr[!is.na(Pdata$Age) & Pdata$SOURCE_AGID %in% c("C", "CalCOM") & Pdata$agemethod == "S" & Pdata$fishyr < 1990] <- 8 # CAP pre-1990 surface
+
+# There are middle years where there are U BB and S reads
+Pdata$ageerr[!is.na(Pdata$Age) & Pdata$SOURCE_AGID %in% c("C", "CalCOM") & Pdata$fishyr >= 1985 & Pdata$fishyr <= 1991] <- 4 # CAP Combo
+Pdata$ageerr[!is.na(Pdata$Age) & Pdata$SOURCE_AGID %in% c("C", "CalCOM") & Pdata$agemethod == "B" & Pdata$fishyr >= 1992] <- 2 # CAP BB
+
+# Oregon
+Pdata$ageerr[!is.na(Pdata$Age) & Pdata$SOURCE_AGID == "O" & Pdata$agemethod == "S" & Pdata$fishyr <= 1980] <- 8 # CAP pre-1990 surface
+Pdata$ageerr[!is.na(Pdata$Age) & Pdata$SOURCE_AGID == "O" & Pdata$fishyr >= 1980 & Pdata$fishyr < 1999] <- 4 # CAP Combo
+Pdata$ageerr[!is.na(Pdata$Age) & Pdata$SOURCE_AGID == "O" & Pdata$agemethod == "B" & Pdata$fishyr >= 1999] <- 2 # CAP BB
+Pdata$ageerr[!is.na(Pdata$Age) & Pdata$SOURCE_AGID == "O" & Pdata$agemethod == "S" & Pdata$fishyr >= 1999] <- 3 # CAP Surface
+Pdata$ageerr[!is.na(Pdata$Age) & Pdata$SOURCE_AGID == "O" & Pdata$fishyr >= 2007] <- 2 # CAP BB
+
+# Washington
+Pdata$ageerr[!is.na(Pdata$Age) & Pdata$SOURCE_AGID == "W" & Pdata$agemethod %in% c("S")] <- 6 # WDFW Surface
+Pdata$ageerr[!is.na(Pdata$Age) & Pdata$SOURCE_AGID == "W" & Pdata$agemethod %in% c("U") & Pdata$fishyr < 2008] <- 6 # WDFW Surface
+Pdata$ageerr[!is.na(Pdata$Age) & Pdata$SOURCE_AGID == "W" & Pdata$agemethod == "B"] <- 7 # WDFW BB
+Pdata$ageerr[!is.na(Pdata$Age) & Pdata$SOURCE_AGID == "W" & Pdata$fishyr %in% c(2009, 2010)] <- 5 # WDFW Combo
+
+table(Pdata$ageerr, Pdata$agemethod, useNA = "always")
+#           B      S   <NA>
+# 2     11218      0      0
+# 3         0   1400      0
+# 4      2401   4538      0
+# 5       932      4      0
+# 6         0  30658      0
+# 7      6811      0      0
+# <NA>      7     20 129622
+
+table(Pdata$ageerr)
+#     2     3     4     5     6     7
+# 11218  1400  6939   936 30658  6811
+
+# NOTE from 2019:
+# There is an Oregon tow where 29 female and 1 unsexed fish were sampled
+# Only the female fish were subsampled for ages
+# This causes the getExpansion_1 code to error out due the UNK_NUM being 1
+# Overwriting the UNK_NUM for now but this is wrong
+# find = which(Pdata$SAMPLE_NO == "OR110384")
+# Pdata$UNK_NUM[find] = Pdata$UNK_WT = NA
+
 # Create separate data frame with seasons and adjusted years
 # In getSeason(), the season_type = 1 is for Petrale
 # it assigns months 1,2,11,12 to season 1 and the rest to seas 2
@@ -208,8 +313,8 @@ Pdata_seas <- getSeason(Pdata, season_type = 1, yearUp = c(11, 12))
 
 # look at distribution of gears
 table(Pdata$geargroup)
-#   HKL    NET    POT    TWL    TWS 
-#   602     56     37 186838     78 
+#   HKL    NET    POT    TWL    TWS
+#   602     56     37 186838     78
 # Set up the expected fleet structure for the annual version
 
 # Fleets for seasonal model
@@ -217,9 +322,9 @@ Pdata_seas$fleet[Pdata_seas$state != "CA"] <- "WA_OR"
 Pdata_seas$fleet[Pdata_seas$state == "CA"] <- "CA"
 
 # Fleets for annual model
-Pdata$geargroup = "ALL"
-Pdata$fleet[Pdata$state != "CA"] = "WA_OR_ALL" # where "ALL" is the geargroup
-Pdata$fleet[Pdata$state == "CA"] = "CA_ALL"
+Pdata$geargroup <- "ALL"
+Pdata$fleet[Pdata$state != "CA"] <- "WA_OR_ALL" # where "ALL" is the geargroup
+Pdata$fleet[Pdata$state == "CA"] <- "CA_ALL"
 
 # Load in the catches by state for expansion
 # annual catch
@@ -341,6 +446,9 @@ len_bins <- seq(12, 62, 2)
 # results in something like "PacFIN.PTRL.bds.27.Jan.2023"
 out_name <- sub(pattern = "(.*)\\..*$", replacement = "\\1", bds_file)
 
+# TODO: modify the writeComps() commands below to clean up the columns to match the SS3 input
+#       as has been done for the age comps further down
+
 # seasonal length comps for SS3
 writeComps(
   inComps = length_comps_seas,
@@ -370,220 +478,99 @@ writeComps(
 Pdata_exp2_seas$Final_Sample_Size <- capValues(Pdata_exp2_seas$Expansion_Factor_1_A * Pdata_exp2_seas$Expansion_Factor_2)
 Pdata_exp2_annual$Final_Sample_Size <- capValues(Pdata_exp2_annual$Expansion_Factor_1_A * Pdata_exp2_annual$Expansion_Factor_2)
 
-# TODO: continue here Ian
-
 age_comps_seas <- getComps(
   Pdata_exp2_seas[!is.na(Pdata_exp2_seas$Age), ],
+  defaults = c("fleet", "fishyr", "season", "ageerr"),
   Comps = "Age"
 )
 age_comps_annual <- getComps(
   Pdata_exp2_annual[!is.na(Pdata_exp2_annual$Age), ],
+  defaults = c("fleet", "fishyr", "season", "ageerr"),
   Comps = "Age"
 )
 ##########################################################
-# Create the age compositions
+# Create the age compositions in the SS3 format
 ##########################################################
 
 age_bins <- 1:17
 
-writeComps(
-  inComps = age_comps_seas,
-  fname = file.path(dir, "pacfin", "forSS_seas", paste0("Age_", out_name, ".csv")),
-  abins = age_bins,
-  sum1 = TRUE,
-  month = c(1,7), # new input added 14 Feb 2023: https://github.com/pfmc-assessments/PacFIN.Utilities/pull/90
-  partition = 2,
-  digits = 4,
-  dummybins = FALSE
-)
+# process age comps for each ageing error type SEASONAL
+age_comps_seas2 <- NULL
+# loop across ageing error methods to get comps for that method
+for (ageerr in unique(age_comps_seas$ageerr)) {
+  age_comps_seas2 <- rbind(
+    age_comps_seas2,
+    age_comps_seas2 <- writeComps(
+      inComps = age_comps_seas[age_comps_seas$ageerr == ageerr, ], # filter for subset that matches
+      fname = file.path(dir, "pacfin", "forSS_seas", paste0("Age_", out_name, ".csv")),
+      abins = age_bins,
+      sum1 = TRUE,
+      month = c(1, 7), # new input added 14 Feb 2023: https://github.com/pfmc-assessments/PacFIN.Utilities/pull/90
+      partition = 2,
+      ageErr = ageerr, # value being looped across
+      digits = 4,
+      dummybins = FALSE
+    )$FthenM # only keep FthenM table, ignoring 49 petrale ages that are unsexed
+  )
+}
 
-writeComps(
-  inComps = age_comps_annual,
-  fname = file.path(dir, "pacfin", "forSS_annual", paste0("Age_", out_name, ".csv")),
-  abins = age_bins,
-  sum1 = TRUE,
-  partition = 2,
-  digits = 4,
-  dummybins = FALSE
-)
+# process age comps for each ageing error type ANNUAL
+age_comps_annual2 <- NULL
+# loop across ageing error methods to get comps for that method
+for (ageerr in unique(age_comps_annual$ageerr)) {
+  age_comps_annual2 <- rbind(
+    age_comps_annual2,
+    age_comps_annual2 <- writeComps(
+      inComps = age_comps_annual[age_comps_annual$ageerr == ageerr, ], # filter for subset that matches
+      fname = file.path(dir, "pacfin", "forSS_annual", paste0("Age_", out_name, ".csv")),
+      abins = age_bins,
+      sum1 = TRUE,
+      partition = 2,
+      ageErr = ageerr, # value being looped across
+      digits = 4,
+      dummybins = FALSE
+    )$FthenM # only keep FthenM table, ignoring 49 petrale ages that are unsexed
+  )
+}
 
-# Create condition-age-at-length compositions just in case
-# you want to explore them
-caal_comps_seas <- getComps(
-  Pdata = Pdata_exp2_seas[!is.na(Pdata_exp2_seas$Age), ],
-  Comps = "AAL"
-)
-caal_comps_annual <- getComps(
-  Pdata = Pdata_exp2_annual[!is.na(Pdata_exp2_annual$Age), ],
-  Comps = "AAL"
-)
+# assign fleets for seasonal model:
+# Fleets:
+# 1 = WinterN
+# 2 = SummerN
+# 3 = WinterS
+# 4 = SummerS
+age_comps_seas2 <- age_comps_seas2 %>%
+  dplyr::mutate(fleet = 
+    dplyr::case_when(
+      month == 1 & fleet == "WA_OR" ~ 1,
+      month == 7 & fleet == "WA_OR" ~ 2,
+      month == 1 & fleet == "CA" ~ 3,
+      month == 7 & fleet == "CA" ~ 4))
 
-writeComps(
-  inComps = caal_comps_seas,
-  fname = file.path(dir, "pacfin", "forSS_seas", paste0("CAAL_", out_name, ".csv")),
-  lbins = len_bins,
-  abins = age_bins,
-  sum1 = TRUE,
-  month = c(1, 7),
-  partition = 2,
-  dummybins = FALSE
-)
+age_comps_annual2 <- age_comps_annual2 %>%
+  dplyr::mutate(fleet = 
+    dplyr::case_when(
+      fleet == "CA_ALL" ~ 1,
+      fleet == "WA_OR_ALL" ~ 2))
 
-writeComps(
-  inComps = caal_comps_annual,
-  fname = file.path(dir, "pacfin", "forSS_annual", paste0("CAAL_", out_name, ".csv")),
-  lbins = len_bins,
-  abins = age_bins,
-  sum1 = TRUE,
-  partition = 2,
-  dummybins = FALSE
-)
+# remove Ntows and Nsamps columns
+age_comps_seas2 <- age_comps_seas2 %>%
+  dplyr::select(!c(Ntows, Nsamps))
+age_comps_annual2 <- age_comps_annual2 %>%
+  dplyr::select(!c(Ntows, Nsamps))
 
-###############################################################################################
-# Let's format the csv files for direct use in SS3
-#####################################################################################
+# sort by fleet, year, and then ageing error type
+age_comps_seas2 <- age_comps_seas2 %>%
+  dplyr::arrange(fleet, year, ageErr)
+age_comps_annual2 <- age_comps_annual2 %>%
+  dplyr::arrange(fleet, year, ageErr)
 
-if (FALSE) {
-  
-out <- read.csv(
-  file.path(dir, "pacfin", "forSS_seas", paste0("Lengths_", out_name, ".csv")),
-  skip = 3,
-  header = TRUE
-)
-
-start <- 1
-end <- which(as.character(out[, 1]) %in% c(" Females only ")) - 1
-cut_out <- out[start:end, ]
-
-# format the length comps
-cut_out$fleet[cut_out$fleet == "CA_ALL"] <- 1
-cut_out$fleet[cut_out$fleet == "WA_OR_ALL"] <- 2
-
-ind <- which(colnames(cut_out) %in% paste0("F", min(len_bins))):
-which(colnames(cut_out) %in% paste0("M", max(len_bins)))
-format <- cbind(cut_out$year, cut_out$month, cut_out$fleet, cut_out$sex, cut_out$partition, cut_out$InputN, cut_out[, ind])
-colnames(format) <- c("year", "month", "fleet", "sex", "part", "InputN", colnames(cut_out[ind]))
-format <- format[format$year != 2021, ]
-write.csv(
-  format,
-  file = file.path(dir, "pacfin", "forSS", paste0("Lcomps_for_SS3_", out_name, ".csv")),
+# write to CSV file
+write.csv(age_comps_seas2, 
+  file = file.path(dir, "pacfin", "forSS_seas", paste0("Age_for_SS3_", out_name, ".csv")),
   row.names = FALSE
 )
-
-
-# Let's create the sample table
-temp <- Pdata[!is.na(Pdata$lengthcm) & Pdata$year < 2021, ]
-Nfish <- table(temp$year, temp$state)
-colnames(Nfish) <- sort(unique(temp$state))
-
-# Deal with age error
-keep_age_methods <- c("B", "S", "")
-Adata$agemethod <- Adata$AGE_METHOD
-if (!1 %in% keep_age_methods) {
-  Adata$agemethod[Adata$agemethod == "1"] <- "B"
-}
-if (!2 %in% keep_age_methods) {
-  Adata$agemethod[Adata$agemethod == "2"] <- "S"
-}
-Adata$agemethod[is.na(Adata$agemethod)] <- -1
-# There are years with blank agemethod - do this to be easily trackable
-Adata$agemethod[!Adata$agemethod %in% c("B", "S")] <- "U"
-
-# Define ageing error vector based on Petrale reading methods
-# 2 = CAP BB; 3 = CAP surface; 4 = CAP Combo; 5 = WDFW Combo; 6 = WDFW Surface; 7 = WDFW BB; 8 = CAP pre-1990 surface
-
-# CAP Lab reads the California ages
-# California
-Adata$ageerr <- -99
-Adata$ageerr[Adata$SOURCE_AGID %in% c("C", "CalCOM") & Adata$agemethod == "S" & Adata$fishyr < 1990] <- 8
-Adata$ageerr[Adata$SOURCE_AGID %in% c("C", "CalCOM") & Adata$agemethod == "U"] <- 4
-
-# There are middle years where there are U BB and S reads
-Adata$ageerr[Adata$SOURCE_AGID %in% c("C", "CalCOM") & Adata$fishyr >= 1985 & Adata$fishyr <= 1991] <- 4
-Adata$ageerr[Adata$SOURCE_AGID %in% c("C", "CalCOM") & Adata$agemethod == "B" & Adata$fishyr >= 1992] <- 2
-
-# Oregon
-Adata$ageerr[Adata$SOURCE_AGID == "O" & Adata$agemethod == "S" & Adata$fishyr <= 1980] <- 8
-Adata$ageerr[Adata$SOURCE_AGID == "O" & Adata$fishyr >= 1980 & Adata$fishyr < 1999] <- 4
-Adata$ageerr[Adata$SOURCE_AGID == "O" & Adata$agemethod == "B" & Adata$fishyr >= 1999] <- 2
-Adata$ageerr[Adata$SOURCE_AGID == "O" & Adata$agemethod == "S" & Adata$fishyr >= 1999] <- 3
-Adata$ageerr[Adata$SOURCE_AGID == "O" & Adata$fishyr >= 2007] <- 2
-
-# Washington
-Adata$ageerr[Adata$SOURCE_AGID == "W" & Adata$agemethod %in% c("S")] <- 6
-Adata$ageerr[Adata$SOURCE_AGID == "W" & Adata$agemethod %in% c("U") & Adata$fishyr < 2008] <- 6
-Adata$ageerr[Adata$SOURCE_AGID == "W" & Adata$agemethod == "B"] <- 7
-Adata$ageerr[Adata$SOURCE_AGID == "W" & Adata$fishyr %in% c(2009, 2010)] <- 5
-
-Adata$fleet[Adata$stratification %in% c("WA.TRAWL.1", "OR.TRAWL.1")] <- 1
-Adata$fleet[Adata$stratification %in% c("WA.TRAWL.2", "OR.TRAWL.2")] <- 2
-Adata$fleet[Adata$stratification %in% c("CA.TRAWL.1")] <- 3
-Adata$fleet[Adata$stratification %in% c("CA.TRAWL.2")] <- 4
-
-# There is an Oregon tow where 29 female and 1 unsexed fish were sampled
-# Only the female fish were subsampled for ages
-# This causes the getExpansion_1 code to error out due the UNK_NUM being 1
-# Overwriting the UNK_NUM for now but this is wrong
-# find = which(Adata$SAMPLE_NO == "OR110384")
-# Adata$UNK_NUM[find] = Adata$UNK_WT = NA
-
-
-Acomps <- getComps(Adata, defaults = c("fleet", "fishyr", "season", "ageerr"), Comps = "AGE")
-Acomps <- doSexRatio(Acomps)
-writeComps(
-  inComps = Acomps, abins = seq(1, 17, 1), partition = 2,
-  fname = "forSS/AGE.PTRL.2019.26.June.csv"
+write.csv(age_comps_annual2, 
+  file = file.path(dir, "pacfin", "forSS_annual", paste0("Age_for_SS3_", out_name, ".csv")),
+  row.names = FALSE
 )
-
-out <- read.csv(paste0(getwd(), "/forSS/AGE.PTRL.2019.26.June.csv"), skip = 3, header = TRUE)
-
-start <- which(as.character(out[, 1]) %in% c(" Females then males ")) + 2
-end <- nrow(out)
-cut_out <- out[start:end, ]
-
-
-ind <- which(colnames(cut_out) %in% "A1"):which(colnames(cut_out) %in% "A17.1")
-lbinlow <- lbinhi <- -1
-format <- cbind(cut_out$fishyr, 7, cut_out$fleet, cut_out$gender, cut_out$part, cut_out$ageerr, lbinlow, lbinhi, cut_out$Nsamps, cut_out$Ntows, cut_out[, ind])
-colnames(format) <- c("fishyr", "month", "fleet", "sex", "part", "ageerr", "low", "high", "Nsamps", "Ntows", colnames(cut_out[ind]))
-format <- format[format$fishyr != 2019, ]
-write.csv(format, file = paste0(getwd(), "/forSS/Acomps_females_males_formatted.csv"), row.names = FALSE)
-
-write.csv(format[, !(colnames(format) %in% c("Nsamps"))], file = paste0(getwd(), "/forSS/Acomps_females_males_formatted.csv"), row.names = FALSE)
-
-
-temp <- Adata[!is.na(Adata$age) & Adata$SAMPLE_YEAR < 2019, ]
-Nfish <- table(temp$SAMPLE_YEAR, temp$stratification)
-Nfish <- cbind(
-  Nfish[, "WA.TRAWL.1"] + Nfish[, "OR.TRAWL.1"], Nfish[, "WA.TRAWL.2"] + Nfish[, "OR.TRAWL.2"],
-  Nfish[, "CA.TRAWL.1"], Nfish[, "CA.TRAWL.2"]
-)
-colnames(Nfish) <- c("Winter_N", "Summer_N", "Winter_S", "Summer_S")
-
-aa <- unique(temp$stratification)
-yy <- sort(unique(temp$SAMPLE_YEAR))
-Ntows <- matrix(0, length(yy), length(aa))
-for (y in 1:length(yy)) {
-  for (a in 1:length(aa)) {
-    ind <- which(temp$SAMPLE_YEAR == yy[y] & temp$stratification == aa[a])
-    if (length(ind) > 0) {
-      Ntows[y, a] <- length(unique(temp$SAMPLE_NO[ind]))
-    }
-  }
-}
-colnames(Ntows) <- aa
-rownames(Ntows) <- yy
-
-samples <- cbind(
-  Ntows[, "WA.TRAWL.1"] + Ntows[, "OR.TRAWL.1"], Nfish[, "Winter_N"],
-  Ntows[, "WA.TRAWL.2"] + Ntows[, "OR.TRAWL.2"], Nfish[, "Summer_N"],
-  Ntows[, "CA.TRAWL.1"], Nfish[, "Winter_S"], Ntows[, "CA.TRAWL.2"], Nfish[, "Summer_S"]
-)
-
-colnames(samples) <- c(
-  "Winter_N_NTows", "Winter_N_Nfish", "Summer_N_NTows", "Summer_N_Nfish",
-  "Winter_S_NTows", "Winter_S_Nfish", "Summer_S_NTows", "Summer_S_Nfish"
-)
-write.csv(samples, file = paste0(getwd(), "/forSS/Fishery_Age_Samples.csv"), row.names = TRUE)
-
-}
