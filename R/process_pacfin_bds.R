@@ -518,7 +518,8 @@ len_bins <- seq(12, 62, 2)
 # remove .Rdata extension from bds file name to include in CSV file names
 # results in something like "PacFIN.PTRL.bds.27.Jan.2023"
 out_name <- sub(pattern = "(.*)\\..*$", replacement = "\\1", bds_file)
-
+# remove the first part "PacFIN.PTRL.bds."
+out_date <- gsub(pattern = "PacFIN.PTRL.bds.", replacement = "", x = out_name, fixed = TRUE)
 # TODO: modify the writeComps() commands below to clean up the columns to match the SS3 input
 #       as has been done for the age comps further down
 
@@ -549,14 +550,17 @@ len_comps_annual <- writeComps(
   dummybins = FALSE
 )
 
-# combine the "FthenM" table with the "Uout" table as separate vectors
-# within the same table
-# TODO: filter the unsexed comps for years with very small sample sizes
-names(len_comps_seas$Uout) <- names(len_comps_seas$FthenM)
-len_comps_seas2 <- rbind(len_comps_seas$Uout, len_comps_seas$FthenM)
+# # combine the "FthenM" table with the "Uout" table as separate vectors
+# # within the same table
+# # TODO: filter the unsexed comps for years with very small sample sizes
+# names(len_comps_seas$Uout) <- names(len_comps_seas$FthenM)
+# len_comps_seas2 <- rbind(len_comps_seas$Uout, len_comps_seas$FthenM)
+# names(len_comps_annual$Uout) <- names(len_comps_annual$FthenM)
+# len_comps_annual2 <- rbind(len_comps_annual$Uout, len_comps_annual$FthenM)
 
-names(len_comps_annual$Uout) <- names(len_comps_annual$FthenM)
-len_comps_annual2 <- rbind(len_comps_annual$Uout, len_comps_annual$FthenM)
+# select only the sexed fish
+len_comps_seas2 <- len_comps_seas$FthenM
+len_comps_annual2 <- len_comps_annual$FthenM
 
 # assign fleets for annual model:
 # Fleets:
@@ -592,12 +596,15 @@ len_comps_annual2 <- len_comps_annual2 %>%
   dplyr::arrange(fleet, year, sex)
 
 # write to CSV file
+today_date <- format(as.Date(Sys.time()), "%d.%b.%Y")
 write.csv(len_comps_seas2, 
-  file = file.path(dir, "pacfin", "forSS_seas", paste0("Len_for_SS3_", out_name, ".csv")),
+  file = file.path(dir, "pacfin", "forSS_seas", 
+    paste0("Len_for_SS3_", today_date, "_data_from_", out_date, ".csv")),
   row.names = FALSE
 )
 write.csv(len_comps_annual2, 
-  file = file.path(dir, "pacfin", "forSS_annual", paste0("Len_for_SS3_", out_name, ".csv")),
+  file = file.path(dir, "pacfin", "forSS_annual", 
+    paste0("Len_for_SS3_", today_date, "_data_from_", out_date, ".csv")),
   row.names = FALSE
 )
 
@@ -697,12 +704,15 @@ age_comps_annual2 <- age_comps_annual2 %>%
   dplyr::arrange(fleet, year, ageErr)
 
 # write to CSV file
+today_date <- format(as.Date(Sys.time()), "%d.%b.%Y")
 write.csv(age_comps_seas2, 
-  file = file.path(dir, "pacfin", "forSS_seas", paste0("Age_for_SS3_", out_name, ".csv")),
+  file = file.path(dir, "pacfin", "forSS_seas", 
+    paste0("Age_for_SS3_", today_date, "_data_from_", out_date, ".csv")),
   row.names = FALSE
 )
 write.csv(age_comps_annual2, 
-  file = file.path(dir, "pacfin", "forSS_annual", paste0("Age_for_SS3_", out_name, ".csv")),
+  file = file.path(dir, "pacfin", "forSS_annual", 
+    paste0("Age_for_SS3_", today_date, "_data_from_", out_date, ".csv")),
   row.names = FALSE
 )
 
@@ -730,3 +740,4 @@ datfile2$agecomp <- rbind(age_comps_seas2, datfile$agecomp[!datfile$agecomp$FltS
 
 r4ss::SS_writedat(datfile, "models/2023_March16/petrale_data_16March2023.ss", 
   overwrite = TRUE)
+
