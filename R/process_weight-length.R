@@ -6,10 +6,26 @@
 #                   SaveFile = TRUE, Dir = mydir)
 
 # load previously saved WCGBTS data
-bio <- load("data-raw/nwfscSurvey/Bio_All_NWFSC.Combo_2023-03-20.rda")
+load("data-raw/nwfscSurvey/bio_petrale sole_NWFSC.Combo_2023-03-27.rdata")
+bio <- x # rename saved object
+counts <- bio %>% 
+  dplyr::filter(!is.na(Weight_kg) & !is.na(Length_cm)) %>% 
+  dplyr::group_by(Sex) %>%
+  dplyr::count()
+#   Sex       n      
+#   <chr> <int>
+# 1 F     12504
+# 2 M      9173
+# 3 U        27
+
+# get percentages
+round(100 * counts$n/sum(counts$n), 1)
+# [1] 57.6 42.3  0.1
 
 # estimate parameters
-WLpars <- PacFIN.Utilities::getWLpars(bio)
+WLpars <- PacFIN.Utilities::getWLpars(bio, verbose = TRUE)
+# Calculating the weight-length relationship from 21704
+# fish because 54061 fish did not have empirical weights and lengths.
 
 print(WLpars)
 #    group median_intercept        SD            A        B
@@ -65,4 +81,5 @@ lines(x, ma * x^mb, type = "l", col = 4, lwd = 3, lty = 2)
 lines(x, ua * x^ub, type = "l", col = 3, lwd = 3, lty = 2)
 
 # save values for use in other scripts
-save(fa, fb, ma, mb, ua, ub, file = "data/bio/weight-length_pars.rda")
+save(WLpars, fa, fb, ma, mb, ua, ub, file = "data/weight-length_pars.rda")
+
