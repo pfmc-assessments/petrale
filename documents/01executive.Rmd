@@ -60,7 +60,7 @@ Include Figure with long-term estimates.
 \input{tex_tables/b_SSB_ES.tex}
 
 ```{r, results = 'asis'}
-if (!is.na(mod.2023.005.001$log_det_hessian)) {
+if (!is.na(mod_base$log_det_hessian)) {
   # with Hessian
   add_figure(
   filein = file.path(mod_loc, "plots",
@@ -78,7 +78,7 @@ if (!is.na(mod.2023.005.001$log_det_hessian)) {
 ```
 
 ```{r, results = 'asis'}
-if (!is.na(mod.2023.005.001$log_det_hessian)) {
+if (!is.na(mod_base$log_det_hessian)) {
   # with Hessian
   add_figure(
   filein = file.path(mod_loc, "plots", "ts9_Relative_spawning_biomass_intervals.png"), 
@@ -107,7 +107,7 @@ Include Figure with long-term estimates.
 \input{tex_tables/c_Recr_ES.tex}
 
 ```{r, results = 'asis'}
-if (!is.na(mod.2023.005.001$log_det_hessian)) {
+if (!is.na(mod_base$log_det_hessian)) {
   # with Hessian
   add_figure(
   filein = file.path(mod_loc, "plots", "ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png"), 
@@ -123,7 +123,7 @@ if (!is.na(mod.2023.005.001$log_det_hessian)) {
 ```
 
 ```{r, results = 'asis'}
-if (!is.na(mod.2023.005.001$log_det_hessian)) {
+if (!is.na(mod_base$log_det_hessian)) {
   # with Hessian
   add_figure(
   filein = file.path(mod_loc, "plots", "recdevs2_withbars.png"), 

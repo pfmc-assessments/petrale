@@ -278,3 +278,106 @@ SSplotComparisons(SSsummarize(list(mod.2019.001.099, mod.2019.001.006)),
                    plotdir = "figures", filenameprefix = "comparison_2019.001.099_vs_2019.001.006_",
                    plot = FALSE, print = TRUE, subplots = 2)
 
+# new commercial comps
+mod.2023.007.001 <- SS_output("models/2023.007.001", verbose = FALSE, printstats = FALSE)
+mod.2023.007.003 <- SS_output("models/2023.007.003", verbose = FALSE, printstats = FALSE)
+SS_plots(mod.2023.007.003)
+
+# testing impact of multiplying by 100 on DM sample sizes
+# read input files
+files.2023.a003.002 <- SS_read("models/2023.a003.002")
+# copy to new list
+files.2023.a003.003 <- files.2023.a003.002
+# multiply length comp sample sizes by 10 
+files.2023.a003.003$dat$lencomp <- files.2023.a003.002$dat$lencomp %>% 
+  dplyr::mutate(Nsamp = 10*Nsamp)
+# multiply age comp sample sizes by 10 
+files.2023.a003.003$dat$agecomp <- files.2023.a003.002$dat$agecomp %>% 
+  dplyr::mutate(Nsamp = ifelse(FltSvy != -7 | FltSvy != 7, 10*Nsamp, Nsamp))
+# write files
+SS_write(files.2023.a003.003, "models/2023.a003.005", overwrite = TRUE)
+run("models/2023.a003.005", extras = "-nohess", exe = "ss_win")
+
+# multiply age comp sample sizes by 10 with the exception of the CAAL data
+# because the CAAL was hitting the upper bound and therefore won't match if the 
+# sample size increases
+files.2023.a003.004 <- files.2023.a003.003
+files.2023.a003.004$dat$agecomp <- files.2023.a003.003$dat$agecomp %>% 
+  dplyr::mutate(Nsamp = ifelse(FltSvy == -7 | FltSvy == 7, 10*Nsamp, Nsamp))
+SS_write(files.2023.a003.004, "models/2023.a003.004", overwrite = TRUE)
+run("models/2023.a003.004", extras = "-nohess", exe = "ss_win")
+
+# selectivity blocks (DM)
+copy_SS_inputs("models/2023.a003.002", "models/2023.a004.001_selex_blocks")
+copy_SS_inputs("models/2023.c003.002", "models/2023.c004.001_selex_blocks")
+
+# selectivity blocks (Francis)
+copy_SS_inputs("models/2023.a002.002a", "models/2023.a002.004_selex_blocks", overwrite = TRUE)
+copy_SS_inputs("models/2023.c002.002", "models/2023.c002.004_selex_blocks")
+copy_SS_inputs("models/2023.a002.002a", "models/2023.a002.005_selex_blocks_males")
+copy_SS_inputs("models/2023.c002.002", "models/2023.c002.005_selex_blocks_males")
+
+files.a24 <- SS_read("models/2023.a002.004_selex_blocks")
+files.c24 <- SS_read("models/2023.c002.004_selex_blocks")
+
+ctl <- files.a24$ctl
+ctl <- files.c24$ctl
+# add time-varying parameters for ascending selex for fleets 1 and 3
+ctl$size_selex_parms["SizeSel_P_3_WinterN(1)", "Block"] <- 1
+ctl$size_selex_parms["SizeSel_P_3_WinterS(3)", "Block"] <- 1
+ctl$size_selex_parms["SizeSel_P_3_WinterN(1)", "Block_Fxn"] <- 1
+ctl$size_selex_parms["SizeSel_P_3_WinterS(3)", "Block_Fxn"] <- 1
+
+#ctl$SzSel_Male_Peak
+
+# get first set of each pair of years from the block design
+block_years <- ctl$Block_Design[[1]] %>% .[1:length(.) %% 2 == 1]
+new_tv_pars <- data.frame(LO = rep(-5, length(block_years)), 
+  HI = 5, INIT = 0, PRIOR = 0, PR_SD = 99, PR_type = 0, PHASE = 6)
+
+add_selex_pars <- function(ctl, new_tv_pars, preceding_tv_par_string) {
+     # figure out which is the first part of the original table
+     first_part <- 1:max(grep(preceding_tv_par_string, 
+       rownames(ctl$size_selex_parms_tv), 
+       fixed = TRUE))
+    
+    # bind everything together
+    ctl$size_selex_parms_tv <- rbind(
+     # first part of original table
+     ctl$size_selex_parms_tv[first_part,], 
+     # new stuff
+     new_tv_pars, 
+     # remainder of original table
+     ctl$size_selex_parms_tv[-first_part, ] 
+  )
+  return(ctl)
+}
+
+# add blocks for fleet 1
+rownames(new_tv_pars) <- paste0("SizeSel_P_3_fleet1_BLK1add_", selex_block_years)
+ctl <- add_selex_pars(
+  ctl = ctl, 
+  new_tv_pars = new_tv_pars, 
+  preceding_tv_par_string = "SizeSel_P_1_WinterN(1)"
+)
+
+# add blocks for fleet 3
+rownames(new_tv_pars) <- paste0("SizeSel_P_3_fleet3_BLK1add_", selex_block_years)
+ctl <- add_selex_pars(
+  ctl = ctl, 
+  new_tv_pars = new_tv_pars, 
+  preceding_tv_par_string = "SizeSel_P_1_WinterS(3)"
+)
+
+# add modified control file back into list
+files.a24$ctl <- ctl
+files.c24$ctl <- ctl
+# write all input files
+SS_write(files.a24, dir = files.a24$dir, overwrite = TRUE)
+SS_write(files.c24, dir = files.c24$dir, overwrite = TRUE)
+# run model without estimation
+run(files.a24$dir, extras = "-stopph 0 -nohess", exe = "ss_win", show_in_console = TRUE)
+
+
+### M explorations for Chantel are in 2023.c002.003_M_shared
+

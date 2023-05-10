@@ -28,15 +28,17 @@ sa4ss::read_model(
 	save_loc = "tex_tables"
 )
 
-# load the Rdata file for the base model created by sa4ss::read_model() 
-load("00mod.Rdata")
-mod_base <- model
 
 # clean out old version of file that gets compiled into the PDF
 setwd("documents") # skip this if already in "documents"
 if(file.exists("_main.Rmd")){
 	file.remove("_main.Rmd")
 }
+
+# load the Rdata file for the base model created by sa4ss::read_model() 
+# (just a placeholder for now)
+load("00mod.Rdata")
+mod_base <- model
 # Render the pdf
 bookdown::render_book("00a.Rmd", clean=FALSE, output_dir = getwd())
 setwd("..")
