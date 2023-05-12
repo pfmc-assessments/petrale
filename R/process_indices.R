@@ -32,10 +32,9 @@ tail(index_areas_lognormal, 3)
 # 76   CA 2022 21602.49 17629.90 26470.24 9.980564 0.1036816
 
 
-# make data frame containing all distributions
 #index_areas_gamma$dist <- "gamma"
 index_areas_lognormal$dist <- "lognormal"
-2$dist <- "lognormal_mix"
+index_areas_lognormal_mix2$dist <- "lognormal_mix"
 
 # get rescaled lognormal_mix
 ratio <- index_areas_lognormal %>% 
@@ -53,6 +52,7 @@ index_areas_lognormal_mix2$upr <- ratio * index_areas_lognormal_mix$upr
 
 index_areas_lognormal_mix2$dist <- "lognormal_mix * 4.84"
 
+# make data frame containing all distributions
 index_all_dist <- rbind(
   #index_areas_gamma,
   index_areas_lognormal,
@@ -137,9 +137,97 @@ index_tri_lognormal %>%
   dplyr::select(year, est, se) %>%
   dplyr::mutate(month = 7, fleet = 3, .after = 1) %>%
   write.csv(
-    file = "data-raw/indices/triennial_for_SS_gamma_11-May-2023.csv",
+    file = "data-raw/indices/triennial_for_SS_lognormal_with_depth_12-May-2023.csv",
     row.names = FALSE
   )
+
+# load Triennial indices and write to CSV
+dir <- "data-raw/indices/triennial"
+load(file.path(dir, "delta_lognormal_no_depth/index/sdmTMB_save.RData"))
+index_tri_lognormal <- index_areas
+load(file.path(dir, "delta_lognormal_with_depth/index/sdmTMB_save.RData"))
+index_tri_lognormal_depth <- index_areas
+
+index_tri_lognormal %>%
+  dplyr::filter(area == "coastwide") %>%
+  dplyr::select(year, est, se) %>%
+  dplyr::mutate(month = 7, fleet = 3, .after = 1) %>%
+  write.csv(
+    file = "data-raw/indices/triennial_for_SS_lognormal_no_depth_12-May-2023.csv",
+    row.names = FALSE
+  )
+index_tri_lognormal_depth %>%
+  dplyr::filter(area == "coastwide") %>%
+  dplyr::select(year, est, se) %>%
+  dplyr::mutate(month = 7, fleet = 3, .after = 1) %>%
+  write.csv(
+    file = "data-raw/indices/triennial_for_SS_lognormal_no_depth_12-May-2023.csv",
+    row.names = FALSE
+  )
+
+index_tri_lognormal$dist <- "lognormal"
+index_tri_lognormal_depth$dist <- "lognormal_with_depth"
+
+# get rescaled lognormal_depth
+ratio <- index_tri_lognormal %>% 
+  dplyr::filter(area == "coastwide") %>% 
+  dplyr::summarize(mean(est)) / 
+index_tri_lognormal_depth %>% 
+  dplyr::filter(area == "coastwide") %>% 
+  dplyr::summarize(mean(est)) 
+ratio <- as.numeric(ratio)
+
+index_tri_lognormal_depth2 <- index_tri_lognormal_depth
+index_tri_lognormal_depth2$est <- ratio * index_tri_lognormal_depth$est 
+index_tri_lognormal_depth2$lwr <- ratio * index_tri_lognormal_depth$lwr 
+index_tri_lognormal_depth2$upr <- ratio * index_tri_lognormal_depth$upr 
+
+index_tri_lognormal_depth2$dist <- "lognormal_with_depth * 5.99"
+
+
+index_all_tri <- rbind(
+  index_tri_lognormal,
+  index_tri_lognormal_depth,
+  index_tri_lognormal_depth2
+)
+# convert distribution to factor
+index_all_tri <-
+  index_all_tri %>% dplyr::mutate(dist = factor(dist))
+# filter for coastwide index only (no state-specific groups)
+index_all_tri <-
+  index_all_tri %>% dplyr::filter(area == "coastwide")
+
+
+# make an index plot using code copied out of 
+# indexwc::plot_indices()
+library(ggplot2)
+
+index_all_tri %>%
+  ggplot2::ggplot(
+    ggplot2::aes(
+      x = year,
+      y = est,
+      group = dist,
+      colour = dist,
+      fill = dist
+    )
+  ) +
+  ggplot2::geom_point(
+    position = ggplot2::position_dodge(0.3)
+  ) +
+  ggplot2::geom_line(lty = 2) +
+  ggplot2::geom_errorbar(
+    ggplot2::aes(ymin = lwr, ymax = upr),
+    width = 0.2,
+    position = position_dodge(0.2)
+  ) +
+  # ggplot2::theme_bw() +
+  ggplot2::xlab("Year") +
+  ggplot2::ylab("Index (mt)") +
+  expand_limits(y = 0)
+
+# save plot created above
+ggsave("figures/index_comparisons_Triennial_12-May-2023.png")
 
 
 ### running a new index
@@ -180,8 +268,9 @@ data <- configuration %>%
   dplyr::ungroup()
 
 # run both indices
-# to run just WCGBTS, use data[1,] instead of data
-# to run just Triennial, use data[2,] instead of data
+# to run just WCGBTS, use data[1,] instead of data in the first line
+# to run just Triennial, use data[2,] instead of data in the first line
+# the output goes to a "petrale_sole" folder in the working directory
 best <- data %>%
   dplyr::mutate(
     # Evaluate the call in family
