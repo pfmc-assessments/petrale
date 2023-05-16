@@ -12,29 +12,41 @@ library(tidyverse)
 # pak::pkg_install('pfmc-assessments/PacFIN.Utilities')
 # pak::pkg_install('pfmc-assessments/nwfscSurvey')
 
-# 15 March 2023: install branch of PacFIN.Utilities that contains
-#                restored version of combineCalCOM() function
-# pak::pkg_install('pfmc-assessments/PacFIN.Utilities@CALCOM')
-
+# update PacFIN.Utilities after change on 16 May 2023
+pak::pkg_install('pfmc-assessments/PacFIN.Utilities') 
 library(PacFIN.Utilities)
 library(nwfscSurvey)
 
-# working directory needs to match local location of
+# NOTE: working directory needs to match local location of
 # git repository at https://github.com/pfmc-assessments/petrale
+dir <- "data-raw"
 
 # Load in the PacFIN bds data
 # requested via https://github.com/pfmc-assessments/PacFIN.Utilities/issues/87
-bds_file <- "PacFIN.PTRL.bds.27.Jan.2023.RData"
+# bds_file <- "pacfin/PacFIN.PTRL.bds.27.Jan.2023.RData"
+# bds_file <- "pacfin/PacFIN.PTRL.bds.05.Apr.2023.RData"
+bds_file <- "pacfin/PacFIN.PTRL.bds.08.May.2023.RData"
 dir <- "data-raw"
 load(file.path(dir, bds_file))
 
+# looking at Oregon "special project" samples
+samples <- bds.pacfin %>% 
+  dplyr::filter(AGENCY_CODE == "O" & SAMPLE_TYPE == "S") 
+table(is.na(samples$EXPANDED_SAMPLE_WEIGHT), samples$SAMPLE_YEAR)
+table(is.na(samples$FISH_WEIGHT), samples$SAMPLE_YEAR)
+
 # CALCOM data for petrale sole - from Brenda Erwin 2011
 CALCOM <- read.csv("data-raw/calcom/PetraleCALCOM_Query2011.csv")
+# alternative file from EJ to compare sample sizes
+# CALCOM2 <- read.csv("data-raw/calcom/petrale_flatfish_bin_ages_for_Ian.csv")
 
 # load estimated weight-length parameters (fa, fb, ma, mb, ua, ub)
 load("data/weight-length_pars.rda")
 
 # Process the CalCOM data
+# assign ageing method (later refined with additional details)
+CALCOM$AGE_METHOD <- "S"
+
 # Check weight at length for CalCOM data for comparison with total wgt
 CALCOM$tot.wgt <- CALCOM$rel.error <- CALCOM$wgt.est <- CALCOM$num <- NA
 CALCOM[CALCOM$SEX == 2, "wgt.est"] <- (fa * (CALCOM[CALCOM$SEX == 2, "TLENGTH"] / 10)^fb) * 2.20462
@@ -70,9 +82,9 @@ CALCOM$SumOfWEIGHT[replace] <- round(CALCOM$tot.wgt[replace], 2)
 # add length units (which must be MM based on the range)
 range(CALCOM$TLENGTH, na.rm = TRUE)
 # [1] 198 879
-CALCOM$FISH_LENGTH_UNITS <- "MM"
+# CALCOM$FISH_LENGTH_UNITS <- "MM" # no longer needed
 
-# check to make sure there is not overlap:
+# check to make sure there is not overlap between PacFIN and CALCOM samples:
 table(bds.pacfin$SAMPLE_YEAR[bds.pacfin$AGENCY_CODE == "C"])
 # 1979 1990 1991 1992 1994 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022
 #    1  202  418   88    1  594  461  729  693 1183 2100 4627 4466 2346 2011 1571 2224 3683 3016 3144 3617 3778 3486 4496 4274 2865 1444
@@ -93,6 +105,20 @@ range(CALCOM$SAMPLE_DATE)
 #      4    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   66   66   66   66   33   66   33    0    0    0
 #      8   66   66   33   66   66   66   66   66   66   66   66   66   66   66   66   66   66   66   66    0    0    0    0    0    0    0    0    0    0
 
+
+# remove temporary columns used for fixing outliers in CALCOM data
+# (all columns from "num" to "tot.wgt")
+CALCOM <- CALCOM %>% dplyr::select(!num:tot.wgt)
+
+# CALCOM$Age  <- CALCOM$AGE # temporary fix for issue with combineCalCOM()
+
+# Use PacFIN.Utilities to combine the PacFIN and CALCOM data
+CombinedDat <- combineCalCOM(Pdata = bds.pacfin, CalCOM = CALCOM)
+
+### codes mentioned in 2019 script, not clear why
+# CHR = Charlotte, Canada
+# VCN = Vancouver, Canada
+
 # The cleanPacFIN function retains records that are
 # randomly collected based on sampling protocols, removes
 # any age reads that don't align with the keep_age_methods
@@ -101,30 +127,20 @@ range(CALCOM$SAMPLE_DATE)
 
 # run cleanPacFIN() once before combining PacFIN and CALCOM
 Pdata <- cleanPacFIN(
-  Pdata = bds.pacfin,
+  Pdata = CombinedDat,
+  keep_sample_type = c("M", "S"),
   keep_age_method = c("B", "S"),
   CLEAN = TRUE,
   verbose = TRUE
 )
 
-# Use PacFIN.Utilities to combine the PacFIN and CALCOM data
-CombinedDat <- combineCalCOM(Pdata = Pdata, CalCOM = CALCOM)
+# clean the SAMPLE_TYPE = "S" (special projects) for any subset that
+# we want cleaned
+# TODO: add stuff here
 
-# Combining CalCOM and PacFIN data
-# PacFIN records: 187611
-# CalCOM records: 53794
-# Combined dataset: 241405
-
-### codes mentioned in 2019 script, not clear why
-# CHR = Charlotte, Canada
-# VCN = Vancouver, Canada
-
-# command below causes error: :Error in plot.window(...) : need finite 'ylim' values"
-# plotRawData(Pdata)
-
-# run cleanPacFIN() again now that CALCOM has been added
-Pdata <- cleanPacFIN(
+Pdata2 <- cleanPacFIN(
   Pdata = CombinedDat,
+  keep_sample_type = c("M", "S"),
   keep_age_method = c("B", "S"),
   CLEAN = FALSE,
   verbose = TRUE
@@ -175,7 +191,7 @@ Pdata$outlier[is.na(Pdata$outlier)] <- FALSE
 table(Pdata[Pdata$outlier, "lengthcm"], Pdata[Pdata$outlier, "Age"])
 
 # Save the filtered data
-save(Pdata, file = file.path(dir, "Cleaned_PacFIN.PTRL.bds.16.Mar.2023.Rda"))
+save(Pdata, file = file.path(dir, "Cleaned_PacFIN.PTRL.bds.16.May.2023.Rda"))
 # # Load the filtered data
 # load("data-raw/Cleaned_PacFIN.PTRL.bds.16.Mar.2023.Rda")
 
@@ -227,11 +243,11 @@ Pdata$agemethod[Pdata$agemethod %in% c("N")] <- NA
 # There are years with blank agemethod - do this to be easily trackable
 Pdata$agemethod[!Pdata$agemethod %in% c("B", "S")] <- "U"
 table(Pdata$agemethod, is.na(Pdata$Age), useNA = "always")
-#       FALSE   TRUE   <NA>
-# B     20579      8      0
-# S     55155  35842      0
-# U       199 129622      0
-# <NA>      0      0      0
+  #       FALSE   TRUE   <NA>
+  # B     26447     14      0
+  # S     69150  35892      0
+  # U       199 134473      0
+  # <NA>      0      0      0
 
 # code below maps various ageing codes to a shorter list, copied from
 # https://github.com/pfmc-assessments/PacFIN.Utilities/blob/main/R/getAge.R#L113-L125
@@ -295,19 +311,19 @@ Pdata$ageerr[!is.na(Pdata$Age) & Pdata$SOURCE_AGID == "W" & Pdata$agemethod == "
 Pdata$ageerr[!is.na(Pdata$Age) & Pdata$SOURCE_AGID == "W" & Pdata$fishyr %in% c(2009, 2010)] <- 5 # WDFW Combo
 
 table(Pdata$ageerr, Pdata$agemethod, useNA = "always")
-#           B      S   <NA>
-# 2     11217      0      0
-# 3         0   1400      0
-# 4      2401   4795      0
-# 5       932      4      0
-# 6         0  30652      0
-# 7      6811      0      0
-# 8         0  17721      0
-# <NA>      8  35842 129622
+  #           B      S   <NA>
+  # 2     14846      0      0
+  # 3         0   1608      0
+  # 4      4640  13095      0
+  # 5       932      4      0
+  # 6         0  30653      0
+  # 7      6811      0      0
+  # 8         0  23207      0
+  # <NA>     14  35892 134473
 
 table(Pdata$ageerr)
-#     2     3     4     5     6     7     8
-# 11217  1400  7196   936 30652  6811 17721
+#     2     3     4     5     6     7     8 
+# 14846  1608 17735   936 30653  6811 23207 
 
 # NOTE from 2019:
 # There is an Oregon tow where 29 female and 1 unsexed fish were sampled
@@ -340,23 +356,21 @@ Pdata$geargroup <- "ALL"
 Pdata$fleet[Pdata$state != "CA"] <- "WA_OR_ALL" # where "ALL" is the geargroup
 Pdata$fleet[Pdata$state == "CA"] <- "CA_ALL"
 
+# Alternative coastwide model with a single fleet
+Pdata_coast <- Pdata
+Pdata_coast$fleet <- "ALL"
+
 # Load in the catches by state for expansion
 # annual catch
-catch_annual <- read.csv(file.path(dir, "catch", "commercial_catch_by_state.csv"))
+catch_annual <- read.csv(file.path(dir, "catch", "commercial_catch_by_state_v2.csv"))
 colnames(catch_annual) <- c("Year", "CA_ALL", "OR_ALL", "WA_ALL")
 
 # seasonal catch
-catch_seas <- read.csv(file.path(dir, "catch", "catch_file_season fleets v2.csv"))
-# rename catch file headers
-catch_seas <- catch_seas %>%
-  dplyr::rename_with(~ gsub("Winter", 1, .x)) %>%
-  dplyr::rename_with(~ gsub("Summer", 2, .x)) %>%
-  dplyr::rename_with(~ gsub("South", "CA", .x)) %>%
-  dplyr::rename_with(~ gsub("North", "WA_OR", .x))
+catch_seas <- read.csv(file.path(dir, "catch", "catch_file_season fleets v3.csv"))
 
 tail(catch_seas)
-#     Year     CA_2     CA_1      OR_2      OR_1      WA_2      WA_1
-# 142 2017 605.5175 201.0418 1063.2037 1033.1083 212.37512 109.19556
+#     Year     CA.S     CA.W      OR.S      OR.W      WA.S      WA.W
+# 142 2017 468.8005 155.6495 1063.2037 1033.1083 212.37512 109.19556
 # 143 2018 411.3346 239.6965  980.7012  814.6673 299.37760 142.65389
 # 144 2019 442.1013 140.9231  954.1388  850.9189 256.01552 185.83679
 # 145 2020 346.0112 101.0924  811.1161  676.2677  38.29677  17.83117
@@ -364,13 +378,15 @@ tail(catch_seas)
 # 147 2022 514.0657 382.5875 1147.8599 1033.0380  16.29313   7.64666
 
 # create new column in PacFIN data that matches the seasonal catch file headers
-Pdata_seas$stratification <- paste(Pdata_seas$state, Pdata_seas$season, sep = "_")
+Pdata_seas$stratification <- 
+  paste(Pdata_seas$state, ifelse(Pdata_seas$season==1, "W", "S"), sep = ".")
 table(Pdata_seas$stratification)
-#  CA_1  CA_2  OR_1  OR_2  WA_1  WA_2
-# 37262 74050 22961 29521 16432 61179
+#  CA.S  CA.W  OR.S  OR.W  WA.S  WA.W 
+# 36889 20679 46851 28167 63323 16472 
 
 dir.create(file.path(dir, "pacfin", "plots_seas"), recursive = TRUE)
 dir.create(file.path(dir, "pacfin", "plots_annual"), recursive = TRUE)
+dir.create(file.path(dir, "pacfin", "plots_coast"), recursive = TRUE)
 
 # First stage expansion: expand comps to the trip level
 # seasonal
@@ -383,6 +399,12 @@ Pdata_exp1_seas <- getExpansion_1(
 Pdata_exp1_annual <- getExpansion_1(
   Pdata = Pdata,
   plot = file.path(dir, "pacfin", "plots_annual"),
+  fa = fa, fb = fb, ma = ma, mb = mb, ua = ua, ub = ub
+)
+# coastwide
+Pdata_exp1_coast <- getExpansion_1(
+  Pdata = Pdata_coast,
+  plot = file.path(dir, "pacfin", "plots_coast"),
   fa = fa, fb = fb, ma = ma, mb = mb, ua = ua, ub = ub
 )
 
@@ -419,6 +441,15 @@ Pdata_exp2_annual <- getExpansion_2(
 # 4    1964         WA_ALL  1
 # ...
 
+Pdata_exp2_coast <- getExpansion_2(
+  Pdata = Pdata_exp1_coast,
+  Catch = catch_annual,
+  Units = "MT",
+  stratification.cols = c("state", "geargroup"),
+  savedir = file.path(dir, "pacfin", "plots_coast")
+)
+
+
 # Calculate the final expansion size
 # seasonal
 Pdata_exp2_seas$Final_Sample_Size <-
@@ -428,6 +459,10 @@ Pdata_exp2_seas$Final_Sample_Size <-
 Pdata_exp2_annual$Final_Sample_Size <-
   capValues(Pdata_exp2_annual$Expansion_Factor_1_L *
     Pdata_exp2_annual$Expansion_Factor_2)
+# coastwide
+Pdata_exp2_coast$Final_Sample_Size <-
+  capValues(Pdata_exp2_coast$Expansion_Factor_1_L *
+    Pdata_exp2_coast$Expansion_Factor_2)
 
 
 # get length comps
@@ -439,6 +474,10 @@ length_comps_annual <- getComps(
   Pdata = Pdata_exp2_annual[!is.na(Pdata_exp2_annual$lengthcm), ],
   Comps = "LEN"
 )
+length_comps_coast <- getComps(
+  Pdata = Pdata_exp2_coast[!is.na(Pdata_exp2_coast$lengthcm), ],
+  Comps = "LEN"
+)
 table(length_comps_annual$fleet, length_comps_annual$season)
 #              1
 # CA_ALL    1816
@@ -447,6 +486,9 @@ table(length_comps_seas$fleet, length_comps_seas$season)
 #          1    2
 # CA    1509 1666
 # WA_OR 1434 1725
+table(length_comps_coast$fleet, length_comps_coast$season)
+  #        1
+  # ALL 2165
 
 table(Pdata$SOURCE_AGID, Pdata$SEX)
 #            F     M     U
@@ -477,6 +519,7 @@ ggplot(Pdata, aes(lengthcm, color = SEX)) +
 # Create the length composition data
 ####################################################################################################
 
+### COMMENT FROM 2019
 # Commenting out for now because I don't want to assign unsexed
 # due to the dimorphic growth
 # There area a fair number of U in CA and in the early years of WA
@@ -489,7 +532,8 @@ ggplot(Pdata, aes(lengthcm, color = SEX)) +
 len_bins <- seq(12, 62, 2)
 # remove .Rdata extension from bds file name to include in CSV file names
 # results in something like "PacFIN.PTRL.bds.27.Jan.2023"
-out_name <- sub(pattern = "(.*)\\..*$", replacement = "\\1", bds_file)
+out_name <- sub(pattern = "pacfin/", replacement = "", bds_file, fixed = TRUE)
+out_name <- sub(pattern = "(.*)\\..*$", replacement = "\\1", out_name)
 # remove the first part "PacFIN.PTRL.bds."
 out_date <- gsub(pattern = "PacFIN.PTRL.bds.", replacement = "", x = out_name, fixed = TRUE)
 # TODO: modify the writeComps() commands below to clean up the columns to match the SS3 input
@@ -522,6 +566,17 @@ len_comps_annual <- writeComps(
   dummybins = FALSE
 )
 
+# annual length comps for SS3 as separate tables of sexed and unsexed
+len_comps_coast <- writeComps(
+  inComps = length_comps_coast,
+  fname = file.path(dir, "pacfin", "forSS_coast", paste0("Lengths_", out_name, ".csv")),
+  lbins = len_bins,
+  sum1 = TRUE,
+  partition = 2,
+  digits = 4,
+  dummybins = FALSE
+)
+
 # # combine the "FthenM" table with the "Uout" table as separate vectors
 # # within the same table
 # # TODO: filter the unsexed comps for years with very small sample sizes
@@ -533,8 +588,9 @@ len_comps_annual <- writeComps(
 # select only the sexed fish
 len_comps_seas2 <- len_comps_seas$FthenM
 len_comps_annual2 <- len_comps_annual$FthenM
+len_comps_coast2 <- len_comps_coast$FthenM
 
-# assign fleets for annual model:
+# assign fleets model:
 # Fleets:
 # 1 = WinterN
 # 2 = SummerN
@@ -555,26 +611,35 @@ len_comps_annual2 <- len_comps_annual2 %>%
   dplyr::mutate(
     fleet =
       dplyr::case_when(
-        fleet == "CA_ALL" ~ 1,
-        fleet == "WA_OR_ALL" ~ 2
+        fleet == "WA_OR_ALL" ~ 1,
+        fleet == "CA_ALL" ~ 2
       )
   )
 
-# remove Ntows and Nsamps columns
-# TODO: retain Nsamps instead of InputN
-len_comps_seas2 <- len_comps_seas2 %>%
-  dplyr::select(!c(Ntows, Nsamps))
-len_comps_annual2 <- len_comps_annual2 %>%
-  dplyr::select(!c(Ntows, Nsamps))
+len_comps_coast2$fleet <- 1
+
+today_date <- format(as.Date(Sys.time()), "%d.%b.%Y")
+save(len_comps_seas2, len_comps_annual2, len_comps_coast2, 
+  file = paste0("data-raw/pacfin/len_comps_all_", today_date, 
+  "_data_from_", out_date, ".Rdata"))
+
+
+# # remove Ntows and Nsamps columns
+# # TODO: retain Nsamps instead of InputN
+# len_comps_seas2 <- len_comps_seas2 %>%
+#   dplyr::select(!c(Ntows, Nsamps))
+# len_comps_annual2 <- len_comps_annual2 %>%
+#   dplyr::select(!c(Ntows, Nsamps))
 
 # sort by fleet, year, and then sex error type
 len_comps_seas2 <- len_comps_seas2 %>%
   dplyr::arrange(fleet, year, sex)
 len_comps_annual2 <- len_comps_annual2 %>%
   dplyr::arrange(fleet, year, sex)
+len_comps_coast2 <- len_comps_coast2 %>%
+  dplyr::arrange(fleet, year, sex)
 
 # write to CSV file
-today_date <- format(as.Date(Sys.time()), "%d.%b.%Y")
 write.csv(len_comps_seas2,
   file = file.path(
     dir, "pacfin", "forSS_seas",
@@ -589,6 +654,13 @@ write.csv(len_comps_annual2,
   ),
   row.names = FALSE
 )
+write.csv(len_comps_annual2,
+  file = file.path(
+    dir, "pacfin", "forSS_coast",
+    paste0("Len_for_SS3_", today_date, "_data_from_", out_date, ".csv")
+  ),
+  row.names = FALSE
+)
 
 ##########################################################
 # Calculate the expansion for age data
@@ -596,16 +668,29 @@ write.csv(len_comps_annual2,
 
 Pdata_exp2_seas$Final_Sample_Size <- capValues(Pdata_exp2_seas$Expansion_Factor_1_A * Pdata_exp2_seas$Expansion_Factor_2)
 Pdata_exp2_annual$Final_Sample_Size <- capValues(Pdata_exp2_annual$Expansion_Factor_1_A * Pdata_exp2_annual$Expansion_Factor_2)
+Pdata_exp2_coast$Final_Sample_Size <- capValues(Pdata_exp2_coast$Expansion_Factor_1_A * Pdata_exp2_coast$Expansion_Factor_2)
 
 age_comps_seas <- getComps(
   Pdata_exp2_seas[!is.na(Pdata_exp2_seas$Age), ],
   defaults = c("fleet", "fishyr", "season", "ageerr"),
-  Comps = "Age"
+  Comps = "AGE"
 )
 age_comps_annual <- getComps(
   Pdata_exp2_annual[!is.na(Pdata_exp2_annual$Age), ],
   defaults = c("fleet", "fishyr", "season", "ageerr"),
-  Comps = "Age"
+  Comps = "AGE"
+)
+age_comps_coast <- getComps(
+  Pdata_exp2_coast[!is.na(Pdata_exp2_coast$Age), ],
+  defaults = c("fleet", "fishyr", "season", "ageerr"),
+  Comps = "AGE"
+)
+
+# conditional age-at-length comps for annual model only (for now)
+CAAL_comps_annual <- getComps(
+  Pdata_exp2_annual[!is.na(Pdata_exp2_annual$Age), ],
+  defaults = c("fleet", "fishyr", "season", "ageerr"),
+  Comps = "AAL"
 )
 
 ##########################################################
@@ -653,6 +738,46 @@ for (ageerr in unique(age_comps_annual$ageerr)) {
   )
 }
 
+# process age comps for each ageing error type COASTWIDE
+age_comps_coast2 <- NULL
+# loop across ageing error methods to get comps for that method
+for (ageerr in unique(age_comps_coast$ageerr)) {
+  age_comps_coast2 <- rbind(
+    age_comps_coast2,
+    age_comps_coast2 <- writeComps(
+      inComps = age_comps_coast[age_comps_coast$ageerr == ageerr, ], # filter for subset that matches
+      fname = file.path(dir, "pacfin", "forSS_coast", paste0("Age_", out_name, ".csv")),
+      abins = age_bins,
+      sum1 = TRUE,
+      partition = 2,
+      ageErr = ageerr, # value being looped across
+      digits = 4,
+      dummybins = FALSE
+    )$FthenM # only keep FthenM table, ignoring 49 petrale ages that are unsexed
+  )
+}
+
+# process age comps for each ageing error type ANNUAL
+CAAL_comps_annual2 <- NULL
+# loop across ageing error methods to get comps for that method
+for (ageerr in unique(CAAL_comps_annual$ageerr)) {
+  temp <- writeComps(
+      inComps = CAAL_comps_annual[CAAL_comps_annual$ageerr == ageerr, ], # filter for subset that matches
+      fname = file.path(dir, "pacfin", "forSS_annual", paste0("CAAL_", out_name, ".csv")),
+      abins = age_bins,
+      sum1 = FALSE,
+      partition = 2,
+      ageErr = ageerr, # value being looped across
+      digits = 4,
+      dummybins = FALSE
+    )
+  # gather together female comps then male comps
+  CAAL_comps_annual2 <- rbind(
+      CAAL_comps_annual2, 
+      temp$Fout,
+      temp$Mout)
+}
+
 # assign fleets for seasonal model:
 # Fleets:
 # 1 = WinterN
@@ -679,10 +804,27 @@ age_comps_annual2 <- age_comps_annual2 %>%
       )
   )
 
-# remove Ntows and Nsamps columns
+# need to rename columns to avoid duplicate column names
+names(CAAL_comps_annual2)[names(CAAL_comps_annual2) %in% paste0("A", age_bins)] <- 
+  c(paste0("F", age_bins), paste0("M", age_bins))
+
+CAAL_comps_annual2 <- CAAL_comps_annual2 %>%
+  dplyr::mutate(
+    fleet =
+      dplyr::case_when(
+        fleet == "CA_ALL" ~ 1,
+        fleet == "WA_OR_ALL" ~ 2
+      )
+  )
+
+age_comps_coast2$fleet <- 1
+
+# remove Ntows and Nsamps columns (not present for CAAL data)
 age_comps_seas2 <- age_comps_seas2 %>%
   dplyr::select(!c(Ntows, Nsamps))
 age_comps_annual2 <- age_comps_annual2 %>%
+  dplyr::select(!c(Ntows, Nsamps))
+age_comps_coast2 <- age_comps_coast2 %>%
   dplyr::select(!c(Ntows, Nsamps))
 
 # sort by fleet, year, and then ageing error type
@@ -690,6 +832,11 @@ age_comps_seas2 <- age_comps_seas2 %>%
   dplyr::arrange(fleet, year, ageErr)
 age_comps_annual2 <- age_comps_annual2 %>%
   dplyr::arrange(fleet, year, ageErr)
+age_comps_coast2 <- age_comps_coast2 %>%
+  dplyr::arrange(fleet, year, ageErr)
+# CAAL comps also need sorting by sex and length bin
+CAAL_comps_annual2 <- CAAL_comps_annual2 %>%
+  dplyr::arrange(fleet, year, sex, LbinLo, ageErr)
 
 # write to CSV file
 today_date <- format(as.Date(Sys.time()), "%d.%b.%Y")
@@ -704,6 +851,20 @@ write.csv(age_comps_annual2,
   file = file.path(
     dir, "pacfin", "forSS_annual",
     paste0("Age_for_SS3_", today_date, "_data_from_", out_date, ".csv")
+  ),
+  row.names = FALSE
+)
+write.csv(age_comps_coast2,
+  file = file.path(
+    dir, "pacfin", "forSS_coast",
+    paste0("Age_for_SS3_", today_date, "_data_from_", out_date, ".csv")
+  ),
+  row.names = FALSE
+)
+write.csv(CAAL_comps_annual2,
+  file = file.path(
+    dir, "pacfin", "forSS_annual",
+    paste0("CAAL_for_SS3_", today_date, "_data_from_", out_date, ".csv")
   ),
   row.names = FALSE
 )
