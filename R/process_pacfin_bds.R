@@ -343,10 +343,10 @@ Pdata_seas <- getSeason(Pdata, season_type = 1, yearUp = c(11, 12))
 
 # look at distribution of gears
 table(Pdata$geargroup)
-# CalCOM    HKL    NET    POT    TWL    TWS
-#  53794    602     56     37 186838     78
-# Set up the expected fleet structure for the annual version
+  #  HKL    NET    POT    TWL    TWS 
+  #  606     56     37 265398     78 
 
+# Set up the expected fleet structure for the annual version
 # Fleets for seasonal model
 Pdata_seas$fleet[Pdata_seas$state != "CA"] <- "WA_OR"
 Pdata_seas$fleet[Pdata_seas$state == "CA"] <- "CA"
@@ -459,6 +459,9 @@ Pdata_exp2_seas$Final_Sample_Size <-
 Pdata_exp2_annual$Final_Sample_Size <-
   capValues(Pdata_exp2_annual$Expansion_Factor_1_L *
     Pdata_exp2_annual$Expansion_Factor_2)
+# annual for CAAL (no expansion)
+Pdata$Final_Sample_Size <- 1
+
 # coastwide
 Pdata_exp2_coast$Final_Sample_Size <-
   capValues(Pdata_exp2_coast$Expansion_Factor_1_L *
@@ -687,10 +690,17 @@ age_comps_coast <- getComps(
 )
 
 # conditional age-at-length comps for annual model only (for now)
+# using unexpanded comps
+Pdata_unexpanded <- Pdata_exp1_annual
+Pdata_unexpanded$Final_Sample_Size_A <- 1
+Pdata_unexpanded$Final_Sample_Size_L <- 1
+Pdata_unexpanded$Final_Sample_Size <- 1
+
 CAAL_comps_annual <- getComps(
-  Pdata_exp2_annual[!is.na(Pdata_exp2_annual$Age), ],
+  Pdata_unexpanded[!is.na(Pdata_unexpanded$Age), ],
   defaults = c("fleet", "fishyr", "season", "ageerr"),
   Comps = "AAL"
+  
 )
 
 ##########################################################
@@ -765,6 +775,7 @@ for (ageerr in unique(CAAL_comps_annual$ageerr)) {
       inComps = CAAL_comps_annual[CAAL_comps_annual$ageerr == ageerr, ], # filter for subset that matches
       fname = file.path(dir, "pacfin", "forSS_annual", paste0("CAAL_", out_name, ".csv")),
       abins = age_bins,
+      lbins = len_bins,
       sum1 = FALSE,
       partition = 2,
       ageErr = ageerr, # value being looped across
@@ -799,21 +810,20 @@ age_comps_annual2 <- age_comps_annual2 %>%
   dplyr::mutate(
     fleet =
       dplyr::case_when(
-        fleet == "CA_ALL" ~ 1,
-        fleet == "WA_OR_ALL" ~ 2
+        fleet == "WA_OR_ALL" ~ 1,
+        fleet == "CA_ALL" ~ 2
       )
   )
 
 # need to rename columns to avoid duplicate column names
 names(CAAL_comps_annual2)[names(CAAL_comps_annual2) %in% paste0("A", age_bins)] <- 
   c(paste0("F", age_bins), paste0("M", age_bins))
-
 CAAL_comps_annual2 <- CAAL_comps_annual2 %>%
   dplyr::mutate(
     fleet =
       dplyr::case_when(
-        fleet == "CA_ALL" ~ 1,
-        fleet == "WA_OR_ALL" ~ 2
+        fleet == "WA_OR_ALL" ~ 1,
+        fleet == "CA_ALL" ~ 2
       )
   )
 
