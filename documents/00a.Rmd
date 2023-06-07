@@ -10,6 +10,7 @@ output:
     keep_tex: true
 lang: en
 papersize: letter
+csl: canadian-journal-of-fisheries-and-aquatic-sciences.csl
 ---
 
 ```{r opts, include = FALSE}
