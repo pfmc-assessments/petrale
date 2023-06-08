@@ -161,7 +161,7 @@ index_tri_lognormal_depth %>%
   dplyr::select(year, est, se) %>%
   dplyr::mutate(month = 7, fleet = 3, .after = 1) %>%
   write.csv(
-    file = "data-raw/indices/triennial_for_SS_lognormal_no_depth_12-May-2023.csv",
+    file = "data-raw/indices/triennial_for_SS_lognormal_with_depth_12-May-2023.csv",
     row.names = FALSE
   )
 

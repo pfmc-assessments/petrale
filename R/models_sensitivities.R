@@ -43,6 +43,9 @@ run("models/2019.001.002_no_cpue", exe = "ss_win")
 ########################################################################
 ### sens 3: remove early surface ages
 inputs.2019.001.003 <- inputs.2019.001.001
+inputs.2019.001.001 <- SS_read("models/2019.001.001_base")
+
+inputs.2023.a024.004 <- SS_read("models/2023.a024.004_no_surface_ages/")
 
 # names of ageing error definitions
 # (from models\2019.001.001_base\2019_petrale.dat)
@@ -76,9 +79,54 @@ table(
   inputs.2019.001.003$dat$agecomp$Ageerr
 )
 
+inputs.2023.a024.004$dat$agecomp <-
+  inputs.2023.a024.004$dat$agecomp %>%
+  dplyr::mutate(FltSvy = ifelse(Ageerr %in% c(6, 8), yes = -abs(FltSvy), no = FltSvy))
+
+
 SS_write(inputs.2019.001.003, dir = "models/2019.001.003_no_surface")
 run("models/2019.001.003_no_surface", exe = "ss_win")
 
+SS_write(inputs.2023.a024.004, dir = "models/2023.a024.004_no_surface_ages", overwrite = TRUE)
+
+remove_ages <- function(dir1, dir2 = NULL, ageerror = c(6,8)) {
+  inputs <- SS_read(dir1)
+  
+  # names of ageing error definitions
+  # (from models\2019.001.001_base\2019_petrale.dat)
+  ageerr_names <- c(
+    "no error", # 1
+    "CAP BB", # 2
+    "CAP Surface", # 3
+    "CAP BB/Surface", # 4
+    "WDFW Combo", # 5
+    "WDFW Surface", # 6
+    "WDFW BB", # 7
+    "CAP Surface Pre-1990" # 8
+  )
+
+  # which years have which types
+  table(
+    inputs$dat$agecomp$Yr,
+    inputs$dat$agecomp$Ageerr
+  )
+  
+  # use negative fleet to exclude CAP Surface Pre-1990 and WDFW Surface from likelihood
+  inputs$dat$agecomp <-
+    inputs$dat$agecomp %>%
+    dplyr::mutate(FltSvy = ifelse(Ageerr %in% c(6, 8), yes = -abs(FltSvy), no = FltSvy))
+  
+  # did change work?
+  message("Ageerr by ")
+  table(
+    inputs$dat$agecomp$FltSvy,
+    inputs$dat$agecomp$Ageerr
+  )
+  if (is.null(dir2)) {
+    dir2 <- dir1
+  }
+  SS_write(inputs, dir = dir2)
+}
 ########################################################################
 ### sens 4 & 5: sex ratio at birth
 
@@ -105,11 +153,15 @@ mod.2019.001.003 <- SS_output("models/2019.001.003_no_surface", verbose = FALSE,
 mod.2019.001.099 <- SS_output("models/2019.001.099_base_again", verbose = FALSE, printstats = FALSE)
 
 # plot comparison of spawning biomass with and without CPUE
-summary_tmp <- SSsummarize(list(mod.2019.001.001, mod.2019.001.002))
+summary_tmp <- SSsummarize(list(mod.2019.001.001, mod.2019.001.003))
 SSplotComparisons(summary_tmp,
-  legendlabels = c("2019 base model", "without commercial CPUE"),
+  legendlabels = c("2019 base model", "no surface ages"),
   subplots = 2, print = TRUE, plot = FALSE, plotdir = "figures",
-  filenameprefix = "comparison_2019.001_vs_2019.002_"
+  filenameprefix = "comparison_2019.001_vs_2019.003_"
+)
+SSplotComparisons(summary_tmp,
+  legendlabels = c("2019 base model", "no surface ages"),
+  filenameprefix = "comparison_2019.001_vs_2019.003_"
 )
 
 # confirm that survey likelihoods are zero for winter fisheries
@@ -381,3 +433,93 @@ run(files.a24$dir, extras = "-stopph 0 -nohess", exe = "ss_win", show_in_console
 
 ### M explorations for Chantel are in 2023.c002.003_M_shared
 
+## pacfin explorations 24 May
+p13.3 <- SS_output('models/2023.a013.003', printstats = FALSE, verbose = FALSE)
+p13.4 <- SS_output('models/2023.a013.004', printstats = FALSE, verbose = FALSE)
+p13.5 <- SS_output('models/2023.a013.005', printstats = FALSE, verbose = FALSE)
+p13.6 <- SS_output('models/2023.a013.006', printstats = FALSE, verbose = FALSE)
+for (mod in list(p13.4, p13.5, p13.6)) {
+  SS_plots(mod)
+}
+
+copy_SS_inputs('models/2023.a013.004', 'models/2023.a013.007')
+copy_SS_inputs('models/2023.a013.005', 'models/2023.a013.008')
+copy_SS_inputs('models/2023.a013.006', 'models/2023.a013.009')
+
+tune_comps(replist = p13.4, dir = 'models/2023.a013.007', niters_tuning = 1)
+tune_comps(replist = p13.5, dir = 'models/2023.a013.008', niters_tuning = 1)
+tune_comps(replist = p13.6, dir = 'models/2023.a013.009', niters_tuning = 1)
+
+p13.7 <- SS_output('models/2023.a013.007', printstats = FALSE, verbose = FALSE)
+p13.8 <- SS_output('models/2023.a013.008', printstats = FALSE, verbose = FALSE)
+p13.9 <- SS_output('models/2023.a013.009', printstats = FALSE, verbose = FALSE)
+for (mod in list(p13.7, p13.8, p13.9)) {
+  SS_plots(mod)
+}
+p13.10 <- SS_output('models/2023.a013.010', printstats = FALSE, verbose = FALSE)
+p13.11 <- SS_output('models/2023.a013.011', printstats = FALSE, verbose = FALSE)
+
+# exploring sex ratios for small sizes
+p22.7.files = r4ss::SS_read("models/2023.a022.007")
+
+x1 <- p22.7.files$dat$agecomp %>% dplyr::filter(FltSvy == 1, Part == 2)
+x2 <- p22.7.files$dat$agecomp %>% dplyr::filter(FltSvy == 2, Part == 2)
+plot(x1$Yr, (x1$f4 + x1$f5) / (x1$f4 + x1$f5 + x1$m4 + x1$m5), pch = 16)
+points(x2$Yr, (x2$f4 + x2$f5) / (x2$f4 + x2$f5 + x2$m4 + x2$m5), col = 2, pch = 16)
+points(x1$Yr, x1$f5 / (x1$f5 + x1$m5), col = 4, pch = 16)
+points(x2$Yr, x2$f5 / (x2$f5 + x2$m5), col = 3, pch = 16)
+abline(h= 0.4)
+
+p22.7 = r4ss::SS_output("models/2023.a022.007")
+p22.8 = r4ss::SS_output("models/2023.a022.008_shared_L_Amin")
+p22.10 = r4ss::SS_output("models/2023.a022.010_shared_L_Amin_plus_bins")
+p22.11 = r4ss::SS_output("models/2023.a022.011_fix_h", printstats = FALSE, verbose = FALSE)
+p22.12 = r4ss::SS_output("models/2023.a022.012_no_early_recdevs", printstats = FALSE, verbose = FALSE)
+
+SStableComparisons(SSsummarize(list(p19,p22.7, p22.8, p22.10)), 
+  names = c("Recr_Virgin", "R0",
+    "steep", "NatM", "L_at_Amin", "L_at_Amax", "VonBert_K",
+    "SSB_Virg", "Bratio_2023", "SPRratio_2022"))
+
+# profile(dir = x, string = "steep", profilevec = c(0.7, 1.0, 0.1)))
+
+p23.1 = SS_output('models/2023.a023.001_env_index/')
+p24.1 = SS_output('models/2023.a024.001_min_sample/')
+p24.2 = SS_output('models/2023.a024.002_narrow_h_prior/')
+p24.3 = SS_output('models/2023.a024.003_bias_adj/')
+p24.4 = SS_output('models/2023.a024.004_no_surface_ages/')
+p24.5 = SS_output('models/2023.a024.005_no_surface_ages_or_early_devs/')
+p24.6 = SS_output('models/2023.a024.006_min_sample_sigmaR_0.3')
+p24.7 = SS_output('models/2023.a024.007_min_sample_sigmaR_0.6')
+p24.8 = SS_output('models/2023.a024.008_min_sample_autocorr')
+p23.4 = SS_output("models/2023.a023.004_env_index_GLORYS_Q")
+p24.9 = SS_output("models/2023.a024.009_recdev2/")
+p24.10 = SS_output("models/2023.a024.010_recdev2_h0.8/")
+p24.11 = SS_output("models/2023.a024.011_recdev2_h0.8_lambda0.5/")
+p24.12 = SS_output("models/2023.a024.012_recdev2_h0.8_lambda0.01/")
+p24.13 = SS_output("models/2023.a024.013_recdev2_h0.8_lambda0.2/")
+p24.14 = SS_output("models/2023.a024.014_recdev2_h0.8_forecast/")
+p24.15 = SS_output("models/2023.a024.015_recdev2_h0.8_lambda0.5_forecast/")
+p24.16 = SS_output("models/2023.a024.016_min_sample_h0.8")
+p24.17 = SS_output("models/2023.a024.017_min_sample_h0.9")
+
+p23.3 = SS_output('models/2023.a023.003_env_index_GLORYS')
+p23.5 = SS_output('models/2023.a023.005_env_index_GLORYS_shifted_2022/')
+p23.6 = SS_output('models/2023.a023.006_env_index_GLORYS_shifted_2023/')
+
+sum1 = SSsummarize(list(p24.1, p24.16, p24.9, p24.10, p24.11))
+SSplotComparisons(sum1, legendlabels = 
+  c("recdev 1, h = ~1.0", 
+    "recdev 1, fix h = 0.8",
+    "recdev 2, h = ~1.0", 
+    "recdev 2, fix h = 0.8", 
+    "recdev 2, fix h = 0.8, lambda = 0.5"
+    ), plotdir = 'figures', filenameprefix = "test_", print = TRUE) #, xlim = c(1960, 2020))
+
+p24.1$maximum_gradient_component
+p24.16$maximum_gradient_component
+p24.9$maximum_gradient_component
+p24.10$maximum_gradient_component
+p24.11$maximum_gradient_component
+
+SStableComparisons(sum1)
