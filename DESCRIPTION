@@ -1,0 +1,47 @@
+Package: petrale
+Title: Estimate status of Petrale Sole along the US West coast
+Version: 2023.01
+Authors@R: c(person(given = c("Ian", "G."),
+           family = "Taylor",
+           role = c("aut", "cre"),
+           email = "ian.taylor@noaa.gov"
+    ),
+    person(
+      given = c("Vlada", "R."),
+      family = "Gertseva",
+      role = "aut",
+      email = "vladlena.gertseva@noaa.gov"
+    )
+    )
+Description: Work up data and document decisions made when determining the 
+    status of Petrale Sole off of the US West Coast in 2023.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports:
+    dplyr,
+    ggplot2,
+    magrittr,
+    tidyr,
+    r4ss,
+    sa4ss,
+    nwfscSurvey,
+    devtools,
+    bibtex,
+    kableExtra,
+    knitr,
+    markdown,
+    rmarkdown,
+    xfun,
+    R.utils
+Remotes:
+    github::r4ss/r4ss,
+    github::nwfsc-assess/nwfscSurvey,
+    github::nwfsc-assess/PacFIN.Utilities,
+    github::nwfsc-assess/sa4ss,
+Depends:
+    R (>= 2.10)
+VignetteBuilder: knitr

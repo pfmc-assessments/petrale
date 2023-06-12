@@ -39,6 +39,7 @@
 \usepackage{xcolor}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \hypersetup{
+  pdftitle={Status of petrale sole (Eopsetta jordani) along the US West coast in 2023},
   pdflang={en},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
@@ -72,7 +73,7 @@
 \ifxetex
   % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
   \usepackage{polyglossia}
-  \setmainlanguage[]{english}
+  \setmainlanguage[]{}
 \else
   \usepackage[shorthands=off,main=english]{babel}
 \fi
@@ -85,8 +86,7 @@
 \setlength{\cslhangindent}{1.5em}
 % for Pandoc 2.8 to 2.10.1
 \newenvironment{cslreferences}%
-  {\setlength{\parindent}{0pt}%
-  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  {}%
   {\par}
 % For Pandoc 2.11+
 \newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
@@ -113,17 +113,17 @@
 
 \date{}
 \newcommand{\trTitle}{Status of petrale sole (\emph{Eopsetta jordani})\\
-along the US West coast in 2023
-
-\includegraphics[width=0.8\textwidth,height=0.8\textheight]{figures/petrale_sole_1945.jpg}}
+along the US West coast in 2023}
 \newcommand{\trYear}{2023}
-\newcommand{\trMonth}{January}
+\newcommand{\trMonth}{June}
 \newcommand{\trAuthsLong}{truetrue}
 \newcommand{\trAuthsBack}{Taylor, I.G., V. Gertseva}
 \newcommand{\trCitation}{
 \begin{hangparas}{1em}{1}
 \trAuthsBack{}. \trYear{}. \trTitle{}. \glsentrylong{pfmc}, Portland, Oregon. \pageref{LastPage}{}\,p.
 \end{hangparas}}
+
+\newcommand\includegraphicsifexists[2][width=\linewidth]{\IfFileExists{#2}{\includegraphics[#1]{#2}}{}}
 
 \begin{document}
 
@@ -138,15 +138,13 @@ along the US West coast in 2023
 \noindent
 \begin{center}
 \title{Status of petrale sole (\emph{Eopsetta jordani})\\
-along the US West coast in 2023
-
-\includegraphics[width=0.8\textwidth,height=0.8\textheight]{figures/petrale_sole_1945.jpg}}
+along the US West coast in 2023}
 % \textnormal{\MakeTextUppercase{\trTitle{}}}
 \vspace{1.5cm}
 {\Large\textbf\newline{Status of petrale sole (\emph{Eopsetta jordani})\\
-along the US West coast in 2023
+along the US West coast in 2023}}
 
-\includegraphics[width=0.8\textwidth,height=0.8\textheight]{figures/petrale_sole_1945.jpg}}}
+\includegraphicsifexists[width=4in]{figure_title.png}
 \vfill
 by\\
 Ian G. Taylor\textsuperscript{1}\\
@@ -226,7 +224,7 @@ Adding text here for example. trends and current levels. Include Table for last 
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.005.001/plots/catch2 landings stacked.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.a024.018_min_sample_retuned/plots/catch2 landings stacked.png}
 \caption{Landings by fleet used in the base model where catches in metric tons by fleet are stacked.\label{fig:es-catch}}
 \end{figure}
 
@@ -239,7 +237,7 @@ Adding text here for example. trends and current levels. Include Table for last 
 This assessment uses the stock assessment framework Stock Synthesis
 
 \begin{verbatim}
-[1] "3.30.20.00"
+[1] "3.30.21.00"
 \end{verbatim}
 
 (SS3).
@@ -256,13 +254,13 @@ Replace text with trends and current levels relative to virgin or historic level
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.005.001/plots/ts7_Spawning_biomass_(mt).png}
+\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.a024.018_min_sample_retuned/plots/ts7_Spawning_output.png}
 \caption{Estimated time series of spawning output for the base model.\label{fig:es-ssb}}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.005.001/plots/ts9_Relative_spawning_biomass.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.a024.018_min_sample_retuned/plots/ts9_Relative_spawning_output.png}
 \caption{Estimated time series of fraction of unfished spawning output for the base model.\label{fig:es-depl}}
 \end{figure}
 
@@ -278,13 +276,13 @@ Replace text with trends and current levels relative to virgin or historic level
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.005.001/plots/ts11_Age-0_recruits_(1000s).png}
+\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.a024.018_min_sample_retuned/plots/ts11_Age-0_recruits_(1000s).png}
 \caption{Estimated time series of age-0 recruits (1000s) for the base model.\label{fig:es-recruits}}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.005.001/plots/recdevs1_points.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.a024.018_min_sample_retuned/plots/recdevs1_points.png}
 \caption{Estimated time series of recruitment deviations.\label{fig:es-rec-devs}}
 \end{figure}
 
@@ -300,7 +298,7 @@ Replace text with total catch divided by exploitable biomass or SPR harvest rate
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.005.001/plots/SPR2_minusSPRseries.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.a024.018_min_sample_retuned/plots/SPR2_minusSPRseries.png}
 \caption{Estimated 1 - relative spawning ratio (SPR) by year for the base model. The management target is plotted as a red horizontal line and values above this reflect harvest in excess of the proxy harvest rate.\label{fig:es-1-spr}}
 \end{figure}
 
@@ -320,13 +318,13 @@ Replace text with management targets and definition of overfishing, including th
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.005.001/plots/SPR4_phase.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.a024.018_min_sample_retuned/plots/SPR4_phase.png}
 \caption{Phase plot of estimated 1-SPR versus fraction unfished for the base model.\label{fig:es-phase}}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.005.001/plots/yield2_yield_curve_with_refpoints.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.a024.018_min_sample_retuned/plots/yield2_yield_curve_with_refpoints.png}
 \caption{Equilibrium yield curve for the base case model. Values are based on the 2020 fishery selectivities and with steepness fixed at 0.80.\label{fig:es-yield}}
 \end{figure}
 
@@ -376,14 +374,14 @@ Replace text with information gaps that seriously impede the stock assessment.
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-This updated assessment does not attempt to reiterate all background information for petrale sole presented in the 2013 assessment document. Instead, only a few key assumptions are restated, along with a detailed description of changes made during the course of the update. Those interested in a more complete description of petrale sole life-history and the details of previous assessments should refer to the 2013 assessment (Haltuch, Ono, and Valero 2013).
+This updated assessment does not attempt to reiterate all background information for petrale sole presented in the 2013 assessment document. Instead, only a few key assumptions are restated, along with a detailed description of changes made during the course of the update. Those interested in a more complete description of petrale sole life-history and the details of previous assessments should refer to the 2013 assessment (Haltuch et al. 2013).
 
 \hypertarget{basic-information}{%
 \subsection{Basic Information}\label{basic-information}}
 
-Petrale Sole (\emph{Eopsetta jordani}) is a right-eyed flounder in the family Pleuronectidae ranging from the western Gulf of Alaska to the Coronado Islands, northern Baja California (Kramer et al. 1995; Love et al. 2005) with a preference for soft substrates at depths ranging from 0-550 m (Love et al. 2005). Common names include brill, California sole, Jordan's flounder, cape sole, round nose sole, English sole, soglia, petorau, nameta, and tsubame garei (Smith 1937; Gates and Frey 1974; Love 1996; Eschmeyer and Herald 1983). In northern and central California petrale sole are dominant on the middle and outer continental shelf. PacFIN fishery logbook data show that adults are caught in depths from 18 to 1,280 m off the U.S. West Coast with a majority of the catches of petrale sole being taken between 70-220 m during March through October, and between 290-440 m during November through February.
+Petrale Sole (\emph{Eopsetta jordani}) is a right-eyed flounder in the family Pleuronectidae ranging from the western Gulf of Alaska to the Coronado Islands, northern Baja California (Kramer et al. 1995; Love et al. 2005) with a preference for soft substrates at depths ranging from 0-550 m (Love et al. 2005). Common names include brill, California sole, Jordan's flounder, cape sole, round nose sole, English sole, soglia, petorau, nameta, and tsubame garei (Smith 1937; Gates and Frey 1974; Eschmeyer and Herald 1983; Love 1996). In northern and central California petrale sole are dominant on the middle and outer continental shelf. PacFIN fishery logbook data show that adults are caught in depths from 18 to 1,280 m off the U.S. West Coast with a majority of the catches of petrale sole being taken between 70-220 m during March through October, and between 290-440 m during November through February.
 
-There is little information regarding the stock structure of petrale sole off the U.S. Pacific coast. No genetic research has been undertaken for petrale sole and there is no other published research indicating separate stocks of petrale sole within U.S. waters. Tagging studies show adult petrale sole can move up to 350 - 390 miles, having the ability to be highly migratory with the possibility for homing ability (Alverson and Chatwin 1957). Juveniles show little coast-wide or bathymetric movement while studies suggest that adults generally move inshore and northward onto the continental shelf during the spring and summer to feeding grounds and offshore and southward during the fall and winter to deep water spawning grounds (Horton 1989; Love 1996). Adult petrale sole can tolerate a wide range of bottom temperatures (Perry, Stocker, and Fargo 1994).
+There is little information regarding the stock structure of petrale sole off the U.S. Pacific coast. No genetic research has been undertaken for petrale sole and there is no other published research indicating separate stocks of petrale sole within U.S. waters. Tagging studies show adult petrale sole can move up to 350 - 390 miles, having the ability to be highly migratory with the possibility for homing ability (Alverson and Chatwin 1957). Juveniles show little coast-wide or bathymetric movement while studies suggest that adults generally move inshore and northward onto the continental shelf during the spring and summer to feeding grounds and offshore and southward during the fall and winter to deep water spawning grounds (Horton 1989; Love 1996). Adult petrale sole can tolerate a wide range of bottom temperatures (Perry et al. 1994).
 
 Tagging studies indicate some mixing of adults between different spawning groups. DiDonato and Pasquale (1970) reported that five fish tagged on the Willapa Deep grounds during the spawning season were recaptured during subsequent spawning seasons at other deepwater spawning grounds, as far south as Eureka (northern California) and the Umpqua River (southern Oregon). However, Pedersen (1975) reported that most of the fish (97\%) recaptured from spawning grounds in winter were originally caught and tagged on those same grounds.
 
@@ -391,27 +389,27 @@ Mixing of fish from multiple deep water spawning grounds likely occurs during th
 
 The highest densities of spawning adults off of British Columbia, as well as of eggs, larvae and juveniles, are found in the waters around Vancouver Island. Adults may utilize nearshore areas as summer feeding grounds and non-migrating adults may stay there during winter (Starr and Fargo 2004).
 
-Past assessments completed by Demory (1984,), Turnock et al.~(1993), and Sampson and Lee (1999) considered petrale sole in the Columbia and U.S.-Vancouver INPFC areas a single stock. Sampson and Lee (1999) assumed that petrale sole in the Eureka and Monterey INPFC areas represented two additional distinct socks. The 2005 petrale sole assessment assumed two stocks, northern (U.S.-Vancouver and Columbia INPFC areas) and southern (Eureka, Monterey and Conception INPFC areas), to maintain continuity with previous assessments. Three stocks (West Coast Vancouver Island, Queen Charlotte Sound, and Heceta Strait) are considered for petrale sole in the waters off British Columbia, Canada (Starr and Fargo 2004). The 2009, 2011, 2013, and 2015 assessments integrate the previously separate north-south assessments to provide a coast-wide status evaluation. The decision to conduct a single-area assessment is based on strong evidence of a mixed stock from tagging studies, a lack of genetic studies on stock structure, and a lack of evidence for differences in growth between the 2005 northern and southern assessment areas and from examination of the fishery size-at-age data, as well as confounding differences in data collection between Washington, Oregon, and California. This 2019 update assessment provides a coast-wide status evaluation for petrale sole using data through 2018.
+Past assessments completed by Demory (1984,), Turnock et al. (1993), and Sampson and Lee (1999) considered petrale sole in the Columbia and U.S.-Vancouver INPFC areas a single stock. Sampson and Lee (1999) assumed that petrale sole in the Eureka and Monterey INPFC areas represented two additional distinct socks. The 2005 petrale sole assessment assumed two stocks, northern (U.S.-Vancouver and Columbia INPFC areas) and southern (Eureka, Monterey and Conception INPFC areas), to maintain continuity with previous assessments. Three stocks (West Coast Vancouver Island, Queen Charlotte Sound, and Heceta Strait) are considered for petrale sole in the waters off British Columbia, Canada (Starr and Fargo 2004). The 2009, 2011, 2013, and 2015 assessments integrate the previously separate north-south assessments to provide a coast-wide status evaluation. The decision to conduct a single-area assessment is based on strong evidence of a mixed stock from tagging studies, a lack of genetic studies on stock structure, and a lack of evidence for differences in growth between the 2005 northern and southern assessment areas and from examination of the fishery size-at-age data, as well as confounding differences in data collection between Washington, Oregon, and California. This 2019 update assessment provides a coast-wide status evaluation for petrale sole using data through 2018.
 
 Fishing fleets are separated both geographically and seasonally to account for spatial and seasonal patterns in catch given the coast-wide assessment area. The petrale sole fisheries possess a distinct seasonality, with catches peaking during the winter months, so the fisheries are divided into winter (November-February) and summer (March-October) fisheries. Note that the ``fishing year'' for this assessment (November 1 to October 31) differs from the standard calendar year. The U.S.-Canadian border is the northern boundary for the assessed stock, although the basis for this choice is due to political and current management needs rather than the population dynamics. Given the lack of clear information regarding the status of distinct biological populations, this assessment treats the U.S. Petrale Sole resource from the Mexican border to the Canadian border as a single coast-wide stock.
 
 \hypertarget{life-history}{%
 \subsection{Life History}\label{life-history}}
 
-Petrale Sole spawn during the winter at several discrete deepwater sites (270-460 m) off the U.S. West Coast, from November to April, with peak spawning taking place from December to February (Harry 1956; Best 1960; Gregory and Jow 1976; Castillo, Li, and Golden 1993; Reilly et al. 1994; Castillo 1995; Love 1996). Females spawn once each year and fecundity varies with fish size, with one large female laying as many as 1.5 million eggs (Porter 1964). Petrale Sole eggs are planktonic, ranging in size from 1.2 to 1.3 mm, and are found in deep water habitats at water temperatures of 4-10 degrees C and salinities of 25-30 ppt (Best 1960; Ketchen and Forrester 1966; Alderdice and Forrest 1971; Gregory and Jow 1976). The duration of the egg stage can range from approximately 6 to 14 days (Alderdice and Forrest 1971; Love 1996). The most favorable conditions for egg incubation and larval growth are 6-7 degrees C and 27.5-29.5 ppt (Ketchen and Forrester 1966; Alderdice and Forrest 1971).
+Petrale Sole spawn during the winter at several discrete deepwater sites (270-460 m) off the U.S. West Coast, from November to April, with peak spawning taking place from December to February (Harry 1956; Best 1960; Gregory and Jow 1976; Castillo et al. 1993; Reilly et al. 1994; Castillo 1995; Love 1996). Females spawn once each year and fecundity varies with fish size, with one large female laying as many as 1.5 million eggs (Porter 1964). Petrale Sole eggs are planktonic, ranging in size from 1.2 to 1.3 mm, and are found in deep water habitats at water temperatures of 4-10 degrees C and salinities of 25-30 ppt (Best 1960; Ketchen and Forrester 1966; Alderdice and Forrest 1971; Gregory and Jow 1976). The duration of the egg stage can range from approximately 6 to 14 days (Alderdice and Forrest 1971; Love 1996). The most favorable conditions for egg incubation and larval growth are 6-7 degrees C and 27.5-29.5 ppt (Ketchen and Forrester 1966; Alderdice and Forrest 1971).
 
-Petrale Sole spawn during the winter at several discrete deepwater sites (270-460 m) off the U.S. West Coast, from November to April, with peak spawning taking place from December to February (Harry 1959; Best 1960; Gregory and Jow 1976; Castillo, Li, and Golden 1993; Reilly et al. 1994; Love 1996). Females spawn once each year and fecundity varies with fish size, with one large female laying as many as 1.5 million eggs (Porter 1964). Petrale Sole eggs are planktonic, ranging in size from 1.2 to 1.3 mm, and are found in deep water habitats at water temperatures of 4-10 degrees C and salinities of 25-30 ppt (Best 1960; Ketchen and Forrester 1966; Alderdice and Forrest 1971; Gregory and Jow 1976). The duration of the egg stage can range from approximately 6 to 14 days (Alderdice and Forrest 1971; Love 1996). The most favorable conditions for egg incubation and larval growth are 6-7 degrees C and 27.5-29.5 ppt (Ketchen and Forrester 1966; Alderdice and Forrest 1971; Castillo 1995).
+Petrale Sole spawn during the winter at several discrete deepwater sites (270-460 m) off the U.S. West Coast, from November to April, with peak spawning taking place from December to February (Harry 1959; Best 1960; Gregory and Jow 1976; Castillo et al. 1993; Reilly et al. 1994; Love 1996). Females spawn once each year and fecundity varies with fish size, with one large female laying as many as 1.5 million eggs (Porter 1964). Petrale Sole eggs are planktonic, ranging in size from 1.2 to 1.3 mm, and are found in deep water habitats at water temperatures of 4-10 degrees C and salinities of 25-30 ppt (Best 1960; Ketchen and Forrester 1966; Alderdice and Forrest 1971; Gregory and Jow 1976). The duration of the egg stage can range from approximately 6 to 14 days (Alderdice and Forrest 1971; Love 1996). The most favorable conditions for egg incubation and larval growth are 6-7 degrees C and 27.5-29.5 ppt (Ketchen and Forrester 1966; Alderdice and Forrest 1971; Castillo 1995).
 
-Adult petrale sole achieve a maximum size of around 50 cm and 63 cm for males and females, respectively (Best 1963; Pedersen 1975). The maximum length reported for petrale sole is 70 cm (Eschmeyer and Herald 1983; Love et al. 2005) while the maximum observed break-and-burn age is 31 years (Haltuch, Ono, and Valero 2013).
+Adult petrale sole achieve a maximum size of around 50 cm and 63 cm for males and females, respectively (Best 1963; Pedersen 1975). The maximum length reported for petrale sole is 70 cm (Eschmeyer and Herald 1983; Love et al. 2005) while the maximum observed break-and-burn age is 31 years (Haltuch et al. 2013).
 
 \hypertarget{ecosystem-considerations-1}{%
 \subsection{Ecosystem Considerations}\label{ecosystem-considerations-1}}
 
 Petrale Sole juveniles are carnivorous, foraging on annelid worms, clams, brittle star, mysids, sculpin, amphipods, and other juvenile flatfish (Casilla et al. 1998; Pearsall and Fargo 2007). Predators on juvenile petrale sole include adult petrale sole as well as other larger fish (Casilla et al. 1998) while adults are preyed upon by marine mammals, sharks, and larger fishes (Trumble 1995; Love 1996; Casilla et al. 1998).
 
-One of the ambushing flatfishes, adult petrale sole have diverse diets that become more piscivorous at larger sizes (Allen, Pondella, and Horn 2006). Adult petrale sole are found on sandy and sand-mud bottoms (Eschmeyer and Herald 1983) foraging for a variety of invertebrates including, crab, octopi, squid, euphausiids, and shrimp, as well as anchovies. hake, herring, sand lance, and other smaller rockfish and flatfish (Kravitz, Pearcy, and Guin 1977; Birtwell, Wood, and Gordon 1984; Reilly et al. 1994; Love 1996; Pearsall and Fargo 2007). In Canadian waters evidence suggests that petrale sole tend to prefer herring (Pearsall and Fargo 2007). On the continental shelf petrale sole generally co-occur with English sole, rex sole, Pacific sanddab, and rock sole (Kravitz, Pearcy, and Guin 1977).
+One of the ambushing flatfishes, adult petrale sole have diverse diets that become more piscivorous at larger sizes (Allen et al. 2006). Adult petrale sole are found on sandy and sand-mud bottoms (Eschmeyer and Herald 1983) foraging for a variety of invertebrates including, crab, octopi, squid, euphausiids, and shrimp, as well as anchovies. hake, herring, sand lance, and other smaller rockfish and flatfish (Kravitz et al. 1977; Birtwell et al. 1984; Reilly et al. 1994; Love 1996; Pearsall and Fargo 2007). In Canadian waters evidence suggests that petrale sole tend to prefer herring (Pearsall and Fargo 2007). On the continental shelf petrale sole generally co-occur with English sole, rex sole, Pacific sanddab, and rock sole (Kravitz et al. 1977).
 
-Ecosystem factors have not been explicitly modeled in this assessment, but there are several aspects of the California current ecosystem that may impact petrale sole population dynamics and warrant further research. Castillo (1992) and Castillo et al.~(1995) suggest that density-independent survival of early life stages is low and show that offshore Ekman transportation of eggs and larvae may be an important source of variation in year-class strength in the Columbia INPFC area. The effects of the Pacific Decadal Oscillation (PDO) on California current temperature and productivity (Mantua et al. 1997) may also contribute to non-stationary recruitment dynamics for petrale sole. The prevalence of a strong late 1990s year-class for many West Coast groundfish species suggests that environmentally driven recruitment variation may be correlated among species with relatively diverse life history strategies. Although current research efforts along these lines are limited, a more explicit exploration of ecosystem processes may be possible in future petrale sole stock assessments.
+Ecosystem factors have not been explicitly modeled in this assessment, but there are several aspects of the California current ecosystem that may impact petrale sole population dynamics and warrant further research. Castillo (1992) and Castillo et al. (1995) suggest that density-independent survival of early life stages is low and show that offshore Ekman transportation of eggs and larvae may be an important source of variation in year-class strength in the Columbia INPFC area. The effects of the Pacific Decadal Oscillation (PDO) on California current temperature and productivity (Mantua et al. 1997) may also contribute to non-stationary recruitment dynamics for petrale sole. The prevalence of a strong late 1990s year-class for many West Coast groundfish species suggests that environmentally driven recruitment variation may be correlated among species with relatively diverse life history strategies. Although current research efforts along these lines are limited, a more explicit exploration of ecosystem processes may be possible in future petrale sole stock assessments.
 
 \hypertarget{historical-and-current-fishery-information}{%
 \subsection{Historical and Current Fishery Information}\label{historical-and-current-fishery-information}}
@@ -435,7 +433,7 @@ In comparison to the 1999 assessment of petrale sole, the 2005 assessment repres
 
 The 2009 coast-wide stock assessment estimated that the petrale sole stock had declined from its 2005 high to 11.6\% of the unfished spawning stock biomass (Haltuch and Hicks 2009). The petrale sole was declared overfished based on newly adopted management targets (e.g., target spawning biomass for flatfish stocks defined as 25\% and overfished threshold of 12.5\% of unfished spawning stock biomass) resulting in a rebuilding plan and catch restrictions for petrale sole. The stock was declared rebuilt based on the results of the 2015 update stock assessment which estimated the coastwide biomass at 30.7\% of unfished spawning stock output with ACLs of 3,136 and 3,013 in 2017 and 2018 respectively (Stawitz et al. 2015).
 
-For additional information on changes in the petrale sole fishery please see the 2013 stock assessment (Haltuch, Ono, and Valero 2013).
+For additional information on changes in the petrale sole fishery please see the 2013 stock assessment (Haltuch et al. 2013).
 
 \hypertarget{fisheries-off-canada-and-alaska}{%
 \subsection{Fisheries off Canada and Alaska}\label{fisheries-off-canada-and-alaska}}
@@ -454,7 +452,7 @@ Data from a wide range of programs were available for possible inclusion in the 
 \hypertarget{fishery-dependent-data}{%
 \subsection{Fishery-Dependent Data}\label{fishery-dependent-data}}
 
-Fishery removals were divided among 4 fleets: 1) winter North trawl, 2) summer North trawl, 3) winter South trawl, and 4) summer South trawl. Landings for the North fleet are defined as fish landed in Washington and Oregon ports. Landings for the South feet are defined as fish landed in California ports. The landings of petrale sole by gear types other than groundfish-trawl have been inconsequential, averaging less than 2.5\% of the coast-wide landings. The non-trawl landings (that consist of only a small fraction of the total landings) are included in the trawl landings.
+Fishery removals were divided among two fleets: 1) North and 2) South. Landings for the North fleet are defined as fish landed in Washington and Oregon ports. Landings for the South feet are defined as fish landed in California ports. The landings of Petrale sole are made primarily by groundfish bottom trawl gear; landings by gear types other than bottom trawl have been inconsequential, averaging less than 2.5\% of the coast-wide landings. The non-trawl landings (that consist of only a small fraction of the total landings) are included along with the trawl landings in a single gears fleets.
 
 \hypertarget{fishery-independent-data}{%
 \subsection{Fishery-Independent Data}\label{fishery-independent-data}}
@@ -481,7 +479,7 @@ Haul depths ranged from 91-457 m during the 1977 survey with no hauls shallower 
 \hypertarget{section-3}{%
 \subsubsection{\texorpdfstring{\acrlong{s-wcgbt}}{}}\label{section-3}}
 
-The \Gls{s-wcgbt} is based on a random-grid design; covering the coastal waters from a depth of 55-1,280 m (Bradburn, Keller, and Horness 2011). This design generally uses four industry-chartered vessels per year assigned to a roughly equal number of randomly selected grid cells and divided into two `passes' of the coast. Two vessels fish from north to south during each pass between late May to early October. This design therefore incorporates both vessel-to-vessel differences in catchability, as well as variance associated with selecting a relatively small number (approximately 700) of possible cells from a very large set of possible cells spread from the Mexican to the Canadian borders.
+The \Gls{s-wcgbt} is based on a random-grid design; covering the coastal waters from a depth of 55-1,280 m (Bradburn et al. 2011). This design generally uses four industry-chartered vessels per year assigned to a roughly equal number of randomly selected grid cells and divided into two `passes' of the coast. Two vessels fish from north to south during each pass between late May to early October. This design therefore incorporates both vessel-to-vessel differences in catchability, as well as variance associated with selecting a relatively small number (approximately 700) of possible cells from a very large set of possible cells spread from the Mexican to the Canadian borders.
 
 \hypertarget{biological-data}{%
 \subsection{Biological Data}\label{biological-data}}
@@ -495,8 +493,12 @@ The \Gls{s-wcgbt} is based on a random-grid design; covering the coastal waters 
 \hypertarget{sex-ratio}{%
 \subsubsection{Sex Ratio}\label{sex-ratio}}
 
-\hypertarget{length-weight-relationship}{%
-\subsubsection{Length-Weight Relationship}\label{length-weight-relationship}}
+\hypertarget{sec-biological-data-Length-Weight-relationship}{%
+\subsubsection{Length-Weight Relationship}\label{sec-biological-data-Length-Weight-relationship}}
+
+The weight-length relationship for petrale sole was estimated outside of the assessment model by fitting biological data to the standard power function, \(W = aL^b\) using the R function \texttt{PacFIN.Utilities::getWLpars()} (where \(W\) is weight in kilograms and \(L\) is fork length in centimeters). The function estimates the relationship on a log-log scale and then uses the estimated standard deviation of the observed weights around the expected value to calculate the median weight at each length from the resulting lognormal distribution.
+
+The parameters were estimated using data from the \gls{s-wcgbt}, where 21,704 fish collected between 2003 and 2022 had both weight and length available of which 57.6\% were female, 42.3\% were male, and 0.1\% were unsexed. The resulting relationships were \(W=0.000002035 * L^{3.478}\) for females and \(W=0.000003043 * L^{3.359}\) for males. These relationships are very similar to those used for the previous assessment (Wetzel 2019).
 
 \hypertarget{growth-length-at-age}{%
 \subsubsection{Growth (Length-at-Age)}\label{growth-length-at-age}}
@@ -605,165 +607,216 @@ Here are all the mad props!
 \section{References}\label{references}}
 
 \hypertarget{refs}{}
-\begin{cslreferences}
-\leavevmode\hypertarget{ref-alderdice_effects_1971}{}%
-Alderdice, D. F., and C. R. Forrest. 1971. ``Effects of Salinity and Temperature on Embryonic Development of the Petrale Sole(\emph{Eopsetta Jordani}).'' \emph{Journal of Fisheries Research Board Canada} 28: 727--44.
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-alderdice_effects_1971}{}}%
+Alderdice, D.F., and Forrest, C.R. 1971. Effects of salinity and temperature on embryonic development of the petrale sole(\emph{{Eopsetta} jordani}). Journal of Fisheries Research Board Canada \textbf{28}: 727--744.
 
-\leavevmode\hypertarget{ref-allen_ecology_2006}{}%
-Allen, Larry G., Daniel J. Pondella, and M. H. Horn. 2006. \emph{The Ecology of Marine Fishes: California and Adjacent Waters}. Los Angeles: University of California Press.
+\leavevmode\vadjust pre{\hypertarget{ref-allen_ecology_2006}{}}%
+Allen, L.G., Pondella, D.J., and Horn, M.H. 2006. The ecology of marine fishes: {California} and adjacent waters. University of California Press, Los Angeles.
 
-\leavevmode\hypertarget{ref-alverson_results_1957}{}%
-Alverson, D. L., and B. M. Chatwin. 1957. ``Results from Tagging Experiments on a Spawning Stock of Petrale Sole, \emph{Eopsetta Jordani} (Lockington).'' \emph{Journal of Fisheries Research Board Canada} 14: 953--74.
+\leavevmode\vadjust pre{\hypertarget{ref-alverson_results_1957}{}}%
+Alverson, D.L., and Chatwin, B.M. 1957. Results from tagging experiments on a spawning stock of petrale sole, \emph{{Eopsetta} jordani} ({Lockington}). Journal of Fisheries Research Board Canada \textbf{14}: 953--974.
 
-\leavevmode\hypertarget{ref-anon_fish_2001}{}%
-Anon. 2001. \emph{Fish Stocks of the Pacific Coast}. Cat No. Fs23-397/2001E. Fisheries; Oceans Canada.
+\leavevmode\vadjust pre{\hypertarget{ref-anon_fish_2001}{}}%
+Anon. 2001. Fish stocks of the {Pacific} coast. Fisheries; Oceans Canada.
 
-\leavevmode\hypertarget{ref-best_petrale_1960}{}%
-Best, E. A. 1960. ``Petrale Sole. In: California Ocean Fisheries Resources to the Year 1960.'' California Department of Fish; Game.
+\leavevmode\vadjust pre{\hypertarget{ref-best_petrale_1960}{}}%
+Best, E.A. 1960. Petrale {Sole}. {In}: {California} ocean fisheries resources to the year 1960. California Department of Fish; Game.
 
-\leavevmode\hypertarget{ref-best_e.a._movements_1963}{}%
----------. 1963. ``Movements of Petrale Sole, \emph{Eopsetta Jordani}, Tagged Off of California.'' \emph{Pacific Marine Fisheries Commission Bulletin} 6: 24--38.
+\leavevmode\vadjust pre{\hypertarget{ref-best_e.a._movements_1963}{}}%
+Best, E.A. 1963. Movements of petrale sole, \emph{{Eopsetta} jordani}, tagged off of {California}. Pacific Marine Fisheries Commission Bulletin \textbf{6}: 24--38.
 
-\leavevmode\hypertarget{ref-birtwell_fish_1984}{}%
-Birtwell, I. K., M. Wood, and D. K. Gordon. 1984. ``Fish Diets and Benthic Invertebrates in the Estuary of the Somass River, Port Alberni, British Columbia.'' 1799. California Manuscript Report of Fisheries; Aquatic Sciences.
+\leavevmode\vadjust pre{\hypertarget{ref-birtwell_fish_1984}{}}%
+Birtwell, I.K., Wood, M., and Gordon, D.K. 1984. Fish diets and benthic invertebrates in the estuary of the {Somass} {River}, {Port} {Alberni}, {British} {Columbia}. California Manuscript Report of Fisheries; Aquatic Sciences.
 
-\leavevmode\hypertarget{ref-bradburn_2003_2011}{}%
-Bradburn, M. J., A. A Keller, and B. H. Horness. 2011. ``The 2003 to 2008 US West Coast Bottom Trawl Surveys of Groundfish Resources Off Washington, Oregon, and California: Estimates of Distribution, Abundance, Length, and Age Composition.'' US Department of Commerce, National Oceanic; Atmospheric Administration, National Marine Fisheries Service.
+\leavevmode\vadjust pre{\hypertarget{ref-bradburn_2003_2011}{}}%
+Bradburn, M.J., Keller, A.A., and Horness, B.H. 2011. The 2003 to 2008 {US} {West} {Coast} bottom trawl surveys of groundfish resources off {Washington}, {Oregon}, and {California}: Estimates of distribution, abundance, length, and age composition. US Department of Commerce, National Oceanic; Atmospheric Administration, National Marine Fisheries Service.
 
-\leavevmode\hypertarget{ref-casilla_essential_1998}{}%
-Casilla, E., L. Crockett, Y. deReynier, J. Glock, M. Helvey, M. Meyer, B. Meyer, et al. 1998. ``Essential Fish Habitat West Coast Groundfish.'' National Marine Fishereis Service, Seattle, WA. \url{http://www.nwr.noaa.gov/1sustfsh/efhappendix/page1.html}.
+\leavevmode\vadjust pre{\hypertarget{ref-casilla_essential_1998}{}}%
+Casilla, E., Crockett, L., deReynier, Y., Glock, J., Helvey, M., Meyer, M., Meyer, B., Schmitt, C., Yoklavich, M., Bailey, A., Chao, B., Johnson, B., and Pepperell, T. 1998. Essential fish habitat {West} {Coast} groundfish. National Marine Fishereis Service, Seattle, WA. Available from \url{http://www.nwr.noaa.gov/1sustfsh/efhappendix/page1.html}.
 
-\leavevmode\hypertarget{ref-castillo_g.c._fluctuations_1992}{}%
-Castillo, G. C. 1992. ``Fluctuations of Year-Class Strength of Petrale Sole (\emph{Eopsetta Jordani}) and Their Relation to Environmental Factors.'' Master's thesis, Oregon State University.
+\leavevmode\vadjust pre{\hypertarget{ref-castillo_g.c._fluctuations_1992}{}}%
+Castillo, G.C. 1992. Fluctuations of year-class strength of petrale sole (\emph{{Eopsetta} jordani}) and their relation to environmental factors. Master's thesis, Oregon State University.
 
-\leavevmode\hypertarget{ref-castillo_latitudinal_1995}{}%
----------. 1995. ``Latitudinal Patterns in Reproductive Life History Traits of Northeast Pacific Flatfish.'' In \emph{Proceedings of the International Symposium on North Pacific Flatfish}, 51--72. Alaska Sea Grant, University of Alaska Fairbanks.
+\leavevmode\vadjust pre{\hypertarget{ref-castillo_latitudinal_1995}{}}%
+Castillo, G.C. 1995. Latitudinal patterns in reproductive life history traits of northeast {Pacific} flatfish. \emph{In} Proceedings of the {International} {Symposium} on {North} {Pacific} {Flatfish}. Alaska Sea Grant, University of Alaska Fairbanks. pp. 51--72.
 
-\leavevmode\hypertarget{ref-castillo_g.c._environmental_1993}{}%
-Castillo, G. C., H. W. Li, and J. T. Golden. 1993. ``Environmental Induced Recruitment Variation in Petrale Sole, \emph{Eopsetta Jordani}.'' \emph{Fisheries Bulletin} 92: 481--93.
+\leavevmode\vadjust pre{\hypertarget{ref-castillo_g.c._environmental_1993}{}}%
+Castillo, G.C., Li, H.W., and Golden, J.T. 1993. Environmental induced recruitment variation in petrale sole, \emph{{Eopsetta} jordani}. Fisheries Bulletin \textbf{92}: 481--493.
 
-\leavevmode\hypertarget{ref-demory_progress_1984}{}%
-Demory, R. L. 1984. ``Progress Report on the Status of Petrale Sole in the INPFC Columbia-Vancouver Areas in 1984.'' Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220.
+\leavevmode\vadjust pre{\hypertarget{ref-demory_progress_1984}{}}%
+Demory, R.L. 1984. Progress report on the status of petrale sole in the {INPFC} {Columbia}-{Vancouver} areas in 1984. Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220.
 
-\leavevmode\hypertarget{ref-didonato_migration_1970}{}%
-DiDonato, G., and N. Pasquale. 1970. ``Migration of Petrale Sole Tagged in Deep Water Off the Washington Coast.'' \emph{Wash. Dept. Fish. Res. Pap.} 3: 53--61.
+\leavevmode\vadjust pre{\hypertarget{ref-didonato_migration_1970}{}}%
+DiDonato, G., and Pasquale, N. 1970. Migration of petrale sole tagged in deep water off the {Washington} coast. Wash. Dept. Fish. Res. Pap. \textbf{3}: 53--61.
 
-\leavevmode\hypertarget{ref-eschmeyer_field_1983}{}%
-Eschmeyer, W. N\textgreater, and E. S. Herald. 1983. \emph{A Field Guide of Pacific Coast Fishes North America}. Boston, MA: Houghton Mifflin CO.
+\leavevmode\vadjust pre{\hypertarget{ref-eschmeyer_field_1983}{}}%
+Eschmeyer, W.N., and Herald, E.S. 1983. A field guide of {Pacific} coast fishes {North} {America}. Houghton Mifflin CO, Boston, MA.
 
-\leavevmode\hypertarget{ref-fargo_j.j._flatfish_1997}{}%
-Fargo, J. J. 1997. ``Flatfish Stock Assessments for the West Coast of Canada for 1997 and Recommended Yield Options for 1998.'' 1997/36. Can. Stock Assess. Sec. Res. Doc.
+\leavevmode\vadjust pre{\hypertarget{ref-fargo_j.j._flatfish_1997}{}}%
+Fargo, J.J. 1997. Flatfish stock assessments for the {West} {Coast} of {Canada} for 1997 and recommended yield options for 1998. Can. Stock Assess. Sec. Res. Doc.
 
-\leavevmode\hypertarget{ref-gates_designated_1974}{}%
-Gates, D. E., and H. W. Frey. 1974. ``Designated Common Names of Certain Marine Organisms of California.'' \emph{Fish Buletin} 161: 55--90.
+\leavevmode\vadjust pre{\hypertarget{ref-gates_designated_1974}{}}%
+Gates, D.E., and Frey, H.W. 1974. Designated common names of certain marine organisms of {California}. Fish Buletin \textbf{161}: 55--90.
 
-\leavevmode\hypertarget{ref-gregory_validity_1976}{}%
-Gregory, P. A., and T. Jow. 1976. ``The Validity of Otoliths as Indicators of Age of Petrale Sole from California.'' \emph{California Department of Fish and Game} 62 (2): 132--40.
+\leavevmode\vadjust pre{\hypertarget{ref-gregory_validity_1976}{}}%
+Gregory, P.A., and Jow, T. 1976. The validity of otoliths as indicators of age of petrale sole from {California}. California Department of Fish and Game \textbf{62}(2): 132--140.
 
-\leavevmode\hypertarget{ref-haltuch_status_2009}{}%
-Haltuch, M. A., and A. C. Hicks. 2009. ``Status of the U.S. Petrale Sole Resource Ien 2008.'' Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220: Pacific Fishery Management Council.
+\leavevmode\vadjust pre{\hypertarget{ref-haltuch_status_2009}{}}%
+Haltuch, M.A., and Hicks, A.C. 2009. Status of the {U}.{S}. Petrale sole resource ien 2008. Pacific Fishery Management Council, Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220.
 
-\leavevmode\hypertarget{ref-haltuch_status_2013}{}%
-Haltuch, M. A., Kotaro Ono, and J. L. Valero. 2013. ``Status of the U.S. Petrale Sole Resource in 2012.'' Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220: Pacific Fishery Management Council.
+\leavevmode\vadjust pre{\hypertarget{ref-haltuch_status_2013}{}}%
+Haltuch, M.A., Ono, K., and Valero, J.L. 2013. Status of the {U}.{S}. Petrale sole resource in 2012. Pacific Fishery Management Council, Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220.
 
-\leavevmode\hypertarget{ref-harry_analysis_1956}{}%
-Harry, G. 1956. ``Analysis and History of the Oregon Otter-Trawl Fishery.'' PhD Thesis, Seattle, WA: University of Washington.
+\leavevmode\vadjust pre{\hypertarget{ref-harry_analysis_1956}{}}%
+Harry, G. 1956. Analysis and history of the {Oregon} otter-trawl fishery. \{PhD\} \{Thesis\}, University of Washington, Seattle, WA.
 
-\leavevmode\hypertarget{ref-harry_time_1959}{}%
----------. 1959. ``Time of Spawning, Length at Maturity, and Fecundity of the English, Petrale, and Dover Soles (\emph{Parophrys Vetulus}, \emph{Eopsetta Jordani}, and \emph{Microstomus Pacificus}, Respectively).'' \emph{Fisheries Commission of Oregon, Research Briefs} 7 (1): 5--13.
+\leavevmode\vadjust pre{\hypertarget{ref-harry_time_1959}{}}%
+Harry, G. 1959. Time of spawning, length at maturity, and fecundity of the {English}, petrale, and dover soles (\emph{{Parophrys} vetulus}, \emph{{Eopsetta} jordani}, and \emph{{Microstomus} pacificus}, respectively). Fisheries Commission of Oregon, Research Briefs \textbf{7}(1): 5--13.
 
-\leavevmode\hypertarget{ref-heimann_pacific_1970}{}%
-Heimann, R. F. G., and J. G. Carlisle. 1970. ``Pacific Fishes of Canada.'' \emph{California Department of Fish and Game Fish Bulletin} 149.
+\leavevmode\vadjust pre{\hypertarget{ref-heimann_pacific_1970}{}}%
+Heimann, R.F.G., and Carlisle, J.G. 1970. Pacific {Fishes} of {Canada}. California Department of Fish and Game Fish Bulletin \textbf{149}.
 
-\leavevmode\hypertarget{ref-horton_species_1989}{}%
-Horton, H. F. 1989. ``Species Profile: Life Histories and Environmental Requirements of Coastal Fishes and Invertebrates (Pacific Northwest),'' 82. U.S. Fish; Wildlife Service Biological Report.
+\leavevmode\vadjust pre{\hypertarget{ref-horton_species_1989}{}}%
+Horton, H.F. 1989. Species profile: Life histories and environmental requirements of coastal fishes and invertebrates ({Pacific} {Northwest}),. U.S. Fish; Wildlife Service Biological Report.
 
-\leavevmode\hypertarget{ref-ketchen_population_1966}{}%
-Ketchen, K. S., and C. R. Forrester. 1966. ``Population Dynamics of the Petrale Sole, \emph{Eopsetta Jordani}, in Waters Off Western Canada.'' 153. Fish. Res. Bd. Canada Bull.
+\leavevmode\vadjust pre{\hypertarget{ref-ketchen_population_1966}{}}%
+Ketchen, K.S., and Forrester, C.R. 1966. Population dynamics of the petrale sole, \emph{{Eopsetta} jordani}, in waters off western {Canada}. Fish. Res. Bd. Canada Bull.
 
-\leavevmode\hypertarget{ref-kramer_guide_1995}{}%
-Kramer, D. E., W. H. Barss, B. C. Paust, and B. E. Bracken. 1995. \emph{Guide to Northeast Pacific Flatfishes: Families Bothidae, Cynoglossidae, and Pleuronectidae}. Vol. 47. AK and Alaska Fisheries Development Foundation, AK. Marine Advisory Bull. Alaska Sea Grant, University of Alaska Fairbanks.
+\leavevmode\vadjust pre{\hypertarget{ref-kramer_guide_1995}{}}%
+Kramer, D.E., Barss, W.H., Paust, B.C., and Bracken, B.E. 1995. Guide to northeast {Pacific} flatfishes: Families {Bothidae}, {Cynoglossidae}, and {Pleuronectidae}. Alaska Sea Grant, University of Alaska Fairbanks.
 
-\leavevmode\hypertarget{ref-kravitz_food_1977}{}%
-Kravitz, M. J., W. G. Pearcy, and M. P. Guin. 1977. ``Food of Five Species of Co-Occurring Flatfishes on Oregon's Continental Shelf.'' \emph{Fishery Bulletin} 74 (4): 984--90.
+\leavevmode\vadjust pre{\hypertarget{ref-kravitz_food_1977}{}}%
+Kravitz, M.J., Pearcy, W.G., and Guin, M.P. 1977. Food of five species of co-occurring flatfishes on {Oregon}'s continental shelf. Fishery Bulletin \textbf{74}(4): 984--990.
 
-\leavevmode\hypertarget{ref-lai_stock_2005}{}%
-Lai, H. L., M. A. Haltuch, A. E. Punt, and J. Cope. 2005. ``Stock Assessment of Petrale Sole: 2004.'' Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220: Pacific Fishery Management Council.
+\leavevmode\vadjust pre{\hypertarget{ref-lai_stock_2005}{}}%
+Lai, H.L., Haltuch, M.A., Punt, A.E., and Cope, J. 2005. Stock assessment of petrale sole: 2004. Pacific Fishery Management Council, Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220.
 
-\leavevmode\hypertarget{ref-love_milton_probably_1996}{}%
-Love, Milton. 1996. \emph{Probably More Than You Want to Know About the Fishes of the Pacific Coast}. Santa Barbara, California: Really Big Press.
+\leavevmode\vadjust pre{\hypertarget{ref-love_milton_probably_1996}{}}%
+Love, M. 1996. Probably more than you want to know about the fishes of the {Pacific} {Coast}. Really Big Press, Santa Barbara, California.
 
-\leavevmode\hypertarget{ref-love_milton_resource_2005}{}%
-Love, Milton, C. W. Mecklenburg, T. A. Mecklenburg, and L. Thorsteinson. 2005. ``Resource Inventory of Marine and Estuarine Fishes of the West Coast and Alaska: A Checklist of North Pacific and Arctic Ocean Species from Baja California to the Alsaka-Yukon Border.'' OCS study MMS 2005-030 and USGS/NBII 2005-001. Seattle, WA: USGS.
+\leavevmode\vadjust pre{\hypertarget{ref-love_milton_resource_2005}{}}%
+Love, M., Mecklenburg, C.W., Mecklenburg, T.A., and Thorsteinson, L. 2005. Resource inventory of marine and estuarine fishes of the {West} {Coast} and {Alaska}: A checklist of north {Pacific} and arctic ocean species from {Baja} {California} to the {Alsaka}-{Yukon} border. USGS, Seattle, WA.
 
-\leavevmode\hypertarget{ref-mantua_pacific_1997}{}%
-Mantua, Nathan J., Steven R. Hare, Y. Zhang, John R. Wallace, and Robert C. Francis. 1997. ``A Pacific Interdecadal Climate Oscillation with Impacts on Salmon Production.'' \emph{Bull. Am. Meteorol Soc.} 78: 1069--80.
+\leavevmode\vadjust pre{\hypertarget{ref-mantua_pacific_1997}{}}%
+Mantua, N.J., Hare, S.R., Zhang, Y., Wallace, J.R., and Francis, R.C. 1997. A {Pacific} interdecadal climate oscillation with impacts on salmon production. Bull. Am. Meteorol Soc. \textbf{78}: 1069--1080.
 
-\leavevmode\hypertarget{ref-pearsall_diet_2007}{}%
-Pearsall, I. A., and J. J. Fargo. 2007. ``Diet Composition and Habitat Fidelity for Groundfish in Hecete Strait, British Columbia.'' Canadian Technical Report of Fisheries; Aquatic Sciences.
+\leavevmode\vadjust pre{\hypertarget{ref-pearsall_diet_2007}{}}%
+Pearsall, I.A., and Fargo, J.J. 2007. Diet composition and habitat fidelity for groundfish in {Hecete} {Strait}, {British} {Columbia}. Canadian Technical Report of Fisheries; Aquatic Sciences.
 
-\leavevmode\hypertarget{ref-pedersen_movements_1975}{}%
-Pedersen, M. G. 1975. ``Movements and Growth of Petrale Sole (\emph{Eopsetta Jordani}) Tagged Off Washington and Southwest Vancouver Island.'' 32. Fishery Research Board of Canada Progress Report.
+\leavevmode\vadjust pre{\hypertarget{ref-pedersen_movements_1975}{}}%
+Pedersen, M.G. 1975. Movements and growth of petrale sole (\emph{{Eopsetta} jordani}) tagged off {Washington} and southwest {Vancouver} {Island}. Fishery Research Board of Canada Progress Report.
 
-\leavevmode\hypertarget{ref-perry_environmental_1994}{}%
-Perry, R. I., M. Stocker, and J. Fargo. 1994. ``Environmental Effects on the Distribution of Groundfish in Hecate Strait, British Columbia.'' \emph{Canadian Journal of Fisheries and Aquatic Sciences} 51: 1401--9.
+\leavevmode\vadjust pre{\hypertarget{ref-perry_environmental_1994}{}}%
+Perry, R.I., Stocker, M., and Fargo, J. 1994. Environmental effects on the distribution of groundfish in {Hecate} {Strait}, {British} {Columbia}. Canadian Journal of Fisheries and Aquatic Sciences \textbf{51}: 1401--1409.
 
-\leavevmode\hypertarget{ref-porter_notes_1964}{}%
-Porter, P. 1964. ``Notes on Fecundity, Spawning, and Early Life History of Petrale Sole (\emph{Eopsetta Jordani}) with Descriptions of Flatfish Larvae Collected in the Pacific Ocean Off Humboldt Bay, California.'' Master's thesis, Humboldt State College.
+\leavevmode\vadjust pre{\hypertarget{ref-porter_notes_1964}{}}%
+Porter, P. 1964. Notes on fecundity, spawning, and early life history of petrale sole (\emph{{Eopsetta} jordani}) with descriptions of flatfish larvae collected in the {Pacific} {Ocean} off {Humboldt} {Bay}, {California}. Master's thesis, Humboldt State College.
 
-\leavevmode\hypertarget{ref-reilly_recreational_1994}{}%
-Reilly, P. N., D. Wilson-Vandenberg, R. N. Lea, C. Wilson, and M. Sullivan. 1994. ``Recreational Angler's Guide to the Common Nearshore Fishes of Northern and Central California.'' California Department of Fish; Game.
+\leavevmode\vadjust pre{\hypertarget{ref-reilly_recreational_1994}{}}%
+Reilly, P.N., Wilson-Vandenberg, D., Lea, R.N., Wilson, C., and Sullivan, M. 1994. Recreational angler's guide to the common nearshore fishes of {Northern} and {Central} {California}. California Department of Fish; Game.
 
-\leavevmode\hypertarget{ref-sampson_assessment_1999}{}%
-Sampson, D. B., and Y. W. Lee. 1999. ``An Assessment of the Stocks of Petrale Sole Off Washington, Oregon, and Northern California in 1998.'' Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220.
+\leavevmode\vadjust pre{\hypertarget{ref-sampson_assessment_1999}{}}%
+Sampson, D.B., and Lee, Y.W. 1999. An assessment of the stocks of petrale sole off {Washington}, {Oregon}, and {Northern} {California} in 1998. Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220.
 
-\leavevmode\hypertarget{ref-scofield_trawling_1948}{}%
-Scofield, W. L. 1948. ``Trawling Gear in California.'' \emph{California Fish and Game Fish Bulletin} 72: 1--60.
+\leavevmode\vadjust pre{\hypertarget{ref-scofield_trawling_1948}{}}%
+Scofield, W.L. 1948. Trawling gear in {California}. California Fish and Game Fish Bulletin \textbf{72}: 1--60.
 
-\leavevmode\hypertarget{ref-smith_report_1937}{}%
-Smith, R. T. 1937. ``Report on the Puget Sound Otter Trawl Investigations.'' Master's thesis, University of Washington.
+\leavevmode\vadjust pre{\hypertarget{ref-smith_report_1937}{}}%
+Smith, R.T. 1937. Report on the {Puget} {Sound} otter trawl investigations. Master's thesis, University of Washington.
 
-\leavevmode\hypertarget{ref-starr_petrale_2004}{}%
-Starr, P. J., and J. Fargo. 2004. ``Petrale Sole Stock Assessment for 2003 and Recommendations for Management in 2004.'' CSAS Res. Doc 2004/036.
+\leavevmode\vadjust pre{\hypertarget{ref-starr_petrale_2004}{}}%
+Starr, P.J., and Fargo, J. 2004. Petrale sole stock assessment for 2003 and recommendations for management in 2004. CSAS Res. Doc 2004/036.
 
-\leavevmode\hypertarget{ref-Starr2015}{}%
-Starr, R. M., D. E. Wendt, C. L. Barnes, C. I. Marks, D. Malone, G. Waltz, K. T. Schmidt, et al. 2015. ``Variation in Responses of Fishes Across Multiple Reserves Within a Network of Marine Protected Areas in Temperate Waters.'' \emph{PLoS One2} 10 (3): p.e0118502.
+\leavevmode\vadjust pre{\hypertarget{ref-Starr2015}{}}%
+Starr, R.M., Wendt, D.E., Barnes, C.L., Marks, C.I., Malone, D., Waltz, G., Schmidt, K.T., Chiu, J., Launer, A.L., Hall, N.C., and Yochum, N. 2015. Variation in responses of fishes across multiple reserves within a network of marine protected areas in temperate waters. PLoS One2 \textbf{10}(3): p.e0118502.
 
-\leavevmode\hypertarget{ref-stawitz_stock_2015}{}%
-Stawitz, Christine C., Felipe Hurtado-Ferro, Peter T. Kuriyama, J. T. Trochta, Kelli F. Johnson, Melissa A. Haltuch, and Owen S. Hamel. 2015. ``Stock Assessment Update: Status of the U.S. Petrale Sole Resource in 2014.'' 7700 Ambassador Place NE, Suite 200, Portland, OR 97220: Pacific Fishery Management Council.
+\leavevmode\vadjust pre{\hypertarget{ref-stawitz_stock_2015}{}}%
+Stawitz, C.C., Hurtado-Ferro, F., Kuriyama, P.T., Trochta, J.T., Johnson, K.F., Haltuch, M.A., and Hamel, O.S. 2015. Stock assessment update: {Status} of the {U}.{S}. Petrale sole resource in 2014. Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220.
 
-\leavevmode\hypertarget{ref-trumble_abundance_1995}{}%
-Trumble, S. J. 1995. ``Abundance, Movements, Dive Behavior, Food Habits, and Mother - Pup Interactions of Harbor Seals (\emph{Phoca Vitulina Richardsi}) Near Monterey Bay, California.'' Master's thesis, California State University Fresno.
+\leavevmode\vadjust pre{\hypertarget{ref-trumble_abundance_1995}{}}%
+Trumble, S.J. 1995. Abundance, movements, dive behavior, food habits, and mother - pup interactions of harbor seals (\emph{{Phoca} vitulina richardsi}) near {Monterey} {Bay}, {California}. Master's thesis, California State University Fresno.
 
-\leavevmode\hypertarget{ref-turnock_status_1993}{}%
-Turnock, J., M. Wilkins, M. Saelens, and C. Wood. 1993. ``Status of West Coast Petrale Sole in 1993.'' Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220.
+\leavevmode\vadjust pre{\hypertarget{ref-turnock_status_1993}{}}%
+Turnock, J., Wilkins, M., Saelens, M., and Wood, C. 1993. Status of {West} {Coast} petrale sole in 1993. Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR 97220.
 
-\leavevmode\hypertarget{ref-weinberg_2001_2002}{}%
-Weinberg, K. L., M. E. Wilkins, F. R. Shaw, and M. Zimmermann. 2002. ``The 2001 Pacific West Coast Bottom Trawl Survey of Groundfish Resources: Estimates of Distribution, Abundance and Length and Age Composition.'' NOAA Technical Memorandum NMFS-AFSC-128. U.S. Department of Commerce.
+\leavevmode\vadjust pre{\hypertarget{ref-weinberg_2001_2002}{}}%
+Weinberg, K.L., Wilkins, M.E., Shaw, F.R., and Zimmermann, M. 2002. The 2001 {Pacific} {West} {Coast} bottom trawl survey of groundfish resources: Estimates of distribution, abundance and length and age composition. \{NOAA\} \{Technical\} \{Memorandum\}, U.S. Department of Commerce.
 
-\leavevmode\hypertarget{ref-Wendt2009}{}%
-Wendt, D. E., and R. M. Starr. 2009. ``Collaborative Research: An Effective Way to Collect Data for Stock Assessments and Evaluate Marine Protected Areas in California.'' \emph{Marine and Coastal Fisheries: Dynamics, Management, and Ecosystem Science.} 1: 315--24.
-\end{cslreferences}
+\leavevmode\vadjust pre{\hypertarget{ref-Wendt2009}{}}%
+Wendt, D.E., and Starr, R.M. 2009. Collaborative research: An effective way to collect data for stock assessments and evaluate marine protected areas in {C}alifornia. Marine and Coastal Fisheries: Dynamics, Management, and Ecosystem Science. \textbf{1}: 315--324.
+
+\leavevmode\vadjust pre{\hypertarget{ref-wetzel_status_2019}{}}%
+Wetzel, C.R. 2019. Status of petrale sole (\emph{{Eopsetta} jordani}) along the {U}.{S}. West coast in 2019. Pacific Fishery Management Council, 7700 Ambassador Place NE, Suite 200, Portland, OR.
+
+\end{CSLReferences}
 
 \clearpage
 
 \hypertarget{tables}{%
 \section{Tables}\label{tables}}
 
+\begin{landscape}\end{landscape}
+
 \clearpage
 
 \hypertarget{figures}{%
 \section{Figures}\label{figures}}
 
+\hypertarget{data-1}{%
+\subsection{Data}\label{data-1}}
+
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.005.001/plots/catch2 landings stacked.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.a024.018_min_sample_retuned/plots/data_plot2.png}
+\caption{Data presence by year for each fleet, where circle area is relative within a data type. Circles are proportional to total catch for catches; to precision for indices, discards, and mean body weight observations; and to total sample size for compositions.\label{fig:data-plot}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.a024.018_min_sample_retuned/plots/catch2 landings stacked.png}
 \caption{Landings (mt) by fleet used in the base model.\label{fig:catch-figures-r4ss}}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.005.001/plots/catch16 landings + dead discards.png}
+\includegraphics[width=1\textwidth,height=1\textheight]{../models/2023.a024.018_min_sample_retuned/plots/catch16 landings + dead discards.png}
 \caption{Landings plus dead discards (mt) by fleet as estimated in the base model.\label{fig:catchdiscard-figures-r4ss}}
 \end{figure}
+
+\hypertarget{biology}{%
+\subsection{Biology}\label{biology}}
+
+\hypertarget{model-results}{%
+\subsection{Model Results}\label{model-results}}
+
+\hypertarget{bridging}{%
+\subsubsection{Bridging}\label{bridging}}
+
+\hypertarget{model-structure}{%
+\subsubsection{Model Structure}\label{model-structure}}
+
+\hypertarget{estimated-biology}{%
+\subsubsection{Estimated Biology}\label{estimated-biology}}
+
+\hypertarget{selectivity}{%
+\subsubsection{Selectivity}\label{selectivity}}
+
+\hypertarget{recruitment-1}{%
+\subsubsection{Recruitment}\label{recruitment-1}}
+
+\hypertarget{fits-to-data}{%
+\subsubsection{Fits to Data}\label{fits-to-data}}
+
+\hypertarget{time-series}{%
+\subsubsection{Time-series}\label{time-series}}
+
+\hypertarget{sensitivity-analyses-and-retrospectives}{%
+\subsubsection{Sensitivity Analyses and Retrospectives}\label{sensitivity-analyses-and-retrospectives}}
+
+\hypertarget{likelihood-profiles-1}{%
+\subsubsection{Likelihood Profiles}\label{likelihood-profiles-1}}
+
+\hypertarget{reference-points-and-forecasts}{%
+\subsubsection{Reference Points and Forecasts}\label{reference-points-and-forecasts}}
 \end{document}

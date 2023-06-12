@@ -1,29 +1,146 @@
 \clearpage
 # Figures
 
+## Data 
 <!-- ====================================================================== --> 
 <!-- *******************    Assessment Map      *************************** --> 
 <!-- ====================================================================== --> 
 
 
+```{r, data-plot, results = "asis"}
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "plots", "data_plot2.png"), 
+caption = 
+  "Data presence by year for each fleet, where circle area is
+relative within a data type. Circles are proportional to
+total catch for catches; to precision for indices, discards, and
+mean body weight observations; and to total sample size for
+compositions.",
+label = "data-plot"
+)
+```
+
 <!-- ====================================================================== -->  
 <!-- ****************** Catches Used in the Model ************************* --> 
 <!-- ====================================================================== -->  
 
+## Catch and estimated discards
+
 ```{r, catch-figures-r4ss, results = "asis"}
 sa4ss::add_figure(
-filein = file.path(mod_loc, "plots", "catch2 landings stacked.png"), 
+filein = file.path(mod_loc_relative, "plots", "catch2 landings stacked.png"), 
 caption = "Landings (mt) by fleet used in the base model.",
 label = "catch-figures-r4ss"
 )
 
 sa4ss::add_figure(
-filein = file.path(mod_loc, "plots", "catch16 landings + dead discards.png"), 
+filein = file.path(mod_loc_relative, "plots", "catch16 landings + dead discards.png"), 
 caption = "Landings plus dead discards (mt) by fleet as estimated in the base model.",
 label = "catchdiscard-figures-r4ss"
 )
+
 ```
 
 <!-- ====================================================================== --> 
 <!-- ******************* Data Used in the Model *************************** --> 
 <!-- ====================================================================== --> 
+
+
+## Biology
+
+
+## Model Results
+
+### Bridging
+
+
+### Model Structure
+
+
+### Estimated Biology
+
+
+### Selectivity
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc_relative, "plots",  "index2_cpuefit_WCGBTS.png"), 
+caption = paste("Fit to index data for WCGBTS. Lines indicate 95% uncertainty",
+  "interval around index values based on the model assumption of lognormal error."),
+label = 'index-wcgbts-fit')
+```
+
+### Recruitment
+
+
+### Fits to Data
+
+### Fits to Data
+#### Fits to indices
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc_relative, "plots",  "index2_cpuefit_WCGBTS.png"), 
+caption = paste("Fit to index data for WCGBTS. Lines indicate 95% uncertainty",
+  "interval around index values based on the model assumption of lognormal error."),
+label = 'index-wcgbts-fit')
+
+add_figure(
+filein = file.path(mod_loc_relative, "plots",  "index2_cpuefit_Triennial.png"), 
+caption = paste("Fit to index data for the Triennial survey. Lines indicate 95% uncertainty",
+  "interval around index values based on the model assumption of lognormal error.",
+  "Thicker lines indicate input uncertainty before addition of",
+  "estimated additional uncertainty parameter."),
+label = 'index-tri-fit')
+```
+
+#### Fits to Length and Age Compositions
+<!-- TODO: add Francis plots -->
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc_relative, "plots",  "comp_lenfit__aggregated_across_time.png"), 
+caption = paste("Length composition aggregated across years by fleet with the",
+  "model estimated fit to the data by sex (red female and blue male)."),
+label = 'len-agg-fit')
+
+add_figure(
+filein = file.path(mod_loc_relative, "plots",  "comp_lenfit__multi-fleet_comparison.png"), 
+caption = paste("Pearson residuals for fit to length composition data for all fleets",
+  "(red female, blue male, grey unsexed).",
+  "Closed bubbles are positive residuals (observed > expected) and open bubbles",
+  "are negative residuals (observed < expected)."),
+label = 'len-all-pearson')
+
+add_figure(
+filein = file.path(mod_loc_relative, "plots",  "comp_agefit__multi-fleet_comparison.png"), 
+caption = paste("Pearson residuals for fit to age composition data for all fleets",
+  "(red female, blue male).",
+  "Closed bubbles are positive residuals (observed > expected) and open bubbles",
+  "are negative residuals (observed < expected)."),
+label = 'age-all-pearson')
+
+add_figure(
+filein = file.path(mod_loc_relative, "plots", "comp_agefit__aggregated_across_time.png"), 
+caption = "Age composition data aggregated across time by fleet and sex (red female and blue male).",
+label = 'agg-marg-age-fit')
+
+add_figure(
+filein = file.path(mod_loc_relative, "plots", "comp_condAALfit_residsflt4mkt0_page1.png"), 
+caption = "Pearson residuals for conditional age-at-length data from WCGBTS (plot 1 of 2)",
+label = 'agg-caal-fit1')
+
+add_figure(
+filein = file.path(mod_loc_relative, "plots", "comp_condAALfit_residsflt4mkt0_page2.png"), 
+caption = "Pearson residuals for conditional age-at-length data from WCGBTS (plot 2 of 2)",
+label = 'agg-caal-fit2')
+
+```
+
+### Time-series
+
+
+### Sensitivity Analyses and Retrospectives
+
+
+### Likelihood Profiles
+
+
+### Reference Points and Forecasts

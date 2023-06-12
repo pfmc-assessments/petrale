@@ -1,6 +1,6 @@
 ---
 geometry: margin=1in
-month: "January"
+month: "June"
 year: "2023"
 preamble: |
 output:
@@ -10,6 +10,7 @@ output:
     keep_tex: true
 lang: en
 papersize: letter
+csl: canadian-journal-of-fisheries-and-aquatic-sciences.csl
 ---
 
 
@@ -52,9 +53,6 @@ bibliography:
 title: |
   Status of petrale sole (_Eopsetta jordani_) \
   along the US West coast in 2023
-  
-  
-  ![](figures/petrale_sole_1945.jpg){width=80% height=80% alt="Black and white image of two petrale sole showing dorsal and ventral sides"}
 ---
 
 <!--chapter:end:00title.Rmd-->
@@ -91,7 +89,7 @@ Include Figure with long-term estimates.
 \input{tex_tables/a_Catches_ES.tex}
 
 
-![Landings by fleet used in the base model where catches in metric tons by fleet are stacked.\label{fig:es-catch}](../models/2023.005.001/plots/catch2 landings stacked.png){width=100% height=100% alt="."}
+![Landings by fleet used in the base model where catches in metric tons by fleet are stacked.\label{fig:es-catch}](../models/2023.a024.018_min_sample_retuned/plots/catch2 landings stacked.png){width=100% height=100% alt="."}
 
 \clearpage
 
@@ -101,7 +99,7 @@ This assessment uses the stock assessment framework
 Stock Synthesis 
 
 ```
-[1] "3.30.20.00"
+[1] "3.30.21.00"
 ```
 (SS3).
 
@@ -123,10 +121,10 @@ Include Figure with long-term estimates.
 \input{tex_tables/b_SSB_ES.tex}
 
 
-![Estimated time series of spawning output for the base model.\label{fig:es-ssb}](../models/2023.005.001/plots/ts7_Spawning_biomass_(mt).png){width=100% height=100% alt="."}
+![Estimated time series of spawning output for the base model.\label{fig:es-ssb}](../models/2023.a024.018_min_sample_retuned/plots/ts7_Spawning_output.png){width=100% height=100% alt="."}
 
 
-![Estimated time series of fraction of unfished spawning output for the base model.\label{fig:es-depl}](../models/2023.005.001/plots/ts9_Relative_spawning_biomass.png){width=100% height=100% alt="."}
+![Estimated time series of fraction of unfished spawning output for the base model.\label{fig:es-depl}](../models/2023.a024.018_min_sample_retuned/plots/ts9_Relative_spawning_output.png){width=100% height=100% alt="."}
 
 \clearpage
 
@@ -142,10 +140,10 @@ Include Figure with long-term estimates.
 \input{tex_tables/c_Recr_ES.tex}
 
 
-![Estimated time series of age-0 recruits (1000s) for the base model.\label{fig:es-recruits}](../models/2023.005.001/plots/ts11_Age-0_recruits_(1000s).png){width=100% height=100% alt="."}
+![Estimated time series of age-0 recruits (1000s) for the base model.\label{fig:es-recruits}](../models/2023.a024.018_min_sample_retuned/plots/ts11_Age-0_recruits_(1000s).png){width=100% height=100% alt="."}
 
 
-![Estimated time series of recruitment deviations.\label{fig:es-rec-devs}](../models/2023.005.001/plots/recdevs1_points.png){width=100% height=100% alt="."}
+![Estimated time series of recruitment deviations.\label{fig:es-rec-devs}](../models/2023.a024.018_min_sample_retuned/plots/recdevs1_points.png){width=100% height=100% alt="."}
 
 \clearpage
 ## Exploitation status{-}
@@ -158,7 +156,7 @@ Include Figure with trend in f relative to target vs. trend in biomass relative 
 \input{tex_tables/d_SPR_ES.tex}
 
 
-![Estimated 1 - relative spawning ratio (SPR) by year for the base model. The management target is plotted as a red horizontal line and values above this reflect harvest in excess of the proxy harvest rate.\label{fig:es-1-spr}](../models/2023.005.001/plots/SPR2_minusSPRseries.png){width=100% height=100% alt="."}
+![Estimated 1 - relative spawning ratio (SPR) by year for the base model. The management target is plotted as a red horizontal line and values above this reflect harvest in excess of the proxy harvest rate.\label{fig:es-1-spr}](../models/2023.a024.018_min_sample_retuned/plots/SPR2_minusSPRseries.png){width=100% height=100% alt="."}
 
 \clearpage
 
@@ -176,11 +174,11 @@ management targets and definition of overfishing, including the harvest rate tha
 Include Table of estimated reference points for ssb, SPR, exploitation rate, and yield based on SSB proxy for MSY, SPR proxy for MSY, and estimated MSY values.
 
 
-![Phase plot of estimated 1-SPR versus fraction unfished for the base model.\label{fig:es-phase}](../models/2023.005.001/plots/SPR4_phase.png){width=100% height=100% alt="."}
+![Phase plot of estimated 1-SPR versus fraction unfished for the base model.\label{fig:es-phase}](../models/2023.a024.018_min_sample_retuned/plots/SPR4_phase.png){width=100% height=100% alt="."}
 
 
 ![Equilibrium yield curve for the base case model. Values are based on the 2020
-fishery selectivities and with steepness fixed at 0.80.\label{fig:es-yield}](../models/2023.005.001/plots/yield2_yield_curve_with_refpoints.png){width=100% height=100% alt="."}
+fishery selectivities and with steepness fixed at 0.80.\label{fig:es-yield}](../models/2023.a024.018_min_sample_retuned/plots/yield2_yield_curve_with_refpoints.png){width=100% height=100% alt="."}
 
 \input{tex_tables/e_ReferencePoints_ES.tex}
 
@@ -317,7 +315,7 @@ In some cases, the inclusion of excluded data sources were explored through sens
 <!--chapter:end:20data.Rmd-->
 
 ## Fishery-Dependent Data
-Fishery removals were divided among 4 fleets: 1) winter North trawl, 2) summer North trawl, 3) winter South trawl, and 4) summer South trawl. Landings for the North fleet are defined as fish landed in Washington and Oregon ports. Landings for the South feet are defined as fish landed in California ports. The landings of petrale sole by gear types other than groundfish-trawl have been inconsequential, averaging less than 2.5% of the coast-wide landings. The non-trawl landings (that consist of only a small fraction of the total landings) are included in the trawl landings.
+Fishery removals were divided among two fleets: 1) North and 2) South. Landings for the North fleet are defined as fish landed in Washington and Oregon ports. Landings for the South feet are defined as fish landed in California ports. The landings of Petrale sole are made primarily by groundfish bottom trawl gear; landings by gear types other than bottom trawl have been inconsequential, averaging less than 2.5% of the coast-wide landings. The non-trawl landings (that consist of only a small fraction of the total landings) are included along with the trawl landings in a single gears fleets.
 
 <!--chapter:end:21f-.Rmd-->
 
@@ -400,8 +398,26 @@ as well as variance associated with selecting a relatively small number (approxi
 ### Sex Ratio
 
 
-### Length-Weight Relationship
+### Length-Weight Relationship {#sec-biological-data-Length-Weight-relationship}
 
+
+The weight-length relationship for petrale sole was estimated outside of the 
+assessment model by fitting biological data to the standard power function, 
+$W = aL^b$ using the R function `PacFIN.Utilities::getWLpars()` 
+(where $W$ is weight in kilograms and $L$ is fork length in centimeters). 
+The function estimates the relationship on a log-log scale and then uses the 
+estimated standard deviation of the observed weights around the expected value 
+to calculate the median weight at each length from the resulting lognormal 
+distribution.
+
+The parameters were estimated using data from the \gls{s-wcgbt}, where 21,704 
+fish collected between 2003 and 2022 had both weight and length available 
+of which 57.6\% were female, 42.3\% were male, and 0.1\% were unsexed. 
+The resulting relationships were
+$W=0.000002035 * L^{3.478}$ for females and
+$W=0.000003043 * L^{3.359}$ for males. 
+These relationships are very similar to those used for the previous assessment 
+[@wetzel_status_2019].
 
 ### Growth (Length-at-Age)
 
@@ -453,6 +469,7 @@ Describe estimated vs. fixed parameters, priors
 
 
 ### Parameter Estimates
+<!-- Parameters values are shown in Tables \ref{tab:table-pars-base-1}-\ref{tab:table-pars-base-16}. -->
 
 ### Fits to the Data
 
@@ -520,28 +537,76 @@ Here are all the mad props!
 # Tables
 
 
+<!-- ====================================================================== -->
+<!-- model tables -->
+<!-- ====================================================================== -->
+\begin{landscape}\end{landscape}
+
 <!--chapter:end:52tables.Rmd-->
 
 \clearpage
 # Figures
 
+## Data 
 <!-- ====================================================================== --> 
 <!-- *******************    Assessment Map      *************************** --> 
 <!-- ====================================================================== --> 
 
+
+
+![Data presence by year for each fleet, where circle area is
+relative within a data type. Circles are proportional to
+total catch for catches; to precision for indices, discards, and
+mean body weight observations; and to total sample size for
+compositions.\label{fig:data-plot}](../models/2023.a024.018_min_sample_retuned/plots/data_plot2.png){width=100% height=100% alt="."}
 
 <!-- ====================================================================== -->  
 <!-- ****************** Catches Used in the Model ************************* --> 
 <!-- ====================================================================== -->  
 
 
-![Landings (mt) by fleet used in the base model.\label{fig:catch-figures-r4ss}](../models/2023.005.001/plots/catch2 landings stacked.png){width=100% height=100% alt="."}
+![Landings (mt) by fleet used in the base model.\label{fig:catch-figures-r4ss}](../models/2023.a024.018_min_sample_retuned/plots/catch2 landings stacked.png){width=100% height=100% alt="."}
 
-![Landings plus dead discards (mt) by fleet as estimated in the base model.\label{fig:catchdiscard-figures-r4ss}](../models/2023.005.001/plots/catch16 landings + dead discards.png){width=100% height=100% alt="."}
+![Landings plus dead discards (mt) by fleet as estimated in the base model.\label{fig:catchdiscard-figures-r4ss}](../models/2023.a024.018_min_sample_retuned/plots/catch16 landings + dead discards.png){width=100% height=100% alt="."}
 
 <!-- ====================================================================== --> 
 <!-- ******************* Data Used in the Model *************************** --> 
 <!-- ====================================================================== --> 
+
+
+## Biology
+
+
+## Model Results
+
+### Bridging
+
+
+### Model Structure
+
+
+### Estimated Biology
+
+
+### Selectivity
+
+
+### Recruitment
+
+
+### Fits to Data
+
+
+### Time-series
+
+
+### Sensitivity Analyses and Retrospectives
+
+
+### Likelihood Profiles
+
+
+### Reference Points and Forecasts
 
 <!--chapter:end:53figures.Rmd-->
 
