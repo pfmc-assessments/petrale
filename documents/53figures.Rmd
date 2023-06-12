@@ -58,16 +58,61 @@ label = "catchdiscard-figures-r4ss"
 
 
 ### Estimated Biology
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc_relative, "plots", "bio1_sizeatage.png"),
+caption = "Model estimated length-at-age in the beginning of the year. Shaded area indicates 95 percent distribution of length-at-age around the estimated growth curve",
+label = 'mod-est-len-age')
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(mod_loc_relative, "plots", "bio3_sizeatage_plus_WT_and_MAT.png"),
+caption = "Relationship between growth, maturity, and weight. Length at age is in the top-left panel with weight (thick lines) and maturity (thin lines) shown in top-right and lower-left panels",
+label = 'mod-est-len-age2')
+
+add_figure(
+filein = file.path("../figures/Petrale_fxn_ogive.png"),
+caption = "Maturity ogive showing fit to observed fraction mature within each length bin.",
+label = 'maturity')
+```
 
 
 ### Selectivity
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(mod_loc_relative, "plots",  "index2_cpuefit_WCGBTS.png"), 
-caption = paste("Fit to index data for WCGBTS. Lines indicate 95% uncertainty",
-  "interval around index values based on the model assumption of lognormal error."),
-label = 'index-wcgbts-fit')
+filein = file.path(mod_loc_relative, "plots",  "sel01_multiple_fleets_length1.png"), 
+caption = paste("Selectivity at length for multiple fleets.",
+  "Solid lines are female selectivity, dashed are male."),
+label = 'sel_length')
+
+add_figure(
+filein = file.path(mod_loc_relative, "plots",  "sel02_multiple_fleets_age2.png"), 
+caption = paste("Ending-year selectivity at age derived from selectivity at length",
+  "(solid female, dashed male)."),
+label = 'sel-age')
+
+add_figure(
+filein = file.path(mod_loc_relative, "plots",  "sel02_multiple_fleets_age2.png"), 
+caption = paste("Selectivity at age derived from selectivity at length",
+  "(solid female, dashed male)."),
+label = 'sel-length')
+
+add_figure(
+filein = file.path(mod_loc_relative, "custom_plots",  "selectivity_time-varying_fem.png"), 
+caption = paste("Time-varying female selectivity (top) and retention (bottom)",
+  "for the fishing fleets. Retention is the same for females and males."),
+label = 'sel-tv-fem')
+
+add_figure(
+filein = file.path(mod_loc_relative, "custom_plots",  "selectivity_time-varying_mal.png"), 
+caption = paste("Time-varying male selectivity (top) and retention (bottom)",
+  "for the fishing fleets. Retention is the same for females and males."),
+label = 'sel-tv-mal')
+
 ```
+
+
 
 ### Recruitment
 

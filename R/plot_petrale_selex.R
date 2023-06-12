@@ -74,7 +74,7 @@ plot_sel_ret <- function(mod,
 #' @export
 #' @author Ian G. Taylor
 plot_petrale_tv_selex <- function(mod, sex = 1, verbose = TRUE) {
-  filename <- "selectivity.png"
+  filename <- "selectivity_time-varying.png"
   if (length(sex) == 1 && sex == 2) {
     filename <- gsub(".png", "_mal.png", filename)
   }

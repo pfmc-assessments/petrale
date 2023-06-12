@@ -1,0 +1,553 @@
+John Field | Mar 20, 2023, 1:04:00 PM 
+...forget the formal these are
+
+Marlene A. Bellman | Mar 20, 2023, 1:04:03 PM 
+All right, um, I will just do a brief hello to folks.
+
+Chris Free (he/him) | Mar 20, 2023, 1:04:05 PM 
+Still
+
+Marlene A. Bellman | Mar 20, 2023, 1:04:08 PM 
+Welcome to the second pre assessment data workshop. For everyone we are, I intend to record the meeting. I have just started the recording in the transcriptions that we have some notes for later. Sometimes we have a request for folks who miss the workshop to be able to go back and and see what was discussed. We have a number of presenters today. I have hopefully everyone can see. I have put the website link for the workshop today that has all the media materials posted. We have the agenda for today, which I am happy to share my screen. The give you the agenda today. We also have some presentations that are posted there as well. on, we will be starting with Petro Soul. Hoping to take a short break between Pe trolle and the afternoon species for short spin, thorny head and wreck sole.
+
+Marlene A. Bellman | Mar 20, 2023, 1:05:04 PM 
+Again, we have had some SSE members that are participating today, including some of our star chairs, have been on workshops all morning and this afternoon, so They are doing a lot of double duty today and might need a break at some point, so. I will also leave it up to the star chairs to discuss the format I realized in the agenda, we sort of put a public comment period at the very end, what I wanted to remind people that. The star chairs are welcome to facilitate this. So that there is, you know, questions or discussion or engagement sort of throughout the workshop. based on the objectives of the workshop itself. So I will leave it up to them to sort of guide the flow of our timing. And again, if you know, if we need to, we do not have to wait until the end.
+
+Marlene A. Bellman | Mar 20, 2023, 1:05:54 PM 
+to to just keep your public comment till the end. And again, I think that covers mainly logistics. I have assigned moderates role to a number of folks. I will need to leave today at some point near the end. So if we start going over time, I will just let you know that I will hand that moderator roll to other folks if I need to drop off the meeting at the very end of the afternoon. I will also be taking attendance. Um, for a lot of the p FMC. visor bodies, including the SS, C and other representatives that are here for star panels. I will be noting your attendance, uh, at the workshop and passing that along to our admin folks. So I think those are all of my initial checklist I wanted to check in with John Budur as well. Who is the the chair of the SSE ground fish?
+
+Marlene A. Bellman | Mar 20, 2023, 1:06:51 PM 
+subcommittee and as well as the star chairs. We will be John Field today and also Jason Sheffer. So I will pass the baton to whoever would like to take overt next.
+
+John Field | Mar 20, 2023, 1:07:05 PM 
+Okay. I I think that would be me, but John Butrick, if there is anything you want to add before, I sort of go over the agenda, which is pretty short and the plan for today. Please go ahead.
+
+John Budrick | Mar 20, 2023, 1:07:19 PM 
+No, I think, uh, you know, the the directions pretty clear as to where we are going and I will let you and Jason lead the way since you two are the star panel chairs for these respective assessments and so With that, you will you will be the ones to compile the reports, etc. Unless delegated otherwise. Um, but yeah. Let me know if there is anything I can do.
+
+John Field | Mar 20, 2023, 1:07:43 PM 
+Thanks, John. Yes, Jason, as a reminder, I think our Brilliant or not so brilliant. Plan of attack for these workshops was to have the chairs also be the rapper tours. So You and I will be acting as a rapper. Tours for the day. The agenda is pretty simple. We will start with Petro e Soul. Take a break at about three and then move on to short time. Thorny Head, Reck and Rexel. Which will be in the earlier panel. Folks have done this before, so we know that the purpose of the workshop is to just review proposed data inputs, modeling approaches, other pertinent information to inform the upcoming assessments, and basically just have a dialogue between panel participants the stat team. and other stakeholders regarding, you know, likely changes the data sources, changes to the model issues that have come up or that are likely going to hopefully be resolved.
+
+John Field | Mar 20, 2023, 1:08:40 PM 
+in this next upcoming model and a review. I do think that it is helpful for if folks have questions or or points to make as we go along, I think they can raise their hand. I think it is probably Most helpful to everyone. If we just kind of bring things up questions up as they come along, if it does look like we are running late or running behind, I might take a slightly heavier hand and just try and keep us moving forward. But so far, I do not think that happens too often. So I am not too worried about that. And I guess, Marlene, my only question for you is It is been a while since I was moderator. That means I think I have the power to unmute people or are they automatically unmuted for this meeting? What do I actually have the power to do, and how do I do it? Should I really worry about it? I really not?
+
+Marlene A. Bellman | Mar 20, 2023, 1:09:28 PM 
+Uh, so you have the power to share a screen.
+
+Marlene A. Bellman | Mar 20, 2023, 1:09:37 PM 
+You also up at the very top of your menu. You should be able to you you can mute and unmute people, so if you hear background noise in a particular person, you can go down to their little microphone that is probably flashing green and mute them, and at the very top, there is also a way to mute.
+
+John Field | Mar 20, 2023, 1:09:42 PM 
+Okay. I
+
+Marlene A. Bellman | Mar 20, 2023, 1:09:55 PM 
+The microphone for everyone. So if we are having a problem, we do not know who it is. You also have the ability to sort of turn everyone off. And they should be able to unmute themselves again later.
+
+John Field | Mar 20, 2023, 1:10:07 PM 
+such power. Let us hope I don't have to abuse it, all right? Any questions or comments on the agenda before we go ahead and dive in here from anyone?
+
+John Field | Mar 20, 2023, 1:10:23 PM 
+I am seeing no hands questions or concerns. So with that, I think I would invite Ian and Vlada to go ahead and start on your presentation and we will take notes and offer up comments and suggestions as we go. And just so I can roughly track, can you tell me about how many slides you have?
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:10:47 PM 
+I think it is, uh, looks like thirty nine slides right now.
+
+John Field | Mar 20, 2023, 1:10:52 PM 
+Perfect.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:10:53 PM 
+Um, and and can you see the first slide with the blue background, okay?
+
+John Field | Mar 20, 2023, 1:10:57 PM 
+We can see the first slide.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:11:01 PM 
+Well, thanks, Marlene. Thanks, John. I am Ian Taylor at the Northwest Fishery Science Center. I met many of you. Along with La of Gertz Ofa, I have been tasked with the PETI Soul Assessment for twenty twenty three. This is my first time working on petro soul. But I have been at the northwest center as Hea for a long time, and we have witnessed the evolution of the Cess. through work by Melissa Hal Tuck and Chantel doing an update two years ago or four years ago. So we are continuing that tradition and and hoping to do our best. where we are. In terms of the The materials we will present today, I will talk briefly about sort of the background. hand it over to Vlada to talk about the data. Then Vlada is going to pass it back to me to talk about sort of modeling considerations and and
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:12:01 PM 
+last slide on additional activities. The the data. is focused on sort of refreshing. You know, everything we need for for this year's assessment, the model and considerations is focused on explorations we have done with the previous assessment. What we are not showing today is is merging of the two, we are not showing new model results with the new data. We are really sort of focused on some modeling questions. explored using the previous set of data. as well as showing what the new to date data look like on their own. uh Moving on to background. as most of you know, but Charlie's very prized. flatfish here. The West Coast attainment is very high. And sable fish are really the two to stocks were something like ninety nine percent. of the quota gets caught every year.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:13:02 PM 
+The total volume of catch is pretty high as well. It is nothing like Hake, but it is it is big. The the price per pound. You know, seems to make it a lucrative fishery for those who are able to target it. in two thousand nine, the stock was declared overfished. That was As the figure on the left is from the two thousand nine stock assessment where you can see that it is not that it fell below the the minimum stock size threshold in two thousand nine that the estimate was that it had actually been below for quite some time. Luckily, there was some really good recruitment in the early. and six years later in twenty fifteen. This is the figure from the twenty fifteen assessment. The stock was shooting upwards thanks to good recruitment and it was declared rebuilt coming along with that.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:14:06 PM 
+Updated information and the and the You know, big cohorts. was also a change in the reference points for all flat fish under the Pacific Fishery Management Council. So that the target it had to reach was lower than it would have been under the old reference point. There were frequent assessments under the rebuilding period because that is sort of how our system works for stocks that are being rebuilt. But then once it was rebuilt in twenty fifteen. There have not been new Full assessments. In twenty nineteen, as I mentioned, Chant Wetzel did an update of the twenty thirteen stock assessment. The twenty fifteen assessment was also an update And so this twenty twenty three stock assessment for petrol is going to be the first full assessment in ten years. And some of the modeling stuff I will talk about later is sort of seeing how our data have changed and and what the needs of the model.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:15:14 PM 
+How they have evolved in the ten years since the last falls assessment. So I think with that, I can hand it over to Vlada and I will just keep presenting. And and forward the slides Vlad's request. Let us go ahead plot.
+
+Vlada Gertseva | Mar 20, 2023, 1:15:30 PM 
+Thank you. Yeah, let us start with the data. Next slide, please. Before going through the data to be used in the assessment, I will briefly overview the history of stock exploitation. The fishery for petrol is all started in California in eighteen eighty seconds around nineteen thirties, it extended north to Oregon and later to Washington. The majority of petroleum sool has been taken commercially with botton trolls, along with various other flat fish and rock fish species. The petro is so as inside we are then and they are now a highly desirable flat fish, here are a couple of foods from NOA Photo Archives, with a two one showing fishes catching flat fish in the nineteen sixty seconds in Washington and the bottom one showing the process of picking liver from a petrol is sold in nineteen forties in Astoria, Oregon. It happened to be that Petro is sool liver is rich in vitamin A, and it was valuable for that as well in nineteen forties.
+
+Vlada Gertseva | Mar 20, 2023, 1:16:35 PM 
+In nineteen fifties, it was found that petrosal concentrate for spon and can deeper water during winter and targeting coins spon in aggregations developed through nineteen fifty in nineteen sixties, now petros to be caught during summer and winter month. And here you can see majority of petroleum catches are coming from California in blue and Oregon and orange and smaller amount from Washington in gray showing in a graph next slide, please. In the past several assessments, the cost wide cashes of Petroleum were broken up into four fleets Northern and Southern where the Oregon and Washington being Northern Fleet and California being Southern Fleet, and then both Northern and Southern fleets were broken further into summer and winter flees. The fishery data used in the past assessment on the right was by these four fleets shown here on the right and
+
+Vlada Gertseva | Mar 20, 2023, 1:17:37 PM 
+Here you can see catches By these four fleets, there were five abundance indices used, two of them Fisher rec p. E, which we will talk about later. And three are in this is from research surveys and it is worth pointing out that triennial survey was treated as two separate indices. We also have a good amount of biological data associated with fisheries and surveys. During this year assessment, we updated catches and in the next few slides, I will show how the updated cages compare with what was used before. Next slide, please. We will start with California. the earliest years of California lending, we are informed by records from California Department of Fish and Game Fish Bottoms, and we plan to continue to use this earlier data.
+
+Vlada Gertseva | Mar 20, 2023, 1:18:30 PM 
+Weston tool cage reconstructions were used for the period between nineteen thirty one and nineteen sixty eight. We plan to use it as well. The only difference is that Walston Neto included only California lending that were caught in California waters. This year, we will add California landings that were caught in Oregon in Washington that were not accounted for in the past assessment. You can see the difference on this graph with red bean cleanings we plan to use in this assessment and D Black Line are those used in the twenty nineteen assessment and twenty thirteen. And of course, for uh nineteen eighty one. Forward, we will be using pack, fin and calc for nineteen sixty nine through nineteen eighty. Next slide, please, or you go on lending, they did not change and we will continue to use Kerns KY at to catch reconstruction for prior to nineteen eighty six.
+
+Vlada Gertseva | Mar 20, 2023, 1:19:32 PM 
+Uh, including nineteen eighty six and pack fin after that next slide, please, the largest discrepancy we encountered where for Washington landings and you can see the difference here on the slide again, red, uh, line is what we plan to use and dashed black line, and it was used in the past assessment. At the time of last full assessment. of petrol is so conducted in twenty thirteen, there was less information on Landings in Washington ports, as well as there was more uncertainty about how many of the Washington landings were caught in different areas, sources of previous Ling's history not fully understood, but Washington Department of Fish and Wild Lab double check the updated time series provided this year's. Some of the differences potentially came from twenty thirteen assessment, including
+
+Vlada Gertseva | Mar 20, 2023, 1:20:30 PM 
+Cages made In Canadian waters and landed in Washington ports. So we will use the newly provided Washington Department Fish and Wildlife. Leanings for the historical period and pain from nineteen eighty one forward. How do we want to address hands? I see raised hand. Do we wait till the end or take questions on the way?
+
+John Field | Mar 20, 2023, 1:20:59 PM 
+B, I think it would be helpful to go ahead and take the questions as we go. I will go ahead and interrupt as the hands come up if you do not see them. So Theresa, why do not you go ahead to whether you are a question or comment?
+
+Theresa Tsou (WDFW) | Mar 20, 2023, 1:21:13 PM 
+Um, so Vada, um, this figure does not look like what we talked about last week, so What WD? They provided a second update to the catch history. So this is the first version that I sent to you.
+
+Vlada Gertseva | Mar 20, 2023, 1:21:35 PM 
+Second update, uh, I believe look very similar to This one, but There is still big difference with the lamp. I did not see the big difference between the second and first update.
+
+Theresa Tsou (WDFW) | Mar 20, 2023, 1:21:47 PM 
+Yeah. Okay, maybe we can discuss after the workshop.
+
+Vlada Gertseva | Mar 20, 2023, 1:21:55 PM 
+Yeah, but, uh, this is the difference which will talk about and be in close communication with Washington Department and Fish Wildlife from that.
+
+John Field | Mar 20, 2023, 1:22:05 PM 
+I will make sure we have a comment in the report to ensure that we are using the right new historical catch time series from Washington. Thank you.
+
+Vlada Gertseva | Mar 20, 2023, 1:22:17 PM 
+Next slide, please. When we put everything together, this is how coast white landings this year in red blue compared to landings in twenty nineteen in black dash line. These coast white landings were divided among four fleets I talked about earlier. They are shown here on the right with red Landings of summer southern flee. yellow wind to Southern Fleet. Green, some Northern Fleet and blue. Wind to northern fleets. Next slide, please. Discard the truly so is very desirable fish. And therefore, these CART fractions are very low in all fleets. The information about this card comes from absorber program. And for Northern Fleet, we also have historical rates from page study. Next one, next slide, please, mm hm. And here is the glance at the updated and extended biological data length and age composition from fisheries by fleet in length composition plot. With all years of data combined, you can clearly see that discarded fish that small amount of discarded fish are smaller than retained as we would expect.
+
+Vlada Gertseva | Mar 20, 2023, 1:23:38 PM 
+And in each composition plot, you can trace some strong year classes through years. Next slide, please. Fishery independent data. We re evaluated all of the surveys conducted in the assessment area and we will continue to use West Coast Ground Fish Boat Control Survey, which is running and historical train survey. Both surveys were used in the petrosal assessment before. And we will continue not using slope surveys in this assessment as those surveys have very little petrol edges and they ran deeper than most truly occur. Next slide, please. In the model, we will be using geostatistical survey index calculated using SDM T B package, which we are currently evaluating here. Uh, we are showing design based index for West Coast ground fish boat control survey that we calculated using data through twenty twenty two, the first thing you
+
+Vlada Gertseva | Mar 20, 2023, 1:24:41 PM 
+Probably notice that there is no noticeable decline in the abundance, which is good. Also, you probably notice a large index with wide uncertainty around it in in twenty twenty one. To understand what happened in twenty twenty one, let us look at the map on the right that shows standardized pages by hole. here. In you can see twenty twenty one, you cannot miss that large hole that occurred of California in September, september twenty fourth, to be precise. This was the largest Hale over the entire survey time series. We expect the Geostatistical Index will not have such a huge uncertainty around twenty twenty one estimate as geo statistical methods can better account for extreme patches. like this. Interestingly, the second largest hall was in twenty fourteen at the same location and believe it or not, on the same day. And you can see it also on the map. Next slide, please.
+
+Vlada Gertseva | Mar 20, 2023, 1:25:46 PM 
+Here is the composition data for the West Coast Ground Fish Bottom troll survey, and you can see length composition on the left and age composition on the right. And you can see the contribution of large females. Where the largest in Twenty, twenty one, this. Were those fish caught in that large hole? We don't see the same in twenty fourteen though.
+
+Vlada Gertseva | Mar 20, 2023, 1:26:16 PM 
+Next slide, train survey, twenty thirteen full assessment app and subsequently twenty nineteen update assessments. Three, the training survey as two separate surveys and thus had two separate indices. We plan to use a single time series while exploring offsets and estimated catch and selectivity parameters. For the two period to account for any changes between the two periods here, you can see that single time series in the red aligns very well with indices from two periods in black and late in green used in twenty nineteen. And we do not expect any changes in the mode output from switching to a single time series actually Our early exploration showed that using a single trial index did not have any impact on the assessment results and I believe with next slide I will give the stage to, uh, in, but we will ask if anyone has questions to me on the slides I show.
+
+John Field | Mar 20, 2023, 1:27:21 PM 
+I am not seeing any blood. I think you are. Oh, sorry, I do see a question now. It is from Will Jasper. We will go ahead.
+
+Will Jasper (MFM) | Mar 20, 2023, 1:27:31 PM 
+Just so a quick question for you, Volta about tribal landings and your your catch history slides, are those lumped in with Washington, I am assuming they are. I just want to make sure.
+
+Vlada Gertseva | Mar 20, 2023, 1:27:46 PM 
+Yes, correct. I realized I was muted. They are included.
+
+Will Jasper (MFM) | Mar 20, 2023, 1:27:51 PM 
+Thank you.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:28:01 PM 
+Okay, uh, thank you, Vlada. If there is other questions on data, we can obviously circle back at the end I am going to just going to briefly talk about two last data elements that I Spent more time on Uh, before getting into the sort of greater modeling question. In terms of the biological parameters in the model, maybe this really is a modeling thing. We are not expecting changes in our treatment and natural mortality at this stage. growth was fully estimated in the model. Petralli is blessed with a lot of data. And you know our survey? More than half of the toes encounter Petrilli, I believe so. We are. We have plenty of data to estimate the growth. And then I will briefly speak to updating the Estimates of maturity and vacant.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:28:55 PM 
+With regard to maturity, there was a Hannah at all study from two thousand two. But there is been an interest in updating the the maturity at length relationship. for some time now. Melissa, he head at the Northwest Center, analyze five hundred eighty three samples collected from throughout the coast. in by multiple agencies. And and got a new update that is actually quite simple, similar to to the HANNAH study. Some of the reasons why The motivated the the the update was that the focus of the Hannah study was was about sort of the ability to determine petralli maturity in winter versus summer. And And also sort of macroscopic versus microscopic analysis of the ovaries, whether so in order to sort of control for variability along the coast, the the focus was very narrow geographic range within Oregon, so.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:29:59 PM 
+It is possible that some of the difference between thirty three point one centimeters and thirty five point five centimeters is due to changes in maturity over time or, you know, ships and biology, but It is also possible and and the sample sizes are not quite high enough to really dig into these questions. Our working hypothesis is that it the the new estimate being representative of a broader geographic range is sort of more representative of the coast as a whole. Because there does seem to be a little bit of variability by area. That is maturity. And then with regard to FCN D, a new study was published a by Lindsey La Fever and two co authors, including John Field, who can maybe answer questions if you have though about this. This came out sort of in time.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:30:55 PM 
+to be included as a sensitivity analysis and the twenty nineteen update, but was not part of the base model. The figure at the left is from that update. Our expectation is to use the the newfane parameters in the in the twenty three assessment. Where the the previous relationship, assuming the number of eggs was proportional to body weight. is shown in the purple line here. the fever study. divided. Forn from Washington, Oregon. shown in blue and red. But the Coast white assessment model does not have the ability to represent separate FC relationships for both. for different areas. Because yeah. so Chantel represented here this black combined line, and you can see it is not a big difference from the purple to the black, you know, basically the contribution of the the fifty plus centimeter fish is is maybe.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:32:04 PM 
+twenty percent bigger. But, you know, the majority of the population is actually smaller than that. the mature population. There just are not that many fish growing to those larger sizes, so This is, you know, part of the the goal to sort of include the best available science in all areas, but is not expected to make a have a big impact on the assessment. I am going to switch to modeling considerations and and again, feel free to to raise your hand. As stuff comes up. so Briefly, the the motivation for exploring the impacts. of changes to the model structure or exploring changes in model structure. First place is that. Our data have evolved over time. Our time series are longer. And the number of years who where modeling is is more numerous.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:33:05 PM 
+And and all that leads to more parameters in the model, and so the the previous update had three hundred four estimated parameters, of which the majority were recruitment deviations for each of the many years from from the late eighteen hundred seconds to to now. But there is a lot of activity, the selectivity parameters for each fleet, and and many of those selectivity parameters, um, have additional time varying components. so In general, if we can find a more parsimonious model that captures the the important information on the data, then that may be a better tool. for for managing the stock. Secondly, if we have data that, that is sort of conflicting within a stock assessment model. Then the typical result of that is that it actually reduces the uncertainty rather than sort of
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:34:00 PM 
+Capturing the greater uncertainty associated with having different signals in the in the data. An alternative approach to including all those sources in the model would be some sort of ensemble modeling that I know Ian Stewart has spoken about recently at the Halibut Commission, but at this point that that is not on the table for for any of the Pacific Coast West Coast ground fish. Last point here, it takes about thirty minutes. There is a lot of data and it is a long time series for Petroleo. It takes about thirty minutes for the model to run. And that in the grand scheme is not that much time, but if we can get a more similar parsimonious model that runs in half the time, we can explore a wider range of model configurations and and you know, I think
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:34:46 PM 
+sort of better capture the full understanding of the sensitivity of this model to all the different elements that we would like to consider. And so that is a consideration as well. So I am going to speak to four different sort of potential changes to to modeling the model structure and included data. And we can circle back and discuss any of these at the end. The first is the the fishery catch per unit effort data, so David Samson and a postdoc were in charge of the stock assessment in nineteen ninety nine. And and I believe that was the first year that a CPU index was used. The time series they had started in nineteen eighty seven and went to The most recent data they had available in ninety nine, so in ninety nine, the West Coast Gran Fish Bottom Trial Survey did not exist, the the triennial survey was all we had and
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:35:44 PM 
+The number of lengths and ages from the the Triennial were really not that numerous the early years did not did not focus on petrol at all. As time went on, the Melissa Halt and the team working with her, in particular, Katara Allos put a lot of work into updating the CP E index. And extending it up to two thousand nine, it was not extended past then because That is when the stock got declared over, fished. And so the behavior of the fishery dramatically changed and you would not expect The CPU e to to be as reflective of population size during a period where where people had to avoid petralli to some extent to deal with the, you know, restrictions associated with over fish status. In two thousand four, there was vessel buyback program
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:36:42 PM 
+Which Where the the vessels remaining in the bottom trail fleet typically had greater horsepower, larger size than than the ones that that were removed through the buyback and CP E increased significantly at that point as well. So in the previous assessments, the recent assessments, the fishery CP E is modeled as non linearly related to abundance. And there is a there is a block on the catch ability in two thousand four. So just a little bit more about that. So the the concept of hyper stability, this non linear relationship. Well, the spectrum of hyper stability to hyper depletion here on the left hand figure is that You know, our ideal is that as abundance increases or decreases, that our index abundance is going to be proportional to that.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:37:38 PM 
+And the hope is that that our standardized fishery, our standardized ty independent bottom trial survey is proportional that is the assumption made in the model. In the case of fishery dependency CP E, there is lots of reasons why it might not be proportional, and if you are fishing on spawning aggregations, the density of fish in those aggregations might be similar, even if the population has reduced, maybe there is just fewer aggregations or the size of the aggregation is smaller. But if you are targeting a troll right to the center of it. Then you might be able to achieve a similar catch rate. So here on the right are, um, figures representing data or the data and model estimates from the twenty nineteen stock assessment where on the upper panels is the time series.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:38:27 PM 
+of the survey index. Showing that big jump in two thousand four or the observations with uncertainty or the open circles and the colored lines are the, um, the model's expectation. And then here on the bottom is is sort of that curvature, the equivalent of this figure. From a Hartley at all paper. Showing that the Southern area. Had had sort of a much Larger degree of this hyper stability phenomenon estimated from the model essentially that as the vulnerable biomass available to the to this fishery, he went down. The the CPU e did not decline as much as you would if they are proportional. Taking out the the commercial Fishery CP E from the twenty nineteen update, stock assessment had really trivial impact on the model results that you can see on the figure on the right.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:39:28 PM 
+So all this to say, you know, the index played an important role, I think from nineteen ninety nine when it was first introduced through the the period where the stock was rebuilt. But we now have this time series. This is the the early the fit to the West Coast Gram Fish Bottom TAL survey as represented in the twenty nineteen update assessment. We now have. additional years of data from this index at this twenty year time series. really is a superior tool for estimating the abundance of the stock than the the fishery C. P. E. And the fact that the CP E no longer has a big influence on the model. I think it is good news because it shows that our other data sources are filled in the gap, not just this independent data, but also the the fishery dependent.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:40:24 PM 
+length and age composition data. So our proposal is to remove the fishery CPU e time series from the stock assessment, but consider it in a sensitivity analysis to see to confirm that as shown in the previous slide, that the impact of including or excluding it is is at this point not significant. That is modeling issue. One modeling issue two is about seasonal structure. So again, it was the ninety nine assessment that they introduced this idea of separate winter and summer seasons. And the the explanation for that was that the especially in Oregon here, as shown in the bottom left panel. The The the catch was dramatically higher in November through February than it was in the rest of the when there was targeting spawning aggregations.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:41:19 PM 
+Second issue was that the The size composition included a bit more older, larger fish in the winter than you saw in the summer. Here the mode is different by just a year, but the tails are fatter in the in the black line. But these were representing a relatively small number of years, in this case, just three years for this size composition. And and focused on Oregon. So we we revisited well, sorry. An additional reason for the seasonal structure in the assessment was That the fishery CPU E that was included was just for the winter fishery, the the fishery on those spawning aggregations under the assumption that that was more representative of. Of the population size than the summer CP E. But as you can see from this presentation back in twenty ten by Melissa Hal took the the winter CPU E trends are on the upper panel and the summer and the lower panel, and there was a significant decline in the summer CPU E that was not seen in the winter.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:42:27 PM 
+And so that that together, you know, is consistent with that hyper stability hypothesis for a spawning aggregation CP E index, but if if we go forward with removing the CPU E from the the model. Then we no longer have to worry about separating summer versus winter. Within in the context of CPU E and and it raises the question of how much value is the separate summer and winter structure? adding to the model in general. Where we have to estimate separate selectivity for each of the summer. North and south and winter north and south, those four divisions of the population. so Looking at the Seasonal patterns of Depth and catch. The pattern remains that in the winter catches at the highest And and the fish are deeper, the ones being caught in the fishery.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:43:30 PM 
+However, When we looked at sharing the selectivity, taking the same twenty nineteen assessment structure. but sharing the selectivity parameters between the winter and summer fleets. So that is here, the dark blue and the black solid lines represent Selectivity for females in the winter and summer north Fishery and here. lines are for males. when those parameters are not allowed to be independent, but a single curve for males in a single curve for females. What we found was that we have twenty two fewer parameters in the model. And the the net result is a negligible change in the estimates of abundance. so At this point, our proposal is to develop seasonal and annual models in parallel. It is not that much harder than then going down a single track and it gives us the flexibility going forward to
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:44:39 PM 
+To sort of Focus more on one or the other. as as the evidence comes forth of what is fitting the data best? If if The investigations that we have done so far continue. To support that the annual model cannot can achieve essentially very, very similar. Dynamics with Significantly fewer parameters than I think what we will propose for the base model in July at the start panel is is the annual model. Just because it is simpler with fewer parameters and I think as it gets if if there is updates in the future, they are more likely to sort of jump around less than than. if We have a more complex seasonal model with more parameters. If if there is a significant difference between seasonal model and an annual model then that is going to be useful to see and and and will dig more into the source of that difference.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:45:43 PM 
+And, John, am I seeing your hand up?
+
+John Field | Mar 20, 2023, 1:45:47 PM 
+Yes. Uh, I was going to let you finish walking through the slide, but I was just curious if you could go back a slide where you were discussing about the selectivity mirroring the selectivity.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:45:58 PM 
+Yeah, here.
+
+John Field | Mar 20, 2023, 1:46:00 PM 
+like. You did that just for the North.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:46:04 PM 
+Um, oh, sorry, no, no, it is it is all the areas. Yeah, so like here the it is the
+
+John Field | Mar 20, 2023, 1:46:04 PM 
+Okay, I was trying to figure
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:46:10 PM 
+Pale blue and green lines are the south. summer and winter mail selectivity, where here they are on top of each other. And likewise, the the orange and red. Sorry, the the surveys. MTS holder for where the the the late tri you know, used to be. The survey in red has not changed. So yeah, it is it is blue and black, dark blue and black and light blue and green. Where here the for females in the south, that selectivity was almost identical already.
+
+John Field | Mar 20, 2023, 1:46:53 PM 
+That is why I was I was trying to figure out if you had done this with the North, not that is that is great. And just out of curiosity, I do not think it is important enough to make much out of but maybe you have thought about this or looked at this. So you see some hyper stability with the winter catch rates. It would be interesting to know if you looked at a relative CPU e if you saw that kind of go away with respect to the rest of the season.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:46:54 PM 
+So now they are on top of each other. Yeah, so sorry for not providing a more detailed explanation there.
+
+John Field | Mar 20, 2023, 1:47:24 PM 
+Although it is not really that interesting and I am sure you have better things to do. I am just wondering if you thought about that.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:47:26 PM 
+Yeah, yeah. I mean, you know, I these. These data on the bottom were computed. So, you know, I I I confess I should have read more detail from the conversations ten, fifteen years ago about which data were being included in the model, you know, in theory that the summer CPU could also have been included in the model. And and I do not know what all went into choosing not to do that, but You know, these these indices could be put in As a as a theoretical exercise to see what the fit would have been. based on what we now know about the population.
+
+John Field | Mar 20, 2023, 1:48:12 PM 
+Yeah. I mean, I I think that the they could I am not sure it is the best use of the time, but it just struck me that you would be more likely to expect to see hyper stability on a spawning aggregation than on the fish after they would kind of dispersed for feeding and whatever else they do the rest of the year. In which case, CPU E might be a little more proportional to what you see in the survey, so It is probably not the best use or investment of time, but it might be kind of an interesting side project. I think that we have two other hands up right now. I think Kelly Johnson was one and Melissa heal TK was the second. And maybe Melissa did that. Age is gone. She is going to tell me, tell us what she found. I'll start with Kelly.
+
+Kelli Johnson | Mar 20, 2023, 1:49:02 PM 
+Yeah. Thanks. Uh, I have a question, Ian, regarding the seasonality. And so I am assuming the previous seasonality was with two fleets, but if you combine all of the information
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:49:07 PM 
+Mm hmm.
+
+Kelli Johnson | Mar 20, 2023, 1:49:17 PM 
+into a single fleet for something that was two fleets. Can you still model? The data. Seasonally, is that valuable or not like to put in comps for? All one fishery. But if you have winter information and you have summer information. There is a column for season in stock synthesis. So would that add value to a single fleet by putting the information in so that you especially if you are modeling growth. Then you have distinct winter and summer information.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:50:00 PM 
+I think um Well, I think there is a couple things going on here. I I think the question of if you have sort of two different partitions of your data, whatever the division is, it could be sex fish and unsexed fish. You know, the question of like what is the mathematical impact of representing that as two independent vectors or aggregate them into a single vector? I my sense is that that there is not a big difference mathematically if you have the identical model structure otherwise. so I think From just Data processing and visualizing fits to data and so on. It would be better to just have a single if it is an annual model with a single annual time step, I think we would be better off with a single vector of length or age composition for each year.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:50:56 PM 
+Although for some years, we have multiple age Osit vectors because there are separate aging error matrices associated with Oregon and Washington. Or the two labs doing the aging as well as break and burn versus surface ages. So so there is some additional duplicate. duplication of the composition vectors because of that. I think that the second element of the the question, Kelly, if I am Characterizing this right is Is sort of modeling growth within the year and I think I took that slide out. I spoke about many of the same things, the modeling questions at a At a meeting at UD a couple weeks ago and And one of the things That I did prior to that meeting was was look at the impact of Of sort of. True seasonal dynamics in which the fish
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:51:55 PM 
+caught in summer had been allowed to grow relative to winter as opposed to sort of to snapshots associated with the same point in time labeled winter and summer and and the impact of that seasonal growth was really negligible. On the fit to the data. So again, I think, you know, if if to do that true seasonal dynamics, stock synthesis has to compute the expected size at age at different times of the year. And it just The software runs slower than if you If you just have a single annual time step, where you are computing the middle of the year. Distribution of length of age, so I think those are all good questions, Kelly, but you know, I think my preference is if we end up with an annual model to make it the simplest annual model and not add that extra layer of complexity.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:52:52 PM 
+If the complexity matters, then I think we are better off having a true seasonal model with with separate time steps for the seasons and real dynamics. And maybe now I should
+
+Kelli Johnson | Mar 20, 2023, 1:53:00 PM 
+Yeah, thanks. And that that was great.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:53:02 PM 
+turn over to to. Okay, uh, and I think Melissa was next. Oh, go ahead, Kelly.
+
+Kelli Johnson | Mar 20, 2023, 1:53:04 PM 
+Maybe in the assessment though, if you can just maybe I was just going to say maybe in the assessment that would help you in your review panel to not have to go back down that rabbit hole and give the same explanation that you just gave if you just, you know, say that the growth
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:53:19 PM 
+great. Yeah.
+
+Kelli Johnson | Mar 20, 2023, 1:53:23 PM 
+is similar. And including Multiple vectors of that composition data. was seen as being not necessary would be helpful just so that you are not asked to do another sensitivity.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:53:37 PM 
+Yeah, yeah. And maybe before we turn to mess, I will take one last comment on that is that I One of the things F and I have been talking about is if you were to if Pat Pati Soul is the only model we have on the coast that is had this kind of seasonal. structure. And that if you did not have the history of modeling a separate winter and summerer seasons and you just looked at the composition data from winter and summerer, it is not different enough that you would say, gosh, I really need to separate this out, so it is more that once it is already been separated for years. You know, we need to think hard about whether it's worth aggregating again. But, you know, the differences are pretty subtle. They are real but but, you know, in
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:54:28 PM 
+in the context of all the other data in the model. I think that the seasonal dynamics are not the most important piece. But yeah, let us get to Melissa now.
+
+Melissa Haltuch | Mar 20, 2023, 1:54:38 PM 
+Hey, Ann. Just for historical context on the winter summer thing, I think a lot of that was driven by a concern over most of the catch being taken from the winter spawning aggregation fishery and that was pretty heavily targeted historically in recent years. I think that the catch has been much more balanced between the summer fishery and that spawn aggregation fishery that happens in the winter. And so maybe that is not as great a concern. And and that is what you are showing in the selectivity are the end year selectivity patterns, not the time blocked historical ones, right so.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:55:13 PM 
+Yeah, good point. Good point. That is a good, important distinction.
+
+Melissa Haltuch | Mar 20, 2023, 1:55:16 PM 
+You would not see those changes in selectivity during the period in which the bulk of the catch was coming from that spawning aggregation fishery. And I am pretty sure if you broke it down now, you would see that it is much more evenly distributed, which so it makes sense to me that you would not perhaps be as Concerned about the differences and and sizes that they catch. So I think if you can simplify That is good. It is going to help you out. And then on this uns standard on the fishery CPU in the summer versus a survey, this is like a red herring, and I would not bother just to be blunt, it is. We spent whole panels talking about or not. The survey was sufficient for petro soul. And comparing the two ad nauseum. It is all well it is to some degree, captured in historical documents. But the bottom line is that.
+
+Melissa Haltuch | Mar 20, 2023, 1:56:10 PM 
+The survey is excellent for petrol souls. Therefore, there is no need to look elsewhere. And somewhere in those historical documents, there is a comparison of One version of these fishery CPU e indices and the summer survey, and they show almost exactly the same pattern. So I would say, don't waste your time. There are bigger issues the case.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:56:33 PM 
+Yeah, yeah. And, you know, our use of fishery CP E has evolved over time, but I think for West Coast ground fish today. The stocks that use fishery CP E have been near shore rock fish that are not well sampled by well, it is recreational CPU, in that case, me sure, rock fish. And You know, I guess When I was involved in yellow tail. Because it is a sort of more pelagic species and maybe not as well sampled by the By the survey we we did include. P. E. For yellowtail, but for for You know, bottom dwelling, flat fish. Like pe the trolley soul that is intl habitat and well sampled by the survey. Yeah, I think we have now reached the point where we we do not need to include it.
+
+Melissa Haltuch | Mar 20, 2023, 1:57:23 PM 
+Yeah. Plus I fully agree with you. I mean, there are a lot of reasons the winter CPU was were not included historically. I think at this point, it is kind of a moot point and we have a good survey in the summer and it is representative and we can move on. If the survey is not good for Petralli, I do not know what it is going to be good for, no?
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:57:40 PM 
+Yeah.
+
+Melissa Haltuch | Mar 20, 2023, 1:57:43 PM 
+I would Stick with the survey.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:57:45 PM 
+Okay, so on that, uh, note, let me move on to the us. See, I covered this, um. Plans for seasonal structure. Third modeling issue is size specific selectivity. Chantel noted this in the in the twenty nineteen update, and I think it may have been noted in previous assessments as well that for the smallest ages, this is showing the fraction female from the West Coast Grand Fish Bottom shall survey. The we catch very few. One and two year olds, but Starting at age three and four, there is more males and females and the smaller sizes that again, this is noise here at the left, but the bubbles are proportional to the number observed for the smaller sizes they are predominantly male. become even more male as you approach the sort of L infinity for males, and then for the biggest sizes, it is all females because the dimorphic growth.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:58:47 PM 
+Has those be all females? But the the fact that the ages and the sizes start. At less than fifty percent female. is notable and different than many of our other stocks. And And it is a big part of the sex specific selectivity, you know, in the previous slide on selectivity, you saw that males and females were being selected at very different sizes. But an additional factor that may be going on here is that There may be A pattern of Genetically female fish being developing as males. And this has not been studied specifically for petralli soul, but it is been widely documented for other species and in fact There is a temperature dependent degree of the that masculinities. that is been documented in lab settings. I do not think the environmental variability in our coast.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 1:59:50 PM 
+This is the paper on the bottom, right. is from twenty nineteen and notes potential concern for warming water for southern flounder. on the east coast. I think For the West Coast, we are not seeing the types of temperature changes that they are in the Atlantic. So I do not see changes over time being an issue for Petralli soul. Rather, I think it is important that we Model this pattern, if it exists, model it as well as possible, and and the simplest way to do that is to. Use an option built into stock synthesis, where you can estimate the sex ratio of the recruits that the young fish entering the population. And in preliminary checks when we did that. For the data that were in the twenty nineteen model, the the fraction female
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:00:46 PM 
+was estimated a little below forty percent, which is consistent with what we are seeing in the survey data. It may still be necessary to have sex specific selectivity, but I think we may get a better fit to the composition data, which is represented as a vector, including both females and males in separate bins, and so the sex ratio information is is included in the data we provide the model, and if the model does not have the adequate flexibility. to capture the drivers of that difference well. Then it will come through in other parameters and maybe Uh, end up in a slightly different modeling space. So that is It is just a preview of one of the modeling issues that we are looking at. And then the last one is this environmental index of recruitment.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:01:34 PM 
+So this was a paper that Melissa Nick and a couple co authors published a few years ago. Where they used estimates from the assessment model of time series recruitment and fit to that. uh a variety of alternative models and settled on one that had four OSAN graphic variables, it explained a large fraction, seventy three percent of the variability in recruitment. And and I think is very promising as as a tool to sort of estimate the most recent recruitments, whereas you saw A couple slides ago, our bottom trill survey really does not catch a lot of, you know, the youngest few ages of petroeuros. Our forecast is going to be much better informed. by by this index. The challenge is that the the Regional Ocean Modeling Roms tool used to to derive some of the ocean to graphic variables.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:02:41 PM 
+the time series of Roms. that was used in the paper ended in twenty ten. And Nick tool. Mary is in the process of of Extending And updating this. Recruitment index using A longer time series provided by Mike Ja Cox, one of the co authors, but there is some challenges in sort of calibrating the the post twenty ten period with the earlier period, so. It will take Nicks more time to work that out, but our hope is that that he will have completed the task in time to include this as a new data source in the new assessment. And I think that brings me to the end. last slide is that Vlad and I have been collaborating. Melissa put us in touch months ago with with a team in Canada doing an assessment in parallel with us also to be completed this summer, Mckenzie Maser and Kendra Holt, D. F. O.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:03:45 PM 
+are leading. What is the first updated or new first new PETI assessment in Canada? In quite some time, petroleum less. abundant up there. It is less subject to targeted fishing. But I think the time is ripe to to update that assessment. so In addition to sort of, you know, just remaining in communication. Some of the collaborations that we are hoping to include are you know, essentially compare trends on either side of the border through our survey indices. look at how length comps and recruitment time series have changed over time. And and how synchronous they are. and possibly do a sensitivity analysis for our West Coast GL fish model. Where the Canadian data included essentially as an additional fleet to sort of mimic what a larger coast wide model would look like and how different.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:04:45 PM 
+Would the result be if we include a catch catched comps and or indices from Canada? Having said to all that, you know. A true petrol is a transboundary stock. Melissa also has a paper and in review that. is looking at sort of larval dispersal. And where fish go? Set all on either side of the border for sure. It is a transboundary stock in that paper supports that view. Our management system is not, I think, well equipped to take on Joint management with Canada for petrol soul. And I think You know? US only model is doing an adequate job of capturing the dynamics we need to know about to manage the stock. But You know, I think to come on on. the link with Canada in future years. And that is all that we have. This is a couple
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:05:47 PM 
+Photos from John Buchanan taken from that large toe. That as you can see from the the fish spilled out that the net is entirely full of petro sal and and this is what they caught in fifteen minutes that that to Devo about in Northern California in twenty twenty one. So, yeah, with that, I will take any questions, comments or concerns.
+
+John Field | Mar 20, 2023, 2:06:14 PM 
+Hi, Anne.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:06:15 PM 
+Yeah, John.
+
+John Field | Mar 20, 2023, 2:06:17 PM 
+I will see my hand so far, so I will go ahead and
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:06:18 PM 
+great.
+
+John Field | Mar 20, 2023, 2:06:19 PM 
+start. With respect to Canada, I guess one thing I did not see up there that I think might be interesting to at least start to engage in conversation with the Canadians about is catch histories because my understanding is that Washington and Oregon have tried to work to estimate, you know, the landings in those states that were caught in US waters. Versus Canadian waters. I would like to think the Canadians would probably like to know something about the fraction of those landings that were caught in Canadian waters. And those would probably be helpful. I do not recall the extent to which Canadian vessels were fishing in the US. Off Washington, Oregon. There may have been a little bit of that. I Do not think we have looked at that or thought about that, but I would just encourage you as you talk to them to
+
+John Field | Mar 20, 2023, 2:07:07 PM 
+You know, at least start conversation. And note comparison about catch histories as part of that.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:07:13 PM 
+Yeah, yeah. That is actually where the began was was they they were requesting. Hey, could you send us all the data on the catch of Canadian fish that was landed in the US. And actually I have to give credit to Kelly Johnson, who who did a bunch of sleuthing and and was able to pull from Pac Fin. some data that I have not yet. shared with the Canadians. I mean, initially it looked like there was no Canadian catch in there, but it just took the right filters to find it. You can ask Kelly the details later. There is some challenges around the confidentiality rules because in some years it is not very many vessels who are who were landing fish from Canada that seem the pac fin era. Of course the historic stuff is is another story, but yeah.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:08:07 PM 
+I am not aware of Fish caught in the US. And landed in Canada being a common data source in our assessments, but I guess we should probably check to make sure there is not something out there.
+
+John Field | Mar 20, 2023, 2:08:23 PM 
+Yeah, my recollection is prior to the pack fon error that Hell Database may have had something on like the Pacific State or the sufficient. Whatever the predecessor was now I have forgotten. Maybe it was just Pacific States Marine Fisheries Commission anyway. There were a bunch of statistical areas and that may have had some information on that. I am just not sure, but you have got that conversation started. And that is great. Kelly, yeah, I saw your comment. I will figure that I I know I have got a reference to it some way. I think it is it is called how Historical an Annotated Landings? I think it was a Noah Tech memo by the Northwest Center. I believe I think other products have since come out that are a little better But there may be clues in that document for people. Hell, H. L.
+
+John Field | Mar 20, 2023, 2:09:22 PM 
+I will find a reference and send it to you, Kelly, or I will try and find it before this meeting is over and just posted in the chat for folks who are interested, any other questions that there is a hand? somewhere.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:09:35 PM 
+It looks like Teresa.
+
+John Field | Mar 20, 2023, 2:09:36 PM 
+Teresa, maybe you have the answer to my question.
+
+Theresa Tsou (WDFW) | Mar 20, 2023, 2:09:40 PM 
+Yeah. So, um, in early years there was a couple of Washington States in house. Technical report indicating. About only ten percent of Canary Petroleum landed in Washington are actually caught in US water. Like, about ninety percent were caught of Canada, I think the Canadian stock asor, they will be interested to know that.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:10:10 PM 
+Yeah, yeah. I I guess I am curious what the drivers of that were. Is it that the is it that the stock was You know, easier to catch in Canada or they were going to Canada to catch other things and and And they happened to also catch Petrelli. So, you know, I do not know that anybody has the answer to that, but it is it is a curiosity to me of what drove that, yeah.
+
+Theresa Tsou (WDFW) | Mar 20, 2023, 2:10:35 PM 
+What the There was a point of time a lot of Washington fishermen went nose. to fish of the Vancouver Islands. And even furthermore, so there was a part of history that we do catch a lot of what can. Can Canadian water?
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:10:49 PM 
+Okay.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:10:56 PM 
+That is helpful. Thank you. And I guess, yeah, if you are landing in, you know, Balham or an cords or some Puget sound port, sailor sea port, then you know, it is just as easy to turn right when you get to the mouth of the straight one if you because it is to turn left and maybe Weather wise or fishing grounds wise or whatever that it was more optimal to turn right. Thank you, Teresa. I see one more hand.
+
+John Field | Mar 20, 2023, 2:11:32 PM 
+I think that is Brad. Go ahead, Bret.
+
+Brad Pettinger | Mar 20, 2023, 2:11:34 PM 
+Yeah, hi everyone. Uh, yeah, I think maybe one of the reasons they went north was the the fishing grounds were a little cleaner. It was off a warship and considering the
+
+Vlada Gertseva | Mar 20, 2023, 2:11:37 PM 
+bu
+
+Brad Pettinger | Mar 20, 2023, 2:11:44 PM 
+the navigational equipment they had back in the day. and gear they used. I think that that would be my guess to the question of why they went north.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:11:56 PM 
+That is helpful, Brad. Thank you. That makes sense.
+
+Vlada Gertseva | Mar 20, 2023, 2:12:02 PM 
+Just the one, uh, just actually a couple of comments fields that I just texted the name and the author for the health database and I believe I can locate. I can luck eat. specific files on my computer because we were using the Oregon C reconstruction and the second comment that I did lucky the updates we got from the Anton Department and Fish and Wildlife. So we are set. with the second update three. So thank you for pointing this out.
+
+John Field | Mar 20, 2023, 2:12:38 PM 
+You be me too. Glad I have just found my version. I am going to paste it anyway because I think I have got the title. But thanks, I am glad youve got a good line on that. It is been a while since a very long time since I looked at that one. Any other questions for Iana Vlada?
+
+Brad Pettinger | Mar 20, 2023, 2:12:50 PM 
+Yeah.
+
+John Field | Mar 20, 2023, 2:13:00 PM 
+I guess the only thing I would Note just briefly as when I was talking about the Tech rate investigations, I was not trying to suggest that the bottom FRA survey was not the right survey or even that this was really important only that this might be kind of an interesting side project. sort of mechanistically to just understand. The mechanism behind hyper stability and a catch rate. So if he saw greater hyper stability and while on the spawning grounds and less high per stability during the summer, it would just perhaps be an interesting kind of mechanistic case study that might help inform more data for stocks. But I do not have any objection to not going down that rabbit hole, either, as I suspect you have better things to do. That was to buy time for other folks to come up with questions if they had them, but I'm not seeing a whole lot.
+
+Marlene A. Bellman | Mar 20, 2023, 2:14:00 PM 
+Brad's. I noticed Brad was not on mute yet, so now he is got a hand raised. I just wanted to point and
+
+John Field | Mar 20, 2023, 2:14:05 PM 
+Oh, yes, go ahead, Brad. You have them follow up.
+
+Brad Pettinger | Mar 20, 2023, 2:14:06 PM 
+Yeah. Well, I just, um, There is a lot of different variables in this fishery, you know, over the over time. um It used to be in the winter fishery. The first boats that got to the first boat to the got the spotting spot, got the biggest tow and it went down quickly from there and the rest of the fleet worked on three hundred four hundred pounds an hour and just grinding on that. That is not the case anymore. Of course, there is a lot as boats too but usually I mean, for the most part, the rule thumb for the fleet is in the winter time. You do not tow too long because you do not know what you are going to get. It was arc the boat that actually get the big tale Foria down out of California. He went north for trying a couple trips there during crab season because they did not want to buy and get Arika. He made an hour dip by camera where it was at, but he had like thirty seven thousand pounds patrolling, which is like twenty seven thousand pounds over his limit.
+
+Brad Pettinger | Mar 20, 2023, 2:15:04 PM 
+so Very different dynamic than it used to be as far as how the the fleet treats Petroleo. There is two fleets in my mind. There's the part time fleet that does. the dishes. Pe trolle. In the winter time with the spawned up and they will probably go for a little less money, but they want to get done quick and so. So the CPU has been because there is so much fish around, it is always fairly, fairly high and those guys, they will opt out and they will go stripping or wing fishing. Probably in the non winter months then near the full time fleet, which is the guys butt I about a dozen draggers, for instance, that it might drive a lot of the summertime. effort. fish for born Stein Seafood out of out of Astoria. And those boats?
+
+Brad Pettinger | Mar 20, 2023, 2:15:57 PM 
+You know, there is always so much pe trolle and if you want to fish year round you got to have patrolling. So I think what happens in the patrol is even though the catch per unit effort is going up in the summer time. People are not trying to catch them. They are trained to avoid them. And so it is a it is a hard thing to measure, but it is not the people that need to target those things in the summer time and they I do not think they anybody act is actively doing that. Oh, sure, for some trips, maybe when they get low. Hey, we need to get a few more petroleum though, because they are on a five hundred. Ten thousand pound limit, whatever that might be, but it is just a It is just hard to wrap. It is hard to wrap your fingers around. This this this stock it is interesting though.
+
+Brad Pettinger | Mar 20, 2023, 2:16:42 PM 
+is I was not aware of the the big tow in the off California until Kurt told me here. About a month ago. And so that was a fifteen minute tow in sixty fathoms if I remember right. And I have never heard of a toad that big that short. But I have heard of big toes since my I think these fish came back hard. in around two thousand or early mid two thousand seconds. Two, seven, eight, something like that and what I saw what I think. what I heard. that time frame, was it? A vessel out of Newport, actually, the the toes stopped the boat and they picked it up and the net was full of patrolling and I did not I do not know if I quite believed the time, but after hearing I have heard today and I have heard from. Kurver, um. anyway.
+
+Brad Pettinger | Mar 20, 2023, 2:17:38 PM 
+Brooks that reel and he ripped it, he kept twenty thousand pounds into the cotton, but also off of California in the mid two thousand seconds. John Penis, I believe. I made a two down there and he had like, a forty thousand pound tow. And which she was it was in the summertime, which was unheard of also. And he said his family had been fishing down there since, you know, nineteen seventeen or eighteen where it was and they never seen volume like that before, of course, the bigger built what they had before. But do not think kid yourself. Those older boats got pretty good. Let us see what else you got to my list here. Initially on your CPU, it coincided with the buy back. You thought my bigger boats might be the reason I would say no. Because usually
+
+Brad Pettinger | Mar 20, 2023, 2:18:27 PM 
+For certain of the winter time, the those are all bigger boats. And you do not need a big boat to catch a bunch of patrolling. Nowadays you do not. He is going to be able to handle it once you get it. So anyway, interesting to listen to what you got here and. It will be good you are looking forward to see you.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:18:45 PM 
+Brad, if I could keep you on the line for a second logger. I am curious to know.
+
+John Field | Mar 20, 2023, 2:18:48 PM 
+Thanks, Brand.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:18:51 PM 
+You know, given that it is very sort of high attainment fishery. How active is the Is the sort of quota share trading as far as you know for Petro, I mean to get to ninety nine percent, I assume? Some people are going over and having to buy a quota from their friends or does everybody kind of just dial in to catch what they have quoted for and that is it.
+
+Brad Pettinger | Mar 20, 2023, 2:19:13 PM 
+Well, I think what you know, for people who are full time draggers, you know, they are they start our season, they are looking to buy, you know, lees, fish, trade fish, whatever to meet with their needs for the year. And so obviously You know, people who are not catching it want to sell it, it gets because, you know, some the lease fees has been high as fifty cents a pound so, you know, people are making good money. On on the lease fee, so. You know, there is no reason to hang on to it, especially if you are an official, you are a wing fisher but you have petroleo you do not need that for by catch and so.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:19:40 PM 
+b
+
+Brad Pettinger | Mar 20, 2023, 2:19:50 PM 
+People are, you know, they are they are willing to train it horse, train it, whatever. to fishermen who want to catch it for a dirty year.
+
+Ian Taylor (NWFSC) | Mar 20, 2023, 2:20:01 PM 
+Thank you. That is couple
+
+Brad Pettinger | Mar 20, 2023, 2:20:03 PM 
+see that.
+
+John Field | Mar 20, 2023, 2:20:11 PM 
+I see one more hand up up. That is still Brad. Anyone else with questions, I think I and Blatty covered the very few things that I had questions about when I looked at the last assessment in the last star panel report from thirteen. Your approach suggestions ways to simplify and make more parse of money. It all sound pretty reasonable to me. Particularly if coupled with a little bit of sensitivity and explanation along the way. So I certainly have no overarching concerns. anyone else on the call? If not, I think we may go ahead and got to break a little early. going once. twice. And Marlene, what do you think about I C two hundred twenty two, maybe you give us a like an eighteen minute break and come back at two hundred forty. Let people stretch their legs or their minds.
+
+Marlene A. Bellman | Mar 20, 2023, 2:21:17 PM 
+Yeah. Sure. That sounds good to me. Um, I will go ahead and put a slide up. I am going to pause the recording and I will put a slide up so that folks, if they join the they know when to come back. So three hundred forty or no, sorry, two hundred forty.
+
+Transcription paused | Mar 20, 2023, 2:21:37 PM - Mar 20, 2023, 2:41:24 PM
+
+John Field | Mar 20, 2023, 2:41:25 PM 
+None on my end. I needed those fifteen minutes.
+
+Jason Schaffler | Mar 20, 2023, 2:41:24 PM 
+...item
+
+John Field | Mar 20, 2023, 2:41:29 PM 
+Thanks.
+
+Jason Schaffler | Mar 20, 2023, 2:41:30 PM 
+Okay. Well, Uh, the next assessment we have is short, spine, thorny head. And I believe this one is being done through the Applied Stock Assessment course that Owen Melissa. and several others at the Northwest Science Center are teaching. And I remember Joshua, I believe was going to be presenting for short, spine, thorny head.
+
+Joshua Zahner | Mar 20, 2023, 2:42:06 PM 
+Yes. That is correct.
+
+Jason Schaffler | Mar 20, 2023, 2:42:08 PM 
+Great, Joshua, take it away. And I will run this the same some way that John Field ran at. If there are any hands up, I will try to acknowledge them. Or I would ask that Marlene or John Field actually. If you can Back up, back me up on that because I will be taking some notes. We will have those questions sort of throughout and then once we get to the end of it, we will have a little bit more discussion and any other related comments. So take it away, Joshua.
+
+Joshua Zahner | Mar 20, 2023, 2:42:44 PM 
+Great. Thank you. Um, okay. Is that sharing for everyone?
+
+Jason Schaffler | Mar 20, 2023, 2:42:49 PM 
+That looks great.
+
+Joshua Zahner | Mar 20, 2023, 2:42:52 PM 
+great. All right, Addy, go ahead.
+
+Madison Heller-Shipley | Mar 20, 2023, 2:42:57 PM 
+All right. Thanks, Josh. Um, hi everyone and thank you all for your time and your input today. As we walk through our overview of the Our data and our assumptions that will be used in the twenty twenty three full assessment for short spine thorny head. So my name is Madison Heller Shipley. I am a co lead on the short Point Thorny head assessment with with Joshua and we will be presenting today both Josh and I along with two of our members Haley Lenok and Jane Sullivan. So just as a little disclaimer, note that nothing that we are presenting here today is final and it was all subject to levels of change. And we will see what our feedback is from you guys. So, Josh, next slide, please. So, um, as it was already stated, this assessment is being conducted as part of the University of Washington Applied Stock Assessment class, so our class is made up of students postdocs and NOAH affiliates, so our team has nine members and we have representation from the University of Washington, University of British Columbia, University of California, Davis and Santa Cruz and finally, Noah. Next slide, Josh. A little bit of background on short spin thorny heads, so short fine thorny heads are found along the west coast of the United States from Baha, California all the way up to the Bearing Sea. In Alaska, they tend to settle around one hundred to four hundred meters in depth and they also display onto genetic movement into deeper waters as they age, so this is a pretty long lived species which reaches a maximum age somewhere around a hundred years.
+
+Madison Heller-Shipley | Mar 20, 2023, 2:44:39 PM 
+But as we will talk about a little bit more in detail and later slides, our ability to age them is pretty limited right now. So the short spine assessment is a data moderate assessment and the last full assessment was conducted in twenty thirteen with a catch only projection update in twenty nineteen. So the assessment that we will conduct this year is a full assessment. And just as an additional note, the previous assessment showed that this stock was was not anywhere near target or limit thresholds. Next slide, Josh. All right, so we wanted to start off with a reminder of where we left off from the twenty thirteen assessment. So as I alluded to, our To start, our aging methods are pretty limited for this species, and we do not have any aging data available from the surveys or the fisheries.
+
+Madison Heller-Shipley | Mar 20, 2023, 2:45:28 PM 
+The available information on age that we do have is is from external research. And The aging errors that are associated With trying to a eat, these fish really have a pretty substantial impact on their on our growth and maturity assumptions. So additional research into methods are still ongoing and will be quite important for the stock. So there was also a call for more comprehensive catch reconstructions from the pre nineteen eighty one period and we will kind of discuss more about what we did in the historical ending section, but we have not had too many substantial updates here. And then finally, there is interest in exploring some of the more simple. assessment methods, which we will be exploring is as we move on to the next steps of the assessment process. And did I see a hand?
+
+Vlada Gertseva | Mar 20, 2023, 2:46:22 PM 
+No, no, just wanted to say there is no
+
+Madison Heller-Shipley | Mar 20, 2023, 2:46:22 PM 
+Maybe not. All right. Oh,
+
+Jason Schaffler | Mar 20, 2023, 2:46:25 PM 
+No, he did not do yet.
+
+Madison Heller-Shipley | Mar 20, 2023, 2:46:28 PM 
+All right, next slide. Yeah, you are good, Josh. All right, so this is an overview of our data sources that will be considered throughout our modeling process. So to start, we considered four different fleets for this stock. So we split fleets by area with a northern area representing Washington and Oregon and a southern area which represented California as well as troll and non trial fleets. So starting from the top of this figure and moving down, we have data from catches for our four fleets. Our abundance Indices from the surveys along the West Coast length composition, information from both the fisheries and the surveys. Discards from the fisheries and then the associated mean body weights, which are used to inform our discards, so note that these time series continue into twenty twenty three.
+
+Madison Heller-Shipley | Mar 20, 2023, 2:47:18 PM 
+And everything continues except for some of those older surveys that are no longer being conducted. And then with that, uh, tosh, next slide, I will pass it on to Haley who will be talking about our fishery dependent data.
+
+Haley Oleynik (she/her) | Mar 20, 2023, 2:47:33 PM 
+Thanks, Mattie. Um, you can go to the next slide, Josh. So here is just a quick overview of all the fishery dependent data. It is coming from a lot of sources here. I will start by talking about landings and then I will actually hand it back to Matty to talk about discards. The one thing I do want to note is that we are just using links in this model. There is like Matty said. short spin are notoriously hard to age or so we have been told. So there is no age data. just links. You can go next slide, Josh. Thanks. Okay. So, um, For our land fishery landings, data, it is coming now from a variety of sources. We have the historical data, which is nineteen hundred to nineteen eighty one, coming from historical reconstructions from each of the states, California, Oregon and Washington, and then in more recent years from nineteen eighty one to present, we have.
+
+Haley Oleynik (she/her) | Mar 20, 2023, 2:48:34 PM 
+data coming from pac fin. We are going to likely use the same fleet structure that was used in the twenty thirteen model and as shown here. One thing to note is that coast wide troll catches made up about seventy five percent of the catch and then fixed gear, which was dominantly hook in line, made up about twenty five percent of the catch. So we have a North troll fleet, which is Oregon and Washington combined, and then a North non troll. And then a south troll and a South non tal with which our California catches.
+
+Jason Schaffler | Mar 20, 2023, 2:49:12 PM 
+Hey, we have a question.
+
+Haley Oleynik (she/her) | Mar 20, 2023, 2:49:15 PM 
+Yeah. Go ahead.
+
+Jason Schaffler | Mar 20, 2023, 2:49:16 PM 
+I believe it might have been Ali Whitman.
+
+Ali Whitman (ODFW) | Mar 20, 2023, 2:49:20 PM 
+Yeah, hi, this is Ali Whitman from OD FW. Can you guys hear me? I did not do a sound check at the beginning, great.
+
+Haley Oleynik (she/her) | Mar 20, 2023, 2:49:25 PM 
+Yes, we can hear you, Ali.
+
+Ali Whitman (ODFW) | Mar 20, 2023, 2:49:28 PM 
+I just want to check and make sure Your the years that we typically recommend our historical reconstructions be used. go up through nineteen eighty six, and then we recommend using Pat Finn from nineteen eighty seven forward. I think I provided that. I am just wondering if maybe we just got lumped in the slide.
+
+Haley Oleynik (she/her) | Mar 20, 2023, 2:49:48 PM 
+Yeah, yeah, I was going to say this is an over generalization we are using else. Yeah, that is a great that is a great note though, Ali, thank you. We are using WASH. I mean, Oregon reconstructed catch up to eighty six.
+
+Ali Whitman (ODFW) | Mar 20, 2023, 2:49:54 PM 
+Mmm, okay.
+
+Ali Whitman (ODFW) | Mar 20, 2023, 2:50:04 PM 
+Great. Thank you.
+
+Haley Oleynik (she/her) | Mar 20, 2023, 2:50:07 PM 
+Anyone else
+
+Haley Oleynik (she/her) | Mar 20, 2023, 2:50:13 PM 
+Okay, I guess we can keep going, Josh. Okay, so now we are just we wanted to show a comparison of the data we will be using in the twenty twenty three assessment, which is shown in blue on this plot. With the data used in the twenty thirteen assessment, like Mattie said, that was the last full assessment. And that is shown in orange here. First, I just want a big flashy note that the scales are different, so there is obviously a lot less caught, like I said in the non troll fleets and then there's a lot less caught in the north. So just notice those scales on the y axes. um The biggest differences are here here are going to be due to those historical reconstructions that we now have in the two thousand five and the twenty thirteen assessment. They calculated catches pre nineteen eighty one as a fixed proportion of historical Sable fish landings.
+
+Haley Oleynik (she/her) | Mar 20, 2023, 2:51:09 PM 
+And did not use state reconstruction, so we will be using the state reconstructions, and you can just see those changes in a few little ways noted here on the slide. I will pause for a second for questions about this.
+
+Haley Oleynik (she/her) | Mar 20, 2023, 2:51:29 PM 
+Okay, I think we can keep going. Okay. And so this is just showing the total Short sign, thorny head landings. nineteen hundred to present. Broken up into that fleet structure that I showed in the first slide. One thing to note here and part of the reason we wanted to show the slide is that those North non Troller and other here Make up a really, really small proportion of the catch you. It is circled there. I do not know if you can see Josh's mouse to if he moves over it, but. It is circled right there. And so we are going to explore combining that North non troll fleet with the South non troll fleet, it might help to reduce the model complexity. As per the recommendations from the last assessment. Thanks. okay so we are talking about short sin thorny head here but long spine heads are also caught on the west coast

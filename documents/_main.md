@@ -89,7 +89,7 @@ Include Figure with long-term estimates.
 \input{tex_tables/a_Catches_ES.tex}
 
 
-![Landings by fleet used in the base model where catches in metric tons by fleet are stacked.\label{fig:es-catch}](../models/2023.a024.018_min_sample_retuned/plots/catch2 landings stacked.png){width=100% height=100% alt="."}
+![Landings by fleet used in the base model where catches in metric tons by fleet are stacked.\label{fig:es-catch}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/catch2 landings stacked.png){width=100% height=100% alt="."}
 
 \clearpage
 
@@ -121,10 +121,10 @@ Include Figure with long-term estimates.
 \input{tex_tables/b_SSB_ES.tex}
 
 
-![Estimated time series of spawning output for the base model.\label{fig:es-ssb}](../models/2023.a024.018_min_sample_retuned/plots/ts7_Spawning_output.png){width=100% height=100% alt="."}
+![Estimated time series of spawning output (circles and line: median; light broken lines: 95 percent intervals) for the base model.\label{fig:es-ssb}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png){width=100% height=100% alt="."}
 
 
-![Estimated time series of fraction of unfished spawning output for the base model.\label{fig:es-depl}](../models/2023.a024.018_min_sample_retuned/plots/ts9_Relative_spawning_output.png){width=100% height=100% alt="."}
+![Estimated time series of fraction of unfished spawning output (circles and line: median; light broken lines: 95 percent intervals) for the base model.\label{fig:es-depl}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/ts9_Relative_spawning_output_intervals.png){width=100% height=100% alt="."}
 
 \clearpage
 
@@ -140,10 +140,10 @@ Include Figure with long-term estimates.
 \input{tex_tables/c_Recr_ES.tex}
 
 
-![Estimated time series of age-0 recruits (1000s) for the base model.\label{fig:es-recruits}](../models/2023.a024.018_min_sample_retuned/plots/ts11_Age-0_recruits_(1000s).png){width=100% height=100% alt="."}
+![Estimated time series of age-0 recruits (1000s) for the base model with 95 percent intervals.\label{fig:es-recruits}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png){width=100% height=100% alt="."}
 
 
-![Estimated time series of recruitment deviations.\label{fig:es-rec-devs}](../models/2023.a024.018_min_sample_retuned/plots/recdevs1_points.png){width=100% height=100% alt="."}
+![Estimated time series of recruitment deviations.\label{fig:es-rec-devs}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/recdevs2_withbars.png){width=100% height=100% alt="."}
 
 \clearpage
 ## Exploitation status{-}
@@ -156,7 +156,7 @@ Include Figure with trend in f relative to target vs. trend in biomass relative 
 \input{tex_tables/d_SPR_ES.tex}
 
 
-![Estimated 1 - relative spawning ratio (SPR) by year for the base model. The management target is plotted as a red horizontal line and values above this reflect harvest in excess of the proxy harvest rate.\label{fig:es-1-spr}](../models/2023.a024.018_min_sample_retuned/plots/SPR2_minusSPRseries.png){width=100% height=100% alt="."}
+![Estimated 1 - relative spawning ratio (SPR) by year for the base model. The management target is plotted as a red horizontal line and values above this reflect harvest in excess of the proxy harvest rate.\label{fig:es-1-spr}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/SPR2_minusSPRseries.png){width=100% height=100% alt="."}
 
 \clearpage
 
@@ -174,11 +174,11 @@ management targets and definition of overfishing, including the harvest rate tha
 Include Table of estimated reference points for ssb, SPR, exploitation rate, and yield based on SSB proxy for MSY, SPR proxy for MSY, and estimated MSY values.
 
 
-![Phase plot of estimated 1-SPR versus fraction unfished for the base model.\label{fig:es-phase}](../models/2023.a024.018_min_sample_retuned/plots/SPR4_phase.png){width=100% height=100% alt="."}
+![Phase plot of estimated 1-SPR versus fraction unfished for the base model.\label{fig:es-phase}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/SPR4_phase.png){width=100% height=100% alt="."}
 
 
 ![Equilibrium yield curve for the base case model. Values are based on the 2020
-fishery selectivities and with steepness fixed at 0.80.\label{fig:es-yield}](../models/2023.a024.018_min_sample_retuned/plots/yield2_yield_curve_with_refpoints.png){width=100% height=100% alt="."}
+fishery selectivities and with steepness fixed at 0.80.\label{fig:es-yield}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/yield2_yield_curve_with_refpoints.png){width=100% height=100% alt="."}
 
 \input{tex_tables/e_ReferencePoints_ES.tex}
 
@@ -558,16 +558,18 @@ Here are all the mad props!
 relative within a data type. Circles are proportional to
 total catch for catches; to precision for indices, discards, and
 mean body weight observations; and to total sample size for
-compositions.\label{fig:data-plot}](../models/2023.a024.018_min_sample_retuned/plots/data_plot2.png){width=100% height=100% alt="."}
+compositions.\label{fig:data-plot}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/data_plot2.png){width=100% height=100% alt="."}
 
 <!-- ====================================================================== -->  
 <!-- ****************** Catches Used in the Model ************************* --> 
 <!-- ====================================================================== -->  
 
+## Catch and estimated discards
 
-![Landings (mt) by fleet used in the base model.\label{fig:catch-figures-r4ss}](../models/2023.a024.018_min_sample_retuned/plots/catch2 landings stacked.png){width=100% height=100% alt="."}
 
-![Landings plus dead discards (mt) by fleet as estimated in the base model.\label{fig:catchdiscard-figures-r4ss}](../models/2023.a024.018_min_sample_retuned/plots/catch16 landings + dead discards.png){width=100% height=100% alt="."}
+![Landings (mt) by fleet used in the base model.\label{fig:catch-figures-r4ss}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/catch2 landings stacked.png){width=100% height=100% alt="."}
+
+![Landings plus dead discards (mt) by fleet as estimated in the base model.\label{fig:catchdiscard-figures-r4ss}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/catch16 landings + dead discards.png){width=100% height=100% alt="."}
 
 <!-- ====================================================================== --> 
 <!-- ******************* Data Used in the Model *************************** --> 
@@ -587,8 +589,26 @@ compositions.\label{fig:data-plot}](../models/2023.a024.018_min_sample_retuned/p
 
 ### Estimated Biology
 
+![Model estimated length-at-age in the beginning of the year. Shaded area indicates 95 percent distribution of length-at-age around the estimated growth curve.\label{fig:mod-est-len-age}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/bio1_sizeatage.png){width=100% height=100% alt="."}
+
+
+![Relationship between growth, maturity, and weight. Length at age is in the top-left panel with weight (thick lines) and maturity (thin lines) shown in top-right and lower-left panels.\label{fig:mod-est-len-age2}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/bio3_sizeatage_plus_WT_and_MAT.png){width=100% height=100% alt="."}
+
+![Maturity ogive showing fit to observed fraction mature within each length bin.\label{fig:maturity}](../figures/Petrale_fxn_ogive.png){width=100% height=100% alt="."}
+
 
 ### Selectivity
+
+![Selectivity at length for multiple fleets. Solid lines are female selectivity, dashed are male.\label{fig:sel_length}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/sel01_multiple_fleets_length1.png){width=100% height=100% alt="."}
+
+![Ending-year selectivity at age derived from selectivity at length (solid female, dashed male).\label{fig:sel-age}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/sel02_multiple_fleets_age2.png){width=100% height=100% alt="."}
+
+![Selectivity at age derived from selectivity at length (solid female, dashed male).\label{fig:sel-length}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/sel02_multiple_fleets_age2.png){width=100% height=100% alt="."}
+
+![Time-varying female selectivity (top) and retention (bottom) for the fishing fleets. Retention is the same for females and males.\label{fig:sel-tv-fem}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/custom_plots/selectivity_time-varying_fem.png){width=100% height=100% alt="."}
+
+![Time-varying male selectivity (top) and retention (bottom) for the fishing fleets. Retention is the same for females and males.\label{fig:sel-tv-mal}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/custom_plots/selectivity_time-varying_mal.png){width=100% height=100% alt="."}
+
 
 
 ### Recruitment
@@ -596,6 +616,27 @@ compositions.\label{fig:data-plot}](../models/2023.a024.018_min_sample_retuned/p
 
 ### Fits to Data
 
+### Fits to Data
+#### Fits to indices
+
+![Fit to index data for WCGBTS. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error.\label{fig:index-wcgbts-fit}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/index2_cpuefit_WCGBTS.png){width=100% height=100% alt="."}
+
+![Fit to index data for the Triennial survey. Lines indicate 95% uncertainty interval around index values based on the model assumption of lognormal error. Thicker lines indicate input uncertainty before addition of estimated additional uncertainty parameter.\label{fig:index-tri-fit}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/index2_cpuefit_Triennial.png){width=100% height=100% alt="."}
+
+#### Fits to Length and Age Compositions
+<!-- TODO: add Francis plots -->
+
+![Length composition aggregated across years by fleet with the model estimated fit to the data by sex (red female and blue male).\label{fig:len-agg-fit}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/comp_lenfit__aggregated_across_time.png){width=100% height=100% alt="."}
+
+![Pearson residuals for fit to length composition data for all fleets (red female, blue male, grey unsexed). Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected).\label{fig:len-all-pearson}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/comp_lenfit__multi-fleet_comparison.png){width=100% height=100% alt="."}
+
+![Pearson residuals for fit to age composition data for all fleets (red female, blue male). Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected).\label{fig:age-all-pearson}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/comp_agefit__multi-fleet_comparison.png){width=100% height=100% alt="."}
+
+![Age composition data aggregated across time by fleet and sex (red female and blue male).\label{fig:agg-marg-age-fit}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/comp_agefit__aggregated_across_time.png){width=100% height=100% alt="."}
+
+![Pearson residuals for conditional age-at-length data from WCGBTS (plot 1 of 2).\label{fig:agg-caal-fit1}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/comp_condAALfit_residsflt4mkt0_page1.png){width=100% height=100% alt="."}
+
+![Pearson residuals for conditional age-at-length data from WCGBTS (plot 2 of 2).\label{fig:agg-caal-fit2}](../models/2023.a024.034_from_24.31_nosurface_tune_sigmaR_0.5/plots/comp_condAALfit_residsflt4mkt0_page2.png){width=100% height=100% alt="."}
 
 ### Time-series
 

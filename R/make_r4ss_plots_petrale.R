@@ -49,5 +49,6 @@ make_r4ss_plots_petrale <- function(mod, plot = c(1:26, 31:50),
 
   if (31 %in% plot) {
     plot_petrale_tv_selex(mod)
+    plot_petrale_tv_selex(mod, sex = 2)
   }  
 }
