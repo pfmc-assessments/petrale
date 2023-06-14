@@ -1,5 +1,68 @@
-load("data-raw/PacFIN.PTRL.CompFT.27.Jan.2023.RData")
-load("data-raw/PacFIN.PTRL.bds.27.Jan.2023.RData")
+load("data-raw/pacfin/PacFIN.PTRL.CompFT.27.Jan.2023.RData")
+load("data-raw/pacfin/PacFIN.PTRL.bds.27.Jan.2023.RData")
+
+# looking at differences with new extraction
+catch.pacfin_old = catch.pacfin
+rm(catch.pacfin)
+load("data-raw/pacfin/PacFIN.PTRL.CompFT.12.Jun.2023.RData")
+table(catch.pacfin$LANDING_YEAR, 
+  catch.pacfin$FISH_TICKET_ID %in% catch.pacfin_old$FISH_TICKET_ID)
+
+x1 = aggregate(catch.pacfin$LANDED_WEIGHT_MTONS, 
+  by = list(catch.pacfin$LANDING_YEAR, catch.pacfin$AGENCY_CODE), 
+  FUN = sum)
+x2 = aggregate(catch.pacfin_old$LANDED_WEIGHT_MTONS, 
+  by = list(catch.pacfin_old$LANDING_YEAR, catch.pacfin_old$AGENCY_CODE), 
+  FUN = sum)
+xdiff <- data.frame(x1, sum_landings_Jan_mt = x2[,3], diff_Jun_minus_Jan = round(x1[,3] - x2[,3], 3))
+xdiff %>% 
+  dplyr::rename(year = Group.1, agency = Group.2, sum_landings_Jun_mt = x) %>% 
+  dplyr::filter(diff_Jun_minus_Jan != 0, year < 2023) %>%
+  dplyr::arrange(year)
+#   year agency sum_landings_Jun_mt sum_landings_Jan_mt diff_Jun_minus_Jan
+# 1 2014      C           622.68543           622.67996              0.005
+# 2 2017      C           616.66437           841.16591           -224.502
+# 3 2022      C           966.36331           964.23250              2.131
+# 4 2022      W            79.89495            80.10133             -0.206
+
+# more detail on mismatched catches from WA
+z1 <- catch.pacfin     %>% dplyr::filter(AGENCY_CODE == "W" & LANDING_YEAR == 2022)
+z2 <- catch.pacfin_old %>% dplyr::filter(AGENCY_CODE == "W" & LANDING_YEAR == 2022)
+
+for(id in sort(unique(z1$FTID))) {
+  vals1 <- z1 %>% 
+    dplyr::filter(FTID == id) %>%
+    dplyr::select(FTID, LANDED_WEIGHT_MTONS)
+  vals2 <- z2 %>% 
+    dplyr::filter(FTID == id) %>%
+    dplyr::select(FTID, LANDED_WEIGHT_MTONS)
+  if(dplyr::all_equal(vals1, vals2) != TRUE) {
+    cat("June extraction records with id = ", id, "\n")
+    print(vals1)
+    cat("January extraction records with id = ", id, "\n")
+    print(vals2)
+  }
+}
+
+# more detail on mismatched catches from CA in 2017
+z1 <- catch.pacfin     %>% dplyr::filter(AGENCY_CODE == "C" & LANDING_YEAR == 2017)
+z2 <- catch.pacfin_old %>% dplyr::filter(AGENCY_CODE == "C" & LANDING_YEAR == 2017)
+
+for(id in sort(unique(z1$FTID))) {
+  vals1 <- z1 %>% 
+    dplyr::filter(FTID == id) %>%
+    dplyr::select(FTID, LANDED_WEIGHT_MTONS)
+  vals2 <- z2 %>% 
+    dplyr::filter(FTID == id) %>%
+    dplyr::select(FTID, LANDED_WEIGHT_MTONS)
+  if(dplyr::all_equal(vals1, vals2) != TRUE) {
+    cat("June extraction records with id = ", id, "\n")
+    print(vals1)
+    cat("January extraction records with id = ", id, "\n")
+    print(vals2)
+  }
+}
+
 
 library(magrittr)
 library(ggplot2)

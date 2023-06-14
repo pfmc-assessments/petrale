@@ -15,7 +15,7 @@
 #' * might be helpful,
 #' * could contain bugs,
 #' * will more than likely have non-descript error and warning messages.
-#' Please post an [issue](https::/github.com/nwfsc-assess/sa4ss/issues)
+#' Please post an [issue](https::/github.com/pfmc-assessments/sa4ss/issues)
 #' or email the author of this function.
 #' Thank you for helping test it out, and we hope the pain is worth the gain!
 #'
@@ -66,16 +66,18 @@ compile_petrale <- function(
   # If wipe, remove cache and plots
   if (wipe) {
     unlink(file.path(fullpathbasemodel, "plots"), recursive = TRUE)
-    # unlink(file.path(fullpathbasemodel, "custom_plots"), recursive = TRUE)
+    unlink(file.path(fullpathbasemodel, "custom_plots"), recursive = TRUE)
   }
 
   if (
     !file.exists(file.path(fullpathbasemodel, "plots")) |
       !file.exists(file.path(fullpathbasemodel, "00mod.Rdata"))
   ) {
+    # prepare stuff in model directory, including 00mod.Rdata
+    # and plots as created by wrapper function make_r4ss_plots_petrale()
     compile_precursor(
       basemodelname,
-      plot = !file.exists(file.path(fullpathbasemodel, "plots"))
+      plot = !file.exists(file.path(fullpathbasemodel, "custom_plots"))
     )
   }
 
@@ -146,8 +148,8 @@ compile_precursor <- function(basemodel, plot = TRUE) {
 
   load(file.path("00mod.Rdata"), envir = modenv)
   if (plot) {
-    # # add custom plotting functions here if needed
-    # make_r4ss_plots_ling(modenv$model, verbose = TRUE)
+    # add custom plotting functions here if needed
+    make_r4ss_plots_petrale(modenv$model, verbose = TRUE)
   }
 
   # get exec summary tables
