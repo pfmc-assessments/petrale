@@ -39,9 +39,9 @@ Imports:
     R.utils
 Remotes:
     github::r4ss/r4ss,
-    github::nwfsc-assess/nwfscSurvey,
-    github::nwfsc-assess/PacFIN.Utilities,
-    github::nwfsc-assess/sa4ss,
+    github::pfmc-assessments/nwfscSurvey,
+    github::pfmc-assessments/PacFIN.Utilities,
+    github::pfmc-assessments/sa4ss,
 Depends:
     R (>= 2.10)
 VignetteBuilder: knitr
