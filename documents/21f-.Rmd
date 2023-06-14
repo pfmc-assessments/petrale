@@ -1,2 +1,8 @@
 ## Fishery-Dependent Data
 Fishery removals were divided among two fleets: 1) North and 2) South. Landings for the North fleet are defined as fish landed in Washington and Oregon ports. Landings for the South feet are defined as fish landed in California ports. The landings of Petrale sole are made primarily by groundfish bottom trawl gear; landings by gear types other than bottom trawl have been inconsequential, averaging less than 2.5% of the coast-wide landings. The non-trawl landings (that consist of only a small fraction of the total landings) are included along with the trawl landings in a single gears fleets.
+
+##Commercial Fishery Landings
+All landings for this assessment were summarized by state (based on port of landing). Landings for Washington and Oregon are summed into a single North fleet (consistent with previous assessment) due to the fact that vessels commonly fish and land in each other's waters and ports.
+
+###Recent landings
+Recent commercial landings of Petrale sole (1981-2022 for California and Washington; 1987-2022 for Oregon) were obtained from the Pacific Fisheries Information Network (PacFIN), a regional fisheries database that manages fishery-dependent information in cooperation with west coast state agencies and NOAA Fisheries (www.pacfin.com). Catch data were extracted by state and then combined into the fishing fleets used in the assessment. Time series of recent (PacFIN era) landings by state are shown in *Figure XX. 
