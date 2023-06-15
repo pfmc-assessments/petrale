@@ -51,7 +51,11 @@ compile_petrale <- function(
     time = 10,
     wipe = FALSE,
     ...) {
-      
+
+  # load packages doesn't happen automatically with devtools::load_all()
+  require(sa4ss)
+  require(magrittr)
+  
   # Sort out paths and directories
   
   # remove any extra directory info like "models" in front of the name
