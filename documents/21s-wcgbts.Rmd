@@ -6,7 +6,7 @@ This design generally uses four industry-chartered vessels per year assigned to 
 Two vessels fish from north to south during each pass between late May to early October.
 This design therefore incorporates both vessel-to-vessel differences in catchability, as well as variance associated with selecting a relatively small number (approximately 700) of possible cells from a very large set of possible cells spread from the Mexican to the Canadian borders.
 
-The `r nwfsc` commonly encounters `r spp` along the U.S West Coast, except south of Point Conception (Figure \ref{fig:nw_map}). The catch-per-unit-effort estimated from the survey is roughly constant north of 38$^\circ$ (Figure \ref{fig:nw_cpue_lat}). The survey does fish shallower than 54 m and the encounter rate of `r spp` declines at waters deeper than 400 m. Figure \ref{fig:nw_cpue_depth} shows that the positive tows catch rate by depth peaks between 100-200 meters and declines as depth increases. The observed lengths captured across depths by the survey are shown in Figure \ref{fig:nwfsc_size_depth}.
+The \Gls{s-wcgbt} commonly encounters `r spp` along the U.S West Coast, except south of Point Conception (Figure \ref{fig:nw_map}). The catch-per-unit-effort estimated from the survey is roughly constant north of 38$^\circ$ (Figure \ref{fig:nw_cpue_lat}). The survey does fish shallower than 54 m and the encounter rate of `r spp` declines at waters deeper than 400 m. Figure \ref{fig:nw_cpue_depth} shows that the positive tows catch rate by depth peaks between 100-200 meters and declines as depth increases. The observed lengths captured across depths by the survey are shown in Figure \ref{fig:nwfsc_size_depth}.
 
 Three sources of information are produced by this survey: an index of relative abundance, length-frequency distributions, and age-frequency distributions. 
 
@@ -14,7 +14,7 @@ INDEX INFORMATION TO BE ADDED
 
 Length bins from 12 to 62 cm in 2 cm increments were used to summarize the length frequency of the survey catches in each year. The first length bin includes all observations less than 14 cm and the last bin includes all fish larger than 62 cm. Table \ref{tab:NWcombo_Lengths} shows the number of lengths taken by the survey.  The stratification for length data expansion based on the design-based estimates is provided in Table \ref{tab:strata_nwfsc}.
 
-Age distributions included bins from age 1 to age 17, with the last bin including all fish of greater age. Table \ref{tab:NWcombo_Ages} shows the number of ages taken by the survey.Age distributions were included in the model as conditional-age-at-length observations. The marginal `r nwfsc` age-compositions were also included, but only for easier viewing of strong cohorts.
+Age distributions included bins from age 1 to age 17, with the last bin including all fish of greater age. Table \ref{tab:NWcombo_Ages} shows the number of ages taken by the survey.Age distributions were included in the model as conditional-age-at-length observations. The marginal \Gls{s-wcgbt} age-compositions were also included, but only for easier viewing of strong cohorts.
 
 The input sample sizes for length and marginal age-composition data for all fishery-independent surveys were calculated based on the approach used in the 2013 full and 2015 update assessment as: 
 

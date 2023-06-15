@@ -25,12 +25,12 @@ The natural mortality prior was updated for this update assessment using the abo
 
 ###Length-Weight Relationship
 
-The length-weight relationship for `r spp` was estimated outside the model using all biological data available from the `r nwfsc` data consistent with method applied by the 2013 assessment. The female weight-at-length in grams was estimated at `r format(mod1$MGparmAdj$Wtlen_1_Fem[1], scientific = TRUE)`$L$^`r round(mod1$MGparmAdj$Wtlen_2_Fem[1],2)`^ and males at `r format(mod1$MGparmAdj$Wtlen_1_Mal[1], scientific = TRUE)`$L$^`r round(mod1$MGparmAdj$Wtlen_2_Mal[1], 2)`^ where $L$ is length in cm (Figure \ref{fig:wt_length}).  The length-weight relationship estimates from the `r nwfsc` data were consistent with the biological observations available from the fishery data. 
+The length-weight relationship for `r spp` was estimated outside the model using all biological data available from the \Gls{s-wcgbt} data consistent with method applied by the 2013 assessment. The female weight-at-length in grams was estimated at `r format(mod_base$MGparmAdj$Wtlen_1_Fem[1], scientific = TRUE)`$L$^`r round(mod_base$MGparmAdj$Wtlen_2_Fem[1],2)`^ and males at `r format(mod_base$MGparmAdj$Wtlen_1_Mal[1], scientific = TRUE)`$L$^`r round(mod_base$MGparmAdj$Wtlen_2_Mal[1], 2)`^ where $L$ is length in cm (Figure \ref{fig:wt_length}).  The length-weight relationship estimates from the \Gls{s-wcgbt} data were consistent with the biological observations available from the fishery data. 
 
 
 ###Growth (Length-at-Age)
 
-The length-at-age was estimated for male and female `r spp`. Figure \ref{fig:length_age} shows the lengths and ages as well as predicted von Bertalanffy fits to the data from the fishery and the `r nwfsc` data. Females grow larger than males and sex-specific growth parameters were estimated at the following values for females $L_{\infty}$ = 54 cm; $k$ = 0.16 $\text{yr}^{-1}$, and males $L_{\infty}$ = 41 cm; $k$ = 0.25 $\text{yr}^{-1}$. These values were used as starting parameter values within the base model prior to estimating each parameter for male and female `r spp`.
+The length-at-age was estimated for male and female `r spp`. Figure \ref{fig:length_age} shows the lengths and ages as well as predicted von Bertalanffy fits to the data from the fishery and the \Gls{s-wcgbt} data. Females grow larger than males and sex-specific growth parameters were estimated at the following values for females $L_{\infty}$ = 54 cm; $k$ = 0.16 $\text{yr}^{-1}$, and males $L_{\infty}$ = 41 cm; $k$ = 0.25 $\text{yr}^{-1}$. These values were used as starting parameter values within the base model prior to estimating each parameter for male and female `r spp`.
 
 
 ###Ageing Precision and Bias
