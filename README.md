@@ -9,6 +9,7 @@ Petrale Sole stock assessment for the U.S. West Coast
 readLines("DESCRIPTION")[1]
 
 # load everything in the petrale folder
+# first time: install.packages("devtools")
 devtools::load_all()
 # load other libraries
 library(sa4ss)
