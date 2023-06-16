@@ -7,6 +7,6 @@
 <!-- ====================================================================== -->
 ```{r tables-model, results = "asis"}
 cat("\\begin{landscape}")
-#table_pars_split(mod_base)
+table_pars_split(mod_base)
 cat("\\end{landscape}")
 ```
