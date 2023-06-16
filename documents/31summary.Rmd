@@ -56,5 +56,4 @@ log(effort) can be included as an additive offset, and most GLMM packages includ
 
 This assessment does not include fishery CPUE (please see below).
 
-
 ### Response to STAR Panel Requests (not required in draft)

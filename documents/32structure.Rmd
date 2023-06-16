@@ -1,6 +1,5 @@
 ## Model Structure and Assumptions
 
-
 ### Model Changes from the Last Assessment (not required for an update assessment)
 
 The last update assessment of Petrale sole was conducted in 2019. The 2019 assessment model was the starting point for this assessment, and a bridging analysis was done to investigate the impact of increment changes to the assessment model. For this assessment, we retained a number of features of the 2019 assessment and also included a number of improvements related to use of data and modeling techniques.  Below, we describe the most important changes made since the last full assessment and provide rationale for each change:
@@ -26,8 +25,6 @@ Rationale: According to best practices.
 Rationale: To incorporate the most up-to-date information.
 
 \end{enumerate}
-
-
 
 ### Modeling Platform and Structure
 General model specifications (e.g., executable version, model structure, definition of fleets and areas)
