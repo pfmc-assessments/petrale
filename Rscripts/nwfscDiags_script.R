@@ -5,15 +5,8 @@
 # devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 # devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/nwfscDiag")
 
+devtools::load_all("c:/github/nwfscDiag")
 library(nwfscDiag)
-
-#######################################################################################################
-# Define the working directory where the base model is and where all jitter, profile, and retrospective
-# runs will be done:
-
-mydir <- "C:/SS/Petrale/Petrale2023/petrale/models"
-
-# The base model should be within a fold in the above directory.
 
 #######################################################################################################
 # Define the parameters to profile and the parameter ranges:
@@ -32,24 +25,29 @@ get <- get_settings_profile(
   low = c(0.4, 0.25, -2),
   high = c(0.4, 1.0, 2),
   step_size = c(0.01, 0.05, 0.25),
-  param_space = c("multiplier", "real", "relative"),
-  use_prior_like = c(1, 1, 1)
+  param_space = c("multiplier", "real", "relative")
 )
 
 #######################################################################################################
 # Create a list of settings to run the profiles, jitters, and retrospectives:
 
-model_settings <- get_settings(settings = list(
-  base_name = "2023.a025.004",
-  run = c("jitter", "profile", "retro"),
-  profile_details = get
-))
+# define outer directory on a specific computer
+if(Sys.info()["user"] == "Ian.Taylor"){
+  mydir <- "C:/SS/Petrale/Petrale2023/petrale/models/"
+}
+if(Sys.info()["user"] == "Vladlena.Gertseva"){
+  mydir <- "FILL IN PATH TO 'models' HERE"
+}
+mydir <- file.path(mydir, "2023.a026.001_hess_step")
 
-# model_settings <- get_settings(settings = list(
-#   base_name = "2023.a025.004",
-#   run = c("jitter", "profile"), # "retro"),
-#   profile_details = get
-# ))
+model_settings <- get_settings(settings = list(
+  oldctlfile = "petrale_control.ss",
+  base_name = "diags",
+  run = c("jitter", "profile", "retro"),
+  profile_details = get,
+  prior_like = 1 #,
+  #exe = "c:/SS/SSv3.30.21.00_Feb10/ss_win"
+))
 
 # "base_name" is the folder name that contains the base model
 # "run" specifies which diagnostics to run. Can be all or a subset.  If all diagnostics should be run
@@ -59,8 +57,12 @@ model_settings <- get_settings(settings = list(
 
 #######################################################################################################
 # Run all diagnostics
-
 run_diagnostics(mydir = mydir, model_settings = model_settings)
+
+# only run profiles
+profile_settings <- model_settings
+profile_settings$run <- "profile"
+run_diagnostics(mydir = mydir, model_settings = profile_settings)
 
 # "mydir" is the working directory (parent folder with the base model)
 # "model_settings" defined above using the get_settings function.  The results of this function is a list
