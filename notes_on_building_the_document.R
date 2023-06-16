@@ -15,7 +15,7 @@ setwd("..")
 
 # specifying the base model
 setwd("documents") # assumes working directory is already in "petrale"
-base <- "../models/2023.001.001_new_endyr" # relative to "docs"
+base <- "../models/2023.a026.001_hess_step" # relative to "docs"
 # creating the standard r4ss plots
 mod_base <- SS_output(base, printstats = FALSE, verbose = FALSE)
 #SS_plots(mod_base)
