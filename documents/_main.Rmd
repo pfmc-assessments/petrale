@@ -424,6 +424,8 @@ Recent commercial landings of Petrale sole (1981-2022 for California and Washing
 ###Historical Landings
 Historical landings of Petrale sole were reconstructed by state, by year. The Washington historical landings (1938 -1980) were obtained from Washington Department of Fish and Wildlife, who recently conducted historical catch reconstruction for Petrale sole (pers. comm. T. Tsou and G. Lippert, WDFW). The historical Oregon landings (1932-1986) were obtained from Oregon historical catch reconstruction, conducted by Oregon Department of Fish and Wildlife in collaboration with NWFSC (Karnowski et al. 2014). The California historical landings were informed by several sources. The most recent “historical” period (between 1969 and 1980) were available from the California Cooperative Groundfish Survey (CalCOM) database. Earlier landing records (between 1931 and 1968) were reconstructed by the Southwest Fisheries Science Center (SWFSC; Ralston et al. 2010). Ralston et al. (2010) included only California landings made in California ports, therefore Ralston et al. (2010) estimates were supplemented by catches landed in California ports, but made in waters of Oregon and Washington, provided by the SWFSC (pers. comm. E.J. Dick, SWFSC). The earliest California landings were obtained from California Department of Fish and Game (CDFG) Fish Bulletins for 1916-1930 landings (Heimann and Carlisle 1970) as reconstructed by Lai et al. (2005) and used in previous assessments (REF HERE). The California fishery began in 1876, but no landings data are available from 1876-1915. Therefore, consistent with previous Petrale sole assessments, a linear interpolation between landings of 1 ton in 1876 and the landings recorded for 1916 are used to filling this period.
 
+TEST
+
 ##Discard
 Data on discards of Petrale sole are available from two different data sources. In 2002, the West Coast Groundfish Observer Program (WCGOP) was implemented on the West Coast of the United States, which began with gathering bycatch and discard information for the limited entry trawl and fixed gear fleets. Observer coverage has expanded to include the California halibut trawl, the nearshore fixed gear and pink shrimp trawl fisheries. Since 2011, trawl fisheries have been managed with catch shares under a system of annual individual fishing quotas (IFQs) for the shoreside sector (i.e., vessels delivering to shoreside processors) and harvest cooperatives for the at-sea hake sectors (catcher-processors who catch and process hake at sea; and Motherships, factory processors that take delivery of hake from catcher vessels at sea). A 100 percent at-sea monitoring of catch using observers and electronic monitoring (EM) is required to participate in the trawl catch share fishery.
 The historical source (often referred to as the Pikitch data) comes from a study organized by Ellen Pikitch that collected trawl discards from 1985-1987 (Pikitch et al. 1988). The northern and southern boundaries of the study were 48∘42′ N latitude and 42∘60′ N latitude respectively, which is primarily within the Columbia INPFC area (Pikitch et al. 1988, Rogers and Pikitch 1992). Therefore, this source of discard data is only relevant to North fleet. Participation in the study was voluntary and included vessels using bottom, midwater, and shrimp trawl gears. Observers of normal fishing operations on commercial vessels collected the data, estimated the total weight of the catch by tow, and recorded the weight of species retained and discarded in the sample. Results of the Pikitch data were obtained from NWFSC (pers. comm. John Wallace NWFSC). 
@@ -511,15 +513,15 @@ The surveys in 1989 and 1992 covered the same depth range but extended the south
 From 1995 through 2004, the surveys covered the depth range 55-500 m and surveyed south to 34.5\textdegree N.
 In 2004, the final year of the \gls{s-tri} series, the \gls{nwfsc} \gls{fram} conducted the survey following similar protocols to earlier years.
 
-The `r tri` commonly encounters `r spp` along the U.S West Coast (Figure \ref{fig:tri_map}). The catch-per-unit-effort estimated from the survey is roughly constant across the surveyed latitudes (Figure \ref{fig:tri_cpue_lat}). Additionally, `r spp` were captured across the survey depths between 55-500 m (Figure \ref{fig:tri_cpue_depth}). The observed lengths captured across depths by each survey period are shown in Figure \ref{fig:tri_size_depth}.
+The \gls{s-tri} commonly encounters `r spp` along the U.S West Coast (Figure \ref{fig:tri_map}). The catch-per-unit-effort estimated from the survey is roughly constant across the surveyed latitudes (Figure \ref{fig:tri_cpue_lat}). Additionally, `r spp` were captured across the survey depths between 55-500 m (Figure \ref{fig:tri_cpue_depth}). The observed lengths captured across depths by each survey period are shown in Figure \ref{fig:tri_size_depth}.
 
 INDEX INFORMATION TO BE ADDED
 
-Length bins from 12 to 62 cm in 2 cm increments were used to summarize the length frequency of the survey catches in each year. Table \ref{tab:Triennial_Lengths} shows the number of lengths taken by the survey. The length frequency distributions for the `r tri` from 1980-2004 are shown in Figures \ref{fig:tri_early_len_freq} and \ref{fig:tri_late_len_freq}. The stratifications for length data expansions are provided in Tables \ref{tab:strata_tri_early} and \ref{tab:strata_tri_late}.
+Length bins from 12 to 62 cm in 2 cm increments were used to summarize the length frequency of the survey catches in each year. Table \ref{tab:Triennial_Lengths} shows the number of lengths taken by the survey. The length frequency distributions for the \gls{s-tri} from 1980-2004 are shown in Figures \ref{fig:tri_early_len_freq} and \ref{fig:tri_late_len_freq}. The stratifications for length data expansions are provided in Tables \ref{tab:strata_tri_early} and \ref{tab:strata_tri_late}.
 
-There are no `r spp` age data from the `r tri`.  
+There are no `r spp` age data from the \gls{s-tri}.  
 
-The input sample sizes for length data were calculated using the same approach for the `r nwfsc` data described in the [NWFSC West Coast Groundfish Bottom Trawl Survey Section](#nwfsc_survey). 
+The input sample sizes for length data were calculated using the same approach for the \Gls{s-wcgbt} data described in the [NWFSC West Coast Groundfish Bottom Trawl Survey Section](#nwfsc_survey). 
 
 <!--chapter:end:21s-tri.RMd-->
 
@@ -531,7 +533,7 @@ This design generally uses four industry-chartered vessels per year assigned to 
 Two vessels fish from north to south during each pass between late May to early October.
 This design therefore incorporates both vessel-to-vessel differences in catchability, as well as variance associated with selecting a relatively small number (approximately 700) of possible cells from a very large set of possible cells spread from the Mexican to the Canadian borders.
 
-The `r nwfsc` commonly encounters `r spp` along the U.S West Coast, except south of Point Conception (Figure \ref{fig:nw_map}). The catch-per-unit-effort estimated from the survey is roughly constant north of 38$^\circ$ (Figure \ref{fig:nw_cpue_lat}). The survey does fish shallower than 54 m and the encounter rate of `r spp` declines at waters deeper than 400 m. Figure \ref{fig:nw_cpue_depth} shows that the positive tows catch rate by depth peaks between 100-200 meters and declines as depth increases. The observed lengths captured across depths by the survey are shown in Figure \ref{fig:nwfsc_size_depth}.
+The \Gls{s-wcgbt} commonly encounters `r spp` along the U.S West Coast, except south of Point Conception (Figure \ref{fig:nw_map}). The catch-per-unit-effort estimated from the survey is roughly constant north of 38$^\circ$ (Figure \ref{fig:nw_cpue_lat}). The survey does fish shallower than 54 m and the encounter rate of `r spp` declines at waters deeper than 400 m. Figure \ref{fig:nw_cpue_depth} shows that the positive tows catch rate by depth peaks between 100-200 meters and declines as depth increases. The observed lengths captured across depths by the survey are shown in Figure \ref{fig:nwfsc_size_depth}.
 
 Three sources of information are produced by this survey: an index of relative abundance, length-frequency distributions, and age-frequency distributions. 
 
@@ -539,7 +541,7 @@ INDEX INFORMATION TO BE ADDED
 
 Length bins from 12 to 62 cm in 2 cm increments were used to summarize the length frequency of the survey catches in each year. The first length bin includes all observations less than 14 cm and the last bin includes all fish larger than 62 cm. Table \ref{tab:NWcombo_Lengths} shows the number of lengths taken by the survey.  The stratification for length data expansion based on the design-based estimates is provided in Table \ref{tab:strata_nwfsc}.
 
-Age distributions included bins from age 1 to age 17, with the last bin including all fish of greater age. Table \ref{tab:NWcombo_Ages} shows the number of ages taken by the survey.Age distributions were included in the model as conditional-age-at-length observations. The marginal `r nwfsc` age-compositions were also included, but only for easier viewing of strong cohorts.
+Age distributions included bins from age 1 to age 17, with the last bin including all fish of greater age. Table \ref{tab:NWcombo_Ages} shows the number of ages taken by the survey.Age distributions were included in the model as conditional-age-at-length observations. The marginal \Gls{s-wcgbt} age-compositions were also included, but only for easier viewing of strong cohorts.
 
 The input sample sizes for length and marginal age-composition data for all fishery-independent surveys were calculated based on the approach used in the 2013 full and 2015 update assessment as: 
 
@@ -581,12 +583,12 @@ The natural mortality prior was updated for this update assessment using the abo
 
 ###Length-Weight Relationship
 
-The length-weight relationship for `r spp` was estimated outside the model using all biological data available from the `r nwfsc` data consistent with method applied by the 2013 assessment. The female weight-at-length in grams was estimated at `r format(mod1$MGparmAdj$Wtlen_1_Fem[1], scientific = TRUE)`$L$^`r round(mod1$MGparmAdj$Wtlen_2_Fem[1],2)`^ and males at `r format(mod1$MGparmAdj$Wtlen_1_Mal[1], scientific = TRUE)`$L$^`r round(mod1$MGparmAdj$Wtlen_2_Mal[1], 2)`^ where $L$ is length in cm (Figure \ref{fig:wt_length}).  The length-weight relationship estimates from the `r nwfsc` data were consistent with the biological observations available from the fishery data. 
+The length-weight relationship for `r spp` was estimated outside the model using all biological data available from the \Gls{s-wcgbt} data consistent with method applied by the 2013 assessment. The female weight-at-length in grams was estimated at `r format(mod_base$MGparmAdj$Wtlen_1_Fem[1], scientific = TRUE)`$L$^`r round(mod_base$MGparmAdj$Wtlen_2_Fem[1],2)`^ and males at `r format(mod_base$MGparmAdj$Wtlen_1_Mal[1], scientific = TRUE)`$L$^`r round(mod_base$MGparmAdj$Wtlen_2_Mal[1], 2)`^ where $L$ is length in cm (Figure \ref{fig:wt_length}).  The length-weight relationship estimates from the \Gls{s-wcgbt} data were consistent with the biological observations available from the fishery data. 
 
 
 ###Growth (Length-at-Age)
 
-The length-at-age was estimated for male and female `r spp`. Figure \ref{fig:length_age} shows the lengths and ages as well as predicted von Bertalanffy fits to the data from the fishery and the `r nwfsc` data. Females grow larger than males and sex-specific growth parameters were estimated at the following values for females $L_{\infty}$ = 54 cm; $k$ = 0.16 $\text{yr}^{-1}$, and males $L_{\infty}$ = 41 cm; $k$ = 0.25 $\text{yr}^{-1}$. These values were used as starting parameter values within the base model prior to estimating each parameter for male and female `r spp`.
+The length-at-age was estimated for male and female `r spp`. Figure \ref{fig:length_age} shows the lengths and ages as well as predicted von Bertalanffy fits to the data from the fishery and the \Gls{s-wcgbt} data. Females grow larger than males and sex-specific growth parameters were estimated at the following values for females $L_{\infty}$ = 54 cm; $k$ = 0.16 $\text{yr}^{-1}$, and males $L_{\infty}$ = 41 cm; $k$ = 0.25 $\text{yr}^{-1}$. These values were used as starting parameter values within the base model prior to estimating each parameter for male and female `r spp`.
 
 
 ###Ageing Precision and Bias
@@ -801,7 +803,7 @@ Here are all the mad props!
 <!-- ====================================================================== -->
 ```{r tables-model, results = "asis"}
 cat("\\begin{landscape}")
-#table_pars_split(mod_base)
+table_pars_split(mod_base)
 cat("\\end{landscape}")
 ```
 
