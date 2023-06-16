@@ -1,10 +1,59 @@
 ## Summary of Previous Assessments and Reviews
 
+### History of Modeling Approaches 
 
-### History of Modeling Approaches (not required for an update assessment)
+Early stock assessments only assessed `r spp` in the combined U.S.-Vancouver and Columbia INPFC areas, i.e., `r spp` in these areas were treated as a unit stock, using time series of data that began during the 1970s [@demory_progress_1984; @turnock_status_1993]. The first assessment used stock reduction analysis and the second assessment used the length-based Stock Synthesis model. The third `r spp` assessment utilized the hybrid length-and-age-based Stock Synthesis 1 model, using data from 1977-1998 [@sampson_assessment_1999]. During the 1999 stock assessment an attempt was made to include separate area assessments for the Eureka and Monterey INPFC areas but acceptable models could not be configured due to a lack of data [@sampson_assessment_1999].
 
+The 2005 `r spp` assessment was conducted as two separate stocks, the northern stock encompassing the U.S. Vancouver and Columbia INPFC areas and the southern stock including the Eureka, Monterey and Conception INPFC areas, using Stock Synthesis 2, a length-age structured model. Both the northern- and southern-area models specified the fishing year as beginning on November 1 and continuing through October 31 of the following year, with a November-February winter fishery and a March-October summer fishery. Landings prior to 1957 were assumed to have been taken during the summer season in years where monthly data were not available to split the catches seasonally. The complete catch history was reconstructed for `r spp` for the 2005 stock assessment, with the northern area model starting in 1910 and the southern area model in 1876. In 2005, the STAR panel noted that the `r spp` stock trends were similar in both northern and southern areas, in spite of the different modeling choices made for each area, and that a single coast-wide assessment should be considered. 
 
-### Most Recent STAR Panel and SSC Recommendations (not required for an update assessment)
+The 2009 and 2011 assessments treated `r spp` as a single coast-wide stock, with the fleets and landings structured by state (WA, OR, CA) area of catch. During the 2011 STAR panel concerns were raised regarding the difficulty of discriminating landings from Washington and Oregon waters, particularly in light of the Oregon historical landings reconstruction that includes a summary of data by port of landing but not by catch area, due to the fact that the Oregon and Washington vessels commonly fish in each other's waters and land in each other's ports. The availability of the historical comprehensive landings reconstruction for Oregon by port of landing lead the STAR panel to recommend combining the Washington and Oregon fleets within the coast-wide stock assessment using port of landing rather than catch area. 
 
+Starting with the 2013 stock assessment, the coast-wide stock assessment now summarizes `r spp` landings by the port of landing and combines Washington and Oregon into a single fleet [@haltuch_status_2013]. The 2019 update assessment (*Wetzel 2019) assumed the same approach as the 2013 stock assessment.
 
-### Response to Groundfish Subcommittee Requests (not required in draft)
+### Most Recent STAR Panel and SSC Recommendations 
+
+The most recent STAR panel for petrale sole was for the 2013 full assessment.  For clarity the petrale sole specific recommendations from the STAR panel are presented here, but given that this was an update assessment which limits model changes, these items have not been formally addressed.
+
+\begin{enumerate}
+
+\item The states of California and Oregon have completed comprehensive historical catch reconstructions. Washington historical data are not yet available. Completion of Washington historical catch reconstruction would provide a better catch series.
+
+For this assessment, WDFW completed catch reconstruction of Petrale sole (pers. comm. Theresa Tsou, WDFW). This reconstruction was used in this assessment.  
+
+\item Update both the maturity and fecundity relationships using samples with wider geographic coverage to include California, and from more recent years for petrale sole would be beneficial. 
+
+This assessment uses updated maturity and fecundity estimated. Updated maturity parameters were estimated on data collected within WCGBTS (pers. comm., Melissa Head, NWFSC). Updated fecundity parameters were informed by *Lefebvre et al. (2019)
+
+\item Studies on stock structure and movement of petrale sole indicating transboundary movement of petrale sole between U.S. and Canadian waters, particularly with regard to the winter-summer spawning migration. It will be informative to include a time-series plot of fishery catch from Canadian waters in future assessment.
+
+Incorporation of fishery catches from Canadian waters were analyzed in this assessment as sensitivity and is presented later in the report.
+
+\item Increased collection of commercial fishery age data as well as re-aging any available historical samples from California would help reduce uncertainty. While some recent age data were made available from California, sample sizes could be increased and this data collection needs to continue into the future. Without good age data, the ability to estimate year-class strength and the extent of variation in recruitment is compromised.
+
+The number of ages generated since the 2013 full assessment (as well as since 2019 update assessment) are available in *Table XX. 
+
+\item Where possible, historical otolith samples aged using a combination of surface and break-and-burn methods should be re-aged using the break-and-burn method. Early surface read otoliths should also be re-aged using the break and burn method. Historical otoliths aged with a standard method will allow the further evaluation of the potential impacts of consistent under-aging using surface read methods, changes in selectivity during early periods without any composition information, and potential changes in growth.
+
+\item The effect of the implementation of the IFQ (catch shares) program that began during 2011 on fleet behavior, including impacts on discards, fishery selectivity, and fishing locations, would benefit from further study.
+
+In this assessment model, additional flexibility is allowed for period after implementing IFQ program through time varying selectivity and retention parameters, to account for changes in discard rates and fishery selection. 
+
+\item The extent of spatial variability on productivity processes such as growth, recruitment, and maturity is currently unknown and would benefit from further research. 
+
+The progress has been done in evaluating and explaining time varying growth of groundfish, including Petrale sole (*Gertseva et al. 2017). 
+
+\item The Panel appreciated the delta-GLMM approach to derive an index of stock size from commercial CPUE data. However, there may still be factors other than stock size that affect time-trends in the standardized CPUE indices. The panel recommends:
+\begin{enumerate}
+
+\item Investigate using effort as an offset in the model. That is, rather than modeling catch/effort = effects, use catch = effort*effects. When a log-link is used then
+log(effort) can be included as an additive offset, and most GLMM packages include this option. The advantage of this approach is that it is easy to investigate if catch is proportional to effort or not. For example, it may be that CPUE can be higher when effort is low than when effort is high.
+
+\item Include further consideration of the impacts of trip limits on CPUE. Such limits were gradually introduced since 2006 in the winter fisheries and this may impact CPUE. This consideration should involve consultations with fleet members to understand how their fishing behavior was affected by trip limits.
+
+\end{enumerate}
+
+\end{enumerate}
+
+This assessment does not include fishery CPUE (please see below).
+
+### Response to STAR Panel Requests (not required in draft)

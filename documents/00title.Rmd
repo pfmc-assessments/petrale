@@ -2,6 +2,4 @@
 title: |
   Status of petrale sole (_Eopsetta jordani_) \
   along the US West coast in 2023
-  
-  ![](figures/petrale_sole_1945.jpg){width=80% height=80% alt="Black and white image of two petrale sole showing dorsal and ventral sides"}
 ---

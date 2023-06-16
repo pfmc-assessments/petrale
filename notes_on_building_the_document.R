@@ -1,10 +1,10 @@
 # drafting the initial document 
 # (only had to be run once, or after significant change to sa4ss package)
 pak::pkg_install("pfmc-assessments/sa4ss")
-pak::pkg_install("pfmc-assessments/sa4ss@table_functions_78")
+#pak::pkg_install("pfmc-assessments/sa4ss@table_functions_78")
 
 library(sa4ss)
-library(magrittr)
+library(tidyverse)
 setwd("documents")
 sa4ss::draft(authors = c("Ian G. Taylor", "Vladlena Gertseva"), 
              create_dir = FALSE,
@@ -15,7 +15,7 @@ setwd("..")
 
 # specifying the base model
 setwd("documents") # assumes working directory is already in "petrale"
-base <- "../models/2023.001.001_new_endyr" # relative to "docs"
+base <- "../models/2023.a026.001_hess_step" # relative to "docs"
 # creating the standard r4ss plots
 mod_base <- SS_output(base, printstats = FALSE, verbose = FALSE)
 #SS_plots(mod_base)
@@ -30,6 +30,8 @@ sa4ss::read_model(
 
 
 # clean out old version of file that gets compiled into the PDF
+library(sa4ss)
+library(tidyverse)
 setwd("documents") # skip this if already in "documents"
 if(file.exists("_main.Rmd")){
 	file.remove("_main.Rmd")
