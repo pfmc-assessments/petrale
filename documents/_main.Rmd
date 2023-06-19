@@ -608,9 +608,11 @@ The 2013 stock assessment applied read method and lab specific ageing error vect
 
 # Assessment Model
 
-##Summary of Previous Assessments and Reviews
+<!--chapter:end:30model.Rmd-->
 
-###History of Modeling Approaches Used for This Stock
+## Summary of Previous Assessments and Reviews
+
+### History of Modeling Approaches 
 
 Early stock assessments only assessed `r spp` in the combined U.S.-Vancouver and Columbia INPFC areas, i.e., `r spp` in these areas were treated as a unit stock, using time series of data that began during the 1970s [@demory_progress_1984; @turnock_status_1993]. The first assessment used stock reduction analysis and the second assessment used the length-based Stock Synthesis model. The third `r spp` assessment utilized the hybrid length-and-age-based Stock Synthesis 1 model, using data from 1977-1998 [@sampson_assessment_1999]. During the 1999 stock assessment an attempt was made to include separate area assessments for the Eureka and Monterey INPFC areas but acceptable models could not be configured due to a lack of data [@sampson_assessment_1999].
 
@@ -620,7 +622,8 @@ The 2009 and 2011 assessments treated `r spp` as a single coast-wide stock, with
 
 Starting with the 2013 stock assessment, the coast-wide stock assessment now summarizes `r spp` landings by the port of landing and combines Washington and Oregon into a single fleet [@haltuch_status_2013]. The 2019 update assessment (*Wetzel 2019) assumed the same approach as the 2013 stock assessment.
 
-###Most Recent STAR Panel Recommendations
+### Most Recent STAR Panel and SSC Recommendations 
+
 The most recent STAR panel for petrale sole was for the 2013 full assessment.  For clarity the petrale sole specific recommendations from the STAR panel are presented here, but given that this was an update assessment which limits model changes, these items have not been formally addressed.
 
 \begin{enumerate}
@@ -665,9 +668,13 @@ log(effort) can be included as an additive offset, and most GLMM packages includ
 
 This assessment does not include fishery CPUE (please see below).
 
-##Model Structure and Assumptions
+### Response to STAR Panel Requests (not required in draft)
 
-###Changes Made From the Last Assessment
+<!--chapter:end:31summary.Rmd-->
+
+## Model Structure and Assumptions
+
+### Model Changes from the Last Assessment (not required for an update assessment)
 
 The last update assessment of Petrale sole was conducted in 2019. The 2019 assessment model was the starting point for this assessment, and a bridging analysis was done to investigate the impact of increment changes to the assessment model. For this assessment, we retained a number of features of the 2019 assessment and also included a number of improvements related to use of data and modeling techniques.  Below, we describe the most important changes made since the last full assessment and provide rationale for each change:
 
@@ -692,28 +699,6 @@ Rationale: According to best practices.
 Rationale: To incorporate the most up-to-date information.
 
 \end{enumerate}
-
-
-<!--chapter:end:30model.Rmd-->
-
-## Summary of Previous Assessments and Reviews
-
-
-### History of Modeling Approaches (not required for an update assessment)
-
-
-### Most Recent STAR Panel and SSC Recommendations (not required for an update assessment)
-
-
-### Response to Groundfish Subcommittee Requests (not required in draft)
-
-<!--chapter:end:31summary.Rmd-->
-
-## Model Structure and Assumptions
-
-
-### Model Changes from the Last Assessment (not required for an update assessment)
-
 
 ### Modeling Platform and Structure
 General model specifications (e.g., executable version, model structure, definition of fleets and areas)
