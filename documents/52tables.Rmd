@@ -1,5 +1,20 @@
 \clearpage
 # Tables
+<!-- ====================================================================== -->
+<!-- data tables -->
+<!-- ====================================================================== -->
+
+```{r, tables-samples, results = 'asis'}
+len_samps <- read.csv("../tables/length_samps_comm_by_fleet.csv")
+
+sa4ss::table_format(x = len_samps,
+                 caption = 'Sample sizes of commercial length composition data by fleet.',
+                 label = 'sample-size-length-by-fleet',
+                 col_names = c("Year", "Trips North",
+                  "Fish North", "Input N North",
+                   "Trips South", "Fish South", "Input N South"),
+                 )
+```
 
 
 <!-- ====================================================================== -->
