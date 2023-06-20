@@ -94,17 +94,17 @@ caption = paste("Ending-year selectivity at age derived from selectivity at leng
   "(solid female, dashed male)."),
 label = 'sel-age')
 
-# sa4ss::add_figure(
-# filein = file.path(mod_loc_relative, "custom_plots", "selectivity_time-varying_fem.png"), 
-# caption = paste("Time-varying female selectivity (top) and retention (bottom)",
-#   "for the fishing fleets. Retention is the same for females and males."),
-# label = 'sel-tv-fem')
-
-# sa4ss::add_figure(
-# filein = file.path(mod_loc_relative, "custom_plots",  "selectivity_time-varying_mal.png"), 
-# caption = paste("Time-varying male selectivity (top) and retention (bottom)",
-#   "for the fishing fleets. Retention is the same for females and males."),
-# label = 'sel-tv-mal')
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "custom_plots", "selectivity_time-varying_fem.png"), 
+caption = paste("Time-varying female selectivity (top) and retention (bottom)",
+  "for the fishing fleets. Retention is the same for females and males.",
+  "Note: the legend shows the "),
+label = 'sel-tv-fem')
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "custom_plots",  "selectivity_time-varying_mal.png"), 
+caption = paste("Time-varying male selectivity (top) and retention (bottom)",
+  "for the fishing fleets. Retention is the same for females and males."),
+label = 'sel-tv-mal')
 
 ```
 
@@ -112,11 +112,31 @@ label = 'sel-age')
 
 ### Recruitment
 
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "plots",  "recdevs2_withbars.png"), 
+caption = paste("Recruitment deviations with 95% intervals.",
+  "Black points and lines represent the 'main' period while the blue",
+  "points and lines are the early and late periods."),
+label = 'recdevs')
+
+print(caption)
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "custom_plots",  "recruit_fit_bias_adjust.png"), 
+caption = paste0("Bias adjustment applied to the recruitment deviations (red line). ",
+  "Points are transformed variances relative to $\\sigma_R = ", mod_base$sigma_R_in, "$."),
+label = 'biasadj')
+```
+
 
 ### Fits to Data
 
 ### Fits to Data
+
+\clearpage
+
 #### Fits to indices
+
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots",  "index2_cpuefit_WCGBTS.png"), 
