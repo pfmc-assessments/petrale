@@ -5,7 +5,8 @@
 # devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
 # devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/nwfscDiag")
 
-devtools::load_all("c:/github/nwfscDiag")
+# devtools::load_all("c:/github/nwfscDiag")
+# pak::pkg_install("pfmc-assessments/nwfscDiag@profile_control")
 library(nwfscDiag)
 
 #######################################################################################################
@@ -38,15 +39,16 @@ if(Sys.info()["user"] == "Ian.Taylor"){
 if(Sys.info()["user"] == "Vladlena.Gertseva"){
   mydir <- "FILL IN PATH TO 'models' HERE"
 }
-mydir <- file.path(mydir, "2023.a026.001_hess_step")
+mydir <- file.path(mydir, "2023.a028.001_ctl_changes")
 
 model_settings <- get_settings(settings = list(
   oldctlfile = "petrale_control.ss",
   base_name = "diags",
   run = c("jitter", "profile", "retro"),
   profile_details = get,
-  prior_like = 1 #,
-  #exe = "c:/SS/SSv3.30.21.00_Feb10/ss_win"
+  prior_like = 1, 
+  verbose = TRUE
+  #exe = "c:/SS/SSv3.30.21.00_Feb10/ss_win" # this doesn't work
 ))
 
 # "base_name" is the folder name that contains the base model
@@ -57,7 +59,7 @@ model_settings <- get_settings(settings = list(
 
 #######################################################################################################
 # Run all diagnostics
-run_diagnostics(mydir = mydir, model_settings = model_settings)
+# run_diagnostics(mydir = mydir, model_settings = model_settings)
 
 # only run profiles
 profile_settings <- model_settings
