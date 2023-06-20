@@ -20,14 +20,41 @@
 make_r4ss_plots_petrale <- function(mod, plot = c(1:26, 31:50),
                                  verbose = TRUE, ...) {
 
+  require(magrittr)
+  
   fleetcols <- c("blue", "red", "orange", "green3")
   # r4ss functionality for `fleetcolors` is incomplete and inconsistent,
   # so use depends on the function
 
+  dir_custom <- file.path(mod$inputs$dir, "custom_plots")
+
+  # custom plots not created by r4ss
+  if (any(31:50 %in% plot)) {
+    dir <- dir_custom
+    if (!dir.exists(dir)) {
+      dir.create(dir)
+    }
+  }
+
+  # custom selectivity plots
+  if (31 %in% plot) {
+    plot_petrale_tv_selex(mod)
+    plot_petrale_tv_selex(mod, sex = 2)
+  }  
+
+  # recdev bias adjusmtment plot without estimated alternative
+  if (32 %in% plot) {
+    r4ss::SS_fitbiasramp(mod, twoplots = FALSE, shownew = FALSE,
+      plotdir = dir_custom, plot = FALSE, print = TRUE,
+      pheight = 4 # default = 5 doesn't match SS_plots() default
+    )
+  }
+
+  # make default plots for most things
   if (any(1:26 %in% plot)) {
-    # make default plots for most things
     r4ss::SS_plots(mod,
                    plot = plot,
+                   printfolder = "plots",
                    #plot = intersect(plot, c(1:23, 25:26)),
                    #fleetnames = fleetnames,
                    fleetcols = fleetcols,
@@ -39,16 +66,4 @@ make_r4ss_plots_petrale <- function(mod, plot = c(1:26, 31:50),
                    verbose = verbose, ...)
   }
 
-  # custom plots not created by r4ss
-  if (any(31:50 %in% plot)) {
-    dir <- file.path(mod$inputs$dir, "custom_plots")
-    if (!dir.exists(dir)) {
-      dir.create(dir)
-    }
-  }
-
-  if (31 %in% plot) {
-    plot_petrale_tv_selex(mod)
-    plot_petrale_tv_selex(mod, sex = 2)
-  }  
 }
