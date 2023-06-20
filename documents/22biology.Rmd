@@ -31,16 +31,16 @@ As a part of this assessment, we explored multiple model formulations with fract
 The length-weight relationship for `r spp` was estimated outside the model using all biological data available from the \Gls{s-wcgbt} data. The female weight-at-length in grams was estimated at `r format(mod_base$MGparmAdj$Wtlen_1_Fem[1], scientific = TRUE)`$L$^`r round(mod_base$MGparmAdj$Wtlen_2_Fem[1],2)`^ and males at `r format(mod_base$MGparmAdj$Wtlen_1_Mal[1], scientific = TRUE)`$L$^`r round(mod_base$MGparmAdj$Wtlen_2_Mal[1], 2)`^ where $L$ is length in cm (Figure \ref{fig:wt_length}).  The length-weight relationship estimates from the \Gls{s-wcgbt} data were consistent with the biological observations available from the fishery data. 
 
 
-###Growth (Length-at-Age)
+### Growth (Length-at-Age)
 
 The length-at-age was estimated for male and female `r spp`. Figure \ref{fig:length_age} shows the lengths and ages as well as predicted von Bertalanffy fits to the data from the fishery and the \Gls{s-wcgbt} data. Females grow larger than males and sex-specific growth parameters were estimated at the following values for females $L_{\infty}$ = 54 cm; $k$ = 0.16 $\text{yr}^{-1}$, and males $L_{\infty}$ = 41 cm; $k$ = 0.25 $\text{yr}^{-1}$. These values were used as starting parameter values within the base model prior to estimating each parameter for male and female `r spp`.
 
 
-###Ageing Precision and Bias
+### Ageing Precision and Bias
 
 Historically, `r spp` otoliths have been read by multiple ageing labs using surface and break and burn methods, and double-read data from the Cooperative Aging Project (CAP) and the Washington Department of Fish and Wildlife (WDFW), as well information from a bomb radiocarbon age validation study for `r spp` off the U.S. West Coast [@haltuch_status_2009, @haltuch_california_2013], were used to generate multiple ageing error matrices, to incorporate ageing bias and imprecision into the assessment model.
  
 The ageing error matrices used in the previous assessment were retained for this analysis. Ageing error was explored in the last full assessment including extensive model selection. A qualitative examination of the new break and burn double reads showed no evidence that the ageing estimation had changed over time relative to the samples included in the previous analysis. Furthermore, a new TMB-based ageing error software has been developed (pers. comm. Andre Punt, University of Washington), but has not yet fully explored or documented. Therefore, revision of the ageing error matrices has been left as a research project to be completed in time for the next full assessment.
  
-###Environmental and Ecosystem Data
+### Environmental and Ecosystem Data
 
