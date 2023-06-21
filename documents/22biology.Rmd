@@ -6,7 +6,7 @@ The instantaneous rate of natural mortality for a wild fish population is notori
 
 An archived set of commercial samples, collected from Northern California between the late 1950s and early 1980s, recently found that multiple samples were aged between 20-31 years old, suggesting a similar range of $M$ values for U.S. West Coast `r spp`. U.S. stock assessments prior to 2009 and current British Columbia stock assessments assumed a value of $M$ = 0.2 yr^-1^ for both sexes. The 2013 stock assessment used a meta-analysis value produced the following normal prior distributions for females (mean = 0.151, sd = 0.16) and males (0.206, sd = 0.218) based on early research by Owen Hamel (pers. comm.) with maximum age for females and males of 32 and 29 years, respectively.
 
-Hamel [-@hamel_method_2015] refined and published a method for combining meta-analytic approaches relating the $M$ rate to other life-history parameters such as longevity, size, growth rate, and reproductive effort to provide a prior on $M$. In that same issue of *ICES Journal of Marine Science*, Then et al. [-@then_evaluating_2015] provided an updated data set of estimates of $M$ and related life history parameters across a large number of fish species from which to develop an $M$ estimator for fish species in general. They concluded by recommending $M$ estimates be based on maximum age alone, based on an updated Hoenig non-linear least squares estimator $M=4.899A^{-0.916}_{max}$. The approach of basing $M$ priors on maximum age alone was one that was already being used for West Coast rockfish assessments. However, in fitting the alternative model forms relating $M$ to $A_{\text{max}}$, Then et al. [-@then_evaluating_2015] did not consistently apply their transformation. In particular, in real space, one would expect substantial heteroscedasticity in both the observation and process error associated with the observed relationship of $M$ to $A_{\text{max}}$. Therefore, it would be reasonable to fit all models under a log transformation. This was not done. Re-evaluating the data used in Then et al. [-@then_evaluating_2015] by fitting the one-parameter $A_{\text{max}}$ model under a log-log transformation (such that the slope is forced to be -1 in the transformed space [@hamel_method_2015]), the point estimate for $M$ is:
+The current method for developing a prior on natural mortality for West Coast groundfish stock assessments is based on  Hamel [-@hamel_method_2015] and updated by Hamel and Cope (*2022). This method combines meta-analytic approaches relating the natural mortality rate to other life-history parameters to develop a general prior on $M$ for many fish species. This approach modifies work done by Then et al.[-@then_evaluating_2015] who estimated $M$ and recommended $M$ estimates based on maximum age alone. Hamel re-evaluated the data used by Then et al. [-@then_evaluating_2015] by fitting the one-parameter $A_{\text{max}}$, model under a log-log transformation  [@hamel_method_2015]). The methods for the prior updated by Hamel and Cope (2022) reduced the variance around the estimate. The equation for the point estimate (i.e., the median in real space) for $M$, based on Hamel and Cope (2022) is:
 
 \begin{centering}
 
@@ -14,30 +14,33 @@ $M=\frac{5.4}{A_{\text{max}}}$
 
 \end{centering}
 
-The above is also the median of the prior. The prior is defined as a lognormal distribution with mean $ln(5.4/A_{\text{max}})$ and SE = 0.438. 
+where  $A_{\text{max}}$ is the maximum age of the focal species. The above is also the median of the prior. The prior is defined as a lognormal distribution with mean $ln(5.4/A_{\text{max}})$ and SE = 0.31. 
 
-The natural mortality prior was updated for this update assessment using the above approach (Figure \ref{fig:m_prior}). Maximum age was assumed to be 32 and 29 years for females and males, respectively, the same assumption applied in the 2013 assessment. Using the Hamel et al. approach above, the prior value for females in regular space is `r round(5.4/32, 3)` and for males is `r round(5.4/29, 3)`. 
+Maximum age was assumed to be 32 and 29 years for females and males, respectively, consustent with several previous assessments. Using the Hamel et al. approach above, the prior value for females in regular space is `r round(5.4/32, 3)` and for males is `r round(5.4/29, 3)`. 
 
-###Maturation and Fecundity{#mat_fecund}
+### Maturation and Fecundity{#mat_fecund}
 
-###Sex Ratio
+### Sex Ratio
+
+This assessment assumes `r spp` to have a 50% sex ratio at birth between females and males off the U.S West Coast. Similarly, Canadian data from the 2004 published stock assessment also suggests sex ratios of `r spp` in British Columbia are generally 50% males and 50% females [@starr_petrale_2004]. In 2019 update assessment, it was noted that the `r nwfsc` data indicates that the proportion of females in the population across the mid-range lengths can be lower than 50%. 
+
+As a part of this assessment, we explored multiple model formulations with fraction females estimated internally. However, in many of those formulations, fraction female was estimated above 50% (unlike suggested in 2019 assessment), and estimates of other life history parameters were rather unreasonable. The reasonable estimate of fraction female parameter were achieved only when assuming a single selectivity curve for the females and males in the `r nwfsc`, which deteriorated fit to length composition data. The value of estimated fraction female in that model run was 0.48, and it was assumed reasonable to continue to assume a 50% sex ratio at birth between females and males, consistent with previous assessments.   
+
+### Length-Weight Relationship
+
+The length-weight relationship for `r spp` was estimated outside the model using all biological data available from the \Gls{s-wcgbt} data. The female weight-at-length in grams was estimated at `r format(mod_base$MGparmAdj$Wtlen_1_Fem[1], scientific = TRUE)`$L$^`r round(mod_base$MGparmAdj$Wtlen_2_Fem[1],2)`^ and males at `r format(mod_base$MGparmAdj$Wtlen_1_Mal[1], scientific = TRUE)`$L$^`r round(mod_base$MGparmAdj$Wtlen_2_Mal[1], 2)`^ where $L$ is length in cm (Figure \ref{fig:wt_length}).  The length-weight relationship estimates from the \Gls{s-wcgbt} data were consistent with the biological observations available from the fishery data. 
 
 
-###Length-Weight Relationship
-
-The length-weight relationship for `r spp` was estimated outside the model using all biological data available from the \Gls{s-wcgbt} data consistent with method applied by the 2013 assessment. The female weight-at-length in grams was estimated at `r format(mod_base$MGparmAdj$Wtlen_1_Fem[1], scientific = TRUE)`$L$^`r round(mod_base$MGparmAdj$Wtlen_2_Fem[1],2)`^ and males at `r format(mod_base$MGparmAdj$Wtlen_1_Mal[1], scientific = TRUE)`$L$^`r round(mod_base$MGparmAdj$Wtlen_2_Mal[1], 2)`^ where $L$ is length in cm (Figure \ref{fig:wt_length}).  The length-weight relationship estimates from the \Gls{s-wcgbt} data were consistent with the biological observations available from the fishery data. 
-
-
-###Growth (Length-at-Age)
+### Growth (Length-at-Age)
 
 The length-at-age was estimated for male and female `r spp`. Figure \ref{fig:length_age} shows the lengths and ages as well as predicted von Bertalanffy fits to the data from the fishery and the \Gls{s-wcgbt} data. Females grow larger than males and sex-specific growth parameters were estimated at the following values for females $L_{\infty}$ = 54 cm; $k$ = 0.16 $\text{yr}^{-1}$, and males $L_{\infty}$ = 41 cm; $k$ = 0.25 $\text{yr}^{-1}$. These values were used as starting parameter values within the base model prior to estimating each parameter for male and female `r spp`.
 
 
-###Ageing Precision and Bias
+### Ageing Precision and Bias
 
-Historically, `r spp` otoliths have been read by multiple ageing labs using surface and break and burn methods. In order to conduct a comprehensive estimation of ageing bias and imprecision, the 2009 assessment compiled and analyzed all of the available double-read data from the Cooperative Aging Project (CAP) and the Washington Department of Fish and Wildlife (WDFW), as well information from a bomb radiocarbon age validation study for `r spp` off the U.S. West Coast [@haltuch_status_2009, @haltuch_california_2013]. 
-
-The 2013 stock assessment applied read method and lab specific ageing error vectors [@haltuch_status_2013]. This update assessment did not re-evaluate ageing error and applied the same approach as the 2013 stock assessment.  The ageing error vectors are shown in Tables \ref{tab:age_error1} and \ref{tab:age_error2}. For a detailed description please see the 2013 stock assessment [@haltuch_status_2013]. 
-
-###Environmental and Ecosystem Data
+Historically, `r spp` otoliths have been read by multiple ageing labs using surface and break and burn methods, and double-read data from the Cooperative Aging Project (CAP) and the Washington Department of Fish and Wildlife (WDFW), as well information from a bomb radiocarbon age validation study for `r spp` off the U.S. West Coast [@haltuch_status_2009, @haltuch_california_2013], were used to generate multiple ageing error matrices, to incorporate ageing bias and imprecision into the assessment model.
+ 
+The ageing error matrices used in the previous assessment were retained for this analysis. Ageing error was explored in the last full assessment including extensive model selection. A qualitative examination of the new break and burn double reads showed no evidence that the ageing estimation had changed over time relative to the samples included in the previous analysis. Furthermore, a new TMB-based ageing error software has been developed (pers. comm. Andre Punt, University of Washington), but has not yet fully explored or documented. Therefore, revision of the ageing error matrices has been left as a research project to be completed in time for the next full assessment.
+ 
+### Environmental and Ecosystem Data
 

@@ -10,7 +10,7 @@ In 2004, the final year of the \gls{s-tri} series, the \gls{nwfsc} \gls{fram} co
 
 The \gls{s-tri} commonly encounters `r spp` along the U.S West Coast (Figure \ref{fig:tri_map}). The catch-per-unit-effort estimated from the survey is roughly constant across the surveyed latitudes (Figure \ref{fig:tri_cpue_lat}). Additionally, `r spp` were captured across the survey depths between 55-500 m (Figure \ref{fig:tri_cpue_depth}). The observed lengths captured across depths by each survey period are shown in Figure \ref{fig:tri_size_depth}.
 
-Geostatistical models of biomass density were fit to survey data using Template ModelBuilder (TMB) (Kristensen et al. 2016) via the R package Species Distribution Models with (sdmTMB) (Sean C. Anderson et al. 2022), as in case of NWFSC West Coast Groundfish Bottom Trawl Survey.
+Geostatistical models of biomass density were fit to survey data using Template ModelBuilder (TMB) (*Kristensen et al. 2016) via the R package Species Distribution Models with (sdmTMB) (*Sean C. Anderson et al. 2022), as in case of NWFSC West Coast Groundfish Bottom Trawl Survey.
 
 In this assessment, a single triennial survey index (1980-2004) was developed. The data were truncated to depths less than 350 m prior to modeling, to only include survey area consistent in spatial coverage among years. The prediction grid was also truncated to only include available survey locations in depths between 55–350 m to limit extrapolating beyond the data and edge effects. 
 
