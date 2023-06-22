@@ -4,6 +4,10 @@
 plot_info = read.csv(file.path(mod_loc_relative, "plots", "plotinfotable_for_doc.csv"))
 ```
 
+\clearpage
+<!-- don't allow section headers to float relative to figure locations -->
+<!-- \floatplacement{figure}{H}  -->
+
 ## Data 
 <!-- ====================================================================== --> 
 <!-- *******************    Assessment Map      *************************** --> 
@@ -109,7 +113,6 @@ label = 'sel-tv-mal')
 ```
 
 
-
 ### Recruitment
 
 ```{r, results = 'asis'}
@@ -120,16 +123,14 @@ caption = paste("Recruitment deviations with 95% intervals.",
   "points and lines are the early and late periods."),
 label = 'recdevs')
 
-print(caption)
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "custom_plots",  "recruit_fit_bias_adjust.png"), 
 caption = paste0("Bias adjustment applied to the recruitment deviations (red line). ",
   "Points are transformed variances relative to $\\sigma_R = ", mod_base$sigma_R_in, "$."),
 label = 'biasadj')
 ```
+\clearpage
 
-
-### Fits to Data
 
 ### Fits to Data
 
