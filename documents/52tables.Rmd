@@ -4,6 +4,26 @@
 <!-- data tables -->
 <!-- ====================================================================== -->
 
+```{r, tables-catch, results = 'asis'}
+catch_by_state <- read.csv("../tables/commercial_catch_by_state_v2.csv")
+catch_by_state$North <- catch_by_state$wa + catch_by_state$or
+catch_by_state$Total <- catch_by_state$wa + catch_by_state$or + catch_by_state$ca
+catch_by_state[,-1] <- round(catch_by_state[,-1])
+
+catch_table <- data.frame("Year" = catch_by_state$year,
+  Total = catch_by_state$Total,
+  "North (OR + WA)" = catch_by_state$North,
+  "South (CA)" = catch_by_state$ca,
+  WA = catch_by_state$wa, 
+  OR = catch_by_state$or,
+  check.names = FALSE)
+
+sa4ss::table_format(x = catch_table,
+                 caption = paste("Landed catch by fleet and state (mt)."),
+                 label = 'catch-table'
+                 )
+```
+
 ```{r, tables-samples, results = 'asis'}
 len_samps <- read.csv("../tables/length_samps_comm_by_fleet.csv")
 
@@ -25,3 +45,19 @@ cat("\\begin{landscape}")
 table_pars_split(mod_base)
 cat("\\end{landscape}")
 ```
+
+\begin{landscape}
+```{r tables-old_vs_new, results = "asis"}
+table_sens("../tables/sens_table_old_vs_new.csv",
+	       sens_group = "old_vs_new",
+           pretty = FALSE, # don't modify model names in this case because they are already OK
+           caption = "Estimates of key parameters and derived quantities compared between the base model and the 2019 assessment.")
+```
+\clearpage
+
+```{r tables-model-sens, results = "asis"}
+table_sens("../tables/sens_table_test.csv",
+	       sens_group = "testing",
+           caption_extra = "[TEMPORARY EXAMPLE ONLY]")
+```           
+\end{landscape}

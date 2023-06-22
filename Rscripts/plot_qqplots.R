@@ -9,11 +9,12 @@ dir_index <- "data-raw/indices/wcgbts/delta_lognormal/index/"
 load(file.path(dir_index, "sdmTMB_save.RData"))
 
 # make new QQ plots
-indexwc::plot_qq(fit, file.path(dir_index, "qq_new.png"))
+qq_wcgbts <- indexwc::plot_qq(fit, file.path(dir_index, "qq_new_wcgbts.png"))
 
 # load output from petrale index from triennial
 dir_index <- "data-raw/indices/triennial/delta_lognormal_no_depth/index/"
 load(file.path(dir_index, "sdmTMB_save.RData"))
 
 # make new QQ plots
-indexwc::plot_qq(fit, file.path(dir_index, "qq_new.png"))
+indexwc::plot_qq(fit, file.path(dir_index, "qq_new_tri.png"))
+
