@@ -1,0 +1,252 @@
+# file extracted 22 June 2023 from https://reports.psmfc.org/pacfin/f?p=501:5302:16067970531079:::::,,,,,,
+SPECIFICATION_TYPE,SPECIFICATION_NAME,YEAR,VAL,STOCK_NAME,AREA_NAME,OUTPUT_ORDER
+OFL,Overfishing Limit,2011,1021,Petrale Sole,CW,1
+OFL,Overfishing Limit,2018,3152,Petrale Sole,CW,1
+OFL,Overfishing Limit,2014,2774,Petrale Sole,CW,1
+OFL,Overfishing Limit,2016,3044,Petrale Sole,CW,1
+OFL,Overfishing Limit,2019,3042,Petrale Sole,CW,1
+OFL,Overfishing Limit,2015,2946,Petrale Sole,CW,1
+OFL,Overfishing Limit,2020,2976,Petrale Sole,CW,1
+OFL,Overfishing Limit,2012,1279,Petrale Sole,CW,1
+OFL,Overfishing Limit,2017,3280,Petrale Sole,CW,1
+OFL,Overfishing Limit,2013,2711,Petrale Sole,CW,1
+OFL,Overfishing Limit,2022,3935.66,Petrale Sole,CW,1
+OFL,Overfishing Limit,2021,4401.54,Petrale Sole,CW,1
+OFL,Overfishing Limit,2023,3763,Petrale Sole,CW,1
+OFL,Overfishing Limit,2024,3563,Petrale Sole,CW,1
+ABC,Acceptable Bio Catch,2011,976,Petrale Sole,CW,2
+ABC,Acceptable Bio Catch,2018,3013.312,Petrale Sole,CW,2
+ABC,Acceptable Bio Catch,2014,2652,Petrale Sole,CW,2
+ABC,Acceptable Bio Catch,2016,2910,Petrale Sole,CW,2
+ABC,Acceptable Bio Catch,2019,2908.152,Petrale Sole,CW,2
+ABC,Acceptable Bio Catch,2015,2816,Petrale Sole,CW,2
+ABC,Acceptable Bio Catch,2020,2845.056,Petrale Sole,CW,2
+ABC,Acceptable Bio Catch,2012,1222,Petrale Sole,CW,2
+ABC,Acceptable Bio Catch,2017,3135.68,Petrale Sole,CW,2
+ABC,Acceptable Bio Catch,2013,2592,Petrale Sole,CW,2
+ABC,Acceptable Bio Catch,2022,3660.1638,Petrale Sole,CW,2
+ABC,Acceptable Bio Catch,2021,4115.4399,Petrale Sole,CW,2
+ABC,Acceptable Bio Catch,2023,3484.538,Petrale Sole,CW,2
+ABC,Acceptable Bio Catch,2024,3285.086,Petrale Sole,CW,2
+ACL,Annual Catch Limit,2011,976,Petrale Sole,CW,3
+ACL,Annual Catch Limit,2018,3013,Petrale Sole,CW,3
+ACL,Annual Catch Limit,2014,2652,Petrale Sole,CW,3
+ACL,Annual Catch Limit,2016,2910,Petrale Sole,CW,3
+ACL,Annual Catch Limit,2019,2908,Petrale Sole,CW,3
+ACL,Annual Catch Limit,2015,2816,Petrale Sole,CW,3
+ACL,Annual Catch Limit,2020,2845,Petrale Sole,CW,3
+ACL,Annual Catch Limit,2012,1160,Petrale Sole,CW,3
+ACL,Annual Catch Limit,2017,3136,Petrale Sole,CW,3
+ACL,Annual Catch Limit,2013,2592,Petrale Sole,CW,3
+ACL,Annual Catch Limit,2022,3660,Petrale Sole,CW,3
+ACL,Annual Catch Limit,2021,4115,Petrale Sole,CW,3
+ACL,Annual Catch Limit,2023,3485,Petrale Sole,CW,3
+ACL,Annual Catch Limit,2024,3285,Petrale Sole,CW,3
+TRI,Tribal,2011,45.4,Petrale Sole,CW,4
+TRI,Tribal,2018,220,Petrale Sole,CW,4
+TRI,Tribal,2014,220,Petrale Sole,CW,4
+TRI,Tribal,2016,220,Petrale Sole,CW,4
+TRI,Tribal,2019,290,Petrale Sole,CW,4
+TRI,Tribal,2015,220,Petrale Sole,CW,4
+TRI,Tribal,2020,290,Petrale Sole,CW,4
+TRI,Tribal,2012,45.4,Petrale Sole,CW,4
+TRI,Tribal,2017,220,Petrale Sole,CW,4
+TRI,Tribal,2013,220,Petrale Sole,CW,4
+TRI,Tribal,2022,350,Petrale Sole,CW,4
+TRI,Tribal,2021,350,Petrale Sole,CW,4
+TRI,Tribal,2023,350,Petrale Sole,CW,4
+TRI,Tribal,2024,350,Petrale Sole,CW,4
+EFP,EFP,2011,2,Petrale Sole,CW,5
+EFP,EFP,2018,0,Petrale Sole,CW,5
+EFP,EFP,2014,0,Petrale Sole,CW,5
+EFP,EFP,2016,0,Petrale Sole,CW,5
+EFP,EFP,2019,0.1,Petrale Sole,CW,5
+EFP,EFP,2015,0,Petrale Sole,CW,5
+EFP,EFP,2020,0.1,Petrale Sole,CW,5
+EFP,EFP,2012,2,Petrale Sole,CW,5
+EFP,EFP,2017,0,Petrale Sole,CW,5
+EFP,EFP,2013,0,Petrale Sole,CW,5
+EFP,EFP,2022,0.1,Petrale Sole,CW,5
+EFP,EFP,2021,0.1,Petrale Sole,CW,5
+EFP,EFP,2023,1,Petrale Sole,CW,5
+EFP,EFP,2024,1,Petrale Sole,CW,5
+RSCH,Research,2011,17,Petrale Sole,CW,6
+RSCH,Research,2018,17.7,Petrale Sole,CW,6
+RSCH,Research,2014,11.6,Petrale Sole,CW,6
+RSCH,Research,2016,14.2,Petrale Sole,CW,6
+RSCH,Research,2019,24.1,Petrale Sole,CW,6
+RSCH,Research,2015,14.2,Petrale Sole,CW,6
+RSCH,Research,2020,24.1,Petrale Sole,CW,6
+RSCH,Research,2012,17,Petrale Sole,CW,6
+RSCH,Research,2017,17.7,Petrale Sole,CW,6
+RSCH,Research,2013,11.6,Petrale Sole,CW,6
+RSCH,Research,2022,24.14,Petrale Sole,CW,6
+RSCH,Research,2021,24.14,Petrale Sole,CW,6
+RSCH,Research,2023,24.14,Petrale Sole,CW,6
+RSCH,Research,2024,24.14,Petrale Sole,CW,6
+OA,Incidental OA,2011,1,Petrale Sole,CW,7
+OA,Incidental OA,2018,3.2,Petrale Sole,CW,7
+OA,Incidental OA,2014,2.4,Petrale Sole,CW,7
+OA,Incidental OA,2016,2.4,Petrale Sole,CW,7
+OA,Incidental OA,2019,6.4,Petrale Sole,CW,7
+OA,Incidental OA,2015,2.4,Petrale Sole,CW,7
+OA,Incidental OA,2020,6.4,Petrale Sole,CW,7
+OA,Incidental OA,2012,1,Petrale Sole,CW,7
+OA,Incidental OA,2017,3.2,Petrale Sole,CW,7
+OA,Incidental OA,2013,2.4,Petrale Sole,CW,7
+OA,Incidental OA,2022,13.3,Petrale Sole,CW,7
+OA,Incidental OA,2021,13.3,Petrale Sole,CW,7
+OA,Incidental OA,2023,11.1,Petrale Sole,CW,7
+OA,Incidental OA,2024,11.1,Petrale Sole,CW,7
+SAT,Set-aside Total,2011,65.4,Petrale Sole,CW,11
+SAT,Set-aside Total,2018,240.9,Petrale Sole,CW,11
+SAT,Set-aside Total,2014,234,Petrale Sole,CW,11
+SAT,Set-aside Total,2016,236.6,Petrale Sole,CW,11
+SAT,Set-aside Total,2019,320.6,Petrale Sole,CW,11
+SAT,Set-aside Total,2015,236.6,Petrale Sole,CW,11
+SAT,Set-aside Total,2020,320.6,Petrale Sole,CW,11
+SAT,Set-aside Total,2012,65.4,Petrale Sole,CW,11
+SAT,Set-aside Total,2017,240.9,Petrale Sole,CW,11
+SAT,Set-aside Total,2013,234,Petrale Sole,CW,11
+SAT,Set-aside Total,2022,387.54,Petrale Sole,CW,11
+SAT,Set-aside Total,2021,387.54,Petrale Sole,CW,11
+SAT,Set-aside Total,2023,386.24,Petrale Sole,CW,11
+SAT,Set-aside Total,2024,386.24,Petrale Sole,CW,11
+FHG,Fishery Harvest Guideline,2011,910.6,Petrale Sole,CW,12
+FHG,Fishery Harvest Guideline,2018,2772.1,Petrale Sole,CW,12
+FHG,Fishery Harvest Guideline,2014,2418,Petrale Sole,CW,12
+FHG,Fishery Harvest Guideline,2016,2673.4,Petrale Sole,CW,12
+FHG,Fishery Harvest Guideline,2019,2587.4,Petrale Sole,CW,12
+FHG,Fishery Harvest Guideline,2015,2579.4,Petrale Sole,CW,12
+FHG,Fishery Harvest Guideline,2020,2524.4,Petrale Sole,CW,12
+FHG,Fishery Harvest Guideline,2012,1094.6,Petrale Sole,CW,12
+FHG,Fishery Harvest Guideline,2017,2895.1,Petrale Sole,CW,12
+FHG,Fishery Harvest Guideline,2013,2358,Petrale Sole,CW,12
+FHG,Fishery Harvest Guideline,2022,3272.6238,Petrale Sole,CW,12
+FHG,Fishery Harvest Guideline,2021,3727.8999,Petrale Sole,CW,12
+FHG,Fishery Harvest Guideline,2023,3098.76,Petrale Sole,CW,12
+FHG,Fishery Harvest Guideline,2024,2898.76,Petrale Sole,CW,12
+ALLOC_TWL_PCT,Allocation Trawl Percent,2011,96.2,Petrale Sole,CW,13.2
+ALLOC_TWL_PCT,Allocation Trawl Percent,2018,95,Petrale Sole,CW,13.2
+ALLOC_TWL_PCT,Allocation Trawl Percent,2014,98.6,Petrale Sole,CW,13.2
+ALLOC_TWL_PCT,Allocation Trawl Percent,2016,98.7,Petrale Sole,CW,13.2
+ALLOC_TWL_PCT,Allocation Trawl Percent,2019,95,Petrale Sole,CW,13.2
+ALLOC_TWL_PCT,Allocation Trawl Percent,2015,98.6,Petrale Sole,CW,13.2
+ALLOC_TWL_PCT,Allocation Trawl Percent,2024,95,Petrale Sole,CW,13.2
+ALLOC_TWL_PCT,Allocation Trawl Percent,2012,96.8,Petrale Sole,CW,13.2
+ALLOC_TWL_PCT,Allocation Trawl Percent,2017,95,Petrale Sole,CW,13.2
+ALLOC_TWL_PCT,Allocation Trawl Percent,2013,98.5,Petrale Sole,CW,13.2
+ALLOC_TWL_PCT,Allocation Trawl Percent,2022,95,Petrale Sole,CW,13.2
+ALLOC_TWL_PCT,Allocation Trawl Percent,2021,95,Petrale Sole,CW,13.2
+ALLOC_TWL_PCT,Allocation Trawl Percent,2023,95,Petrale Sole,CW,13.2
+ALLOC_TWL_PCT,Allocation Trawl Percent,2020,95,Petrale Sole,CW,13.2
+ALLOC_TWL_MT,Allocation Trawl MT,2011,876,Petrale Sole,CW,13.3
+ALLOC_TWL_MT,Allocation Trawl MT,2018,2633.495,Petrale Sole,CW,13.3
+ALLOC_TWL_MT,Allocation Trawl MT,2014,2383,Petrale Sole,CW,13.3
+ALLOC_TWL_MT,Allocation Trawl MT,2016,2638.4,Petrale Sole,CW,13.3
+ALLOC_TWL_MT,Allocation Trawl MT,2019,2458.03,Petrale Sole,CW,13.3
+ALLOC_TWL_MT,Allocation Trawl MT,2015,2544.4,Petrale Sole,CW,13.3
+ALLOC_TWL_MT,Allocation Trawl MT,2020,2398.18,Petrale Sole,CW,13.3
+ALLOC_TWL_MT,Allocation Trawl MT,2012,1060,Petrale Sole,CW,13.3
+ALLOC_TWL_MT,Allocation Trawl MT,2017,2750.345,Petrale Sole,CW,13.3
+ALLOC_TWL_MT,Allocation Trawl MT,2013,2323,Petrale Sole,CW,13.3
+ALLOC_TWL_MT,Allocation Trawl MT,2022,3242.5,Petrale Sole,CW,13.3
+ALLOC_TWL_MT,Allocation Trawl MT,2021,3697.9,Petrale Sole,CW,13.3
+ALLOC_TWL_MT,Allocation Trawl MT,2023,3068.76,Petrale Sole,CW,13.3
+ALLOC_TWL_MT,Allocation Trawl MT,2024,2868.76,Petrale Sole,CW,13.3
+WSAT,At-sea Whiting Set-asides,2011,5,Petrale Sole,CW,14
+WSAT,At-sea Whiting Set-asides,2018,5,Petrale Sole,CW,14
+WSAT,At-sea Whiting Set-asides,2014,5,Petrale Sole,CW,14
+WSAT,At-sea Whiting Set-asides,2016,5,Petrale Sole,CW,14
+WSAT,At-sea Whiting Set-asides,2019,5,Petrale Sole,CW,14
+WSAT,At-sea Whiting Set-asides,2015,5,Petrale Sole,CW,14
+WSAT,At-sea Whiting Set-asides,2020,5,Petrale Sole,CW,14
+WSAT,At-sea Whiting Set-asides,2012,5,Petrale Sole,CW,14
+WSAT,At-sea Whiting Set-asides,2017,5,Petrale Sole,CW,14
+WSAT,At-sea Whiting Set-asides,2013,5,Petrale Sole,CW,14
+WSAT,At-sea Whiting Set-asides,2022,5,Petrale Sole,CW,14
+WSAT,At-sea Whiting Set-asides,2021,5,Petrale Sole,CW,14
+WSAT,At-sea Whiting Set-asides,2023,5,Petrale Sole,CW,14
+WSAT,At-sea Whiting Set-asides,2024,5,Petrale Sole,CW,14
+SBIFQ,SB IFQ Total,2017,2745.35,Petrale Sole,CW,14.2
+SBIFQ,SB IFQ Total,2024,2863.76,Petrale Sole,CW,14.2
+SBIFQ,SB IFQ Total,2014,2378,Petrale Sole,CW,14.2
+SBIFQ,SB IFQ Total,2012,1055,Petrale Sole,CW,14.2
+SBIFQ,SB IFQ Total,2013,2318,Petrale Sole,CW,14.2
+SBIFQ,SB IFQ Total,2021,3692.9,Petrale Sole,CW,14.2
+SBIFQ,SB IFQ Total,2011,871,Petrale Sole,CW,14.2
+SBIFQ,SB IFQ Total,2018,2628.5,Petrale Sole,CW,14.2
+SBIFQ,SB IFQ Total,2023,3063.76,Petrale Sole,CW,14.2
+SBIFQ,SB IFQ Total,2015,2539.4,Petrale Sole,CW,14.2
+SBIFQ,SB IFQ Total,2022,3237.5,Petrale Sole,CW,14.2
+SBIFQ,SB IFQ Total,2016,2633.4,Petrale Sole,CW,14.2
+SBIFQ,SB IFQ Total,2019,2453.03,Petrale Sole,CW,14.2
+SBIFQ,SB IFQ Total,2020,2393.18,Petrale Sole,CW,14.2
+ALLOC_NTWL_PCT,Allocation Non Trawl Percent,2017,5,Petrale Sole,CW,14.3
+ALLOC_NTWL_PCT,Allocation Non Trawl Percent,2014,1.4,Petrale Sole,CW,14.3
+ALLOC_NTWL_PCT,Allocation Non Trawl Percent,2012,3.2,Petrale Sole,CW,14.3
+ALLOC_NTWL_PCT,Allocation Non Trawl Percent,2020,5,Petrale Sole,CW,14.3
+ALLOC_NTWL_PCT,Allocation Non Trawl Percent,2011,3.8,Petrale Sole,CW,14.3
+ALLOC_NTWL_PCT,Allocation Non Trawl Percent,2015,1.4,Petrale Sole,CW,14.3
+ALLOC_NTWL_PCT,Allocation Non Trawl Percent,2018,5,Petrale Sole,CW,14.3
+ALLOC_NTWL_PCT,Allocation Non Trawl Percent,2022,5,Petrale Sole,CW,14.3
+ALLOC_NTWL_PCT,Allocation Non Trawl Percent,2016,1.3,Petrale Sole,CW,14.3
+ALLOC_NTWL_PCT,Allocation Non Trawl Percent,2021,5,Petrale Sole,CW,14.3
+ALLOC_NTWL_PCT,Allocation Non Trawl Percent,2023,5,Petrale Sole,CW,14.3
+ALLOC_NTWL_PCT,Allocation Non Trawl Percent,2013,1.5,Petrale Sole,CW,14.3
+ALLOC_NTWL_PCT,Allocation Non Trawl Percent,2019,5,Petrale Sole,CW,14.3
+ALLOC_NTWL_PCT,Allocation Non Trawl Percent,2024,5,Petrale Sole,CW,14.3
+ALLOC_NTWL_MT,Allocation Non Trawl MT,2024,30,Petrale Sole,CW,14.4
+ALLOC_NTWL_MT,Allocation Non Trawl MT,2023,30,Petrale Sole,CW,14.4
+ALLOC_NTWL_MT,Allocation Non Trawl MT,2021,30,Petrale Sole,CW,14.4
+ALLOC_NTWL_MT,Allocation Non Trawl MT,2022,30,Petrale Sole,CW,14.4
+ALLOC_NTWL_MT,Allocation Non Trawl MT,2013,35,Petrale Sole,CW,14.4
+ALLOC_NTWL_MT,Allocation Non Trawl MT,2017,144.755,Petrale Sole,CW,14.4
+ALLOC_NTWL_MT,Allocation Non Trawl MT,2012,35,Petrale Sole,CW,14.4
+ALLOC_NTWL_MT,Allocation Non Trawl MT,2020,126.22,Petrale Sole,CW,14.4
+ALLOC_NTWL_MT,Allocation Non Trawl MT,2015,35,Petrale Sole,CW,14.4
+ALLOC_NTWL_MT,Allocation Non Trawl MT,2019,129.37,Petrale Sole,CW,14.4
+ALLOC_NTWL_MT,Allocation Non Trawl MT,2016,35,Petrale Sole,CW,14.4
+ALLOC_NTWL_MT,Allocation Non Trawl MT,2014,35,Petrale Sole,CW,14.4
+ALLOC_NTWL_MT,Allocation Non Trawl MT,2018,138.605,Petrale Sole,CW,14.4
+ALLOC_NTWL_MT,Allocation Non Trawl MT,2011,35,Petrale Sole,CW,14.4
+WA21,Whiting A21,2011,0,Petrale Sole,CW,16
+WA21,Whiting A21,2018,0,Petrale Sole,CW,16
+WA21,Whiting A21,2014,0,Petrale Sole,CW,16
+WA21,Whiting A21,2016,0,Petrale Sole,CW,16
+WA21,Whiting A21,2019,0,Petrale Sole,CW,16
+WA21,Whiting A21,2015,0,Petrale Sole,CW,16
+WA21,Whiting A21,2020,0,Petrale Sole,CW,16
+WA21,Whiting A21,2012,0,Petrale Sole,CW,16
+WA21,Whiting A21,2017,0,Petrale Sole,CW,16
+WA21,Whiting A21,2013,0,Petrale Sole,CW,16
+SB_NWHIT,Shore-based Non-Whiting MT,2018,2628.495,Petrale Sole,CW,16.1
+SB_NWHIT,Shore-based Non-Whiting MT,2019,2453.03,Petrale Sole,CW,16.1
+SB_NWHIT,Shore-based Non-Whiting MT,2015,2539.4,Petrale Sole,CW,16.1
+SB_NWHIT,Shore-based Non-Whiting MT,2017,2745.4,Petrale Sole,CW,16.1
+SB_NWHIT,Shore-based Non-Whiting MT,2016,2633.4,Petrale Sole,CW,16.1
+SB_NWHIT,Shore-based Non-Whiting MT,2012,1055,Petrale Sole,CW,16.1
+SB_NWHIT,Shore-based Non-Whiting MT,2014,2378,Petrale Sole,CW,16.1
+SB_NWHIT,Shore-based Non-Whiting MT,2013,2318,Petrale Sole,CW,16.1
+SB_NWHIT,Shore-based Non-Whiting MT,2020,2393.18,Petrale Sole,CW,16.1
+SB_NWHIT,Shore-based Non-Whiting MT,2011,871,Petrale Sole,CW,16.1
+SB_WHIT,Shore-based Whiting MT,2019,0,Petrale Sole,CW,16.2
+SB_WHIT,Shore-based Whiting MT,2016,0,Petrale Sole,CW,16.2
+SB_WHIT,Shore-based Whiting MT,2014,0,Petrale Sole,CW,16.2
+SB_WHIT,Shore-based Whiting MT,2018,0,Petrale Sole,CW,16.2
+SB_WHIT,Shore-based Whiting MT,2011,0,Petrale Sole,CW,16.2
+SB_WHIT,Shore-based Whiting MT,2013,0,Petrale Sole,CW,16.2
+SB_WHIT,Shore-based Whiting MT,2017,0,Petrale Sole,CW,16.2
+SB_WHIT,Shore-based Whiting MT,2012,0,Petrale Sole,CW,16.2
+SB_WHIT,Shore-based Whiting MT,2020,0,Petrale Sole,CW,16.2
+SB_WHIT,Shore-based Whiting MT,2015,0,Petrale Sole,CW,16.2
+WHIT_TOT,Whiting Total MT,2020,0,Petrale Sole,CW,16.3
+WHIT_TOT,Whiting Total MT,2018,0,Petrale Sole,CW,16.3
+WHIT_TOT,Whiting Total MT,2017,0,Petrale Sole,CW,16.3
+WHIT_TOT,Whiting Total MT,2012,0,Petrale Sole,CW,16.3
+WHIT_TOT,Whiting Total MT,2019,0,Petrale Sole,CW,16.3
+WHIT_TOT,Whiting Total MT,2014,0,Petrale Sole,CW,16.3
+WHIT_TOT,Whiting Total MT,2015,0,Petrale Sole,CW,16.3
+WHIT_TOT,Whiting Total MT,2011,0,Petrale Sole,CW,16.3
+WHIT_TOT,Whiting Total MT,2016,0,Petrale Sole,CW,16.3
+WHIT_TOT,Whiting Total MT,2013,0,Petrale Sole,CW,16.3
