@@ -24,32 +24,32 @@ For this assessment, WDFW completed catch reconstruction of petrale sole (pers. 
 \item Update both the maturity and fecundity relationships using samples with wider geographic coverage to include California, and from more recent years for petrale sole would be beneficial. 
 
 
-This assessment uses updated maturity and fecundity estimated. Updated maturity parameters were estimated on data collected within WCGBTS (pers. comm., Melissa Head, NWFSC). Updated fecundity parameters were informed by *Lefebvre et al. (2019)
+This assessment uses updated maturity and fecundity estimated. Updated maturity parameters were estimated from data collected within the \Gls{s-wcgbt} (pers. comm. M. Head, NWFSC). Updated fecundity parameters were informed by *Lefebvre et al. (2019).
 
 \item Studies on stock structure and movement of petrale sole indicating transboundary movement of petrale sole between U.S. and Canadian waters, particularly with regard to the winter-summer spawning migration. It will be informative to include a time-series plot of fishery catch from Canadian waters in future assessment.
 
 
-Incorporation of fishery catches from Canadian waters were analyzed in this assessment via sensitivity analysis and is presented later in the report.
+Incorporation of fishery catches from Canadian waters were analyzed in this assessment via sensitivity analysis, and results are presented later in this report.
 
 \item Increased collection of commercial fishery age data as well as re-aging any available historical samples from California would help reduce uncertainty. While some recent age data were made available from California, sample sizes could be increased and this data collection needs to continue into the future. Without good age data, the ability to estimate year-class strength and the extent of variation in recruitment is compromised.
 
 
-The number of ages generated since the 2013 full assessment (as well as since 2019 update assessment) are available in *Table XX. 
+There has been progress made in generated more ages since the 2013 full assessment (as well as since 2019 update assessment). The sample sizes of ages used in this assessment  are available in *Table XX. 
 
 \item Where possible, historical otolith samples aged using a combination of surface and break-and-burn methods should be re-aged using the break-and-burn method. Early surface read otoliths should also be re-aged using the break and burn method. Historical otoliths aged with a standard method will allow the further evaluation of the potential impacts of consistent under-aging using surface read methods, changes in selectivity during early periods without any composition information, and potential changes in growth.
 
 
-Although progress has been done on estimating additional ages for petrale sole, historical surface read ages were not re-evaluated. In this assessment, we excluded historical surface read ages, and conducted sensitivity anaysis to illustrate the impact of the removals of those historical ages 
+Although progress has been done on estimating additional ages for petrale sole, historical surface read ages were not re-evaluated. In this assessment, we excluded historical surface read ages, and conducted sensitivity analysis to evaluate the impact of removing of those historical ages from the model.
 
 \item The effect of the implementation of the IFQ (catch shares) program that began during 2011 on fleet behavior, including impacts on discards, fishery selectivity, and fishing locations, would benefit from further study.
 
 
-In this assessment model, additional flexibility is allowed for period after implementing IFQ program through time varying selectivity and retention parameters, to account for changes in discard rates and fishery selection. 
+In this assessment, additional flexibility is allowed for period after implementing IFQ program through time varying selectivity and retention parameters, to account for changes in discard rates and fishery selection. 
 
 \item The extent of spatial variability on productivity processes such as growth, recruitment, and maturity is currently unknown and would benefit from further research. 
 
 
-The progress has been done in evaluating and explaining time varying growth of groundfish, including petrale sole (*Gertseva et al. 2017). 
+The progress has been made in exploring time varying growth of groundfish, including petrale sole (*Gertseva et al. 2017). 
 
 \item The Panel appreciated the delta-GLMM approach to derive an index of stock size from commercial CPUE data. However, there may still be factors other than stock size that affect time-trends in the standardized CPUE indices. The panel recommends:
 \begin{enumerate}
@@ -61,8 +61,8 @@ log(effort) can be included as an additive offset, and most GLMM packages includ
 
 \end{enumerate}
 
-\end{enumerate}
+This assessment no longer includes fishery CPUE to inform trend in petrale sole abundance. It was illustrated in past assessments that CPUE exhibited a lack of influence on model results, indicating that survey data provides sufficient information to monitor changes in abundance. 
 
-This assessment does not include fishery CPUE (please see below).
+\end{enumerate}
 
 ### Response to STAR Panel Requests (not required in draft)
