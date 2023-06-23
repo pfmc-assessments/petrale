@@ -19,21 +19,18 @@ inputs$dat$agecomp <-
 SS_write(inputs, dir = dir, overwrite = TRUE)
 tune_comps(dir = dir, init_run = TRUE, niters_tuning = 1)
 
+dir <- "models/2023.a034.603_all_main_devs"
+r4ss::copy_SS_inputs(dir.old = mod.34.1$inputs$dir,
+  dir.new = dir, copy_exe = TRUE, overwrite = TRUE)
+
 # TODO: add plot or table of DM vs Francis weights
 
+# command below is equivalent to mod.34.301 = SS_output("models/2023.a034.301")
 get_mod(34,301)
 get_mod(34,302)
 mod_list <- list(mod.34.1, mod.34.301, mod.34.302)
 mod_names <- c("Base", "Dirichlet-multinomial weights", "Include early age comps")
-plot_twopanel_comparison(mod_list,
-   legendlabels = mod_names,
-   filename = "sens_sens_timeseries_comp1.png",
-)
-plot_twopanel_comparison(mod_list, 
-   subplot_top = 9, subplot_bottom = 11, xlim = c(1920, 2023), 
-   legendlabels = mod_names,
-   filename = "sens_sens_timeseries_comp2.png",
-   )
+# make table
 sens_make_table(num = 34, sens_mods = mod_list, plot = TRUE, 
   sens_type = "comp", sens_names = mod_names)
 
