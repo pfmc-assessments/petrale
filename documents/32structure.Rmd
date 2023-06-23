@@ -7,24 +7,45 @@ The last update assessment of Petrale sole was conducted in 2019. The 2019 asses
 \begin{enumerate}
 
 \item Upgraded to Stock Synthesis version 3.30.21 (released in February 2023). 
+
 Rationale:  This is standard practice to capitalize on newly developed features and corrections to older versions as well as improvements in computational efficiency.  Model results were nearly identical before and after this change. 
 
-\item Removing fishery CPUE time series. 
+\item Updated historical and current fishery removals.
+
+Rationale: To include most up to date information.
+
+\item Removed fishery CPUE time series. 
+
 Rationale: 
 
-\item Combining Winter and Summer fleets into corresponding annual North and South fleets. 
-Rationale: The separation of North and South fleets into the Winter and Summer fleets were primarily motivated by the using the fishery CPUE indices (form Winter fisheries). With removal of CPUE indices from the model, separation into Winter and Summer fleets was no longer needed. Selectivity curves estimated for Winter and Summer fleets in both North and South were very similar, and our initial exploration of mirroring selectivity of Winter and Summer fleets yielded identical results. Combining Winter and Summer fleets within North and South fleets removed uncertainty associated with separating annual catches by season (Winter fleet was defined as November of previous year through the February of the current year), since only limited records of landings by month is available in the pre-PacFIN period. Finally, using annual catches (and not assigning to current year catches from previous) puts assessment in alignment with management system, which operated on a calendar year basis.  
+\item Combined Winter and Summer fleets into corresponding annual North and South fleets. 
 
-\item Using a single triennial survey time series (instead separating it into early and late indices).
-Rationale: The triennial index was separated in the past assessment dues to change in depth and latitudinal coverage of the triennial survey. Treating the survey as a single index did not make a difference, but provided for a longer historical single series, but simplified the structure of the assessment model.
+Rationale: The separation of North and South fleets into the Winter and Summer fleets were primarily motivated by the using the fishery CPUE indices form Winter fisheries. With removal of CPUE indices from the model, separation into Winter and Summer fleets was no longer needed. Also, selectivity curves estimated for Winter and Summer fleets were very similar for both North and South fleets, and initial explorations of mirroring selectivities of Winter and Summer fleets yielded identical results with model with separate selelctivity curves in Winter and Summer fleets estimated. Combining Winter and Summer fleets within North and South fleets removed uncertainty associated with separating annual catches by season (Winter fleet was defined as November of previous year through the February of the current year), since only limited records of landings by month is available in the pre-PacFIN period. Finally, using annual catches (and not assigning to current year catches from previous) puts assessment in alignment with management system, which operated on a calendar year basis.  
 
-\item Updating input sample sizes using a combination of number of trips and number and fish (rather than using number of trips, as sample sizes).
-Rationale: According to best practices.
+\item Recalculated survey abundance indices using sdmTMB geostatistical model.
 
-\item Updating maturity and fecundity parameters.
-Rationale: To incorporate the most up-to-date information.
+\item Used a single triennial survey time series (instead separating it into early and late indices).
+
+Rationale: The triennial index was separated in the past assessment dues to change in depth and latitudinal coverage of the triennial survey. Using a single index did not impact model results, but provided a longer historical time series and simplified the structure of the assessment model.
+
+\item Updated input sample sizes using a combination of number of trips and number and fish (rather than number of trips, as in orevious assessment).
+
+Rationale: To follow current best practices.
+
+\item Updated maturity and fecundity parameters.
+
+Rationale: To include most up to date information.
+
+\item Fixed spawner-recruit steepness at 0.8, the mean of the Mayer prior. 
+
+Rationale. Model was not able to estimated this parameter. Likelihood profile is included in this report.
+
+\item Excluded historical surface read ages.
+
 
 \end{enumerate}
+
+The list above documents only the most important changes made to this assessment relative to the previous one. Despite the large number of changes made to data sources and the model configuration, the results of this assessment are consistent with those done previously. 
 
 ### Modeling Platform and Structure
 General model specifications (e.g., executable version, model structure, definition of fleets and areas)
