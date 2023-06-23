@@ -117,7 +117,7 @@ sens_make_table <- function(#area,
                             num = NULL,
                             sens_base = 1,
                             yr = 2023,
-                            sens_nums = NULL,
+                            #sens_nums = NULL,
                             sens_mods = NULL,
                             sens_names = NULL,
                             sens_type = NULL,
@@ -142,13 +142,13 @@ sens_make_table <- function(#area,
   # read models (if needed)
   if (!is.null(sens_mods)) {
     # get names for list elements beyond first entry, which is the base
-    sens_dirs <- purrr::modify_depth(
-      sens_mods[-1],
-      1,
-      ~ .[["inputs"]][["dir"]]
-    ) %>%
-      purrr::as_vector()
-    basedir <- ""
+    # sens_dirs <- purrr::modify_depth(
+    #   sens_mods[-1],
+    #   1,
+    #   ~ .[["inputs"]][["dir"]]
+    # ) %>%
+    #   purrr::as_vector()
+    basedir <- basename(sens_mods[[1]]$inputs$dir)
   } else {
     stop("Need to provide the list: 'sens_mods'")
   }
@@ -194,7 +194,8 @@ sens_make_table <- function(#area,
 
   # make plot
   if (plot) {
-    plot_filename <- paste0("sens_timeseries_", sens_type, ".png")
+    plot_filename1 <- paste0("sens_timeseries_", sens_type, "1.png")
+    plot_filename2 <- paste0("sens_timeseries_", sens_type, "2.png")
     if (is.null(plot_dir)) {
       plot_dir <- file.path("models",
                             basedir,
@@ -205,8 +206,18 @@ sens_make_table <- function(#area,
                              legendlabels = sens_names,
                              legendloc = legendloc,
                              legendncol = ifelse(length(sens_mods) < 5, 1, 2),
-                             file = plot_filename,
+                             file = plot_filename1,
                              dir = plot_dir,
+                             ...
+                             )
+    plot_twopanel_comparison(mods = sens_mods,
+                             legendlabels = sens_names,
+                             legendloc = legendloc,
+                             legendncol = ifelse(length(sens_mods) < 5, 1, 2),
+                             file = plot_filename2,
+                             dir = plot_dir,
+                             subplot_top = 9, subplot_bottom = 11, 
+                             xlim = c(1920, 2023),
                              ...
                              )
 
@@ -228,7 +239,15 @@ sens_make_table <- function(#area,
             sens_type_long)
             
     write_custom_plots_csv(mod = sens_mods[[1]],
-                           filename = plot_filename,
+                           filename = plot_filename1,
+                           caption = caption)
+    caption <-
+      paste("Time series of recruitment (top) and recruitment deviations",
+            "(bottom) for the sensitivity analyses related to",
+            sens_type_long)
+            
+    write_custom_plots_csv(mod = sens_mods[[1]],
+                           filename = plot_filename2,
                            caption = caption)
   }
   

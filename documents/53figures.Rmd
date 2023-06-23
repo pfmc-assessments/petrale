@@ -295,7 +295,21 @@ label = 'phase')
 \clearpage
 
 ### Sensitivity Analyses and Retrospectives
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_comp1.png"), 
+label = 'sens-comp1',
+caption = paste("Time series of spawning biomass (top) and fraction of unfished",
+            "(bottom) for the sensitivity analyses related to",
+            "composition data."))
 
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_comp2.png"), 
+label = 'sens-comp2',
+caption = paste("Time series of recruitment (top) and recruitment deviations",
+            "(bottom) for the sensitivity analyses related to",
+            "composition data."))
+```
 
 ### Likelihood Profiles
 

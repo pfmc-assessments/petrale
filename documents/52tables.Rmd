@@ -56,8 +56,7 @@ table_sens("../tables/sens_table_old_vs_new.csv",
 \clearpage
 
 ```{r tables-model-sens, results = "asis"}
-table_sens("../tables/sens_table_test.csv",
-	       sens_group = "testing",
-           caption_extra = "[TEMPORARY EXAMPLE ONLY]")
+table_sens("../tables/sens_table_comp.csv",
+	       sens_group = "comp")
 ```           
 \end{landscape}

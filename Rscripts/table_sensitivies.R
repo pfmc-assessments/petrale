@@ -36,8 +36,3 @@ old_vs_new_table <- rbind(
 
 write.csv(old_vs_new_table, file = "tables/sens_table_old_vs_new.csv", row.names = FALSE)
 
-sens_make_table(
-    sens_mods = list(mod.34.1, mod.26.1, mod.30.1), 
-    plot = FALSE, write = TRUE, sens_type = "test",
-    sens_names = c("Base model", "Sensitivity 1", "Sensitivity 2")
-  )
