@@ -50,6 +50,11 @@ cat("\\end{landscape}")
 table_ts(mod_base)
 ```
 
+```{r tables-weights, results = "asis"}
+table_compweight(mod_base)
+```
+
+
 \begin{landscape}
 ```{r tables-old_vs_new, results = "asis"}
 table_sens("../tables/sens_table_old_vs_new.csv",

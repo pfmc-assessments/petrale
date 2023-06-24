@@ -26,12 +26,14 @@
 #' @author Ian G. Taylor
 #' @examples
 #' \dontrun{
-#'   plot_twopanel_comparison(mods = list(mod.2019.s.002.002,
-#'                                        mod.2019.s.003.001),
-#'                            endyrvec = 2019)
+#' plot_twopanel_comparison(
+#'   mods = list(
+#'     mod.2019.s.002.002,
+#'     mod.2019.s.003.001
+#'   ),
+#'   endyrvec = 2019
+#' )
 #' }
-
-
 plot_twopanel_comparison <- function(mods,
                                      legendlabels = NULL,
                                      filename = NULL,
@@ -52,8 +54,9 @@ plot_twopanel_comparison <- function(mods,
   for (imod in 1:summary$n) {
     # change something like "models/2023.a034.001" to
     # "a034.001"
-    ids[imod] <- substring(basename(mods[[imod]]$inputs$dir), 
-      first = 6, last = 13)
+    ids[imod] <- substring(basename(mods[[imod]]$inputs$dir),
+      first = 6, last = 13
+    )
   }
 
   # default legend label
@@ -71,7 +74,8 @@ plot_twopanel_comparison <- function(mods,
       message("printing figure to ", file.path(dir, filename))
     }
     png(file.path(dir, filename),
-        width = 6.5, height = 7.0, units = "in", pointsize = 10, res = 300)
+      width = 6.5, height = 7.0, units = "in", pointsize = 10, res = 300
+    )
   }
   if (is.null(subplot_top)) {
     subplot_top <- ifelse(hessian, 2, 1)
@@ -79,25 +83,27 @@ plot_twopanel_comparison <- function(mods,
   if (is.null(subplot_bottom)) {
     subplot_bottom <- ifelse(hessian, 4, 3)
   }
-  par(mfrow = c(2,1), mar = c(1, 5, 1, 1), oma = c(3, 1, 0, 0))
+  par(mfrow = c(2, 1), mar = c(1, 5, 1, 1), oma = c(3, 1, 0, 0))
   r4ss::SSplotComparisons(summary,
-                          endyrvec = endyrvec,
-                          subplots = subplot_top,
-                          legendlabels = legendlabels,
-                          new = FALSE,
-                          ylimAdj = ylimAdj1,
-                          verbose = FALSE,
-                          ...)
+    endyrvec = endyrvec,
+    subplots = subplot_top,
+    legendlabels = legendlabels,
+    new = FALSE,
+    ylimAdj = ylimAdj1,
+    verbose = FALSE,
+    ...
+  )
   r4ss::SSplotComparisons(summary,
-                          endyrvec = endyrvec,
-                          subplots = subplot_bottom,
-                          legend = FALSE,
-                          new = FALSE,
-                          ylimAdj = ylimAdj2,
-                          verbose = FALSE,
-                          ...)
+    endyrvec = endyrvec,
+    subplots = subplot_bottom,
+    legend = FALSE,
+    new = FALSE,
+    ylimAdj = ylimAdj2,
+    verbose = FALSE,
+    ...
+  )
   mtext("Year", side = 1, line = 1, outer = TRUE)
-  
+
   if (print) {
     dev.off()
   }

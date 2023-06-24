@@ -2,7 +2,7 @@
 #'
 #' reads model output from a directory found by `get_dir_petrale()`
 #' and invisibly returns the list created by `r4ss::SS_output()`.
-#' 
+#'
 #' Adapted from Lingcod 2021
 #' https://github.com/pfmc-assessments/lingcod/blob/main/R/get_mod.R
 #'
@@ -23,17 +23,16 @@
 #' @seealso [get_dir_petrale()]
 #' @examples
 #' \dontrun{
-#'   # read model output and assign to workspace as 'mod.2021.s.001.001"
-#'   get_mod(num = 24, sens = 18)
-#'   get_mod(id = "2023.a024.018")
+#' # read model output and assign to workspace as 'mod.2021.s.001.001"
+#' get_mod(num = 24, sens = 18)
+#' get_mod(id = "2023.a024.018")
 #'
-#'   # read model output and make all default r4ss plots
-#'   get_mod(num = 2, plot = TRUE)
+#' # read model output and make all default r4ss plots
+#' get_mod(num = 2, plot = TRUE)
 #'
-#'   # read model output and make only biology, selex, and time series plots
-#'   get_mod(area ="s", num = 2, plot = 1:3)
+#' # read model output and make only biology, selex, and time series plots
+#' get_mod(area = "s", num = 2, plot = 1:3)
 #' }
-
 get_mod <- function(num = NULL,
                     sens = 1,
                     yr = 2023,
@@ -45,22 +44,26 @@ get_mod <- function(num = NULL,
                     printstats = FALSE,
                     plot = FALSE,
                     verbose = TRUE,
-                    ...){
+                    ...) {
   if (is.null(dir)) {
-    dir <- get_dir_petrale(num = num,
-                        sens = sens,
-                        yr = yr,
-                        code = code,
-                        id = id,
-                        verbose = verbose)
+    dir <- get_dir_petrale(
+      num = num,
+      sens = sens,
+      yr = yr,
+      code = code,
+      id = id,
+      verbose = verbose
+    )
   }
   if (verbose) {
     message("reading model from: ", dir)
   }
-  mod <- r4ss::SS_output(dir = dir,
-                         covar = covar,
-                         printstats = printstats,
-                         verbose = FALSE)
+  mod <- r4ss::SS_output(
+    dir = dir,
+    covar = covar,
+    printstats = printstats,
+    verbose = FALSE
+  )
   modname <- basename(dir)
   if (substring(modname, 1, 6) == "2023.a") {
     # for 2023 annual models, create an object name
@@ -77,7 +80,7 @@ get_mod <- function(num = NULL,
   }
 
   # assign to workspace
-  if(assign){
+  if (assign) {
     if (verbose) {
       message("creating ", modname, " in workspace")
     }
