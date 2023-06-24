@@ -11,12 +11,14 @@ executive[["stock"]] <- paste0("This assessment reports the status of ",
 
 `r executive[["stock"]]`
 
+This assessment reports the status of the `r spp` (\emph{`r spp.sci`})  off the U.S. coast of California, Oregon, and Washington using data through 2022.  While `r spp` are modeled as a single stock, the spatial aspects of the coast-wide population are addressed through geographic separation of data sources/fleets where possible. There is currently no genetic evidence suggesting distinct biological stocks of `r spp` off the U.S. coast. The limited tagging data available to describe adult movement suggests that `r spp` may have some homing ability for deep water spawning sites but also have the ability to move long distances between spawning sites.
+
+
 ## Catches{-}
 
-Adding text here for example.
-trends and current levels.
-Include Table for last 10 years.
-Include Figure with long-term estimates.
+While records do not exist, the earliest catches of `r spp` are reported in `r Dat_start_mod1` in California and 1884 in Oregon.  `r spp.up` are caught nearly exclusively by trawl fleets; non-trawl gears contribute only a small fraction of the catches across all years. `r spp.up` are a desirable market species and discarding has historically been low. In this assessment, fishery removals have been divided among two fleets: 1) North and 2) South. Landings for the North fleet are defined as fish landed in Washington and Oregon ports. Landings for the South fleet are defined as fish landed in California ports.
+
+Recent annual catches between 1981-2022 range between `r min(round(Tot.catch.df[Tot.catch.df[,1] >= 1981 & Tot.catch.df[,1] <= 2018,2],0))` and `r max(round(Tot.catch.df[Tot.catch.df[,1] >= 1981 & Tot.catch.df[,1] <= 2018,2],0))` mt per year and the most recent year landings are shown in Table \ref{tab:Exec_catch}. 
 
 \clearpage
 
