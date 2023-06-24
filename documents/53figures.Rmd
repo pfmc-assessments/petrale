@@ -262,8 +262,8 @@ label = 'mnwt_fitSouth')
 sa4ss::add_figure(
 filein = file.path("../figures/historical_assessment_timeseries.png"), 
 caption = paste("Comparison of biomass time series (colored lines) across recent assessments.",
-  "Units are estimated biomass (summary biomass) of females and males ages 3 and older.",
-  "Total mortality from the base model (black polygons) is included as well.",
+  "Units are estimated biomass of females and males ages 3 and older.",
+  "Total mortality from the base model (black bars) is included as well.",
   "Spawning biomass is not comparable across these assessments because the inclusion",
   "of a fecundity relationship starting in 2023 which results in spawning output in units of eggs."),
 label = 'smry-bio-historical')
@@ -272,7 +272,7 @@ label = 'smry-bio-historical')
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots", "ts4_Summary_biomass_(mt).png"), 
-caption = "Estimated biomass (summary biomass) of males and females ages 3 and older.",
+caption = "Estimated biomass of females and males ages 3 and older.",
 label = 'smry-bio')
 
 sa4ss::add_figure(

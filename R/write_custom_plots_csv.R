@@ -1,8 +1,8 @@
 #' Write a CSV file for custom plots
 #'
-#' Copied from 
+#' Copied from
 #' https://github.com/pfmc-assessments/lingcod/blob/main/R/write_custom_plots_csv.R
-#' 
+#'
 #' @param mod A model object created by [get_mod()] or
 #' `r4ss::SS_output()` which is used to get the directory
 #' @param filepath An alternative to mod as a way to get the path
@@ -17,11 +17,14 @@ write_custom_plots_csv <- function(mod, filepath = NULL, filename, caption) {
   }
   docpath <- file.path(system.file(package = "petrale"), "figures")
   alt_caption <- strsplit(caption, split = ".", fixed = TRUE)[[1]][1]
-  write.csv(x = data.frame(caption = caption,
-                           alt_caption = alt_caption,
-                           label = gsub(".png", "", filename),
-                           filein = R.utils::getRelativePath(filepath, docpath)
-                           ),
-            file = gsub("png", "csv", filepath),
-            row.names = FALSE)
+  write.csv(
+    x = data.frame(
+      caption = caption,
+      alt_caption = alt_caption,
+      label = gsub(".png", "", filename),
+      filein = R.utils::getRelativePath(filepath, docpath)
+    ),
+    file = gsub("png", "csv", filepath),
+    row.names = FALSE
+  )
 }

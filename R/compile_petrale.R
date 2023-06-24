@@ -51,13 +51,12 @@ compile_petrale <- function(
     time = 10,
     wipe = FALSE,
     ...) {
-
   # load packages doesn't happen automatically with devtools::load_all()
   require(sa4ss)
   require(magrittr)
-  
+
   # Sort out paths and directories
-  
+
   # remove any extra directory info like "models" in front of the name
   basemodelname <- basename(basemodelname)
   # add "models"
@@ -66,7 +65,7 @@ compile_petrale <- function(
     "models", basemodelname
   )
   message("base model: ", basemodelname)
-  
+
   # If wipe, remove cache and plots
   if (wipe) {
     unlink(file.path(fullpathbasemodel, "plots"), recursive = TRUE)
@@ -165,7 +164,7 @@ compile_precursor <- function(basemodel, plot = TRUE) {
     save_loc = tex_tables_dir1,
     csv_name = "table_labels.csv"
   )
-  
+
 
   # replace tables in main directory if they don't match
   table_e1 <- readLines(file.path(tex_tables_dir1, "e_ReferencePoints_ES.tex"))

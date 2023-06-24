@@ -15,7 +15,7 @@
 #' @param yr year (default 2023)
 #' @param id model id (like "2021.s.001.001") as an alternative to
 #' the combination of inputs `num`, `sens`, `code`, and `year`
-#' @param verbose A logical value specifying if output should be printed 
+#' @param verbose A logical value specifying if output should be printed
 #' to the console or not. The default is `FALSE`, which will suppress messages.
 #' @author Ian G. Taylor, Kelli Faye Johnson
 #' @export
@@ -26,10 +26,10 @@
 #' # "models/2023.a024.018_min_sample_retuned"
 #' get_dir_petrale(num = 24, sens = 18)
 #' get_dir_petrale(id = "2023.a024.018")
-#' 
+#'
 #' # get directory for the 2019 base model
 #' get_dir_petrale(yr = 2019, num = 1, code = "")
-#' 
+#'
 #' # get a seasonal model directory
 #' get_dir_petrale(yr = 2023, num = 1, sens = 1, code = "s")
 #' }
