@@ -16,9 +16,11 @@ This assessment reports the status of the `r spp` (\emph{`r spp.sci`})  off the 
 
 ## Catches{-}
 
-While records do not exist, the earliest catches of `r spp` are reported in `r Dat_start_mod1` in California and 1884 in Oregon.  `r spp.up` are caught nearly exclusively by trawl fleets; non-trawl gears contribute only a small fraction of the catches across all years. `r spp.up` are a desirable market species and discarding has historically been low. In this assessment, fishery removals have been divided among two fleets: 1) North and 2) South. Landings for the North fleet are defined as fish landed in Washington and Oregon ports. Landings for the South fleet are defined as fish landed in California ports.
+`r spp.up` have been caught in the flatfish fishery off the U.S. Pacific coast since the late 19th century. The earliest catches of `r spp` are reported in `r Dat_start_mod1` in California and 1884 in Oregon. `r spp.up` were lightly exploited during the early 1900s, but by the 1950s, the fishery was well developed with the stock showing declines in biomass and catches (Figures \ref{fig:Exec_catch1} and \ref{fig:Spawnbio_all}). The rate of decline in spawning biomass accelerated through the 1970s reaching minimums generally around or below 10% of the unexploited levels during the 1980s through the early 2000s (Figure \ref{fig:RelDeplete_all}). `r spp.up` has  consistently been the most commercially valuable flatfish targeted in the California Current Ecosystem. `r spp.up` are caught nearly exclusively by trawl fleets; non-trawl gears contribute only a small fraction of the catches across all years. `r spp.up` are a desirable market species and discarding has historically been low. 
 
-Recent annual catches between 1981-2022 range between `r min(round(Tot.catch.df[Tot.catch.df[,1] >= 1981 & Tot.catch.df[,1] <= 2018,2],0))` and `r max(round(Tot.catch.df[Tot.catch.df[,1] >= 1981 & Tot.catch.df[,1] <= 2018,2],0))` mt per year and the most recent year landings are shown in Table \ref{tab:Exec_catch}. 
+In this assessment, fishery removals have been divided among two fleets: 1) North and 2) South. Landings for the North fleet are defined as fish landed in Washington and Oregon ports. Landings for the South fleet are defined as fish landed in California ports.
+
+Recent annual catches between 1981-2022 range between 803 and 3060 mt per year and the most recent year landings are shown in Table \ref{tab:Exec_catch}. 
 
 \clearpage
 
@@ -44,12 +46,9 @@ if (exists("model")) {
 ```
 (SS3).
 
-Replace text with
-date of last assessment,
-type of assessment model,
-data available,
-new information, and
-information lacking.
+The coastwide population was modeled allowing separate growth and mortality parameters for each sex (a two-sex model).
+
+The model includes fishery data in the form of catches, discard rates and average weights, length- and age-frequency data. Biological data are derived from both port and on-board observer sampling programs. The National Marine Fisheries Service (NMFS) `r full.tri ` (1980, 1983, 1986, 1989, 1992, 1995, 1998, 2001, and 2004) and the `r nwfsc` (2003-2022) relative biomass indices and biological sampling provide fishery independent information on relative trend and demographics of the `r spp` stock.
 
 ## Stock biomass and dynamics{-}
 

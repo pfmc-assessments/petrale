@@ -42,5 +42,3 @@ Historically, `r spp` otoliths have been read by multiple ageing labs using surf
  
 The ageing error matrices used in the previous assessment were retained for this analysis. Ageing error was explored in the last full assessment including extensive model selection. A qualitative examination of the new break and burn double reads showed no evidence that the ageing estimation had changed over time relative to the samples included in the previous analysis. Furthermore, a new TMB-based ageing error software has been developed (pers. comm. Andre Punt, University of Washington), but has not yet fully explored or documented. Therefore, revision of the ageing error matrices has been left as a research project to be completed in time for the next full assessment.
  
-### Environmental and Ecosystem Data
-

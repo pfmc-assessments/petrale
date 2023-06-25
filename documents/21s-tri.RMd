@@ -1,14 +1,17 @@
 ### \acrlong{s-tri}
 
-The \gls{s-tri} was first conducted by the \gls{afsc} in 1977, and the survey continued until 2004 [@weinberg_2001_2002].
-Its basic design was a series of equally-spaced east-to-west transects across the continential shelf from which searches for tows in a specific depth range were initiated.
-The survey design changed slightly over time. In general, all of the surveys were conducted in the mid summer through early fall. The 1977 survey was conducted from early July through late September. The surveys from 1980 through 1989 were conducted from mid-July to late September. The 1992 survey was conducted from mid-July through early October. The 1995 survey was conducted from early June through late August. The 1998 survey was conducted from early June through early August. Finally, the 2001 and 2004 surveys were conducted from May to July.
+#### Survey Description
+
+The \gls{s-tri} was first conducted by the \gls{afsc} in 1977, and the survey continued until 2004 [@weinberg_2001_2002]. 
+
+Its basic design was a series of equally-spaced east-to-west transects across the continential shelf from which searches for tows in a specific depth range were initiated.The survey design changed slightly over time. In general, all of the surveys were conducted in the mid summer through early fall. The 1977 survey was conducted from early July through late September. The surveys from 1980 through 1989 were conducted from mid-July to late September. The 1992 survey was conducted from mid-July through early October. The 1995 survey was conducted from early June through late August. The 1998 survey was conducted from early June through early August. Finally, the 2001 and 2004 surveys were conducted from May to July.
 
 Haul depths ranged from 91-457 m during the 1977 survey with no hauls shallower than 91 m. Due to haul performance issues and truncated sampling with respect to depth, the data from 1977 were omitted from this analysis. The surveys in 1980, 1983, and 1986 covered the US West Coast south to 36.8\textdegree N latitude and a depth range of 55-366 m. The surveys in 1989 and 1992 covered the same depth range but extended the southern range to 34.5\textdegree N (near Point Conception).
-From 1995 through 2004, the surveys covered the depth range 55-500 m and surveyed south to 34.5\textdegree N.
-In 2004, the final year of the \gls{s-tri} series, the \gls{nwfsc} \gls{fram} conducted the survey following similar protocols to earlier years.
+From 1995 through 2004, the surveys covered the depth range 55-500 m and surveyed south to 34.5\textdegree N. In 2004, the final year of the \gls{s-tri} series, the \gls{nwfsc} \gls{fram} conducted the survey following similar protocols to earlier years.
 
 The \gls{s-tri} commonly encounters `r spp` along the U.S West Coast (Figure \ref{fig:tri_map}). The catch-per-unit-effort estimated from the survey is roughly constant across the surveyed latitudes (Figure \ref{fig:tri_cpue_lat}). Additionally, `r spp` were captured across the survey depths between 55-500 m (Figure \ref{fig:tri_cpue_depth}). The observed lengths captured across depths by each survey period are shown in Figure \ref{fig:tri_size_depth}.
+
+#### Index of Abundance
 
 Geostatistical models of biomass density were fit to survey data using Template ModelBuilder (TMB) (*Kristensen et al. 2016) via the R package Species Distribution Models with (sdmTMB) (Anderson et al. 2022), as in case of NWFSC West Coast Groundfish Bottom Trawl Survey.
 
@@ -19,6 +22,8 @@ The model used a delta model with a lognormal distribution for the catch-rate co
 Vessel-year effects, which have traditionally been included in index standardization for this survey, were not included as the estimated variance for the random effect was close to zero. Vessel-year effects were more prominent when models did not include spatial effects and were included for each unique combination of vessel and year in the data to account for the random selection of commercial vessels used during sampling (Helser, Punt, and Methot 2004; Thorson and Ward 2014).
 
 Spatial and spatiotemporal variation was included in the encounter probability model and spatial variation was included in the positive catch rate model. The variance of the spa-tiotemporal effect was estimated to be less than 0.01 for the positive catch rate model and was therefore not included in the final model. Spatial and spatiotemporal variation was included in the encounter probability and the positive catch rate model. Spatial variation was approximated using 500 knots, where more knots led to non-estimable standard errors because the positive encounters are too sparse to support the dense spatiotemporal structure.
+
+#### Length Compositions
 
 Length bins from 12 to 62 cm in 2 cm increments were used to summarize the length frequency of the survey catches in each year. Table XX shows the number of lengths taken by the survey. The length frequency distributions for the \gls{s-tri} from 1980-2004 are shown in Figures XX and XX. 
 
