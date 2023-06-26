@@ -306,6 +306,15 @@ label = 'phase')
 ### Sensitivity Analyses and Retrospectives
 ```{r, results = 'asis'}
 sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_index1.png"), 
+label = 'sens-index1',
+caption = paste("Time series of spawning biomass (top) and fraction of unfished",
+            "(bottom) for the sensitivity analyses related to",
+            "index data."))
+```
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_comp1.png"), 
 label = 'sens-comp1',
 caption = paste("Time series of spawning biomass (top) and fraction of unfished",
@@ -318,9 +327,115 @@ label = 'sens-comp2',
 caption = paste("Time series of recruitment (top) and recruitment deviations",
             "(bottom) for the sensitivity analyses related to",
             "composition data."))
+
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_sel1.png"), 
+label = 'sens-sel1',
+caption = paste("Time series of spawning biomass (top) and fraction of unfished",
+            "(bottom) for the sensitivity analyses related to",
+            "selectivity assumptions."))
+
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_bio1.png"), 
+label = 'sens-bio1',
+caption = paste("Time series of spawning biomass (top) and fraction of unfished",
+            "(bottom) for the sensitivity analyses related to",
+            "biology."))
+```
+
+```{r, results = 'asis'}
+# define path to retro and profile figs
+figures_diags <- "../figures/diags_model34/"
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(figures_diags, "retro_compare2_spawnbio_uncertainty.png"), 
+caption = "Change in the estimate of spawning output when the most recent 5 years of data area removed sequentially",
+label = 'retro-ssb')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(figures_diags, "retro_compare13_indices_flt4.png"), 
+caption = "Change in the fit to the WCGBTS index when the most recent 5 years of data area removed sequentially",
+label = 'retro-index')
+```
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(figures_diags, "retro_compare4_Bratio_uncertainty.png"),
+caption = "Change in the estimate of fraction unfished when the most recent 5 years of data area removed sequentially",
+label = 'retro-depl')
 ```
 
 ### Likelihood Profiles
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(figures_diags, "piner_panel_SR_LN(R0).png"), 
+caption = "Change in the negative log-likelihood across a range of log(R~0~) values",
+label = 'r0-profile')
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(figures_diags, "parameter_panel_SR_LN(R0).png"), 
+caption = paste("Change in quantities of interest related to spawning output",
+  "across a range of log(R~0~) values:",
+  "Fraction of unfished spawning output in 2023 (top-right),",
+  "Spawning output in 2023 (bottom-right), and ",
+  "Unfished equilibrium spawning output (bottom-left).",
+  "These are shown along with the change in total negative log-likelihood",
+  "(top-left, matches previous figure)."),
+label = 'r0-profile-pars')
+```
+
+
+\pagebreak
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(figures_diags, "piner_panel_SR_BH_steep.png"), 
+caption = "Change in the negative log-likelihood across a range of steepness (h) values",
+label = 'h-profile')
+```
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(figures_diags, "parameter_panel_SR_BH_steep.png"), 
+caption = paste("Change in quantities of interest related to spawning output",
+  "across a range of steepness (h) values:",
+  "Fraction of unfished spawning output in 2023 (top-right),",
+  "Spawning output in 2023 (bottom-right), and ",
+  "Unfished equilibrium spawning output (bottom-left).",
+  "These are shown along with the change in total negative log-likelihood",
+  "(top-left, matches previous figure)."),
+label = 'h-profile-pars')
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(figures_diags, "piner_panel_NatM_uniform_Fem_GP_1.png"), 
+caption = "Change in the negative log-likelihood across a range of female natural mortality (M) values",
+label = 'm-profile')
+```
+
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(figures_diags, "parameter_panel_NatM_uniform_Fem_GP_1.png"), 
+caption = paste("Change in quantities of interest related to spawning output",
+  "across a range of female natural mortality (M) values:",
+  "Fraction of unfished spawning output in 2023 (top-right),",
+  "Spawning output in 2023 (bottom-right), and ",
+  "Unfished equilibrium spawning output (bottom-left).",
+  "These are shown along with the change in total negative log-likelihood",
+  "(top-left, matches previous figure)."),
+label = 'm-profile-pars')
+```
 
 
 ### Reference Points and Forecasts

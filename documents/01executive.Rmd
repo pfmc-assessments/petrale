@@ -5,6 +5,14 @@ executive[["stock"]] <- paste0("This assessment reports the status of ",
   " coast using data through 2022.")
 ```
 
+# One-page summary{-}
+
+- test
+- test
+- test
+
+\clearpage
+
 # Executive summary{-}
 
 ## Stock{-}

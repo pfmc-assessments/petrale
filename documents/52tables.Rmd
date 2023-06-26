@@ -51,7 +51,10 @@ table_ts(mod_base)
 ```
 
 ```{r tables-weights, results = "asis"}
-table_compweight(mod_base)
+table_compweight(mod_base, 
+  caption_extra = paste("The WCGBTS age comps are conditioned on length,",
+   "so there are more observations with fewer samples per observation.")
+)
 ```
 
 
@@ -64,10 +67,29 @@ table_sens("../tables/sens_table_old_vs_new.csv",
 ```
 \clearpage
 
-```{r tables-model-sens, results = "asis"}
+```{r tables-sens-index, results = "asis"}
+table_sens("../tables/sens_table_index.csv",
+           pretty = FALSE, # don't modify model names in this case because they are already OK
+	       sens_group = "index")
+```       
+
+```{r tables-sens-comp, results = "asis"}
 table_sens("../tables/sens_table_comp.csv",
            pretty = FALSE, # don't modify model names in this case because they are already OK
 	       sens_group = "comp",
            caption_extra = "The length, age, and total likelihoods are not comparable across models due to differences in weighting.")
+```           
+    
+```{r tables-sens-sel, results = "asis"}
+table_sens("../tables/sens_table_sel.csv",
+           pretty = FALSE, # don't modify model names in this case because they are already OK
+	       sens_group = "sel")
+```           
+
+```{r tables-sens-bio, results = "asis"}
+table_sens("../tables/sens_table_bio.csv",
+           pretty = FALSE, # don't modify model names in this case because they are already OK
+	       sens_group = "bio",
+           caption_extra = "Sensitivity to using the 2019 fecundity is represented in the bridging analysis.")
 ```           
 \end{landscape}
