@@ -58,7 +58,6 @@ table_compweight(mod_base,
 ```
 
 
-\begin{landscape}
 ```{r tables-old_vs_new, results = "asis"}
 table_sens("../tables/sens_table_old_vs_new.csv",
 	       sens_group = "old_vs_new",
@@ -70,8 +69,10 @@ table_sens("../tables/sens_table_old_vs_new.csv",
 ```{r tables-sens-index, results = "asis"}
 table_sens("../tables/sens_table_index.csv",
            pretty = FALSE, # don't modify model names in this case because they are already OK
-	       sens_group = "index")
+	       sens_group = "index",
+           caption_extra = "The indices and total likelihoods are not comparable for the models that add or subtract data (2004 triennial and fishery CPUE).")
 ```       
+\clearpage
 
 ```{r tables-sens-comp, results = "asis"}
 table_sens("../tables/sens_table_comp.csv",
@@ -79,12 +80,14 @@ table_sens("../tables/sens_table_comp.csv",
 	       sens_group = "comp",
            caption_extra = "The length, age, and total likelihoods are not comparable across models due to differences in weighting.")
 ```           
+\clearpage
     
 ```{r tables-sens-sel, results = "asis"}
 table_sens("../tables/sens_table_sel.csv",
            pretty = FALSE, # don't modify model names in this case because they are already OK
 	       sens_group = "sel")
 ```           
+\clearpage
 
 ```{r tables-sens-bio, results = "asis"}
 table_sens("../tables/sens_table_bio.csv",
@@ -92,4 +95,5 @@ table_sens("../tables/sens_table_bio.csv",
 	       sens_group = "bio",
            caption_extra = "Sensitivity to using the 2019 fecundity is represented in the bridging analysis.")
 ```           
-\end{landscape}
+\clearpage
+
