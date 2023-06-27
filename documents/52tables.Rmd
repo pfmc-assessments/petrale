@@ -41,13 +41,15 @@ sa4ss::table_format(x = len_samps,
 <!-- ====================================================================== -->
 <!-- model tables -->
 <!-- ====================================================================== -->
-```{r tables-model, results = "asis"}
+```{r tables-model-config, results = "asis"}
 config_summary <- read.csv("../tables/config_summary.csv")
 sa4ss::table_format(config_summary,
   col_names = c("Specification", "Base", "2019 model"),
   caption = "Specifications and structure of the base and 2019 models",
   label = "config-summary")
-
+```
+\clearpage
+```{r tables-model-pars, results = "asis"}
 par_summary <- read.csv("../tables/par_summary.csv")
 sa4ss::table_format(par_summary,
   col_names = c("Specification", "Base", "2019 model", "Source of difference"),

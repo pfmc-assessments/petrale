@@ -25,7 +25,7 @@ table_outputconfig <- function(output) {
       #"Catch units",
       "Data length bins",
       "Data age bins",
-      "First age with positive maturity",
+      #"First age with positive maturity",
       #"First year of recruitment deviations",
       "Fishing mortality method"
     ),
@@ -57,7 +57,7 @@ table_outputconfig <- function(output) {
         dplyr::last(output[["agebins"]]),
         output[["agebins"]][2] - output[["agebins"]][1]
       ),
-      output[["endgrowth"]] %>% dplyr::filter(Sex == 1, Age_Beg < 5, Age_Mat != 0) %>% dplyr::select(Age_Beg, Age_Mat) %>% round(3) %>% dplyr::pull(Age_Beg) %>% dplyr::first(),
+      #output[["endgrowth"]] %>% dplyr::filter(Sex == 1, Age_Beg < 5, Age_Mat != 0) %>% dplyr::select(Age_Beg, Age_Mat) %>% round(3) %>% dplyr::pull(Age_Beg) %>% dplyr::first(),
       #output[["recruitpars"]] %>% dplyr::filter(grepl("Main", type)) %>% dplyr::pull(Yr) %>% min(),
       ifelse(output[["F_method"]] == 3, "Hybrid F", "I don't know")
     )
