@@ -20,12 +20,11 @@ table_compweight <- function(output,
                              caption_CAAL = "`CAAL' is conditional age-at-length data.",
                              caption_extra = "",
                              label = "table-compweight-base") {
-                            
-  # figure out which fleets have conditional age at length data                            
+  # figure out which fleets have conditional age at length data
   CAAL_fleets <- output[["condbase"]][["Fleet"]] %>% unique()
   Age_fleets <- output[["agedbase"]][["Fleet"]] %>% unique()
   CAAL_fleets <- setdiff(CAAL_fleets, Age_fleets)
-  
+
   dplyr::bind_rows(
     .id = "Type",
     Length = output[["Length_Comp_Fit_Summary"]],
@@ -50,9 +49,11 @@ table_compweight <- function(output,
       row.names = FALSE,
       longtable = FALSE, booktabs = TRUE,
       label = label,
-      caption = paste(caption, 
+      caption = paste(
+        caption,
         ifelse(length(CAAL_fleets) > 0, caption_CAAL, ""),
-        caption_extra),
+        caption_extra
+      ),
       format = "latex",
       linesep = ""
     )
