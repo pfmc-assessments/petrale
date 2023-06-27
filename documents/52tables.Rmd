@@ -97,3 +97,10 @@ table_sens("../tables/sens_table_bio.csv",
 ```           
 \clearpage
 
+```{r tables-sens-recruit, results = "asis"}
+table_sens("../tables/sens_table_recruit.csv",
+           pretty = FALSE, # don't modify model names in this case because they are already OK
+	       sens_group = "recruit",
+           caption_extra = "The indices and total likelihoods are not comparable for the environmental index model due to the additional data.")
+```           
+\clearpage

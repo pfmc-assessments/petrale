@@ -100,3 +100,21 @@ mod_names <- c("Base",
 sens_make_table(num = 34, sens_mods = mod_list, plot = TRUE, 
   sens_type = "index", sens_names = mod_names, 
   legendncol = 1) # petrale declines too far so bumps into label
+
+
+# RECRUITMENT sensitivities
+# INDEX sensitivities
+get_mod(34,602)
+get_mod(34,603) 
+get_mod(34,604)
+mod_list <- list(mod.34.1, mod.34.604, mod.34.602, mod.34.603)
+mod_names <- c("Base", 
+"Environmental index", 
+"Zero-centered recdevs", 
+"All recdevs in 'main' period"
+)
+# make table
+sens_make_table(num = 34, sens_mods = mod_list, plot = TRUE, 
+  sens_type = "recruit", sens_names = mod_names, 
+  uncertainty = 1, # only show uncertainty for the base model
+  legendncol = 1) # petrale declines too far so bumps into label

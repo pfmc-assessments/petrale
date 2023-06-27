@@ -341,6 +341,21 @@ label = 'sens-bio1',
 caption = paste("Time series of spawning biomass (top) and fraction of unfished",
             "(bottom) for the sensitivity analyses related to",
             "biology."))
+
+# recruitment sensitivities
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_recruit1.png"), 
+label = 'sens-recruit1',
+caption = paste("Time series of spawning biomass (top) and fraction of unfished",
+            "(bottom) for the sensitivity analyses related to",
+            "recruitment."))
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_recruit2.png"), 
+label = 'sens-recruit2',
+caption = paste("Time series of recruitment (top) and recruitment deviations",
+            "(bottom) for the sensitivity analyses related to",
+            "recruitment."))
+
 ```
 
 ```{r, results = 'asis'}

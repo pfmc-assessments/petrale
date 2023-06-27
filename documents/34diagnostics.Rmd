@@ -4,7 +4,7 @@ Describe all diagnostics
 ### Convergence
 
 ### Sensitivity Analyses
-The sensitivity analyses were divided into six groups: indices, composition data, selectivity, biology, recruitment, and the transboundary nature of the stock (Tables \ref{tab:sens-table-index} to \ref{tab:sens-table-bio} and Figures \ref{fig:sens-index1} to \ref{fig:sens-bio1}).
+The sensitivity analyses were divided into six groups: indices, composition data, selectivity, biology, recruitment, and the transboundary nature of the stock (Tables \ref{tab:sens-table-index} to \ref{tab:sens-table-recruit} and Figures \ref{fig:sens-index1} to \ref{fig:sens-recruit1}).
 <!-- TODO: revise table and figure ranges after adding additional senstivity tables and figures -->
 
 TODO: Add text on each senstivity group here.
