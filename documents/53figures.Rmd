@@ -46,6 +46,12 @@ caption = "Landings plus dead discards (mt) by fleet as estimated in the base mo
 label = "catchdiscard-figures-r4ss"
 )
 
+sa4ss::add_figure(
+filein = "../figures/Catch comparison graph.png", 
+caption = "ADD CAPTION",
+label = "catchdiscard-figures-r4ss"
+)
+
 ```
 
 <!-- ====================================================================== --> 
