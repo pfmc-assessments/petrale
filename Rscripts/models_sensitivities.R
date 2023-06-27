@@ -40,7 +40,7 @@ mod_list <- list(mod.34.1, mod.34.301, mod.34.302)
 mod_names <- c("Base", "Dirichlet-multinomial weights", "Include early age comps")
 # make table
 sens_make_table(num = 34, sens_mods = mod_list, plot = TRUE, 
-  sens_type = "comp", sens_names = mod_names)
+  sens_type = "comp", sens_names = mod_names, uncertainty = 1)
 
 
 # BIOLOGY sensitivities
