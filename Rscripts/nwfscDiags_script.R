@@ -1,54 +1,67 @@
-#######################################################################################################
-# Here are the required packages that should be loaded with the nwfscDiag
-# library(HandyCode)
-# library(plyr)
-# devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/r4ss")
-# devtools::load_all("C:/Users/Chantel.Wetzel/Documents/GitHub/nwfscDiag")
+#run_diags_petrale <- function(runs = 1:5, 
+basedir = "models/2023.a034.001" #) {
 
 # devtools::load_all("c:/github/nwfscDiag")
 # pak::pkg_install("pfmc-assessments/nwfscDiag@profile_control")
-library(nwfscDiag)
+require(nwfscDiag)
 
 #######################################################################################################
 # Define the parameters to profile and the parameter ranges:
-#------------------------------------------------------------------------------------------------------
-# Can use the get_settings_profile function to specify which parameters to run a profile for and
-# the parameter ranges for each profile.  The low and high values can be specified in 3 ways:
-# as a 'multiplier' where a percent where the low and high range will be specified as x% of the base
-# parameter (i.e., (base parameter - base parameter* x) - (base parameter + base parameter * x)),
-# in 'real' space where the low and high values are in the parameter space, and finally as
-# 'relative' where the low and high is a specified amount relative to the base model parameter
-# (i.e., (base parameter - x) - (base parameter + x).
-# Here is an example call to the get_settings_profile function:
-
 get <- get_settings_profile(
   parameters = c("NatM_uniform_Fem_GP_1", "SR_BH_steep", "SR_LN(R0)"),
-  low = c(0.4, 0.25, -2),
-  high = c(0.4, 1.0, 2),
-  step_size = c(0.01, 0.05, 0.25),
-  param_space = c("multiplier", "real", "relative")
+  low = c(0.4, 0.6, -1.5),
+  high = c(0.45, 1.0, 1.5),
+  step_size = c(0.01, 0.05, 0.5),
+  param_space = c("multiplier", "real", "relative"),
 )
+# subset to just steepness
+# get <- get[2,]
+# subset to M #and R0
+get <- get[1,]
 
 #######################################################################################################
 # Create a list of settings to run the profiles, jitters, and retrospectives:
 
 # define outer directory on a specific computer
 if(Sys.info()["user"] == "Ian.Taylor"){
-  mydir <- "C:/SS/Petrale/Petrale2023/petrale/models/"
+  mydir <- "C:/SS/Petrale/Petrale2023/petrale/"
 }
 if(Sys.info()["user"] == "Vladlena.Gertseva"){
   mydir <- "FILL IN PATH TO 'models' HERE"
 }
-mydir <- file.path(mydir, "2023.a028.001_ctl_changes")
+mydir <- file.path(mydir, basedir)
 
+if (FALSE) {
+  model_settings <- get_settings(settings = list(
+    oldctlfile = "petrale_control.ss",
+    base_name = "diags2",
+    run = c("jitter", "profile", "retro"),
+    profile_details = get,
+    prior_like = 1, 
+    verbose = TRUE
+    #extras = "-stopph 0 -nohess"
+    #exe = "c:/SS/SSv3.30.21.00_Feb10/ss_win" # this doesn't work
+  ))
+}
+
+# using par file
 model_settings <- get_settings(settings = list(
   oldctlfile = "petrale_control.ss",
-  base_name = "diags",
-  run = c("jitter", "profile", "retro"),
+  #base_name = "diags_steep_est",
+  base_name = "diags_par3",
+  run = c("profile"),
   profile_details = get,
-  prior_like = 1, 
-  verbose = TRUE
-  #exe = "c:/SS/SSv3.30.21.00_Feb10/ss_win" # this doesn't work
+  #prior_like = 1, 
+  verbose = TRUE,
+  usepar = TRUE,
+  globalpar = FALSE,
+  init_values_src = 1,
+  #extras = "-nohess -phase 10",
+  extras = "-nohess",
+  #parstring = "SR_parm[2]" # steepness
+  #parstring = "SR_parm[1]" # log(R0)
+  parstring = "MGparm[1]", # female M
+  remove_files = FALSE
 ))
 
 # "base_name" is the folder name that contains the base model
@@ -59,13 +72,22 @@ model_settings <- get_settings(settings = list(
 
 #######################################################################################################
 # Run all diagnostics
-# run_diagnostics(mydir = mydir, model_settings = model_settings)
+if (FALSE) {
+  run_diagnostics(mydir = mydir, model_settings = model_settings)
+}
 
 # only run profiles
-profile_settings <- model_settings
-profile_settings$run <- "profile"
-run_diagnostics(mydir = mydir, model_settings = profile_settings)
+if (TRUE) {
+  profile_settings <- model_settings
+  jitter_settings <- model_settings
+  profile_settings$run <- "profile"
+  jitter_settings$run <- "jitter"
+  run_diagnostics(mydir = mydir, model_settings = profile_settings, skipruns = FALSE)
+  #run_diagnostics(mydir = mydir, model_settings = jitter_settings)
+}
 
 # "mydir" is the working directory (parent folder with the base model)
 # "model_settings" defined above using the get_settings function.  The results of this function is a list
 # and can be viewed in the R terminal.
+
+#}

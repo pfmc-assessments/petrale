@@ -104,6 +104,10 @@ table_sens <- function(file_csv,
     label = label
   )
   # decrease column width for tables with lots of columns
+  if (NCOL(data) <= 7) {
+    tt <- tt %>%
+      kableExtra::column_spec(3:NCOL(data), width = "5em")
+  }
   if (NCOL(data) > 7) {
     tt <- tt %>%
       kableExtra::column_spec(3:NCOL(data), width = "4.3em")

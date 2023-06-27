@@ -2,7 +2,7 @@
 
 
 ### Parameter Estimates
-<!-- Parameters values are shown in Tables \ref{tab:table-pars-base-1}-\ref{tab:table-pars-base-16}. -->
+Estimated and fixed parameter values are shown in Tables \ref{tab:table-pars-base-1}-\ref{tab:table-pars-base-16}.
 
 ### Fits to the Data
 

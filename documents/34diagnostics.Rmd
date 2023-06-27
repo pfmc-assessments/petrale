@@ -4,9 +4,25 @@ Describe all diagnostics
 ### Convergence
 
 ### Sensitivity Analyses
+The sensitivity analyses were divided into six groups: indices, composition data, selectivity, biology, recruitment, and the transboundary nature of the stock (Tables \ref{tab:sens-table-index} to \ref{tab:sens-table-recruit} and Figures \ref{fig:sens-index1} to \ref{fig:sens-recruit1}).
+<!-- TODO: revise table and figure ranges after adding additional senstivity tables and figures -->
+
+TODO: Add text on each senstivity group here.
 
 ### Retrospective Analysis
 
+A five-year retrospective analysis was conducted by successively removing years of data starting from 2022 (i.e., “Data -1 Years” corresponds to data through 2021 instead of 2022). The estimated spawning output exhibited small changes in the initial equilibrium and the final few years of the model (Figure \ref{fig:retro-ssb}). These changes are driven primarily by the fit to the \Gls{s-wcgbt}, where the combination of the lower observed index in 2018 and 2019 and the absence of a survey in 2020 resulted in the Data-2 through Data-4 retrospectives to a more steeply declining trend at the end of the time series (Figure \ref{fig:retro-index}). Estimates of the fraction of unfished spawning output showed very little change across retrospectives (Figure \ref{fig:retro-depl}).
+
 ### Likelihood Profiles
+
+Likelihood profiles were conducted for $R_0$, steepness, and female natural mortality values separately (Figures \ref{fig:r0-profile} - \ref{fig:m-profile-pars}). These likelihood profiles were conducted by fixing the parameter at specific values and estimating the remaining parameters based on the fixed parameter value. The priors for all parameters, including the parameter being profiled, were included in every likelihood model. For example, including the prior on natural mortality across the profiled values of natural mortality provides information on the likelihood contribution of that prior as if it were estimated in the model.  
+
+TODO: add text here and reference these figures:
+(Figure \ref{fig:r0-profile})
+(Figure \ref{fig:r0-profile-pars})
+(Figure \ref{fig:h-profile})
+(Figure \ref{fig:h-profile-pars})
+(Figure \ref{fig:m-profile})
+(Figure \ref{fig:m-profile-pars})
 
 ### Unresolved Problems and Major Uncertainties

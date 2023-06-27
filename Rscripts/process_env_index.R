@@ -21,10 +21,19 @@ env_index_rescaled <- env_index %>%
   dplyr::select(year, fit, se) %>% # select required columns
   dplyr::mutate(month = 1, fleet = 5, .after = year) %>% # add columns
   dplyr::mutate(fit = fit - mean(fit)) # rescale by the mean across all years
+env_index_rescaled2 <- env_index %>%
+  dplyr::select(year, fit, se) %>% # select required columns
+  dplyr::mutate(month = 1, fleet = 5, .after = year) %>% # add columns
+  dplyr::mutate(fit = fit + 0.08) # rescale by an estimate of the devs in index fit to previous model
 
 mean(env_index_rescaled$fit)
+mean(env_index_rescaled2$fit)
 # write index with 2023 included
 write.csv(env_index_rescaled, "data-raw/env_index/Petrale_glorys_index_with_2023_for_SS3_7-June-2023.csv")
+write.csv(env_index_rescaled2, 
+  "data-raw/env_index/Petrale_glorys_index_with_2023_for_SS3_26-June-2023.csv", 
+  row.names = FALSE)
+
 # remove 2023
 env_index_rescaled <- env_index_rescaled %>%
   dplyr::filter(year < 2023) %>%
@@ -40,5 +49,5 @@ if ('2023.a024.001_min_sample' %in% dir('models')) {
     dplyr::pull("dev") %>%
     mean()
 
-# [1] 0.004292205 ## close enough
+  # [1] 0.004292205 ## close enough
 }

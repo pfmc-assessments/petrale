@@ -12,16 +12,24 @@
 table_compweight <- function(output,
                              caption = paste(
                                "Data weightings applied to length and age compositions",
-                               "according to the `Francis' method. `N obs.' refers to the number of unique",
-                               "composition vectors included in the likelihood, `N input' and `N adj.'",
+                               "according to the `Francis' method. `Obs.' refers to the number of unique",
+                               "composition vectors included in the likelihood. `N input' and `N adj.'",
                                "refer to the sample sizes of those vectors before and after being adjusted",
                                "by the the weights."
                              ),
+                             caption_CAAL = "`CAAL' is conditional age-at-length data.",
+                             caption_extra = "",
                              label = "table-compweight-base") {
+  # figure out which fleets have conditional age at length data
+  CAAL_fleets <- output[["condbase"]][["Fleet"]] %>% unique()
+  Age_fleets <- output[["agedbase"]][["Fleet"]] %>% unique()
+  CAAL_fleets <- setdiff(CAAL_fleets, Age_fleets)
+
   dplyr::bind_rows(
     .id = "Type",
     Length = output[["Length_Comp_Fit_Summary"]],
-    Age = output[["Age_Comp_Fit_Summary"]]
+    Age = output[["Age_Comp_Fit_Summary"]] %>% dplyr::filter(Fleet %in% Age_fleets),
+    CAAL = output[["Age_Comp_Fit_Summary"]] %>% dplyr::filter(Fleet %in% CAAL_fleets)
   ) %>%
     # dplyr::mutate(Fleet = get_fleet(col = "label_long")[match(Fleet_name, get_fleet(col = "fleet"))]) %>%
     dplyr::mutate(Fleet = output[["FleetNames"]][Fleet]) %>%
@@ -30,7 +38,7 @@ table_compweight <- function(output,
       Type,
       Fleet,
       "Francis" = Curr_Var_Adj,
-      "N obs." = Npos,
+      "Obs." = Npos,
       "Mean N input" = mean_Nsamp_in,
       "Mean N adj." = mean_Nsamp_adj,
       "Sum N adj."
@@ -41,7 +49,11 @@ table_compweight <- function(output,
       row.names = FALSE,
       longtable = FALSE, booktabs = TRUE,
       label = label,
-      caption = caption,
+      caption = paste(
+        caption,
+        ifelse(length(CAAL_fleets) > 0, caption_CAAL, ""),
+        caption_extra
+      ),
       format = "latex",
       linesep = ""
     )

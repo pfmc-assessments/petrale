@@ -125,8 +125,9 @@ sens_make_table <- function( # area,
                             plot = TRUE,
                             plot_dir = NULL,
                             legendloc = "bottomleft",
+                            legendncol = NULL,
                             table_dir = "tables",
-                            write = FALSE,
+                            write = TRUE,
                             ...) {
   # which things to read from the model output
   thingnames <- c(
@@ -208,11 +209,15 @@ sens_make_table <- function( # area,
         "custom_plots"
       )
     }
+    # number of columns in the legend
+    if (is.null(legendncol)) {
+      legendncol <- ifelse(length(sens_mods) < 5, 1, 2)
+    }
     plot_twopanel_comparison(
       mods = sens_mods,
       legendlabels = sens_names,
       legendloc = legendloc,
-      legendncol = ifelse(length(sens_mods) < 5, 1, 2),
+      legendncol = legendncol,
       file = plot_filename1,
       dir = plot_dir,
       ...
@@ -221,7 +226,7 @@ sens_make_table <- function( # area,
       mods = sens_mods,
       legendlabels = sens_names,
       legendloc = legendloc,
-      legendncol = ifelse(length(sens_mods) < 5, 1, 2),
+      legendncol = legendncol,
       file = plot_filename2,
       dir = plot_dir,
       subplot_top = 9, subplot_bottom = 11,
@@ -231,11 +236,14 @@ sens_make_table <- function( # area,
 
     # get an explanation of the type for use in the caption
     sens_type_long <- ""
-    if (sens_type == "bio_rec") {
-      sens_type_long <- "biology and recruitment."
+    if (sens_type == "bio") {
+      sens_type_long <- "biology."
     }
     if (sens_type == "index") {
       sens_type_long <- "indices of abundance."
+    }
+    if (sens_type == "sel") {
+      sens_type_long <- "selectivity."
     }
     if (sens_type == "comp") {
       sens_type_long <- "composition data."

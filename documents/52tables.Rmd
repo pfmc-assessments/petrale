@@ -36,11 +36,32 @@ sa4ss::table_format(x = len_samps,
                  )
 ```
 
+\clearpage
 
 <!-- ====================================================================== -->
 <!-- model tables -->
 <!-- ====================================================================== -->
-```{r tables-model, results = "asis"}
+```{r tables-model-config, results = "asis"}
+config_summary <- read.csv("../tables/config_summary.csv")
+sa4ss::table_format(config_summary,
+  col_names = c("Specification", "Base", "2019 model"),
+  caption = "Specifications and structure of the base and 2019 models",
+  label = "config-summary")
+```
+\clearpage
+```{r tables-model-pars, results = "asis"}
+par_summary <- read.csv("../tables/par_summary.csv")
+sa4ss::table_format(par_summary,
+  col_names = c("Specification", "Base", "2019 model", "Source of difference"),
+  caption = "Summary of the estimated parameters in the base and 2019 models",
+  label = "par-summary",
+  custom_width = TRUE,
+  align = 'lccl',
+  width = c("8em","4em","4em", "20em"),
+  col_to_adjust = 1:4) %>% 
+    kableExtra::kable_styling(latex_options = c("striped")) %>%
+    kableExtra::row_spec(1, bold = TRUE)
+
 cat("\\begin{landscape}")
 table_pars_split(mod_base)
 cat("\\end{landscape}")
@@ -51,11 +72,13 @@ table_ts(mod_base)
 ```
 
 ```{r tables-weights, results = "asis"}
-table_compweight(mod_base)
+table_compweight(mod_base, 
+  caption_extra = paste("The WCGBTS age comps are conditioned on length,",
+   "so there are more observations with fewer samples per observation.")
+)
 ```
 
 
-\begin{landscape}
 ```{r tables-old_vs_new, results = "asis"}
 table_sens("../tables/sens_table_old_vs_new.csv",
 	       sens_group = "old_vs_new",
@@ -64,10 +87,41 @@ table_sens("../tables/sens_table_old_vs_new.csv",
 ```
 \clearpage
 
-```{r tables-model-sens, results = "asis"}
+```{r tables-sens-index, results = "asis"}
+table_sens("../tables/sens_table_index.csv",
+           pretty = FALSE, # don't modify model names in this case because they are already OK
+	       sens_group = "index",
+           caption_extra = "The indices and total likelihoods are not comparable for the models that add or subtract data (2004 triennial and fishery CPUE).")
+```       
+\clearpage
+
+```{r tables-sens-comp, results = "asis"}
 table_sens("../tables/sens_table_comp.csv",
            pretty = FALSE, # don't modify model names in this case because they are already OK
 	       sens_group = "comp",
            caption_extra = "The length, age, and total likelihoods are not comparable across models due to differences in weighting.")
 ```           
-\end{landscape}
+\clearpage
+    
+```{r tables-sens-sel, results = "asis"}
+table_sens("../tables/sens_table_sel.csv",
+           pretty = FALSE, # don't modify model names in this case because they are already OK
+	       sens_group = "sel")
+```           
+\clearpage
+
+```{r tables-sens-bio, results = "asis"}
+table_sens("../tables/sens_table_bio.csv",
+           pretty = FALSE, # don't modify model names in this case because they are already OK
+	       sens_group = "bio",
+           caption_extra = "Sensitivity to using the 2019 fecundity is represented in the bridging analysis.")
+```           
+\clearpage
+
+```{r tables-sens-recruit, results = "asis"}
+table_sens("../tables/sens_table_recruit.csv",
+           pretty = FALSE, # don't modify model names in this case because they are already OK
+	       sens_group = "recruit",
+           caption_extra = "The indices and total likelihoods are not comparable for the environmental index model due to the additional data.")
+```           
+\clearpage

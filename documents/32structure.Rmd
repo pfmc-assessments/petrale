@@ -1,6 +1,6 @@
 ## Model Structure and Assumptions
 
-### Model Changes from the Last Assessment (not required for an update assessment)
+### Model Changes from the Last Assessment
 
 The last update assessment of Petrale sole was conducted in 2019. The 2019 assessment model was the starting point for this assessment, and a bridging analysis was done to investigate the impact of increment changes to the assessment model. For this assessment, we retained a number of features of the 2019 assessment and also included a number of improvements related to use of data and modeling techniques.  Below, we describe the most important changes made since the last full assessment and provide rationale for each change:
 
@@ -36,6 +36,6 @@ General model specifications (e.g., executable version, model structure, definit
 
 
 ### Model Parameters
-Describe estimated vs. fixed parameters, priors
+The estimated parameters are summarized in table \ref{tab:par-summary} and all estimated and fixed parameters are shown in Tables \ref{tab:table-pars-base-1}-\ref{tab:table-pars-base-16}. The total number of parameters is reduced from 304 in 2019 to 267 dur to the simplification of the fleet structure into an annual model without separate selectivity for winter and summer. There are 190 estimated recruitment deviations parameters which are divided as follows: 31 parameters set up the initial age structure in 1876, 147 parameters for the recdevs in 1876 to 2022, and 12 forecast recruitment parameters for the years 2023 to 2035. The recevs in the time series are divided into early, main, and late deviations with the main period covering the years 1959 to 2020. However, the distinction between these periods in Stock Synthesis is only relevant if the main period is a zero-centered vector, which it is not in the base model. Sensitivity analyses are used to explore the impact of relaxing the zero-centering and including all recruitment deviations in the main period.
 
 ### Key Assumptions and Structural Choices

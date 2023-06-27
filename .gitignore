@@ -49,6 +49,7 @@ vignettes/*.pdf
 /documents/_bookdown_files/
 /documents/_main.tex
 /documents/_main.md
+/documents/_main*
 /documents/_book/
 # not sure what makes NA file appear
 /documents/NA 
@@ -57,6 +58,7 @@ vignettes/*.pdf
 /Rscripts/ignored/
 /figures/ignored/
 /figures/data/
+/figures/compare/
 # these are a repeat of tables in the model folder
 /documents/tex_tables/ 
 /documents/temp_tex_tables/ 
@@ -73,3 +75,7 @@ vignettes/*.pdf
 
 # PDF files (get too big and not useful to track)
 *.pdf
+
+# shortcut file
+petrale_on_U.lnk
+
