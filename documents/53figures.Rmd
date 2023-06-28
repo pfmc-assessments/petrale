@@ -48,7 +48,7 @@ label = "catchdiscard-figures-r4ss"
 
 sa4ss::add_figure(
 filein = "../figures/Catch comparison graph.png", 
-caption = "ADD CAPTION",
+caption = "Comparison of landings used in this assessment (red line) with landings used in 2019 assessment (dashed black line) by state and fleet. Please see section on Historical landings for details.",
 label = "catchdiscard-figures-r4ss"
 )
 

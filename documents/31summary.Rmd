@@ -19,7 +19,7 @@ The most recent STAR panel for petrale sole was for the 2013 full assessment. Th
 \item The states of California and Oregon have completed comprehensive historical catch reconstructions. Washington historical data are not yet available. Completion of Washington historical catch reconstruction would provide a better catch series.
 
 
-Response: For this assessment, WDFW completed catch reconstruction of petrale sole (pers. comm. T. Tsou, WDFW). These newly estimated lansings were used in this assessment.  
+Response: For this assessment, WDFW completed catch reconstruction of petrale sole (pers. comm. T. Tsou, WDFW). These newly estimated landings were used in this assessment.  
 
 \item Update both the maturity and fecundity relationships using samples with wider geographic coverage to include California, and from more recent years for petrale sole would be beneficial. 
 
