@@ -82,6 +82,14 @@ sa4ss::table_format(x = strata_Tri,
                  col_names = col_names)
 ```
 
+```{r, tables-discards, results = 'asis'}
+discard_rates <- read.csv("../tables/discard_rates.csv")
+discard_rates[is.na(discard_rates)] <- ""
+sa4ss::table_format(x = discard_rates,
+                 caption = 'Discard rates used in the model for each fleet.',
+                 label = 'discard-rates')
+```
+
 
 \clearpage
 
