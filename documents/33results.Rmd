@@ -2,7 +2,20 @@
 
 
 ### Parameter Estimates
-Estimated and fixed parameter values are shown in Tables \ref{tab:table-pars-base-1}-\ref{tab:table-pars-base-16}.
+Estimated and fixed parameter values are shown in Tables \ref{tab:table-pars-base-1}-\ref{tab:table-pars-base-13}.
+
+Estimates of key parameters include 
+female $M$ = 
+`r round(model$parameters["NatM_uniform_Fem_GP_1", "Value"], 3)`, 
+male $M$ = 
+`r round(model$parameters["NatM_uniform_Mal_GP_1", "Value"], 3)`. 
+Females were estimated as growing larger than males with female length at age 14
+(the second reference age) equal to 
+`r round(model$parameters["L_at_Amax_Fem_GP_1", "Value"], 1)` cm compared to
+`r round(model$parameters["L_at_Amax_Mal_GP_1", "Value"], 1)` cm for males.
+The $L_\infty$ associated with the estimated growth parameters was 
+`r round(model$Growth_Parameters$Linf[1], 1)` cm for females and
+`r round(model$Growth_Parameters$Linf[2], 1)` cm for males.
 
 ### Fits to the Data
 

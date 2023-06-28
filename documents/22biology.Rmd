@@ -20,7 +20,7 @@ Maximum age was assumed to be 32 and 29 years for females and males, respectivel
 
 ### Maturation and Fecundity{#mat_fecund}
 
-A new maturity ogive was developed for this assessment (M. Head pers. comm.) based on an analysis of 553 ovary samples collected from 2015 to 2021 by port samlers in Washington and Oregon as well as on board the \Gls{s-wcgbt}. Very little difference in biological and functional maturity was observed and there was evidence of only a minimal amount of skip spawning. The estimated length at 50\% maturity was 35.45, which was similar to the 33.1 cm used in the previous assessment which was based on samples from a narrower geographic range [@hannah_length_2002].
+A new maturity ogive was developed for this assessment (M. Head pers. comm.) based on an analysis of 553 ovary samples collected from 2015 to 2021 by port samlers in Washington and Oregon as well as on board the \Gls{s-wcgbt} (Figures \ref{fig:mod-est-len-age2} and \ref{fig:maturity}). Very little difference in biological and functional maturity was observed and there was evidence of only a minimal amount of skip spawning. The estimated length at 50\% maturity was 35.45, which was similar to the 33.1 cm used in the previous assessment which was based on samples from a narrower geographic range [@hannah_length_2002].
 
 A fecundity relationship published in 2019 [@lefebvre_reproductive_2019] was used as a sensitivity analysis in the previous assessment and has been adopted for the base model in this one. The relationship shows a slightly faster increase in the number of eggs per unit length than when fecundity was assumed proportional to body weight. The addition of this fecundity relationship means that spawning output is reported in trillions of eggs rather than metric tons. 
 
@@ -55,8 +55,7 @@ These relationships are very similar to those used for the previous assessment
 
 ### Growth (Length-at-Age)
 
-The length-at-age was estimated for male and female `r spp`. Figure \ref{fig:length_age} shows the lengths and ages as well as predicted von Bertalanffy fits to the data from the fishery and the \Gls{s-wcgbt} data. Females grow larger than males and sex-specific growth parameters were estimated at the following values for females $L_{\infty}$ = 48 cm; $k$ = 0.19 $\text{yr}^{-1}$, and males $L_{\infty}$ = 40 cm; $k$ = 0.25 $\text{yr}^{-1}$. These values were used as starting parameter values within the base model prior to estimating each parameter for male and female `r spp`.
-
+The length-at-age was estimated for male and female `r spp` via 5 von Bertalanffy parameters, with independent parameters for length at age 17 (L_at_Amax) for females and males, independent $k$ parameters, and a shared parameter for length at age 1 for both females and males. Variability in length at age was estimated via 2 parameters for each sex controlling the standard deviation of length-at-age as a piecewise linear function of length with breaks points at lengths associated with the two reference ages: 1 and 17. This differs from the 2019 assessment which parameterized varability in length-at-age as a CV rather than standard deviation, and used age 2 as the first reference age. The changes resulted in smoother changes in the distributions of length-at-age and avoided a bulge in the variability at young ages that was present in the 2019 model.
 
 ### Ageing Precision and Bias
 
