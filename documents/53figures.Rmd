@@ -371,13 +371,6 @@ caption = paste("Time series of recruitment (top) and recruitment deviations",
             "composition data."))
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_sel1.png"), 
-label = 'sens-sel1',
-caption = paste("Time series of spawning biomass (top) and fraction of unfished",
-            "(bottom) for the sensitivity analyses related to",
-            "selectivity assumptions."))
-
-sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_bio1.png"), 
 label = 'sens-bio1',
 caption = paste("Time series of spawning biomass (top) and fraction of unfished",
