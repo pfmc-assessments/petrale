@@ -1,33 +1,5 @@
 ## Base Model Results
-```{r, results = "asis", eval = TRUE, echo = FALSE}
-   # calculate some values from the timeseries
-   ts <- mod_base$timeseries
-   smry_equ <- ts$Bio_smry[ts$Era == "VIRG"]
-   smry_2023 <- ts$Bio_smry[ts$Yr == 2023]
-   smry_min <- min(ts$Bio_smry)
-   smry_minyr <- ts$Yr[ts$Bio_smry %in% smry_min]
-   smry_max_recent <- max(ts$Bio_smry[ts$Yr %in% 2010:2020])
-   smry_maxyr_recent <- ts$Yr[ts$Bio_smry %in% smry_max_recent]
-   
-   # Bratio values
-   sprseries <- mod_base$sprseries
-   Bratio_2023 <- sprseries$Deplete[sprseries$Yr == 2023]
-   Bratio_min <- min(sprseries$Deplete, na.rm = TRUE)
-   Bratio_minyr <- sprseries$Yr[sprseries$Deplete %in% Bratio_min]
-   Bratio_max_recent <- max(sprseries$Deplete[sprseries$Yr %in% 2010:2020])
-   Bratio_maxyr_recent <- sprseries$Yr[sprseries$Deplete %in% Bratio_max_recent]
-   
-   # now round values (didn't do above to have matches to find years)
-   smry_equ <- format(round(smry_equ), big.mark=",")
-   smry_2023 <- format(round(smry_2023), big.mark=",")
-   smry_min <- format(round(smry_min), big.mark=",")
-   smry_max_recent <- format(round(smry_max_recent), big.mark=",")
-
-   Bratio_2023 <- round(Bratio_2023, 3)
-   Bratio_min <- round(Bratio_min, 3)
-   Bratio_max_recent <- round(Bratio_max_recent, 3)
-
-```
+<!-- R values used below are calculates are in the exec summary -->
 
 The base model estimate of biomass time series is similar to previous assessments (Figure \ref{fig:smry-bio-historical}), with estimated biomass of ages 3 and older estimated around `r smry_equ` mt in the unfished equilibrium, declining to a minimum of `r smry_min` mt in `r smry_minyr`, rebuilding quickly to a recent peak of `r smry_max_recent` mt in `r smry_maxyr_recent` due to 3 years of very high recruitments from 2006 to 2008, and then declining to `r smry_2023` mt in 2023 due to low or average recruitment in the years since.
 

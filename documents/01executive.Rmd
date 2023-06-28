@@ -64,11 +64,39 @@ Growth is assumed to follow the von Bertalanffy growth model, and the assessment
 
 ## Stock biomass and dynamics{-}
 
-Replace text with
-trends and current levels relative to virgin or historic levels and
-description of uncertainty.
-Include Table for last 10 years.
-Include Figure with long-term estimates.
+```{r, results = "asis", eval = TRUE, echo = FALSE}
+   # calculate some values from the timeseries
+   ts <- mod_base$timeseries
+   smry_equ <- ts$Bio_smry[ts$Era == "VIRG"]
+   smry_2023 <- ts$Bio_smry[ts$Yr == 2023]
+   smry_min <- min(ts$Bio_smry)
+   smry_minyr <- ts$Yr[ts$Bio_smry %in% smry_min]
+   smry_max_recent <- max(ts$Bio_smry[ts$Yr %in% 2010:2020])
+   smry_maxyr_recent <- ts$Yr[ts$Bio_smry %in% smry_max_recent]
+   
+   # Bratio values
+   sprseries <- mod_base$sprseries
+   Bratio_2023 <- sprseries$Deplete[sprseries$Yr == 2023]
+   Bratio_min <- min(sprseries$Deplete, na.rm = TRUE)
+   Bratio_minyr <- sprseries$Yr[sprseries$Deplete %in% Bratio_min]
+   Bratio_max_recent <- max(sprseries$Deplete[sprseries$Yr %in% 2010:2020])
+   Bratio_maxyr_recent <- sprseries$Yr[sprseries$Deplete %in% Bratio_max_recent]
+   
+   # now round values (didn't do above to have matches to find years)
+   smry_equ <- format(round(smry_equ), big.mark=",")
+   smry_2023 <- format(round(smry_2023), big.mark=",")
+   smry_min <- format(round(smry_min), big.mark=",")
+   smry_max_recent <- format(round(smry_max_recent), big.mark=",")
+
+   Bratio_2023 <- round(Bratio_2023, 3)
+   Bratio_min <- round(Bratio_min, 3)
+   Bratio_max_recent <- round(Bratio_max_recent, 3)
+
+```
+
+The base model estimate of biomass time series is similar to previous assessments (Figure \ref{fig:smry-bio-historical}), with estimated biomass of ages 3 and older estimated around `r smry_equ` mt in the unfished equilibrium, declining to a minimum of `r smry_min` mt in `r smry_minyr`, rebuilding quickly to a recent peak of `r smry_max_recent` mt in `r smry_maxyr_recent` due to 3 years of very high recruitments from 2006 to 2008, and then declining to `r smry_2023` mt in 2023 due to low or average recruitment in the years since.
+
+In terms of fraction of unfished spawning output (Figure \ref{fig:depl}), the minimum was `r Bratio_min` in `r Bratio_minyr`, the recent peak was `r Bratio_max_recent` in `r Bratio_maxyr_recent` and the 2023 estimate is `r Bratio_2023`.
 
 \input{tex_tables/b_SSB_ES.tex}
 
@@ -110,11 +138,10 @@ if (!is.na(mod_base$log_det_hessian)) {
 
 ## Recruitment{-}
 
-Replace text with
+TODO: Replace text with
 trends and current levels relative to virgin or historic levels and
 description of uncertainty.
-Include Table for last 10 years.
-Include Figure with long-term estimates.
+
 
 
 \input{tex_tables/c_Recr_ES.tex}
@@ -154,7 +181,7 @@ if (!is.na(mod_base$log_det_hessian)) {
 \clearpage
 ## Exploitation status{-}
 
-Replace text with
+TODO: Replace text with
 total catch divided by exploitable biomass or SPR harvest rate.
 Include Table for last 10 years.
 Include Figure with trend in f relative to target vs. trend in biomass relative to the target.
@@ -182,7 +209,7 @@ In this assessment, we explore the impact of current CMEMS based environmental i
 
 ## Reference points{-}
 
-Replace text with
+TODO: Replace text with
 management targets and definition of overfishing, including the harvest rate that brings the stock to equilibrium at $B_{40\%}$, i.e., the $B_{MSY}$ proxy and the equilibrium stock size that results from fishing at the default harvest rate, i.e., the $F_{MSY}$ proxy.
 Include Table of estimated reference points for ssb, SPR, exploitation rate, and yield based on SSB proxy for MSY, SPR proxy for MSY, and estimated MSY values.
 
@@ -226,21 +253,22 @@ sa4ss::table_format(x = table_vi,
 
 ## Unresolved problems and major uncertainties{-}
 
-Replace text with
+TODO: Replace text with
 any special issues that complicate scientific assessment, questions about the best model scenario, etc.
 
 ## Decision table and projections{-}
 
-Replace text with
-projected yields (OFL, ABC, and ACL), spawning biomass, and stock depletion levels for each year.
-OFL calculations should be based on the assumption that future catches equal ABCs and not OFLs.
+To be added during the STAR panel.
+
+Note: OFL calculations should be based on the assumption that future catches equal ABCs and not OFLs.
 
 ## Scientific uncertainty{-}
 
-Replace text with
-the sigma value and the basis for its calculation.
+The model estimated uncertainty around the `r endyr+1` spawning output for is $\sigma$ = `r round(mod_base$Pstar_sigma, 2)`. The uncertainty around the OFL is $\sigma$ = `r round(mod_base$OFL_sigma, 2)`. These values are lower than for many west coast groundfish stocks for several reasons: large sample sizes of length and age data from fisheries and surveys, high frequency of occurrence in the \Gls{s-wcgbt} thanks to petrale primarily residing in trawlable habitate within the scope of the survey, and strong contrast in the data caused by fishing down the stock to a low level followed by rapid rebuilding. Nevertheless, these $\sigma$ values surely underestimate the overall uncertainty as they do not incorporate the model structural uncertainty and do not account for any time-varying dynamics other than recruitment.
+
+The estimated uncertainty values are lower than the Category 1 default $\sigma = 0.5$, so all projections will use the default $\sigma$.
 
 ## Research and data needs{-}
 
-Replace text with
+TODO: Replace text with
 information gaps that seriously impede the stock assessment.
