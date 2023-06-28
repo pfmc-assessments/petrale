@@ -149,13 +149,6 @@ table_sens("../tables/sens_table_comp.csv",
            caption_extra = "The length, age, and total likelihoods are not comparable across models due to differences in weighting.")
 ```           
 \clearpage
-    
-```{r tables-sens-sel, results = "asis"}
-table_sens("../tables/sens_table_sel.csv",
-           pretty = FALSE, # don't modify model names in this case because they are already OK
-	       sens_group = "sel")
-```           
-\clearpage
 
 ```{r tables-sens-bio, results = "asis"}
 table_sens("../tables/sens_table_bio.csv",

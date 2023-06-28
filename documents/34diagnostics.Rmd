@@ -4,7 +4,7 @@ Describe all diagnostics
 ### Convergence
 
 ### Sensitivity Analyses
-We performed a number of sensitivity analyses on the base assessment model, to evaluate the base model’s response to change in key parameters and model components.The sensitivity analyses were divided into six groups: indices, composition data, biology, recruitment and environmental index, and the transboundary nature of the stock  (Tables \ref{tab:sens-table-index} to \ref{tab:sens-table-Canada} and Figures \ref{fig:sens-index1} to \ref{fig:sens-Canada1}).
+We performed a number of sensitivity analyses on the base assessment model, to evaluate the base model’s response to change in key parameters and model components.The sensitivity analyses were divided into five groups: indices, composition data, biology, recruitment and environmental index, and the transboundary nature of the stock  (Tables \ref{tab:sens-table-index} to \ref{tab:sens-table-Canada} and Figures \ref{fig:sens-index1} to \ref{fig:sens-Canada1}).
 <!-- TODO: revise table and figure ranges after adding additional senstivity tables and figures -->
 
 These groups included the following runs:
@@ -55,6 +55,10 @@ Recruitment
 
 \item Incorporating environmental index of `r spp` recruitment based on CMEMS.
 
+\item Using zero-centered recruitment deviations settings.
+
+\item Nor separating early/main/late periods for recruitment deviations.
+
 \end{enumerate}
 
 Transboundary nature of the stock
@@ -68,6 +72,18 @@ Transboundary nature of the stock
 \item Adding both index and catches to the base model.
 
 \end{enumerate}
+
+Sensitivities to alternative assumptions regarding treatment of index data had little discernible difference on the population trajectory (Table \ref{tab:sens-table-index} and Figure \ref{fig:sens-index1}).
+
+The Dirichlet-Multinomial data weighting method as well as run with early surface reads included led to similar trajectories and slight change in scale of initial biomass, which fell within the estimated uncertainty of the base model (Table \ref{tab:sens-table-comp} and Figure \ref{fig:sens-comp1}). Estimated recruitment and recruitment deviation for these alternative runs are shown in Figure \ref{fig:sens-comp2}. Although length, age, and total likelihoods are not comparable across these models due to differences in weighting, visual inspection indicated that both alternative runs exhibited worse fit to composition data.
+
+Using weight-length and maturity parameters from 2019 model did not impact model results (Table \ref{tab:sens-table-bio} and Figure \ref{fig:sens-bio1}). Exploring alternatives for estimating age-0 fraction female were motivated by the fact that the WCGBTS data indicates that the proportion of females in the population across the mid-range lengths might be lower than 50%. However, in alternative runs explored, age-0 fraction female was estimated above 50%, and estimates of other life history parameters were rather unreasonable. The reasonable estimate of fraction female parameter were achieved only when a single selectivity curve for the females and males was assumed in the \Gls{s-wcgbt}on, which deteriorated the fit to length composition data (Table \ref{tab:sens-table-bio}).
+
+Trajectories of all the runs from recruitment sensitivity group were similar (Table \ref{tab:sens-table-bio} and Figure \ref{fig:sens-recruit1}). The recruitment estimates in the model with environmental index included, are virtually the same over the most time series, well-informed by the age structure data, but diverge in most recent period, which includes most recent  few years, for which youngest cohorts may be not yet selected by either surveys or fisheries (Figure \ref{fig:sens-recruit2}). For those few years, the environmental index becomes more influential, as it can provide additional information, not captured by other sources.
+
+Results of this sensitivity run, therefore, emphasizes the importance of progress in generating an environmental recruitment index and getting it vetted through either peer-review publication or SSC review, so that it might be used with confidence in the assessment.
+
+Studies on stock structure and movement of `r spp` indicating transboundary movement of `r spp` between U.S. and Canadian waters. Addition survey and catches from British Columbia waters to the base model did not cause a conflict among data sources from United States and Canada. The index from the synoptic bottom trawl survey (WCVI) conducted on the  West Coast Vancouver Island since 2004 is consistent with the \Gls{s-wcgbt} index conducted on the U.S. West Coast (Figure \ref{fig:sens-Canada0}). Estimated stock trajectories did not change in any of the alternative runs (Table \ref{tab:sens-table-Canada} and Figure \ref{fig:sens-Canada1}). As expected, with Canadian catches added, initial spawning output increased.
 
 ### Retrospective Analysis
 
