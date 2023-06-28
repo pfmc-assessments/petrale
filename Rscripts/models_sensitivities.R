@@ -103,11 +103,10 @@ sens_make_table(num = 34, sens_mods = mod_list, plot = TRUE,
 
 
 # RECRUITMENT sensitivities
-# INDEX sensitivities
 get_mod(34,602)
 get_mod(34,603) 
-get_mod(34,604)
-mod_list <- list(mod.34.1, mod.34.604, mod.34.602, mod.34.603)
+get_mod(34,606)
+mod_list <- list(mod.34.1, mod.34.606, mod.34.602, mod.34.603)
 mod_names <- c("Base", 
 "Environmental index", 
 "Zero-centered recdevs", 
@@ -118,3 +117,37 @@ sens_make_table(num = 34, sens_mods = mod_list, plot = TRUE,
   sens_type = "recruit", sens_names = mod_names, 
   uncertainty = 1, # only show uncertainty for the base model
   legendncol = 1) # petrale declines too far so bumps into label
+
+# plot of recdevs with and without env. index
+mod.temp <- mod.34.606
+mod.temp$cpue$Yr <- mod.temp$cpue$Yr - 0.3
+png("figures/diags_model34/env_index_fit.png",
+  res = 300, width = 7, height = 6, units = "in", pointsize = 10)
+SSplotComparisons(SSsummarize(list(mod.34.1, mod.34.606)), 
+  subplots = 12, xlim = c(1984.5, 2023.5), legend = FALSE,
+  col = c("blue", "green3"), new = FALSE)
+legend("bottomleft", pch = c(21,1,2), lty = 1, pt.lwd = 2,
+  col = c("black", "blue", "green3"),
+  pt.bg = "white", bty = "n",
+  legend = c("Env. index", "Base recdevs", "Recdevs fit to index"))
+SSplotIndices(mod.temp, subplots = 1, add = TRUE)
+axis(1, at = seq(1985, 2015, by = 10))
+dev.off()
+
+# CANADIAN sensitivities
+get_mod(34,701)
+get_mod(34,702) 
+get_mod(34,703)
+mod_list <- list(mod.34.1, mod.34.701, mod.34.702, mod.34.703)
+mod_names <- c("Base", 
+"Canadian index added", 
+"Canadian catches added", 
+"Canadian catches and index added"
+)
+# make table
+sens_make_table(num = 34, sens_mods = mod_list, plot = TRUE, 
+  sens_type = "Canada", sens_names = mod_names, 
+  uncertainty = 1, # only show uncertainty for the base model
+  legendncol = 1) # petrale declines too far so bumps into label
+
+SSplotComparisons(SSsummarize(mod_list), subplots = 11, indexfleets = 5)

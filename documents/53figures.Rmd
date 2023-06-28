@@ -49,7 +49,7 @@ label = "catchdiscard-figures-r4ss"
 sa4ss::add_figure(
 filein = "../figures/Catch comparison graph.png", 
 caption = "Comparison of landings used in this assessment (red line) with landings used in 2019 assessment (dashed black line) by state and fleet. Please see section on Historical landings for details.",
-label = "catchdiscard-figures-r4ss"
+label = "catch-comparison"
 )
 
 ```
@@ -58,6 +58,47 @@ label = "catchdiscard-figures-r4ss"
 <!-- ******************* Data Used in the Model *************************** --> 
 <!-- ====================================================================== --> 
 
+```{r, index-figures, results = "asis"}
+sa4ss::add_figure(
+filein = "../figures/indices/survey_density.png", 
+caption = paste("Predicted density from the geostatistical standardization of the",
+  "Triennial Survey (left) and the WCGBTS (right) in 2004, the one year in which",
+  "both surveys were conducted. Density is on a log scale and the colors correspond",
+  "to different scales as shown in the two legends."),
+label = "survey-density"
+)
+
+sa4ss::add_figure(
+filein = "../figures/indices/presence-absence_by_depth.png", 
+caption = paste("Presence/absence of petrale sole by depth",
+  "in the WCGBTS. Bar widths are proportional to the number of hauls in that bin.",
+  "Values are aggregated across all years of the survey."),
+label = "presence-absence-by-depth"
+)
+
+sa4ss::add_figure(
+filein = "../figures/indices/presence-absence_by_latitude.png", 
+caption = paste("Presence/absence of petrale sole by latitude",
+  "in the WCGBTS. Bar widths are proportional to the number of hauls in that bin.",
+  "Values are aggregated across all years of the survey."),
+label = "presence-absence-by-latitude"
+)
+
+sa4ss::add_figure(
+filein = "../figures/indices/index_Tri.png", 
+caption = paste("Estimated index from the geostatistical standardization of the",
+  "Triennial Survey including estimated biomass in each state."),
+label = "survey-tri"
+)
+
+sa4ss::add_figure(
+filein = "../figures/indices/index_WCGBTS.png", 
+caption = paste("Estimated index from the geostatistical standardization of the",
+  "WCGBTS including estimated biomass in each state."),
+label = "survey-wcgbts"
+)
+
+```
 
 ## Biology
 
@@ -355,12 +396,27 @@ label = 'sens-recruit1',
 caption = paste("Time series of spawning biomass (top) and fraction of unfished",
             "(bottom) for the sensitivity analyses related to",
             "recruitment."))
+
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_recruit2.png"), 
 label = 'sens-recruit2',
 caption = paste("Time series of recruitment (top) and recruitment deviations",
             "(bottom) for the sensitivity analyses related to",
             "recruitment."))
+
+# Canada sensitivities
+sa4ss::add_figure(
+  filein = "../models/2023.a034.703/plots/index9_standcpueall.png",
+  label = 'sens-Canada0',
+  caption = "Standardized indices showing comparison of the WCGBTS and Canadian indices as well as the Triennial index."
+)
+
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_Canada1.png"), 
+label = 'sens-Canada1',
+caption = paste("Time series of spawning biomass (top) and fraction of unfished",
+            "(bottom) for the sensitivity analyses related to",
+            "data from Canada."))
 
 ```
 
@@ -376,7 +432,7 @@ caption = "Change in the estimate of spawning output when the most recent 5 year
 label = 'retro-ssb')
 ```
 
-\pagebreak
+\clearpage
 
 ```{r, results = 'asis'}
 add_figure(
@@ -385,7 +441,7 @@ caption = "Change in the fit to the WCGBTS index when the most recent 5 years of
 label = 'retro-index')
 ```
 
-\pagebreak
+\clearpage
 
 ```{r, results = 'asis'}
 add_figure(
@@ -393,6 +449,8 @@ filein = file.path(figures_diags, "retro_compare4_Bratio_uncertainty.png"),
 caption = "Change in the estimate of fraction unfished when the most recent 5 years of data area removed sequentially",
 label = 'retro-depl')
 ```
+
+\clearpage
 
 ### Likelihood Profiles
 

@@ -1,0 +1,22 @@
+"Label","Base","Canadian index added","Canadian catches added","Canadian catches and index added"
+"TOTAL likelihood (diff from base)",0,-7.54999999999995,3.59300000000007,-4.32399999999996
+"Survey likelihood (diff from base)",0,-7.4944,1.3892,-6.3964
+"Length comp likelihood (diff from base)",0,-0.0790000000000646,0.445999999999913,0.300999999999931
+"Age comp likelihood (diff from base)",0,0.0869999999999891,-0.0409999999999968,-0.00999999999999091
+"Discard likelihood (diff from base)",0,0.0120000000000005,0.0949999999999989,0.102000000000004
+"Mean body weight likelihood (diff from base)",0,-0.00200000000000955,0.0240000000000009,0.0229999999999961
+"Recruitment likelihood (diff from base)",0,-0.06989,1.8566,1.83174
+"Parm priors likelihood (diff from base)",0,-0.00298999999999999,-0.175937,-0.174575
+"Recruitment unfished millions",15.3571,15.4067,19.4867,19.5173
+"Stock-recruit steepness (h)",0.8,0.8,0.8,0.8
+"M Female ",0.141813,0.141847,0.149341,0.149199
+"M Male ",0.154788,0.154995,0.164308,0.164289
+"Unfished age 3+ bio 1000 mt",42.1977,42.283,47.8799,48.0262
+"B0 trillions of eggs thousand mt",0.023,0.023,0.026,0.026
+"B2023 trillions of eggs thousand mt",0.008,0.008,0.01,0.01
+"Fraction unfished 2023",0.335518,0.340335,0.390972,0.395736
+"Fishing intensity 2022",0.65779,0.65425,0.626352,0.623318
+"Retained Catch MSY mt",2471,2477,2948,2955
+"Dead Catch MSY mt",2482,2488,2960,2967
+"OFL mt 2023",3194,3254,4447,4519
+"WCGBTS catchability",4.02252574454738,4.00254336376525,3.19804600544209,3.18562977171249

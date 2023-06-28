@@ -1,0 +1,10 @@
+Strata ,Depth Lower Bound (m),Depth Upper Bound (m),Latitude South,Latitude North
+Shallow CA,55,100,37,42
+Shallow OR,55,100,42,46
+Shallow WA,55,100,46,49
+Middle CA,100,183,37,42
+Middle OR,100,183,42,46
+Middle WA,100,183,46,49
+Deep CA,183,350,37,42
+Deep OR,183,350,42,46
+Deep WA,183,350,46,49

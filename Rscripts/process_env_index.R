@@ -15,7 +15,16 @@ head(env_index)
 # 4 1996 -0.26419213 0.06590863 -0.2280370 0.1666110
 # 5 1997 -0.12396710 0.07249955 -0.2220600 0.1652430
 # 6 1998  0.47977526 0.14354019  0.6543340 0.0887485
+
+env_index_raw <- env_index %>%
+  dplyr::select(year, fit, se) %>% # select required columns
+  dplyr::mutate(month = 1, fleet = 5, .after = year) # add columns
+write.csv(env_index_raw, 
+  "data-raw/env_index/Petrale_glorys_index_with_2023_for_SS3_27-June-2023.csv", 
+  row.names = FALSE)
+
 mean(env_index$fit)
+# [1] 0.04512026
 
 env_index_rescaled <- env_index %>%
   dplyr::select(year, fit, se) %>% # select required columns
