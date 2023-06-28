@@ -318,11 +318,6 @@ label = 'smry-bio-historical')
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "ts4_Summary_biomass_(mt).png"), 
-caption = "Estimated biomass of females and males ages 3 and older.",
-label = 'smry-bio')
-
-sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots", "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"), 
 caption = "Estimated time series of female spawning output (in trillions of eggs) with approximate 95% asymptotic intervals.",
 label = 'ssb')
