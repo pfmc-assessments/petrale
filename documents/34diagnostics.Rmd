@@ -4,10 +4,70 @@ Describe all diagnostics
 ### Convergence
 
 ### Sensitivity Analyses
-The sensitivity analyses were divided into six groups: indices, composition data, selectivity, biology, recruitment, and the transboundary nature of the stock (Tables \ref{tab:sens-table-index} to \ref{tab:sens-table-Canada} and Figures \ref{fig:sens-index1} to \ref{fig:sens-Canada1}).
+We performed a number of sensitivity analyses on the base assessment model, to evaluate the base model’s response to change in key parameters and model components.The sensitivity analyses were divided into six groups: indices, composition data, biology, recruitment and environmental index, and the transboundary nature of the stock  (Tables \ref{tab:sens-table-index} to \ref{tab:sens-table-Canada} and Figures \ref{fig:sens-index1} to \ref{fig:sens-Canada1}).
 <!-- TODO: revise table and figure ranges after adding additional senstivity tables and figures -->
 
-TODO: Add text on each senstivity group here.
+These groups included the following runs:
+
+Indices
+
+\begin{enumerate}
+
+\item Estimating separate catchability parameter and separate selectivity parameters for the late \gls{s-tri} period.
+
+\item Excluding \gls{s-tri} 2004 observation.
+
+\item Allowing \gls{s-tri} selectivity to be dome-shaped.
+
+\item Estimating extra standard deviation for the \Gls{s-wcgbt}
+
+\item Including fisheries CPUEs in the model.
+
+\end{enumerate}
+
+Composition data
+
+\begin{enumerate}
+
+\item Tuning the sample sizes using the Dirichlet-Multinomial likelihood.
+
+\item Early surface read ages are included and retuned.
+
+\end{enumerate}
+
+Biology
+
+\begin{enumerate}
+
+\item Weight-Length relationship from 2019 assessment.
+
+\item Maturity parameters from 2019 assessment.
+
+\item Estimating age-0 fraction female within the model.
+
+\item Estimating age-0 fraction female with no sex offset on the \Gls{s-wcgbt}on selectivity parameters.
+
+\end{enumerate}
+
+Recruitment
+
+\begin{enumerate}
+
+\item Incorporating environmental index of `r spp` recruitment based on CMEMS.
+
+\end{enumerate}
+
+Transboundary nature of the stock
+
+\begin{enumerate}
+
+\item Adding the West Coast Vancouver Island (WCVI) synoptic bottom trawl survey index to the assessment model.
+
+\item Adding `r spp` catches from British Columbia waters to the North fishing fleet.
+
+\item Adding both index and catches to the base model.
+
+\end{enumerate}
 
 ### Retrospective Analysis
 
