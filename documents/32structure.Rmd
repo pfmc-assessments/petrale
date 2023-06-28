@@ -1,35 +1,35 @@
 ## Model Structure and Assumptions
 
-### Model Changes from the Last Assessment
+### Model Changes from the Last Assessment and Bridging Analysis
 
-The last update assessment of Petrale sole was conducted in 2019. The 2019 assessment model was the starting point for this assessment, and a bridging analysis was done to investigate the impact of increment changes to the assessment model. For this assessment, we retained a number of features of the 2019 assessment and also included a number of improvements related to use of data and modeling techniques.  Below, we describe the most important changes made since the last full assessment and provide rationale for each change:
+The last full assessment of `r spp` was conducted in 2013 and the most recent update assessment in 2019. For this assessment, we retained a number of features of the 2019 assessment and also included a number of improvements related to use of data, model structure and modeling techniques. Below, we describe the most important changes made since the last assessment:
 
 \begin{enumerate}
 
-\item Upgraded to Stock Synthesis version 3.30.21 (released in February 2023). This is standard practice to capitalize on newly developed features and corrections to older versions as well as improvements in computational efficiency.  Model results were nearly identical before and after this change. 
+\item Upgraded to Stock Synthesis version 3.30.21 (released in February 2023). This is standard practice to capitalize on newly developed features and corrections to older versions as well as improvements in computational efficiency.  No discernible difference were produce by this change.
 
-\item Updated historical and current fishery removals, to include most up to date information.
+\item Updated historical and current fishery removals, to include most up to date information. This year WDFW completed historical catch reconstruction of `r spp` and newly estimated landings are lower than those used in previous assessment. Newly estimated Washington landings are also more consistent with history of commercial removals on the West Coast and represent improvement to the assessment.
 
-\item Removed fishery CPUE time series. 
+\item Removed fishery CPUE time series. This change did not impact the assessment outputs as well as model fits.
 
-\item Combined Winter and Summer fleets into corresponding annual North and South fleets. The separation of North and South fleets into the Winter and Summer fleets were primarily motivated by the using the fishery CPUE indices form Winter fisheries. With removal of CPUE indices from the model, separation into Winter and Summer fleets was no longer needed. Also, selectivity curves estimated for Winter and Summer fleets were very similar for both North and South fleets, and initial explorations of mirroring selectivities of Winter and Summer fleets yielded identical results with model with separate selelctivity curves in Winter and Summer fleets estimated. Combining Winter and Summer fleets within North and South fleets removed uncertainty associated with separating annual catches by season (Winter fleet was defined as November of previous year through the February of the current year), since only limited records of landings by month is available in the pre-PacFIN period. Finally, using annual catches (and not assigning to current year catches from previous) puts assessment in alignment with management system, which operated on a calendar year basis.  
+\item Combined Winter and Summer fleets into corresponding annual North and South fleets. The separation of North and South fleets into the Winter and Summer fleets were primarily motivated by the using the fishery CPUE indices form Winter fisheries, targeting `r spp` spawning aggregations. With removal of CPUE indices from the model, separation into Winter and Summer fleets was no longer needed. Also, Winter and Summer fleets selectivity curves were very similar within respective fisheries. Combining Winter and Summer fleets within North and South fisheries yielded very close results. Combining seasonal fleets also removed uncertainty associated with separating historical annual catches by season (since fishing year for Winter fleet was defined as November of previous year through the February of the current year). Finally, using annual catches (rather than assigning to current year catches from previous) put assessment in alignment with management system, which operates on a calendar year basis.  
 
-\item Recalculated survey abundance indices using sdmTMB geostatistical model.
+\item Recalculated survey abundance indices using sdmTMB geostatistical model. Results did not impact the model output.
 
-\item Used a single triennial survey time series (instead separating it into early and late indices). The triennial index was separated in the past assessment dues to change in depth and latitudinal coverage of the triennial survey. Using a single index did not impact model results, but provided a longer historical time series and simplified the structure of the assessment model.
+\item Switched to a single triennial survey index (instead separating it into two indices for early and late survey periods). The triennial index was separated in past assessments due to change in depth and latitudinal coverage of the triennial survey. Using a single index did not impact model results, but provided a longer historical survey trend and simplified the structure of the assessment model.
 
-\item Updated input sample sizes using a combination of number of trips and number and fish (rather than number of trips, as in orevious assessment), to follow current best practices.
+\item Updated input sample sizes associated with fisheries composition data to using a function of number of trips and number and fish (rather than number of trips, as in previous assessment), to follow current best practices and ensure a consistent treatment of fishery and survey input data.
 
-\item Updated maturity and fecundity parameters, to include most up to date information.
+\item Updated weight-length, maturity and fecundity parameters, to include most up to date and improved information. Updating weight-length parameters did not produce a noticeable change. Model with new maturity parameters had slightly lower scale as length at 50% maturity now is slightly higher.  With new fecundity parameters, the model produces spawning output rather that spawning biomass, and 2019 model 2023 spawning outputs are no longer comparable. However, relative depletion show similar results.
 
-\item Fixed spawner-recruit steepness at 0.8, mean of the Myers prior developed based on meta-analysis of flatfish steepness (Myers et al. 1999). Steepness likelihood profile is included in this report.
-
-\item Excluded historical surface read ages.
+\item Updated spawn-recruit parameters and fixed Beverton-Holt steepness at 0.8, mean of the Myers prior developed based on meta-analysis of flatfish steepness (Myers et al. 1999). When estimated, steepness was hitting the upper parameter bound of 1 (steepness likelihood profile is included in this report). Limiting steepness to 0.8 did not cause a change in model results, but yielded more reasonable estimates of other life history parameters, including natural mortality.
 
 
 \end{enumerate}
 
-The list above documents only the most important changes made to this assessment relative to the previous one. Despite the large number of changes made to data sources and the model configuration, the results of this assessment are consistent with those done previously. 
+The list above documents only the most important changes made to this assessment relative to the previous one. 
+
+The 2019 assessment model was the starting point for this assessment, and a bridging analysis was conducted to investigate the impact of increment changes. The results of bridging analysis are shown in Figure XX through Figure XX. Despite the large number of changes made to data sources and the model configuration, the results of this assessment are consistent with those done previously.
 
 ### Modeling Platform and Structure
 General model specifications (e.g., executable version, model structure, definition of fleets and areas)
