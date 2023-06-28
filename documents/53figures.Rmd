@@ -324,7 +324,7 @@ label = 'smry-bio')
 
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots", "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"), 
-caption = "Estimated time series of female spawning output with approximate 95% asymptotic intervals.",
+caption = "Estimated time series of female spawning output (in trillions of eggs) with approximate 95% asymptotic intervals.",
 label = 'ssb')
 
 sa4ss::add_figure(
