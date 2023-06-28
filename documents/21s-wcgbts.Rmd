@@ -9,7 +9,7 @@ This design generally uses four industry-chartered vessels per year assigned to 
 Two vessels fish from north to south during each pass between late May to early October.
 This design therefore incorporates both vessel-to-vessel differences in catchability, as well as variance associated with selecting a relatively small number (approximately 700) of possible cells from a very large set of possible cells spread from the Mexican to the Canadian borders.
 
-The \Gls{s-wcgbt} commonly encounters `r spp` along the U.S West Coast, except south of Point Conception (Figure XX). The catch-per-unit-effort estimated from the survey is roughly constant north of 38$^\circ$. The survey does fish shallower than 54 m and the encounter rate of `r spp` declines at waters deeper than 400 m. Figure XX shows that the positive tows catch rate by depth peaks between 100-200 meters and declines as depth increases. The observed lengths captured across depths by the survey are shown in Figure XX.
+The \Gls{s-wcgbt} commonly encounters `r spp` along the U.S West Coast, except south of Point Conception (Figure \ref{fig:survey-density}). They occur in about 75\% of tows shallower than 200 m. with few observations beyond 450 m. (Figure \ref{fig:presence-absence-by-depth}). `r Spp` occur throughout the surveyed latitudes with lower densities in southern California, a peak around the San Francisco area (37\textdegree N latitude, Figure \ref{fig:presence-absence-by-latitude}) and a general increase in presence with increasing latitude.
 
 #### Index of Abundance
 

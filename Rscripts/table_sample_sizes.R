@@ -1,3 +1,4 @@
+# PacFIN BDS sample sizes
 today_date <- "26.May.2023"
 out_date <- "08.May.2023"
 load(paste0(
@@ -26,8 +27,9 @@ len_samps <- len_samps %>%
   dplyr::arrange(year) %>%
   dplyr::filter(year < 2023)
 
-
 write.csv(len_samps, 
   file = "tables/length_samps_comm_by_fleet.csv",
   row.names = FALSE)
 
+
+# Survey sample sizes 

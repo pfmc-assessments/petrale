@@ -248,6 +248,9 @@ sens_make_table <- function( # area,
     if (sens_type == "comp") {
       sens_type_long <- "composition data."
     }
+    if (sens_type == "Canada") {
+      sens_type_long <- "data from Canada."
+    }
 
     caption <-
       paste(

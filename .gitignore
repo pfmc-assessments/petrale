@@ -76,6 +76,10 @@ vignettes/*.pdf
 # PDF files (get too big and not useful to track)
 *.pdf
 
+# random stuff
+
 # shortcut file
 petrale_on_U.lnk
+# GIMP file
+*.xcf
 

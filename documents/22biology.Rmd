@@ -20,6 +20,12 @@ Maximum age was assumed to be 32 and 29 years for females and males, respectivel
 
 ### Maturation and Fecundity{#mat_fecund}
 
+A new maturity ogive was developed for this assessment (M. Head pers. comm.) based on an analysis of 553 ovary samples collected from 2015 to 2021 by port samlers in Washington and Oregon as well as on board the \Gls{s-wcgbt}. Very little difference in biological and functional maturity was observed and there was evidence of only a minimal amount of skip spawning. The estimated length at 50\% maturity was 35.45, which was similar to the 33.1 cm used in the previous assessment which was based on samples from a narrower geographic range [@hannah_length_2002].
+
+A fecundity relationship published in 2019 [@lefebvre_reproductive_2019] was used as a sensitivity analysis in the previous assessment and has been adopted for the base model in this one. The relationship shows a slightly faster increase in the number of eggs per unit length than when fecundity was assumed proportional to body weight. The addition of this fecundity relationship means that spawning output is reported in trillions of eggs rather than metric tons. 
+
+TODO: add figure (perhaps copied from 2019 assessment) and note the parameter values.
+
 ### Sex Ratio
 
 This assessment assumes `r spp` to have a 50% sex ratio at birth between females and males off the U.S West Coast. Similarly, Canadian data from the 2004 published stock assessment also suggests sex ratios of `r spp` in British Columbia are generally 50% males and 50% females [@starr_petrale_2004]. In 2019 update assessment, it was noted that the \Gls{s-wcgbt} data indicates that the proportion of females in the population across the mid-range lengths can be lower than 50%. 
@@ -28,8 +34,24 @@ As a part of this assessment, we explored multiple model formulations with fract
 
 ### Length-Weight Relationship
 
-The length-weight relationship for `r spp` was estimated outside the model using all biological data available from the \Gls{s-wcgbt} data. The female weight-at-length in grams was estimated at `r format(mod_base$MGparmAdj$Wtlen_1_Fem[1], scientific = TRUE)`$L$^`r round(mod_base$MGparmAdj$Wtlen_2_Fem[1],2)`^ and males at `r format(mod_base$MGparmAdj$Wtlen_1_Mal[1], scientific = TRUE)`$L$^`r round(mod_base$MGparmAdj$Wtlen_2_Mal[1], 2)`^ where $L$ is length in cm (Figure \ref{fig:wt_length}).  The length-weight relationship estimates from the \Gls{s-wcgbt} data were consistent with the biological observations available from the fishery data. 
+`r load("../data/weight-length_pars.rda")`
+The weight-length relationship for `r spp` was estimated outside of the 
+assessment model by fitting biological data to the standard power function, 
+$W = aL^b$ using the R function `PacFIN.Utilities::getWLpars()` 
+(where $W$ is weight in kilograms and $L$ is fork length in centimeters). 
+The function estimates the relationship on a log-log scale and then uses the 
+estimated standard deviation of the observed weights around the expected value 
+to calculate the median weight at each length from the resulting lognormal 
+distribution.
 
+The parameters were estimated using data from the \gls{s-wcgbt}, where 21,704 
+fish collected between 2003 and 2022 had both weight and length available 
+of which 57.6\% were female, 42.3\% were male, and 0.1\% were unsexed. 
+The resulting relationships were
+`r sprintf("$W=%1.9f * L^{%1.3f}$", fa, fb)` for females and
+`r sprintf("$W=%1.9f * L^{%1.3f}$", ma, mb)` for males. 
+These relationships are very similar to those used for the previous assessment 
+[@wetzel_status_2019].
 
 ### Growth (Length-at-Age)
 

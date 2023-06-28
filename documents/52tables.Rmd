@@ -25,16 +25,63 @@ sa4ss::table_format(x = catch_table,
 ```
 
 ```{r, tables-samples, results = 'asis'}
-len_samps <- read.csv("../tables/length_samps_comm_by_fleet.csv")
+len_samps_comm <- read.csv("../tables/length_samps_comm_by_fleet.csv")
 
-sa4ss::table_format(x = len_samps,
+sa4ss::table_format(x = len_samps_comm,
                  caption = 'Sample sizes of commercial length composition data by fleet.',
                  label = 'sample-size-length-by-fleet',
                  col_names = c("Year", "Trips North",
                   "Fish North", "Input N North",
                    "Trips South", "Fish South", "Input N South"),
                  )
+
 ```
+TODO: add tables of commercial age samples by fleet and ageing error type
+
+\clearpage
+
+```{r, tables-samples-surveys, results = 'asis'}
+len_samps_Tri <- read.csv("../tables/length_SampleSize_Tri.csv")
+sa4ss::table_format(x = len_samps_Tri,
+                 caption = 'Sample sizes of Triennial Survey length composition data.',
+                 label = 'sample-size-length-tri',
+                 col_names = gsub("_", " ", names(len_samps_Tri))
+                 )
+
+len_samps_WCGBTS <- read.csv("../tables/length_SampleSize_WCGBTS.csv")
+sa4ss::table_format(x = len_samps_WCGBTS,
+                 caption = 'Sample sizes of WCGBTS length composition data.',
+                 label = 'sample-size-length-wcgbts',
+                 col_names = gsub("_", " ", names(len_samps_WCGBTS))
+                 )
+
+age_samps_WCGBTS <- read.csv("../tables/age_SampleSize_WCGBTS.csv")
+sa4ss::table_format(x = age_samps_WCGBTS,
+                 caption = 'Sample sizes of WCGBTS age composition data.',
+                 label = 'sample-size-age-wcgbts',
+                 col_names = gsub("_", " ", names(age_samps_WCGBTS))
+                 )
+
+```
+
+```{r, tables-strata, results = 'asis'}
+strata_WCGBTS <- read.csv("../tables/strata_for_survey_comps_WCGBTS.csv")
+strata_Tri <- read.csv("../tables/strata_for_survey_comps_Tri.csv")
+col_names <- gsub(".Lower.Bound..m.", " lower bound (m)", names(strata_WCGBTS))
+col_names <- gsub(".Upper.Bound..m.", " upper bound (m)", col_names)
+col_names <- gsub("Latitude.", "Latitude ", col_names)
+
+sa4ss::table_format(x = strata_WCGBTS,
+                 caption = 'Latitude and depth strata used to expand the composition data for the WCGBTS.',
+                 label = 'strata-wcgbts',
+                 col_names = col_names)
+
+sa4ss::table_format(x = strata_Tri,
+                 caption = 'Latitude and depth strata used to expand the composition data for the Triennial Survey.',
+                 label = 'strata-tri',
+                 col_names = col_names)
+```
+
 
 \clearpage
 
@@ -123,5 +170,13 @@ table_sens("../tables/sens_table_recruit.csv",
            pretty = FALSE, # don't modify model names in this case because they are already OK
 	       sens_group = "recruit",
            caption_extra = "The indices and total likelihoods are not comparable for the environmental index model due to the additional data.")
+```           
+\clearpage
+
+```{r tables-sens-Canada, results = "asis"}
+table_sens("../tables/sens_table_Canada.csv",
+           pretty = FALSE, # don't modify model names in this case because they are already OK
+	       sens_group = "Canada",
+           caption_extra = "The indices and total likelihoods are not comparable for the models that include the Canadian index.")
 ```           
 \clearpage
