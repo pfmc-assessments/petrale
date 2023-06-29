@@ -8,7 +8,7 @@ The 2005 `r spp` assessment was conducted as two separate stocks, the northern s
 
 The 2009 and 2011 assessments treated `r spp` as a single coast-wide stock, with the fleets and landings structured by state (WA, OR, CA) area of catch. During the 2011 STAR panel concerns were raised regarding the difficulty of discriminating landings from Washington and Oregon waters, particularly in light of the Oregon historical landings reconstruction that includes a summary of data by port of landing but not by catch area, due to the fact that the Oregon and Washington vessels commonly fish in each other's waters and land in each other's ports. The availability of the historical comprehensive landings reconstruction for Oregon by port of landing lead the STAR panel to recommend combining the Washington and Oregon fleets within the coast-wide stock assessment using port of landing rather than catch area. 
 
-Starting with the 2013 stock assessment, the coast-wide stock assessment now summarizes `r spp` landings by the port of landing and combines Washington and Oregon into a single fleet [@haltuch_status_2013]. The 2019 update assessment (*Wetzel 2019) assumed the same approach as the 2013 stock assessment.
+Starting with the 2013 stock assessment, the coast-wide stock assessment now summarizes `r spp` landings by the port of landing and combines Washington and Oregon into a single fleet [@haltuch_status_2013]. The 2019 update assessment [@wetzel_status_2019] assumed the same approach as the 2013 stock assessment.
 
 ### Most Recent STAR Panel and SSC Recommendations 
 
