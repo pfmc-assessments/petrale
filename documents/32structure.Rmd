@@ -2,7 +2,9 @@
 
 ### Model Changes from the Last Assessment and Bridging Analysis
 
-The last full assessment of `r spp` was conducted in 2013 and the most recent update assessment in 2019. For this assessment, we retained a number of features of the 2019 assessment and also included a number of improvements related to use of data, model structure and modeling techniques. Below, we describe the most important changes made since the last assessment:
+The last full assessment of `r spp` was conducted in 2013 and the most recent update assessment in 2019. The 2019 assessment model was the starting point for this assessment. We retained a number of features of the 2019 assessment and also included a number of improvements related to use of data, model structure and modeling techniques. 
+
+Bridging analysis was conducted to illustrate the impact of incremental changes. The results of bridging analysis are shown in Figure XX through Figure XX. Below, we describe the most important changes made since the last assessment:
 
 \begin{enumerate}
 

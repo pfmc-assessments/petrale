@@ -44,14 +44,14 @@ where fish is the number of `r spp` by year $y$ and $N$ the total number of tows
 
 The input sample size of conditional-age-at-length data was set at the number of fish at each length by sex and by year. 
 
-## Fishery-independent data sources considered but not used
+### Fishery-independent data sources considered but not used
 
-### AFSC Slope Survey
+#### AFSC Slope Survey
 
 The AFSC Slope Survey (Slope Survey) operated during the months of October to November aboard the R/V Miller Freeman. Partial survey coverage of the U.S. West Coast occurred during the years 1988-1996 and complete coverage (north of 34°30'S Lat.) during the years 1997 and 1999-2001. Typically, only these four years that are seen as complete
 surveys are included in assessments. This survey was considered, but similarly to the past assessments not included in the model because the frequency of `r spp` occurrence was too low. Survey spatial coverage did not align well with range of `r spp` depth range, and the survey data was not sufficient to develop an informative index. 
 
-### NWFSC Slope Survey
+#### NWFSC Slope Survey
 
 The NWFSC also operated a Slope Survey during the years 1998-2002. However, this survey was not included in this assessment because the frequency of `r spp` occurrence was too low. Survey spatial coverage did not align well with range of `r spp` depth range, and the survey data was not sufficient to develop an informative index.
 
