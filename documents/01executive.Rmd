@@ -218,7 +218,9 @@ fishery selectivities and retention curves and with steepness fixed at 0.80.",
 label = 'es-yield')
 ```
 
-\input{tex_tables/e_ReferencePoints_ES.tex}
+\clearpage
+
+\input{tex_tables/e_ReferencePoints_ES_FIXED.tex}
 
 \clearpage
 

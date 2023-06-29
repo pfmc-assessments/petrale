@@ -1,6 +1,7 @@
 # Management 
 
 ## Reference Points
+Estimated reference points are reported in Table \ref{tab:referenceES}.
 
 ## Unresolved Problems and Major Uncertainties (Not required in draft assessment undergoing review)
 
