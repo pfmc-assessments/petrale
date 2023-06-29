@@ -33,11 +33,14 @@ This pattern of positive residuals for the oldest ages matches the lack of fit t
 Fit to the discard rates (Figures \ref{fig:discard_fitNorth} and \ref{fig:discard_fitSouth}) and mean body weight of the discards (Figures \ref{fig:mnwt_fitNorth} and \ref{fig:mnwt_fitSouth}) was good thanks to consistently low and stable rates and the use of time blocks on the retention parameters to fit the years with significant change.
 
 ### Population Trajectory
-<!-- R values used below are calculates are in the exec summary -->
+<!-- variables used in R code below are calculates are in the exec summary -->
 
 The base model estimate of biomass time series is similar to previous assessments (Figure \ref{fig:smry-bio-historical}), with estimated biomass of ages 3 and older estimated around `r smry_equ` mt in the unfished equilibrium, declining to a minimum of `r smry_min` mt in `r smry_minyr`, rebuilding quickly to a recent peak of `r smry_max_recent` mt in `r smry_maxyr_recent` due to 3 years of very high recruitments from 2006 to 2008, and then declining to `r smry_2023` mt in 2023 due to low or average recruitment in the years since.
 
 In terms of fraction of unfished spawning output (Figure \ref{fig:depl}), the minimum was `r Bratio_min` in `r Bratio_minyr`, the recent peak was `r Bratio_max_recent` in `r Bratio_maxyr_recent` and the 2023 estimate is `r Bratio_2023`.
 
-TODO: describe recruitment and SPR time series here.
+The recruitment time series is punctuated by four large recruitment events in 1965, 2006, 2007, and 2008 (Figures \ref{fig:stock-recruit}, {fig:recruits}, and {fig:rec-devs}). The 1965 recruitment was estimated at about 40 million age-0 recruits while the latter three were in the 25-30 million range. The rest of the time series is close to 10 million recruits per year. The recruitment in 2012 was almost 20 million (a positive deviation from the stock-recruit curve of 0.56) but the years since are estimated to have had below-average or close-to-average recruitment, with a low point in 2017 of about 8 million recruits (deviation = -0.44).
 
+The precision of the recruitment deviation estimates is highest for the cohorts informed by age data from the \Gls{s-wcgbt} which began in 2003 (Figure \ref{fig:rec-devs}). Therefore the chosen bias adjustment have a relative narrow plateau from 2002 to 2015 (Figure \ref{fig:biasadj}), where cohorts born after that point have been observed for too few years to have as precise an estimate of their year-class strength.
+
+The estimated time series of exploitation shows an accelerating increase in fishing intensity and exploitation rate with a peak around 1990 when the spawning potential ratio (SPR, spawning output relative to spawning output at unfished equilibrium) fell to 0.09 relative to a reference point of 0.3 (Figure \ref{fig:spr}) and the exploitation rate (catch relative to age 3+ biomass) was close to 0.4. These rates are estimated to have declined slowly up to the point where the overfishing declaration led to dramatic decrease in catch in 2010, when SPR increased above the reference point to about 0.36. The fishing intensity has increased since that time due to the rebuilding of the stock, but is estimated to have remained below the reference point in the years since.

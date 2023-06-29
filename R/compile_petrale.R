@@ -46,7 +46,7 @@
 #' }
 #'
 compile_petrale <- function(
-    basemodelname = "2023.a024.018_min_sample_retuned",
+    basemodelname = "2023.a034.001",
     dir = "documents",
     time = 10,
     wipe = FALSE,

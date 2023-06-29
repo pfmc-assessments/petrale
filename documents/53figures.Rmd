@@ -13,6 +13,15 @@ plot_info = read.csv(file.path(mod_loc_relative, "plots", "plotinfotable_for_doc
 <!-- *******************    Assessment Map      *************************** --> 
 <!-- ====================================================================== --> 
 
+```{r, results = "asis"}
+sa4ss::add_figure(
+filein = "../figures/map/map_of_fleet_areas_42.png", 
+caption = 
+  "Map of the U.S. west coast Exclusive Economic Zone within which the assessment is focused. The dashed line and colors delineate the two fishing fleets represented in the model: North (blue) and South (red).",
+  alt_caption = "Outline of U.S. west coast split at forty-two degrees north latitude",
+label = "map"
+)
+```
 
 ```{r, data-plot, results = "asis"}
 sa4ss::add_figure(
@@ -159,31 +168,9 @@ label = 'sel-tv-mal')
 
 ```
 
-
-### Recruitment
-
-```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "recdevs2_withbars.png"), 
-caption = paste("Recruitment deviations with 95% intervals.",
-  "Black points and lines represent the 'main' period while the blue",
-  "points and lines are the early and late periods."),
-label = 'recdevs')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "custom_plots",  "recruit_fit_bias_adjust.png"), 
-caption = paste0("Bias adjustment applied to the recruitment deviations (red line). ",
-  "Points are transformed variances relative to $\\sigma_R = ", mod_base$sigma_R_in, "$."),
-label = 'biasadj')
-```
-\clearpage
-
-
 ### Fits to Data
 
 \clearpage
-
-#### Fits to indices
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -195,15 +182,12 @@ label = 'index-wcgbts-fit')
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots",  "index2_cpuefit_Triennial.png"), 
 caption = paste("Fit to index data for the Triennial survey. Lines indicate 95% uncertainty",
-  "interval around index values based on the model assumption of lognormal error.",
-  "Thicker lines indicate input uncertainty before addition of",
-  "estimated additional uncertainty parameter."),
+  "interval around index values based on the model assumption of lognormal error with and without estimated additional uncertainty parameter."),
 label = 'index-tri-fit')
 ```
 
 \clearpage
 
-#### Fits to Length and Age Compositions
 <!-- TODO: add Francis plots -->
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -293,8 +277,6 @@ label = 'caal-fit2')
 
 \clearpage
 
-#### Fits to discard fractions and mean weight observations
-
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots",  "discard_fitNorth.png"), 
@@ -347,32 +329,72 @@ filein = file.path(mod_loc_relative, "plots", "ts9_Relative_spawning_output_inte
 caption = "Estimated time series of relative spawning output with approximate 95% asymptotic intervals.",
 label = 'depl')
 
+### Recruitment
+
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "plots", "SR_curve2.png"), 
+caption = "Stock-recruit curve. Labels indicate first, last, and years with (log) deviations > 0.5. Point colors indicate year, with warmer colors indicating earlier years and cooler colors in showing later years.",
+label = 'stock-recruit')
+
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "plots", "ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png"), 
+caption = "Estimated time series of age-0 recruits (1,000s) with approximate 95% asymptotic intervals",
+label = 'recruits')
+
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "plots", "recdevs2_withbars.png"), 
+caption = "Estimated time series of recruitment deviations with approximate 95% asymptotic intervals. The black color indicates the 'main' recruitment period.",
+label = 'rec-devs')
+
+```
+
+\clearpage
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "custom_plots",  "recruit_fit_bias_adjust.png"), 
+caption = paste0("Bias adjustment applied to the recruitment deviations (red line). ",
+  "Points are transformed variances relative to $\\sigma_R = ", mod_base$sigma_R_in, "$."),
+label = 'biasadj')
 
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots", "SPR3_ratiointerval.png"), 
-caption = "Estimated time series of the relative fishing intensity with approximate 95% asymptotic intervals.",
+caption = "Estimated time series of the fishing intensity (1 - SPR), where SPR is the spawning potential ratio, with approximate 95% asymptotic intervals. The horizontal line at 0.7 corresponds to SPR = 0.3, the management reference point for petrale sole. The horizontal line at 1.0 corresponds to SPR = 0 (all spawning fish removed from the population).",
 label = 'spr')
 
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "plots", "ts_summaryF.png"), 
+caption = "Estimated time series of the exploitation rate (total catch / age 3+ biomass) with approximate 95% asymptotic intervals.",
+label = 'exploit')
+
 info <- plot_info %>% dplyr::filter(grepl("SPR4_phase", label))
+caption <- info$caption
+# remove sentence from caption
+caption <- gsub(paste("The vertical line at 0.25 indicates the reference point as defined",
+  "in the forecast.ss which can be removed from the plot via SS_plots(…, btarg = -1)."), 
+  "", 
+  caption)
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots", "SPR4_phase.png"), 
-caption = info$caption,
+caption = caption,
 label = 'phase')
 
 add_figure(
 filein = file.path(mod_loc_relative, "plots", "yield2_yield_curve_with_refpoints.png"), 
 caption = "Equilibrium yield curve for the base case model. Values are based on the most recent
 fishery selectivities and retention curves and with steepness fixed at 0.80.",
-label = 'es-yield')
+label = 'yield')
+
+add_figure(
+filein = file.path(mod_loc_relative, "plots", "ts_DynamicB0.png"), 
+caption = "Dynamic B0 plot. The lower line shows the time series of estimated Spawning output in the presence of fishing mortality. The upper line shows the time series that could occur under the same dynamics (including deviations in recruitment), but without fishing. The point at the left represents the unfished equilibrium.",
+label = 'dynamic-b0')
 ```
-
-```
-
-
 
 \clearpage
 
 ### Sensitivity Analyses and Retrospectives
+
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_index1.png"), 
