@@ -4,7 +4,6 @@
 plot_info = read.csv(file.path(mod_loc_relative, "plots", "plotinfotable_for_doc.csv"))
 ```
 
-\clearpage
 <!-- don't allow section headers to float relative to figure locations -->
 <!-- \floatplacement{figure}{H}  -->
 
@@ -109,19 +108,47 @@ label = "survey-wcgbts"
 
 ```
 
-## Biology
-
+\clearpage
 
 ## Model Results
 
-### Bridging
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path("../figures/historical_assessment_timeseries.png"), 
+caption = paste("Comparison of biomass time series (colored lines) across recent assessments.",
+  "Units are estimated biomass of females and males ages 3 and older.",
+  "Total mortality from the base model (black bars) is included as well.",
+  "Spawning biomass is not comparable across these assessments because the inclusion",
+  "of a fecundity relationship starting in 2023 which results in spawning output in units of eggs."),
+label = 'smry-bio-historical')
+```
 
+```{r, results = 'asis'}
+sa4ss::add_figure(
+filein = file.path("../figures/bridging/Comparison plots - first set/compare1_spawnbio.png"),
+caption = "Time series of estimated spawning biomass (1,000s of mt) for the 2019 assessment model and bridging steps 1 to 5.",
+label = 'bridge1-ssb')
 
-### Model Structure
+sa4ss::add_figure(
+filein = file.path("../figures/bridging/Comparison plots - second set/compare1_spawnbio.png"),
+caption = "Time series of estimated spawning biomass (1,000s of mt) for bridging steps 5 to 8.",
+label = 'bridge2-ssb')
+
+sa4ss::add_figure(
+filein = file.path("../figures/bridging/Comparison plots - third set/compare1_spawnbio.png"),
+caption = "Time series of estimated spawning biomass (1,000s of mt) for briding steps 8 to 13, where the final step is the 2023 base model. The change in fecundity associated with the final step (2023 base, red line) changes the units of spawning output to trillions of eggs so the values are not comparable.",
+label = 'bridge3-ssb')
+
+sa4ss::add_figure(
+filein = file.path("../figures/bridging/Comparison plots - third set/compare3_Bratio.png"),
+caption = "Time series of fraction of unfished spawning output for briding steps 8 to 13, where the final step is the 2023 base model.",
+label = 'bridge3-bratio')
+
+```
 
 \clearpage
 
-### Estimated Biology
+### Biology
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots", "bio1_sizeatage.png"),
@@ -302,21 +329,11 @@ label = 'mnwt_fitSouth')
 
 \clearpage
 
-### Time-series
+### Time-series and recruitment
 
 <!-- ======================================================= -->  
 <!-- ****************** Time Series ************************ --> 
 <!-- ======================================================= -->
-```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path("../figures/historical_assessment_timeseries.png"), 
-caption = paste("Comparison of biomass time series (colored lines) across recent assessments.",
-  "Units are estimated biomass of females and males ages 3 and older.",
-  "Total mortality from the base model (black bars) is included as well.",
-  "Spawning biomass is not comparable across these assessments because the inclusion",
-  "of a fecundity relationship starting in 2023 which results in spawning output in units of eggs."),
-label = 'smry-bio-historical')
-
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -328,8 +345,6 @@ sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots", "ts9_Relative_spawning_output_intervals.png"), 
 caption = "Estimated time series of relative spawning output with approximate 95% asymptotic intervals.",
 label = 'depl')
-
-### Recruitment
 
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots", "SR_curve2.png"), 
@@ -440,6 +455,13 @@ label = 'sens-recruit2',
 caption = paste("Time series of recruitment (top) and recruitment deviations",
             "(bottom) for the sensitivity analyses related to",
             "recruitment."))
+
+sa4ss::add_figure(
+filein = file.path("../figures/diags_model34/env_index_fit.png"), 
+label = 'env-index-fit',
+caption = paste0("Environmental index of recruitment used in the sensitivity analysis (black points) shown with estimated recruitment deviations from the base model (blue) and from the sensitivity analysis in which the environmental index was included (green). The black intervals show the input uncertainty associated with the index while the blue and green intervals show the uncertainty associated with the estimated recruitment deviation parameters. The 2023 recruitment deviation is not informed by any observations so estimated at zero with uncertainty associated with $\\sigma_R = ", mod_base$sigma_R_in, "$")
+)
+
 
 # Canada sensitivities
 sa4ss::add_figure(

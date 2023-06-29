@@ -120,6 +120,7 @@ sens_make_table(num = 34, sens_mods = mod_list, plot = TRUE,
 
 # plot of recdevs with and without env. index
 mod.temp <- mod.34.606
+# shift year value so the points don't overlap
 mod.temp$cpue$Yr <- mod.temp$cpue$Yr - 0.3
 png("figures/diags_model34/env_index_fit.png",
   res = 300, width = 7, height = 6, units = "in", pointsize = 10)
@@ -129,7 +130,7 @@ SSplotComparisons(SSsummarize(list(mod.34.1, mod.34.606)),
 legend("bottomleft", pch = c(21,1,2), lty = 1, pt.lwd = 2,
   col = c("black", "blue", "green3"),
   pt.bg = "white", bty = "n",
-  legend = c("Env. index", "Base recdevs", "Recdevs fit to index"))
+  legend = c("Env. index observations", "Base model recruit devs", "Recruit devs fit to index"))
 SSplotIndices(mod.temp, subplots = 1, add = TRUE)
 axis(1, at = seq(1985, 2015, by = 10))
 dev.off()
