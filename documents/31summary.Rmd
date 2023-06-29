@@ -49,7 +49,7 @@ Response: In this assessment, additional flexibility is allowed for the period a
 \item The extent of spatial variability on productivity processes such as growth, recruitment, and maturity is currently unknown and would benefit from further research. 
 
 
-Response: The progress has been made in exploring time varying growth of multiple groundfish species, including petrale sole (*Gertseva et al. 2017). 
+Response: The progress has been made in exploring time varying growth of multiple groundfish species, including `r spp` (*Gertseva et al. 2017). 
 
 \item The Panel appreciated the delta-GLMM approach to derive an index of stock size from commercial CPUE data. However, there may still be factors other than stock size that affect time-trends in the standardized CPUE indices. The panel recommends:
 \begin{enumerate}
@@ -61,7 +61,7 @@ log(effort) can be included as an additive offset, and most GLMM packages includ
 
 \end{enumerate}
 
-Response: This assessment no longer includes fishery CPUE to inform trend in petrale sole abundance, and, thus, this recommendation is no longer relevant. A lack of influence of fishery CPUEs on model results was illustrated in past and current assessments, indicating that survey data provides sufficient information to monitor changes in abundance.
+Response: This assessment no longer includes fishery CPUE to inform trend in `r spp` abundance, and, thus, this recommendation is no longer relevant. A lack of influence of fishery CPUEs on model results was illustrated in past and current assessments, indicating that survey data provide sufficient information to monitor changes in abundance.
 
 \end{enumerate}
 
