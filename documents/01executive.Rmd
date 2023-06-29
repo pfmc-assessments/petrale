@@ -201,11 +201,7 @@ Appendix 1 of this report describes the most recent, preliminary efforts in deve
 
 ## Reference points{-}
 
-The relative spawning output of `r spp` was estimated to have dropped below the management target of $B_{25\%}$. 
-
-
-
-Unfished spawning stock output for`r spp` is estimated to be 22.9065 million eggs (95% confidence interval: 18-28 million eggs). The management target for `r spp` is defined as 25% of the unfished spawning output ($B_{25\%}$), which is estimated by the model to be 5.72662 million eggs (95% confidence interval: 4.5-6.9), which corresponds to an exploitation rate of 0.18. This harvest rate provides an equilibrium yield of 2480.73 mt at $B_{25\%}$ (95% confidence interval: 2120-2841 mt). The model estimate of maximum sustainable yield (MSY) is 2481.72 mt (95% confidence interval: 2121-2842 mt). The estimated spawning stock output at MSY is 5.51571 million eggs (95% confidence interval: 4.3-6.7 million eggs). The exploitation rate corresponding to the estimated  $F_{MSY}$ proxy of 29% is 0.18. The equilibrium estimates of yield relative to biomass is provided in Figure XX.
+Unfished spawning stock output for`r spp` is estimated to be 22.9065 trillion eggs (95% confidence interval: 18-28 trillion eggs). The management target for `r spp` is defined as 25% of the unfished spawning output ($B_{25\%}$), which is estimated by the model to be 5.72662 trillion eggs (95% confidence interval: 4.5-6.9 trillion eggs), which corresponds to an exploitation rate of 0.18. This harvest rate provides an equilibrium yield of 2480.73 mt at $B_{25\%}$ (95% confidence interval: 2120-2841 mt). The model estimate of maximum sustainable yield (MSY) is 2481.72 mt (95% confidence interval: 2121-2842 mt). The estimated spawning stock output at MSY is 5.51571 million eggs (95% confidence interval: 4.3-6.7 million eggs). The exploitation rate corresponding to the estimated  $F_{MSY}$ proxy of 29% is 0.18. 
 
 ```{r, results = 'asis'}
 add_figure(
@@ -262,5 +258,15 @@ The estimated uncertainty values are lower than the Category 1 default $\sigma =
 
 ## Research and data needs{-}
 
-TODO: Replace text with
-information gaps that seriously impede the stock assessment.
+Progress on a number of research topics and data issues would substantially improve the ability of this assessment to reliably and precisely model `r spp` population dynamics in the future:
+
+\begin{enumerate}
+
+\item The extent of spatial variability on productivity processes such as growth, recruitment, and maturity is currently unknown and would benefit from further research.
+
+\item The extent of spatial variability on productivity processes such as growth, recruitment, and maturity is currently unknown and would benefit from further research.
+
+\item The analytical solution for catchability (i.e., observed / predicted biomass) for the \Gls{s-wcgbt} is above 1.0 in the base model.  This was also the case in previous assessments of `r spp` and other flatfish assessments.  Further research into flatfish behaviors in response to survey gear will enhance the interpretation of catchability values for `r spp` off the West Coast.
+
+\end{enumerate}
+
