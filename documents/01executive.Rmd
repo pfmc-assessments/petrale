@@ -198,13 +198,11 @@ label = 'es-1-spr')
 
 ## Ecosystem considerations{-}
 
-Over the past several years, progress has been done in understanding how large-scale climate forcing drives regional changes and impacts density-independent survival during `r spp` early  life  stages. Haltuch et al. (2019) examined the relationship between `r spp` recruitment and oceanographic drivers based on model output from a Regional Ocean Modeling System (ROMS) model for the California Current Ecosystem (Neveu et al. 2016). The results suggested that ROMS output might be useful as the basis for an environmental index of recruitment for `r spp`, to allow for better model precision and near-term forecasting. However, the ROMS model used by Haltuch et al. (2019) was consistent in structure and inputs for 1980-2010. From 2011 forward, ROMS outputs exhibit distinct discontinuities with 1980-2010 period, showing changes in scale and trend across the 2010/2011 boundary. 
+Over the past several years, progress has been made in understanding how large-scale climate forcing drives regional changes and impacts density-independent survival during `r spp` early life stages. Haltuch et al. (2019) examined the relationship between `r spp` recruitment and oceanographic drivers based on model output from a Regional Ocean Modeling System (ROMS) model for the California Current Ecosystem (Neveu et al. 2016). The results suggested that ROMS output might be useful as the basis for an environmental index of recruitment for `r spp`, to allow for better model precision and near-term forecasting. However, the ROMS model used by Haltuch et al. (2019) was consistent in structure and inputs for 1980-2010. From 2011 forward, ROMS outputs exhibit distinct discontinuities with 1980-2010 period, showing changes in scale and trend across the 2010/2011 boundary. 
 
-Due to discontinuity in ROMS models before and after 2011, index developed by Haltuch et al. (2019) could not be used for this stock assessment. However, an alternative oceanographic model products by Copernicus Marine Environment Monitoring Service (CMEMS) (https://marine.copernicus.eu/) and Mercator Ocean International (MOI) (https://www.mercator-ocean.eu/) were investigated to test if this modelling framework could be used to produce an environmental index of `r spp` recruitment. 
+Due to discontinuity in ROMS models between periods before and after 2011, the index developed by Haltuch et al. (2019) could not be used for this stock assessment. However, an alternative oceanographic model products by Copernicus Marine Environment Monitoring Service (CMEMS) (https://marine.copernicus.eu/) and Mercator Ocean International (MOI) (https://www.mercator-ocean.eu/) were investigated to test if this modelling framework could be used to produce an environmental index of `r spp` recruitment. This new effort is ongoing, and has not yet been published or reviewed by the SSC. In this assessment, we explore the impact of the current CMEMS-based environmental index of `r spp` recruitment via sensitivity analysis.
 
-Appendix 1 of this report describes most recent efforts in developing environmental index of `r spp` recruitment based on CMEMS products. Appendix 1 also discusses potential reasons for why ROMS time series changed over the 2010/2011 boundary and how those changes might impact the ROMS-recruitment model from Haltuch et al. (2019).
-
-In this assessment, we explore the impact of current CMEMS based environmental index of `r spp` recruitment via sensitivity analysis. 
+Appendix 1 of this report describes the most recent, preliminary efforts in developing a new environmental index of `r spp` recruitment based on CMEMS products. Appendix 1 also discusses potential reasons for why the ROMS time series changed over the 2010/2011 boundary and how those changes might impact the ROMS-based recruitment index from Haltuch et al. (2019).
 
 ## Reference points{-}
 
@@ -257,9 +255,7 @@ any special issues that complicate scientific assessment, questions about the be
 
 ## Decision table and projections{-}
 
-To be added during the STAR panel.
-
-Note: OFL calculations should be based on the assumption that future catches equal ABCs and not OFLs.
+Not required in draft assessment undergoing review.
 
 ## Scientific uncertainty{-}
 
