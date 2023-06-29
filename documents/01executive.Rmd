@@ -45,13 +45,13 @@ label = 'es-catch')
 
 ## Data and assessment{-}
 
-This assessment uses the stock assessment framework Stock Synthesis 
+This assessment uses the stock assessment framework Stock Synthesis (SS3; (Methot and Wetzel 2013)). Version:
 ```{r es-modelversion, echo=FALSE} 
 if (exists("model")) {
   strsplit(model$SS_version,";")[[1]][1]
 }
 ```
-(SS3).
+The last full assessment of `r spp` was conducted in 2013 and most recent update assessment in 2019. 
 
 The modeling period begins in 1876, assuming an unfished equilibrium state of the stock in 1875. The assessment treats females and males separately due to differences in biology and life history parameters between sexes, and the coastwide population is modeled allowing separate growth and mortality parameters for each sex (a two-sex model). The model also allows for differences in selectivity between sexes. 
 
@@ -137,11 +137,9 @@ if (!is.na(mod_base$log_det_hessian)) {
 
 ## Recruitment{-}
 
-TODO: Replace text with
-trends and current levels relative to virgin or historic levels and
-description of uncertainty.
+Recruitment dynamics are assumed to follow Beverton-Holt stock-recruit function and the steepness parameter was fixed at the value of 0.8, which is the mean of steepness prior probability distribution, derived from meta-analysis of flatfish stocks. The level of virgin recruitment (R0) is estimated to inform the magnitude of the initial stock size. Annual recruitment is treated as stochastic. ‘Main’ recruitment deviations were estimated for modeled years that had information about recruitment, between 1959 and 2020. We additionally estimated ‘early’ deviations between 1845 and 1958. 
 
-
+The recruitment time series is punctuated by four large recruitment events in 1965, 2006, 2007, and 2008 (Figures \ref{fig:stock-recruit}, {fig:recruits}, and {fig:rec-devs}). The 1965 recruitment was estimated at about 40 million age-0 recruits while the latter three were in the 25-30 million range. The rest of the time series is close to 10 million recruits per year. The recruitment in 2012 was almost 20 million (a positive deviation from the stock-recruit curve of 0.56) but the years since are estimated to have had below-average or close-to-average recruitment, with a low point in 2017 of about 8 million recruits (deviation = -0.44).
 
 \input{tex_tables/c_Recr_ES.tex}
 
@@ -180,10 +178,7 @@ if (!is.na(mod_base$log_det_hessian)) {
 \clearpage
 ## Exploitation status{-}
 
-TODO: Replace text with
-total catch divided by exploitable biomass or SPR harvest rate.
-Include Table for last 10 years.
-Include Figure with trend in f relative to target vs. trend in biomass relative to the target.
+The estimated time series of exploitation shows an accelerating increase in fishing intensity and exploitation rate with a peak around 1990 when the spawning potential ratio (SPR, spawning output relative to spawning output at unfished equilibrium) fell to 0.09 relative to a reference point of 0.3 (Figure \ref{fig:spr}) and the exploitation rate (catch relative to age 3+ biomass) was close to 0.4. These rates are estimated to have declined slowly up to the point where the overfishing declaration led to dramatic decrease in catch in 2010, when SPR increased above the reference point to about 0.36. The fishing intensity has increased since that time due to the rebuilding of the stock, but is estimated to have remained below the reference point in the years since.
 
 \input{tex_tables/d_SPR_ES.tex}
 
