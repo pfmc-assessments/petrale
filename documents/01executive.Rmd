@@ -45,13 +45,13 @@ label = 'es-catch')
 
 ## Data and assessment{-}
 
-This assessment uses the stock assessment framework Stock Synthesis 
+This assessment uses the stock assessment framework Stock Synthesis (SS3; (Methot and Wetzel 2013)). Version:
 ```{r es-modelversion, echo=FALSE} 
 if (exists("model")) {
   strsplit(model$SS_version,";")[[1]][1]
 }
 ```
-(SS3).
+The last full assessment of `r spp` was conducted in 2013 and most recent update assessment in 2019. 
 
 The modeling period begins in 1876, assuming an unfished equilibrium state of the stock in 1875. The assessment treats females and males separately due to differences in biology and life history parameters between sexes, and the coastwide population is modeled allowing separate growth and mortality parameters for each sex (a two-sex model). The model also allows for differences in selectivity between sexes. 
 
@@ -137,11 +137,9 @@ if (!is.na(mod_base$log_det_hessian)) {
 
 ## Recruitment{-}
 
-TODO: Replace text with
-trends and current levels relative to virgin or historic levels and
-description of uncertainty.
+Recruitment dynamics are assumed to follow Beverton-Holt stock-recruit function and the steepness parameter was fixed at the value of 0.8, which is the mean of steepness prior probability distribution, derived from meta-analysis of flatfish stocks. The level of virgin recruitment (R0) is estimated to inform the magnitude of the initial stock size. Annual recruitment is treated as stochastic. ‘Main’ recruitment deviations were estimated for modeled years that had information about recruitment, between 1959 and 2020. We additionally estimated ‘early’ deviations between 1845 and 1958. 
 
-
+The recruitment time series is punctuated by four large recruitment events in 1965, 2006, 2007, and 2008 (Figures \ref{fig:stock-recruit}, {fig:recruits}, and {fig:rec-devs}). The 1965 recruitment was estimated at about 40 million age-0 recruits while the latter three were in the 25-30 million range. The rest of the time series is close to 10 million recruits per year. The recruitment in 2012 was almost 20 million (a positive deviation from the stock-recruit curve of 0.56) but the years since are estimated to have had below-average or close-to-average recruitment, with a low point in 2017 of about 8 million recruits (deviation = -0.44).
 
 \input{tex_tables/c_Recr_ES.tex}
 
@@ -180,10 +178,7 @@ if (!is.na(mod_base$log_det_hessian)) {
 \clearpage
 ## Exploitation status{-}
 
-TODO: Replace text with
-total catch divided by exploitable biomass or SPR harvest rate.
-Include Table for last 10 years.
-Include Figure with trend in f relative to target vs. trend in biomass relative to the target.
+The estimated time series of exploitation shows an accelerating increase in fishing intensity and exploitation rate with a peak around 1990 when the spawning potential ratio (SPR, spawning output relative to spawning output at unfished equilibrium) fell to 0.09 relative to a reference point of 0.3 (Figure \ref{fig:spr}) and the exploitation rate (catch relative to age 3+ biomass) was close to 0.4. These rates are estimated to have declined slowly up to the point where the overfishing declaration led to dramatic decrease in catch in 2010, when SPR increased above the reference point to about 0.36. The fishing intensity has increased since that time due to the rebuilding of the stock, but is estimated to have remained below the reference point in the years since.
 
 \input{tex_tables/d_SPR_ES.tex}
 
@@ -198,7 +193,7 @@ label = 'es-1-spr')
 
 ## Ecosystem considerations{-}
 
-Over the past several years, progress has been made in understanding how large-scale climate forcing drives regional changes and impacts density-independent survival during `r spp` early life stages. Haltuch et al. (2019) examined the relationship between `r spp` recruitment and oceanographic drivers based on model output from a Regional Ocean Modeling System (ROMS) model for the California Current Ecosystem (Neveu et al. 2016). The results suggested that ROMS output might be useful as the basis for an environmental index of recruitment for `r spp`, to allow for better model precision and near-term forecasting. However, the ROMS model used by Haltuch et al. (2019) was consistent in structure and inputs for 1980-2010. From 2011 forward, ROMS outputs exhibit distinct discontinuities with 1980-2010 period, showing changes in scale and trend across the 2010/2011 boundary. 
+Haltuch et al. (2019) examined the relationship between `r spp` recruitment and oceanographic drivers based on model output from a Regional Ocean Modeling System (ROMS) model for the California Current Ecosystem (Neveu et al. 2016). The results suggested that ROMS output might be useful as the basis for an environmental index of recruitment for `r spp`, to allow for better model precision and near-term forecasting. However, the ROMS model used by Haltuch et al. (2019) was consistent in structure and inputs for 1980-2010. From 2011 forward, ROMS outputs exhibit distinct discontinuities with 1980-2010 period, showing changes in scale and trend across the 2010/2011 boundary. 
 
 Due to discontinuity in ROMS models between periods before and after 2011, the index developed by Haltuch et al. (2019) could not be used for this stock assessment. However, an alternative oceanographic model products by Copernicus Marine Environment Monitoring Service (CMEMS) (https://marine.copernicus.eu/) and Mercator Ocean International (MOI) (https://www.mercator-ocean.eu/) were investigated to test if this modelling framework could be used to produce an environmental index of `r spp` recruitment. This new effort is ongoing, and has not yet been published or reviewed by the SSC. In this assessment, we explore the impact of the current CMEMS-based environmental index of `r spp` recruitment via sensitivity analysis.
 
@@ -206,9 +201,11 @@ Appendix 1 of this report describes the most recent, preliminary efforts in deve
 
 ## Reference points{-}
 
-TODO: Replace text with
-management targets and definition of overfishing, including the harvest rate that brings the stock to equilibrium at $B_{40\%}$, i.e., the $B_{MSY}$ proxy and the equilibrium stock size that results from fishing at the default harvest rate, i.e., the $F_{MSY}$ proxy.
-Include Table of estimated reference points for ssb, SPR, exploitation rate, and yield based on SSB proxy for MSY, SPR proxy for MSY, and estimated MSY values.
+The relative spawning output of `r spp` was estimated to have dropped below the management target of $B_{25\%}$. 
+
+
+
+Unfished spawning stock output for`r spp` is estimated to be 22.9065 million eggs (95% confidence interval: 18-28 million eggs). The management target for `r spp` is defined as 25% of the unfished spawning output ($B_{25\%}$), which is estimated by the model to be 5.72662 million eggs (95% confidence interval: 4.5-6.9), which corresponds to an exploitation rate of 0.18. This harvest rate provides an equilibrium yield of 2480.73 mt at $B_{25\%}$ (95% confidence interval: 2120-2841 mt). The model estimate of maximum sustainable yield (MSY) is 2481.72 mt (95% confidence interval: 2121-2842 mt). The estimated spawning stock output at MSY is 5.51571 million eggs (95% confidence interval: 4.3-6.7 million eggs). The exploitation rate corresponding to the estimated  $F_{MSY}$ proxy of 29% is 0.18. The equilibrium estimates of yield relative to biomass is provided in Figure XX.
 
 ```{r, results = 'asis'}
 add_figure(

@@ -4,7 +4,7 @@
 
 The last full assessment of `r spp` was conducted in 2013 and the most recent update assessment in 2019. The 2019 assessment model was the starting point for this assessment. We retained a number of features of the 2019 assessment and also included a number of improvements related to use of data, model structure and modeling techniques. 
 
-Bridging analysis was conducted to illustrate the impact of incremental changes. The results of bridging analysis are shown in Figure XX through Figure XX. Below, we describe the most important changes made since the last assessment:
+Bridging analysis was conducted to illustrate the impact of incremental changes. The results of bridging analysis are shown in Figure \ref{fig:bridge1-ssb} to Figure \ref{fig:bridge3-bratio}. Below, we describe the most important changes made since the last assessment:
 
 \begin{enumerate}
 
@@ -12,26 +12,25 @@ Bridging analysis was conducted to illustrate the impact of incremental changes.
 
 \item Updated historical and current fishery removals, to include most up to date information. This year WDFW completed historical catch reconstruction of `r spp` and newly estimated landings are lower than those used in previous assessment. Newly estimated Washington landings are also more consistent with history of commercial removals on the West Coast and represent improvement to the assessment.
 
-\item Removed fishery CPUE time series. This change did not impact the assessment outputs as well as model fits.
+\item Removed fishery CPUE time series. This change did not impact the assessment outputs as well as model fits (Figure \ref{fig:bridge1-ssb}).
 
-\item Combined Winter and Summer fleets into corresponding annual North and South fleets. The separation of North and South fleets into the Winter and Summer fleets were primarily motivated by the using the fishery CPUE indices form Winter fisheries, targeting `r spp` spawning aggregations. With removal of CPUE indices from the model, separation into Winter and Summer fleets was no longer needed. Also, Winter and Summer fleets selectivity curves were very similar within respective fisheries. Combining Winter and Summer fleets within North and South fisheries yielded very close results. Combining seasonal fleets also removed uncertainty associated with separating historical annual catches by season (since fishing year for Winter fleet was defined as November of previous year through the February of the current year). Finally, using annual catches (rather than assigning to current year catches from previous) put assessment in alignment with management system, which operates on a calendar year basis.  
+\item Combined Winter and Summer fleets into corresponding annual North and South fleets. The separation of North and South fleets into the Winter and Summer fleets were primarily motivated by the using the fishery CPUE indices form Winter fisheries, targeting `r spp` spawning aggregations. With removal of CPUE indices from the model, separation into Winter and Summer fleets was no longer needed. Also, Winter and Summer fleets selectivity curves were very similar within respective fisheries. Combining Winter and Summer fleets within North and South fisheries yielded very close results (Figure \ref{fig:bridge2-ssb}). Combining seasonal fleets also removed uncertainty associated with separating historical annual catches by season (since fishing year for Winter fleet was defined as November of previous year through the February of the current year). Finally, using annual catches (rather than assigning to current year catches from previous) put assessment in alignment with management system, which operates on a calendar year basis.  
 
-\item Recalculated survey abundance indices using sdmTMB geostatistical model. Results did not impact the model output.
+\item Recalculated survey abundance indices using sdmTMB geostatistical model. Results did not impact the model output (Figure \ref{fig:bridge1-ssb}).
 
-\item Switched to a single triennial survey index (instead separating it into two indices for early and late survey periods). The triennial index was separated in past assessments due to change in depth and latitudinal coverage of the triennial survey. Using a single index did not impact model results, but provided a longer historical survey trend and simplified the structure of the assessment model.
+\item Switched to a single triennial survey index (instead separating it into two indices for early and late survey periods). The triennial index was separated in past assessments due to change in depth and latitudinal coverage of the triennial survey. Using a single index did not impact model results (Figure \ref{fig:bridge1-ssb}), but provided a longer historical survey trend and simplified the structure of the assessment model.
 
-\item Updated input sample sizes associated with fisheries composition data to using a function of number of trips and number and fish (rather than number of trips, as in previous assessment), to follow current best practices and ensure a consistent treatment of fishery and survey input data.
+\item Updated input sample sizes associated with fisheries composition data to using a function of number of trips and number and fish (rather than number of trips, as in previous assessment), to follow current best practices and ensure a consistent treatment of fishery and survey input data (Figure \ref{fig:bridge2-ssb}).
 
-\item Updated weight-length, maturity and fecundity parameters, to include most up to date and improved information. Updating weight-length parameters did not produce a noticeable change. Model with new maturity parameters had slightly lower scale as length at 50% maturity now is slightly higher.  With new fecundity parameters, the model produces spawning output rather that spawning biomass, and 2019 model 2023 spawning outputs are no longer comparable. However, relative depletion show similar results.
+\item Updated weight-length, maturity and fecundity parameters, to include most up to date and improved information. Updating weight-length parameters did not produce a noticeable change. Model with new maturity parameters had slightly lower scale as length at 50% maturity now is slightly higher (Figure \ref{fig:bridge3-ssb} and Figure \ref{fig:bridge3-bratio}).  With new fecundity parameters, the model produces spawning output rather that spawning biomass, and 2019 model 2023 spawning outputs are no longer comparable. However, relative depletion show similar results (Figure \ref{fig:bridge3-bratio}).
 
-\item Updated spawn-recruit parameters and fixed Beverton-Holt steepness at 0.8, mean of the Myers prior developed based on meta-analysis of flatfish steepness (Myers et al. 1999). When estimated, steepness was hitting the upper parameter bound of 1 (steepness likelihood profile is included in this report). Limiting steepness to 0.8 did not cause a change in model results, but yielded more reasonable estimates of other life history parameters, including natural mortality.
-
+\item Updated spawn-recruit parameters and fixed Beverton-Holt steepness at 0.8, mean of the Myers prior developed based on meta-analysis of flatfish steepness (Myers et al. 1999). When estimated, steepness was hitting the upper parameter bound of 1 (steepness likelihood profile is included in this report). Limiting steepness to 0.8 did not cause a change in model results (Figure \ref{fig:bridge3-ssb} and Figure \ref{fig:bridge3-bratio}), but yielded more reasonable estimates of other life history parameters, including natural mortality.
 
 \end{enumerate}
 
 The list above documents only the most important changes made to this assessment relative to the previous one. 
 
-The 2019 assessment model was the starting point for this assessment, and a bridging analysis was conducted to investigate the impact of increment changes. The results of bridging analysis are shown in Figure XX through Figure XX. Despite the large number of changes made to data sources and the model configuration, the results of this assessment are consistent with those done previously.
+Despite the large number of changes made to data sources and the model configuration, the results of this assessment are consistent with those done previously (Figure \ref{fig:smry-bio-historical}).
 
 ### Modeling Platform and Structure
 General model specifications (e.g., executable version, model structure, definition of fleets and areas)
