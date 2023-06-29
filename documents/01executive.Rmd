@@ -17,7 +17,7 @@ executive[["stock"]] <- paste0("This assessment reports the status of ",
 
 ## Stock{-}
 
-`r executive[["stock"]]` While `r spp` are modeled as a single stock, the spatial aspects of the coast-wide population are addressed through geographic separation of data sources/fleets where possible. There is currently no genetic evidence suggesting distinct biological stocks of `r spp` off the U.S. coast. The limited tagging data available to describe adult movement suggests that `r spp` may have some homing ability for deep water spawning sites but also have the ability to move long distances between spawning sites.
+`r executive[["stock"]]` While `r spp` are modeled as a single stock, the spatial aspects of the coastwide population are addressed through geographic separation of data sources/fleets where possible. There is currently no genetic evidence suggesting distinct biological stocks of `r spp` off the U.S. coast. The limited tagging data available to describe adult movement suggests that `r spp` may have some homing ability for deep water spawning sites but also have the ability to move long distances between spawning sites.
 
 
 ## Catches{-}
@@ -26,7 +26,7 @@ executive[["stock"]] <- paste0("This assessment reports the status of ",
 
 The earliest catches of `r spp` are reported in 1876 in California and 1884 in Oregon.  `r Spp` were lightly exploited during the early 1900s, but new gear technology in the 1930s allowed trawling on new grounds and the fishery expanded to greater depths and to Oregon and Washington waters, resulting in larger landings. The `r spp` catches further increased during World War II in response to increased demands. Also, during the "vitamin A rush" in the late 1930s and 1940s it was found that `r spp` has high levels, which contributed to increased catches of this species as well. By the 1950s, the fishery was well developed with the stock showing declines in biomass and catches (Figures \ref{fig:es-catch} and \ref{fig:es-ssb}). Also in the 1950s, winter spawning grounds at deeper depths with dense concentrations of `r spp` were discovered, and catches increased accordingly. The rate of decline in spawning biomass accelerated through the 1970s reaching minimums generally around or below 10% of the unexploited levels during the 1980s through the early 2000s (Figure \ref{fig:es-depl}). Recent annual catches between 1981-2022 range between 803 and 3060 mt per year and the most recent year landings are shown in Table \ref{tab:removalsES}. 
 
-`r Spp` are a desirable market species and discarding has historically been low. 
+`r Spp` are a desirable market species and discarding has historically been low (less than 5%), with most of the discarding due to small sizes. 
 
 In this assessment, fishery removals have been divided between two fleets: 1) North and 2) South. Landings for the North fleet are defined as fish landed in Washington and Oregon ports. Landings for the South fleet are defined as fish landed in California ports.
 
@@ -45,12 +45,7 @@ label = 'es-catch')
 
 ## Data and assessment{-}
 
-This assessment uses the stock assessment framework Stock Synthesis (SS3; (Methot and Wetzel 2013)). Version:
-```{r es-modelversion, echo=FALSE} 
-if (exists("model")) {
-  strsplit(model$SS_version,";")[[1]][1]
-}
-```
+This assessment uses the stock assessment framework Stock Synthesis (SS3; (Methot and Wetzel 2013)). Version: `{r strsplit(model$SS_version,";")[[1]][1])}`.
 The last full assessment of `r spp` was conducted in 2013 and most recent update assessment in 2019. 
 
 The modeling period begins in 1876, assuming an unfished equilibrium state of the stock in 1875. The assessment treats females and males separately due to differences in biology and life history parameters between sexes, and the coastwide population is modeled allowing separate growth and mortality parameters for each sex (a two-sex model). The model also allows for differences in selectivity between sexes. 
@@ -139,7 +134,7 @@ if (!is.na(mod_base$log_det_hessian)) {
 
 Recruitment dynamics are assumed to follow Beverton-Holt stock-recruit function and the steepness parameter was fixed at the value of 0.8, which is the mean of steepness prior probability distribution, derived from meta-analysis of flatfish stocks. The level of virgin recruitment (R0) is estimated to inform the magnitude of the initial stock size. Annual recruitment is treated as stochastic. ‘Main’ recruitment deviations were estimated for modeled years that had information about recruitment, between 1959 and 2020. We additionally estimated ‘early’ deviations between 1845 and 1958. 
 
-The recruitment time series is punctuated by four large recruitment events in 1965, 2006, 2007, and 2008 (Figures \ref{fig:stock-recruit}, {fig:recruits}, and {fig:rec-devs}). The 1965 recruitment was estimated at about 40 million age-0 recruits while the latter three were in the 25-30 million range. The rest of the time series is close to 10 million recruits per year. The recruitment in 2012 was almost 20 million (a positive deviation from the stock-recruit curve of 0.56) but the years since are estimated to have had below-average or close-to-average recruitment, with a low point in 2017 of about 8 million recruits (deviation = -0.44).
+The recruitment time series is punctuated by four large recruitment events in 1965, 2006, 2007, and 2008. The 1965 recruitment was estimated at about 40 million age-0 recruits while the latter three were in the 25-30 million range. The rest of the time series is close to 10 million recruits per year. The recruitment in 2012 was almost 20 million (a positive deviation from the stock-recruit curve of 0.56) but the years since are estimated to have had below-average or close-to-average recruitment, with a low point in 2017 of about 8 million recruits (deviation = -0.44).
 
 \input{tex_tables/c_Recr_ES.tex}
 
@@ -178,7 +173,7 @@ if (!is.na(mod_base$log_det_hessian)) {
 \clearpage
 ## Exploitation status{-}
 
-The estimated time series of exploitation shows an accelerating increase in fishing intensity and exploitation rate with a peak around 1990 when the spawning potential ratio (SPR, spawning output relative to spawning output at unfished equilibrium) fell to 0.09 relative to a reference point of 0.3 (Figure \ref{fig:spr}) and the exploitation rate (catch relative to age 3+ biomass) was close to 0.4. These rates are estimated to have declined slowly up to the point where the overfishing declaration led to dramatic decrease in catch in 2010, when SPR increased above the reference point to about 0.36. The fishing intensity has increased since that time due to the rebuilding of the stock, but is estimated to have remained below the reference point in the years since.
+The estimated time series of exploitation shows an accelerating increase in fishing intensity and exploitation rate with a peak around 1990 when the spawning potential ratio (SPR, spawning output relative to spawning output at unfished equilibrium) fell to 0.09 relative to a reference point of 0.3 and the exploitation rate (catch relative to age 3+ biomass) was close to 0.4. These rates are estimated to have declined slowly up to the point where the overfishing declaration led to dramatic decrease in catch in 2010, when SPR increased above the reference point to about 0.36. The fishing intensity has increased since that time due to the rebuilding of the stock, but is estimated to have remained below the reference point in the years since.
 
 \input{tex_tables/d_SPR_ES.tex}
 
@@ -197,11 +192,11 @@ Haltuch et al. (2019) examined the relationship between `r spp` recruitment and 
 
 Due to discontinuity in ROMS models between periods before and after 2011, the index developed by Haltuch et al. (2019) could not be used for this stock assessment. However, an alternative oceanographic model products by Copernicus Marine Environment Monitoring Service (CMEMS) (https://marine.copernicus.eu/) and Mercator Ocean International (MOI) (https://www.mercator-ocean.eu/) were investigated to test if this modelling framework could be used to produce an environmental index of `r spp` recruitment. This new effort is ongoing, and has not yet been published or reviewed by the SSC. In this assessment, we explore the impact of the current CMEMS-based environmental index of `r spp` recruitment via sensitivity analysis.
 
-Appendix 1 of this report describes the most recent, preliminary efforts in developing a new environmental index of `r spp` recruitment based on CMEMS products. Appendix 1 also discusses potential reasons for why the ROMS time series changed over the 2010/2011 boundary and how those changes might impact the ROMS-based recruitment index from Haltuch et al. (2019).
+Appendix A of this report describes the most recent, preliminary efforts in developing a new environmental index of `r spp` recruitment based on CMEMS products. Appendix A also discusses potential reasons for why the ROMS time series changed over the 2010/2011 boundary and how those changes might impact the ROMS-based recruitment index from Haltuch et al. (2019).
 
 ## Reference points{-}
 
-Unfished spawning stock output for`r spp` is estimated to be 22.9065 trillion eggs (95% confidence interval: 18-28 trillion eggs). The management target for `r spp` is defined as 25% of the unfished spawning output ($B_{25\%}$), which is estimated by the model to be 5.72662 trillion eggs (95% confidence interval: 4.5-6.9 trillion eggs), which corresponds to an exploitation rate of 0.18. This harvest rate provides an equilibrium yield of 2480.73 mt at $B_{25\%}$ (95% confidence interval: 2120-2841 mt). The model estimate of maximum sustainable yield (MSY) is 2481.72 mt (95% confidence interval: 2121-2842 mt). The estimated spawning stock output at MSY is 5.51571 million eggs (95% confidence interval: 4.3-6.7 million eggs). The exploitation rate corresponding to the estimated  $F_{MSY}$ proxy of 29% is 0.18. 
+Unfished spawning stock output for `r spp` is estimated to be 22.9 trillion eggs (95% confidence interval: 18-28 trillion eggs). The management biomass target for `r spp` is defined as 25% of the unfished spawning output ($B_{25\%}$), which is estimated by the model to be 5.7 trillion eggs (95% confidence interval: 4.5-6.9 trillion eggs), which corresponds to an exploitation rate (catch / age 3+ biomass) of 0.18. This harvest rate provides an equilibrium yield of 2481 mt at $B_{25\%}$ (95% confidence interval: 2120-2841 mt). Catch limits are determined by an SPR = 30% reference point which is associated with equilibrium exploitation rate of 0.17. The model estimate of maximum sustainable yield (MSY) is 2482 mt (95% confidence interval: 2121-2842 mt). The estimated spawning stock output at MSY is 5.5 trillion eggs (95% confidence interval: 4.3-6.7 trillion eggs). The exploitation rate corresponding to the estimated  $F_{MSY}$ proxy of SPR = 29% is 0.18. 
 
 ```{r, results = 'asis'}
 add_figure(
@@ -269,6 +264,8 @@ Progress on a number of research topics and data issues would substantially impr
 \item The extent of spatial and temporal variability on productivity processes such as growth, recruitment, and maturity is currently unknown and would benefit from further research. It would allow to better understanding of patterns we see in data and account for potential spatio-temporal variability in life history parameters in the model. 
 
 \item Further studies of transboundary movement of `r spp` between U.S. and Canadian waters would be beneficial for understanding of extend of `r spp` to help lay the groundwork for future collaborative effort between U.S. and Canada and potential transboundary assessment.
+
+\item The analytical solution for catchability (i.e., observed / predicted biomass) for the \Gls{s-wcgbt} is above 1.0 in the base model.  This was also the case in previous assessments of `r spp` and other flatfish assessments.  Further research into flatfish behaviors in response to survey gear will enhance the interpretation of catchability values for `r spp` off the West Coast.
 
 \item The analytical solution for catchability (i.e., observed / predicted biomass) for the \Gls{s-wcgbt} is above 1.0 in the base model.  This was also the case in previous assessments of `r spp` and other flatfish assessments.  Further research into flatfish behaviors in response to survey gear will enhance the interpretation of catchability values for `r spp` off the West Coast.
 
