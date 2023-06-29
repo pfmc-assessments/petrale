@@ -227,6 +227,31 @@ caption = paste("Pearson residuals for fit to length composition data for all fl
 label = 'len-all-pearson')
 
 sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "plots",  "comp_lenfit_data_weighting_TA1.8_North.png"), 
+caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the North fleet. Retained catch is shown in the top and discards on the bottom. 95% intervals for the observations are based on the adjusted input sample sizes."),
+label = 'len-francis-north')
+
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "plots",  "comp_lenfit_data_weighting_TA1.8_South.png"), 
+caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the South fleet. Retained catch is shown in the top and discards on the bottom. 95% intervals for the observations are based on the adjusted input sample sizes."),
+label = 'len-francis-south')
+
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "plots",  "comp_lenfit_data_weighting_TA1.8_Triennial.png"), 
+caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the Triennial Survey. 95% intervals for the observations are based on the adjusted input sample sizes."),
+label = 'len-francis-tri')
+
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "plots",  "comp_lenfit_data_weighting_TA1.8_WCGBTS.png"), 
+caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the WCGBTS. 95% intervals for the observations are based on the adjusted input sample sizes."),
+label = 'len-francis-wcgbts')
+
+sa4ss::add_figure(
+filein = file.path(mod_loc_relative, "plots", "comp_agefit__aggregated_across_time.png"), 
+caption = "Age composition data aggregated across time by fleet and sex (red female and blue male).",
+label = 'agg-marg-age-fit')
+
+sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots",  "comp_agedat__multi-fleet_comparison.png"), 
 caption = paste("Age composition data for all fleets",
   "(red female, blue male)."),
@@ -239,11 +264,6 @@ caption = paste("Pearson residuals for fit to age composition data for all fleet
   "Closed bubbles are positive residuals (observed > expected) and open bubbles",
   "are negative residuals (observed < expected)."),
 label = 'age-all-pearson')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "comp_agefit__aggregated_across_time.png"), 
-caption = "Age composition data aggregated across time by fleet and sex (red female and blue male).",
-label = 'agg-marg-age-fit')
 
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots", "comp_condAALdat_bubflt4mkt0_page1.png"), 
@@ -338,6 +358,13 @@ sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots", "SPR4_phase.png"), 
 caption = info$caption,
 label = 'phase')
+
+add_figure(
+filein = file.path(mod_loc_relative, "plots", "yield2_yield_curve_with_refpoints.png"), 
+caption = "Equilibrium yield curve for the base case model. Values are based on the most recent
+fishery selectivities and retention curves and with steepness fixed at 0.80.",
+label = 'es-yield')
+```
 
 ```
 

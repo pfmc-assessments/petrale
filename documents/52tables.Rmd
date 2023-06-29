@@ -133,6 +133,10 @@ table_compweight(mod_base,
 )
 ```
 
+\clearpage
+
+<!-- TODO: clean up NA values and \% in table -->
+\input{tex_tables/e_ReferencePoints_ES.tex}
 
 ```{r tables-old_vs_new, results = "asis"}
 table_sens("../tables/sens_table_old_vs_new.csv",

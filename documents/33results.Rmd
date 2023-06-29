@@ -1,9 +1,4 @@
 ## Base Model Results
-<!-- R values used below are calculates are in the exec summary -->
-
-The base model estimate of biomass time series is similar to previous assessments (Figure \ref{fig:smry-bio-historical}), with estimated biomass of ages 3 and older estimated around `r smry_equ` mt in the unfished equilibrium, declining to a minimum of `r smry_min` mt in `r smry_minyr`, rebuilding quickly to a recent peak of `r smry_max_recent` mt in `r smry_maxyr_recent` due to 3 years of very high recruitments from 2006 to 2008, and then declining to `r smry_2023` mt in 2023 due to low or average recruitment in the years since.
-
-In terms of fraction of unfished spawning output (Figure \ref{fig:depl}), the minimum was `r Bratio_min` in `r Bratio_minyr`, the recent peak was `r Bratio_max_recent` in `r Bratio_maxyr_recent` and the 2023 estimate is `r Bratio_2023`.
 
 ### Parameter Estimates
 Estimated and fixed parameter values are shown in Tables \ref{tab:table-pars-base-1}-\ref{tab:table-pars-base-13}.
@@ -26,8 +21,23 @@ The model fits the \Gls{s-wcgbt} index very well, including a decline from 2005 
 
 When an extra standard deviation parameter was estimated for the \Gls{s-wcgbt}, the value was minimal, indicating that the index fits well enough to not require additional tuning.
 
+The fit to length composition data was very good for all fleets when aggregating across years (\ref{fig:len-agg-fit}). The most visible lack of aggregate fit occuring for discards in the south, where the mode of the observed and expected distributions differed by 2 cm (30 cm vs 28 cm, respectively). However, the tails of the distribution were fit well. Pearson residuals for the individual years (Figure \ref{fig:len-all-pearson}) show short periods with notable residual patterns, such as 1975 and 1982-1983 for the North fleet suggesting unmodeled short-term dynamics in the fleet or population. However, there are not strong patterns within any group of length bin (horizontal stripes within the Pearson plots) indicating a systematic lack of fit.
+
+Expected mean length in each year matches both long-term and short-term trends (Figures \ref{fig:len-francis-north} to \ref{fig:len-francis-wcgbts}). A notable lack of fit visible in this diagnostic is for the 2021 \Gls{s-wcgbt} where the largest in the history of the survey took place which was dominated by large females, resulting in an outlier in the observed mean lengths.
+
+The fit to the marginal age composition data for the was good for the North fleet when aggregated across years, but less good for the South (Figure \ref{fig:agg-marg-age-fit}). The North fleet has far more age data (Table \ref{tab:table-compweight-base}, Figures \ref{fig:age-all-bubbles} and \ref{fig:age-all-pearson}) due to large gaps in the years with samples from California and smaller sample sizes per year. The years 2018-2022 have the highest sample sizes and are characterized by older than expected fit. Examination of the distributions of ages within each length bin indicates that these fish are older than expected given their lengths.
+
+Fit to the conditional age-at-length (CAAL) data for the \Gls{s-wcgbt} was generally good (Figures \ref{fig:caal-dat1}-\ref{fig:caal-fit2}), with a few notable blobs of residuals in 2005 (younger than expected fish in the 30-40cm range), 2014 (more young fish in the smaller length bins), and the last few years, where there are more old fish of both sexes in the larger length bins.
+This pattern of positive residuals for the oldest ages matches the lack of fit to the fishery ages for these years as well. Time varying growth was explored to resolve this lack of fit but did not substantially improve the fit.
+
+Fit to the discard rates (Figures \ref{fig:discard_fitNorth} and \ref{fig:discard_fitSouth}) and mean body weight of the discards (Figures \ref{fig:mnwt_fitNorth} and \ref{fig:mnwt_fitSouth}) was good thanks to consistently low and stable rates and the use of time blocks on the retention parameters to fit the years with significant change.
+
 ### Population Trajectory
+<!-- R values used below are calculates are in the exec summary -->
 
-### Reference Points
+The base model estimate of biomass time series is similar to previous assessments (Figure \ref{fig:smry-bio-historical}), with estimated biomass of ages 3 and older estimated around `r smry_equ` mt in the unfished equilibrium, declining to a minimum of `r smry_min` mt in `r smry_minyr`, rebuilding quickly to a recent peak of `r smry_max_recent` mt in `r smry_maxyr_recent` due to 3 years of very high recruitments from 2006 to 2008, and then declining to `r smry_2023` mt in 2023 due to low or average recruitment in the years since.
 
+In terms of fraction of unfished spawning output (Figure \ref{fig:depl}), the minimum was `r Bratio_min` in `r Bratio_minyr`, the recent peak was `r Bratio_max_recent` in `r Bratio_maxyr_recent` and the 2023 estimate is `r Bratio_2023`.
+
+TODO: describe recruitment and SPR time series here.
 

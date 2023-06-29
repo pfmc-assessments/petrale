@@ -1,79 +1,51 @@
 ## Model Diagnostics
-Describe all diagnostics
 
 ### Convergence
 A number of tests were done to verify convergence of the base model. Following conventional AD Model Builder methods (Fournier et al. 2012), we checked that the Hessian matrix for the base model was positive-definite. There were no difficulties in inverting the Hessian to obtain estimates of variability. We also confirmed that the final gradient is below 0.001. The gradient was even further reduces using hess_step, a recent option in ADMB and SS3, allowing to use the hessian information to fit the true best fit to the data. 
 
-To confirm that the reported estimates were from the global best fit, we assessed the model’s ability to recover similar likelihood estimates when initialized from dispersed starting points (jitter option in SS). Starting parameters were jittered by 10% for 100 iterations. This perturbs the initial values used for minimization with the intention of causing the search to traverse a broader region of the likelihood surface. Majority of these trials returned to exactly the same objective function value as in the base model, inverting the Hessian and producing small gradients. Results of these runs showed identical levels of ending absolute and relative spawning output. The remaining runs exhibited worse fit than the base model. The spread of this search indicates that the jitter was sufficient to search a large portion of the likelihood surface, and that the base model is in a global minimum. 
+To confirm that the reported estimates were from the global best fit, we assessed the model's ability to recover similar likelihood estimates when initialized from dispersed starting points (jitter option in SS3). Starting parameters were jittered using a setting of 0.05 for 100 iterations. This perturbs the initial values used for minimization with the intention of causing the search to traverse a broader region of the likelihood surface. The majority (62 out of 100) returned to the same objective function value as the base model. The remaining runs exhibited worse fit than the base model. The spread of this search indicates that the jitter was sufficient to search a large portion of the likelihood surface, and that the base model is in a global minimum.
 
 ### Sensitivity Analyses
-We performed a number of sensitivity analyses on the base assessment model, to evaluate the base model’s response to change in key parameters and model components.The sensitivity analyses were divided into five groups: indices, composition data, biology, recruitment and environmental index, and the transboundary nature of the stock  (Tables \ref{tab:sens-table-index} to \ref{tab:sens-table-Canada} and Figures \ref{fig:sens-index1} to \ref{fig:sens-Canada1}).
-<!-- TODO: revise table and figure ranges after adding additional senstivity tables and figures -->
+We performed a number of sensitivity analyses on the base assessment model, to evaluate the base model's response to change in key parameters and model components.The sensitivity analyses were divided into five groups: indices, composition data, biology, recruitment and environmental index, and the transboundary nature of the stock  (Tables \ref{tab:sens-table-index} to \ref{tab:sens-table-Canada} and Figures \ref{fig:sens-index1} to \ref{fig:sens-Canada1}).
 
 These groups included the following runs:
 
 Indices
 
 \begin{enumerate}
-
 \item Estimating separate catchability parameter and separate selectivity parameters for the late \gls{s-tri} period.
-
 \item Excluding \gls{s-tri} 2004 observation.
-
 \item Allowing \gls{s-tri} selectivity to be dome-shaped.
-
 \item Estimating extra standard deviation for the \Gls{s-wcgbt}
-
 \item Including fisheries CPUEs in the model.
-
 \end{enumerate}
 
 Composition data
-
 \begin{enumerate}
-
 \item Tuning the sample sizes using the Dirichlet-Multinomial likelihood.
-
 \item Early surface read ages are included and retuned.
-
 \end{enumerate}
 
 Biology
-
 \begin{enumerate}
-
 \item Weight-Length relationship from 2019 assessment.
-
 \item Maturity parameters from 2019 assessment.
-
 \item Estimating age-0 fraction female within the model.
-
 \item Estimating age-0 fraction female with no sex offset on the \Gls{s-wcgbt}on selectivity parameters.
-
 \end{enumerate}
 
 Recruitment
-
 \begin{enumerate}
-
 \item Incorporating environmental index of `r spp` recruitment based on CMEMS.
-
 \item Using zero-centered recruitment deviations settings.
-
 \item Nor separating early/main/late periods for recruitment deviations.
-
 \end{enumerate}
 
 Transboundary nature of the stock
-
 \begin{enumerate}
-
 \item Adding the West Coast Vancouver Island (WCVI) synoptic bottom trawl survey index to the assessment model.
-
 \item Adding `r spp` catches from British Columbia waters to the North fishing fleet.
-
 \item Adding both index and catches to the base model.
-
 \end{enumerate}
 
 Sensitivities to alternative assumptions regarding treatment of index data had little discernible difference on the population trajectory (Table \ref{tab:sens-table-index} and Figure \ref{fig:sens-index1}).
