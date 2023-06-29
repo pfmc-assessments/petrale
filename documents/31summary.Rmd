@@ -39,7 +39,7 @@ Response: Additional age estimates were generated since 2019, and these ages wer
 \item Where possible, historical otolith samples aged using a combination of surface and break-and-burn methods should be re-aged using the break-and-burn method. Early surface read otoliths should also be re-aged using the break and burn method. Historical otoliths aged with a standard method will allow the further evaluation of the potential impacts of consistent under-aging using surface read methods, changes in selectivity during early periods without any composition information, and potential changes in growth.
 
 
-Response: Although progress has been done in generating additional ages for petrale sole, historical surface read ages were not re-evaluated. In this assessment, we excluded historical surface read ages, and conducted sensitivity analysis to evaluate the impact of removing  those historical ages to model fits and results.
+Response: Although progress has been done in generating additional ages for `r spp`, historical surface-read ages were not re-evaluated. In this assessment, we excluded historical surface-read ages, and conducted sensitivity analysis to evaluate the impact of removing  those historical ages to model fits and results.
 
 \item The effect of the implementation of the IFQ (catch shares) program that began during 2011 on fleet behavior, including impacts on discards, fishery selectivity, and fishing locations, would benefit from further study.
 
