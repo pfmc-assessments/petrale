@@ -23,12 +23,11 @@ Spatial and spatiotemporal variation was included in the encounter probability m
 
 #### Length and Age Compositions
 
-Length bins from 12 to 62 cm in 2 cm increments were used to summarize the length frequency of the survey catches in each year. The first length bin includes all observations less than 14 cm and the last bin includes all fish larger than 62 cm. Table XX shows the number of lengths taken by the survey. The stratification for length data expansion based on the design-based estimates is provided in Table XX.
+Length bins from 12 to 62 cm in 2 cm increments were used to summarize the length frequency of the survey catches in each year. The first length bin includes all observations less than 14 cm and the last bin includes all fish larger than 62 cm. Table \ref{tab:sample-size-length-wcgbts} shows the number of lengths taken by the survey. 
 
+Length compositions were separated into males and females. These length compositions were expanded to account for subsampling tows, with expansion based upon the stratification by depth and latitude. The stratifications for length data expansions are provided in Table \ref{tab:strata-wcgbts}.
 
-Length compositions were separated into males and females. These length compositions were expanded to account for subsampling tows, with expansion based upon the stratification by depth and latitude. The stratifications for length data expansions are provided in *Table XX.
-
-Age distributions included bins from age 1 to age 17, with the last bin including all fish of greater age. Table XX shows the number of ages taken by the survey.Age distributions were included in the model as conditional-age-at-length observations. The marginal \Gls{s-wcgbt} age-compositions were also included, but only for easier viewing of strong cohorts. The conditional-age-at-length data were not expanded and were binned according to length, age, sex, and year.
+Age distributions included bins from age 1 to age 17, with the last bin including all fish of greater age. Table \ref{tab:sample-size-age-wcgbts} shows the number of ages taken by the survey.Age distributions were included in the model as conditional-age-at-length observations. The marginal \Gls{s-wcgbt} age-compositions were also included, but only for easier viewing of strong cohorts. The conditional-age-at-length data were not expanded and were binned according to length, age, sex, and year.
 
 The input sample sizes for length and marginal age-composition data for all fishery-independent surveys were calculated based on Stewart and Hamel (*2014) as: 
 
