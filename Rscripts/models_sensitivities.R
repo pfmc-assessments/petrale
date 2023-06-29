@@ -82,16 +82,21 @@ sens_make_table(num = 34, sens_mods = mod_list, plot = TRUE,
   legendncol = 1) # petrale declines too far so bumps into label
 
 # INDEX sensitivities
-get_mod(34,201)
+#get_mod(34,201)
 get_mod(34,202)
+get_mod(34,401)
 get_mod(34,203) 
 get_mod(34,204)
 get_mod(34,205)
-mod_list <- list(mod.34.1, mod.34.201, mod.34.202, mod.34.203, 
+mod_list <- list(mod.34.1, 
+  #mod.34.201, 
+  mod.34.202,
+  mod.34.202, mod.34.203, 
   mod.34.204, mod.34.205)
 mod_names <- c("Base", 
-"Separate Q for late triennial", 
+#"Separate Q for late triennial", 
 "Separate Q and selex for late triennial", 
+"Allow triennial selex to be dome-shaped",
 "No 2004 triennial index obs.", 
 "Extra SD for WCGBTS estimated",
 "Fisheries CPUE included"
