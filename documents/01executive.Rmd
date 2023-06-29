@@ -262,11 +262,12 @@ Progress on a number of research topics and data issues would substantially impr
 
 \begin{enumerate}
 
-\item The extent of spatial variability on productivity processes such as growth, recruitment, and maturity is currently unknown and would benefit from further research.
+\item Continue research toward better understanding how climate forcing impacts density-independent survival during `r spp` early life stages and further development of environmental recruitment index. Such index can provide additional information on recruitment, not captured by other sources, in most recent years when youngest cohorts may be not yet selected by either surveys or fisheries. 
 
-\item The extent of spatial variability on productivity processes such as growth, recruitment, and maturity is currently unknown and would benefit from further research.
+\item The extent of spatial and temporal variability on productivity processes such as growth, recruitment, and maturity is currently unknown and would benefit from further research. It would allow to better understanding of patterns we see in data and account for potential spatio-temporal variability in life history parameters in the model. 
+
+\item Further studies of transboundary movement of `r spp` between U.S. and Canadian waters would be beneficial for understanding of extend of `r spp` to help lay the groundwork for future collaborative effort between U.S. and Canada and potential transboundary assessment.
 
 \item The analytical solution for catchability (i.e., observed / predicted biomass) for the \Gls{s-wcgbt} is above 1.0 in the base model.  This was also the case in previous assessments of `r spp` and other flatfish assessments.  Further research into flatfish behaviors in response to survey gear will enhance the interpretation of catchability values for `r spp` off the West Coast.
 
 \end{enumerate}
-
