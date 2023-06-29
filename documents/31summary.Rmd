@@ -8,25 +8,25 @@ The 2005 `r spp` assessment was conducted as two separate stocks, the northern s
 
 The 2009 and 2011 assessments treated `r spp` as a single coast-wide stock, with the fleets and landings structured by state (WA, OR, CA) area of catch. During the 2011 STAR panel concerns were raised regarding the difficulty of discriminating landings from Washington and Oregon waters, particularly in light of the Oregon historical landings reconstruction that includes a summary of data by port of landing but not by catch area, due to the fact that the Oregon and Washington vessels commonly fish in each other's waters and land in each other's ports. The availability of the historical comprehensive landings reconstruction for Oregon by port of landing lead the STAR panel to recommend combining the Washington and Oregon fleets within the coast-wide stock assessment using port of landing rather than catch area. 
 
-Starting with the 2013 stock assessment, the coast-wide stock assessment now summarizes `r spp` landings by the port of landing and combines Washington and Oregon into a single fleet [@haltuch_status_2013]. The 2019 update assessment [@wetzel_status_2019] assumed the same approach as the 2013 stock assessment.
+Starting with the 2013 stock assessment, the coast-wide stock assessment now summarizes `r spp` landings by the port of landing and combines Washington and Oregon into a single fleet [@haltuch_status_2013]. The 2019 update assessment [@wetzel_status_2019] assumed the same approach as the 2013 stock assessment. This assessment as well models the resource as a single coast-wide stock, with two fishing fleets, such as North (that combined Washington and Oregon) and South (that represents California fishery).
 
 ### Most Recent STAR Panel and SSC Recommendations 
 
-The most recent STAR panel for petrale sole was for the 2013 full assessment. The STAR panel report from the 2013 full assessment identified a number of recommendations for the next assessment. Below, we list the 2013 STAR panel recommendations and explain how these recommendations were taken into account in this assessment.
+The most recent STAR panel for `r spp` was for the 2013 full assessment. The STAR panel report from the 2013 full assessment identified a number of recommendations for the next assessment. Below, we list the 2013 STAR panel recommendations and explain how these recommendations were taken into account in this assessment.
 
 \begin{enumerate}
 
 \item The states of California and Oregon have completed comprehensive historical catch reconstructions. Washington historical data are not yet available. Completion of Washington historical catch reconstruction would provide a better catch series.
 
 
-Response: For this assessment, WDFW completed catch reconstruction of petrale sole (pers. comm. T. Tsou, WDFW). These newly estimated landings were used in this assessment.  
+Response: For this assessment, WDFW completed catch reconstruction of `r spp` (pers. comm. T. Tsou, WDFW). These newly estimated landings were used in this assessment.  
 
-\item Update both the maturity and fecundity relationships using samples with wider geographic coverage to include California, and from more recent years for petrale sole would be beneficial. 
+\item Update both the maturity and fecundity relationships using samples with wider geographic coverage to include California, and from more recent years for `r spp` would be beneficial. 
 
 
-Response: This assessment uses updated maturity and fecundity estimated. Updated maturity parameters were calculated from data collected within the \Gls{s-wcgbt} (pers. comm. M. Head, NWFSC). Updated fecundity parameters were informed by *Lefebvre et al. (2019).
+Response: This assessment uses updated maturity and fecundity estimated. Updated maturity parameters were calculated from data collected within the \Gls{s-wcgbt} (pers. comm. M. Head, NWFSC). Updated fecundity parameters were informed by Lefebvre et al. [-@lefebvre_reproductive_2019].
 
-\item Studies on stock structure and movement of petrale sole indicating transboundary movement of petrale sole between U.S. and Canadian waters, particularly with regard to the winter-summer spawning migration. It will be informative to include a time-series plot of fishery catch from Canadian waters in future assessment.
+\item Studies on stock structure and movement of `r spp` indicating transboundary movement of `r spp` between U.S. and Canadian waters, particularly with regard to the winter-summer spawning migration. It will be informative to include a time-series plot of fishery catch from Canadian waters in future assessment.
 
 
 Response: Incorporation of fishery catches as well as index on abundance from Canadian waters were explored in this assessment via sensitivity analysis, and results are presented later in this report.
