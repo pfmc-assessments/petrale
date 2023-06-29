@@ -13,9 +13,7 @@ The \Gls{s-wcgbt} commonly encounters `r spp` along the U.S West Coast, except s
 
 #### Index of Abundance
 
-Geostatistical models of biomass density were fit to survey data using \gls{tmb}
-[@kristensen_tmb:_2016] via the R package \gls{sdmtmb} [@Anderson:2022:SRP].
-These models can account for latent spatial factors with a constant spatial Gaussian random field and spatiotemporal deviations to evolve as a random walk Guassian random field [@thorson_geostatistical_2015]. Tweedie, delta-binomial, delta-gamma, and mixture distributions, which allow for extreme catch events, were investigated. Results are shown only for the distribution that led to the best model diagnostics, e.g., similar distributions of theoretical normal quantiles and model quantiles, high precision, lack of extreme predictions that are incompatible with the life history, and low \gls{aic}. Indices from this best model were predicted using a grid based on available survey locations. Code to reproduce the analysis is available at https://github.com/pfmc-assessments/indexwc.
+Geostatistical models of biomass density were fit to survey data using \gls{tmb} [@kristensen_tmb:_2016] via the R package \gls{sdmtmb} [@Anderson:2022:SRP], as in case of \gls{s-tri}.
 
 The data were truncated to depths less than 675 m prior to modelling given that there were zero positive encounters in depths deeper than 675 m. The prediction grid was also truncated to only include available survey locations in depths between 55–675 m to limit extrapolating beyond the data and edge effects.
 
