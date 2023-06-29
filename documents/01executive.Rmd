@@ -193,7 +193,7 @@ label = 'es-1-spr')
 
 ## Ecosystem considerations{-}
 
-Over the past several years, progress has been made in understanding how large-scale climate forcing drives regional changes and impacts density-independent survival during `r spp` early life stages. Haltuch et al. (2019) examined the relationship between `r spp` recruitment and oceanographic drivers based on model output from a Regional Ocean Modeling System (ROMS) model for the California Current Ecosystem (Neveu et al. 2016). The results suggested that ROMS output might be useful as the basis for an environmental index of recruitment for `r spp`, to allow for better model precision and near-term forecasting. However, the ROMS model used by Haltuch et al. (2019) was consistent in structure and inputs for 1980-2010. From 2011 forward, ROMS outputs exhibit distinct discontinuities with 1980-2010 period, showing changes in scale and trend across the 2010/2011 boundary. 
+Haltuch et al. (2019) examined the relationship between `r spp` recruitment and oceanographic drivers based on model output from a Regional Ocean Modeling System (ROMS) model for the California Current Ecosystem (Neveu et al. 2016). The results suggested that ROMS output might be useful as the basis for an environmental index of recruitment for `r spp`, to allow for better model precision and near-term forecasting. However, the ROMS model used by Haltuch et al. (2019) was consistent in structure and inputs for 1980-2010. From 2011 forward, ROMS outputs exhibit distinct discontinuities with 1980-2010 period, showing changes in scale and trend across the 2010/2011 boundary. 
 
 Due to discontinuity in ROMS models between periods before and after 2011, the index developed by Haltuch et al. (2019) could not be used for this stock assessment. However, an alternative oceanographic model products by Copernicus Marine Environment Monitoring Service (CMEMS) (https://marine.copernicus.eu/) and Mercator Ocean International (MOI) (https://www.mercator-ocean.eu/) were investigated to test if this modelling framework could be used to produce an environmental index of `r spp` recruitment. This new effort is ongoing, and has not yet been published or reviewed by the SSC. In this assessment, we explore the impact of the current CMEMS-based environmental index of `r spp` recruitment via sensitivity analysis.
 
@@ -201,9 +201,11 @@ Appendix 1 of this report describes the most recent, preliminary efforts in deve
 
 ## Reference points{-}
 
-TODO: Replace text with
-management targets and definition of overfishing, including the harvest rate that brings the stock to equilibrium at $B_{40\%}$, i.e., the $B_{MSY}$ proxy and the equilibrium stock size that results from fishing at the default harvest rate, i.e., the $F_{MSY}$ proxy.
-Include Table of estimated reference points for ssb, SPR, exploitation rate, and yield based on SSB proxy for MSY, SPR proxy for MSY, and estimated MSY values.
+The relative spawning output of `r spp` was estimated to have dropped below the management target of $B_{25\%}$. 
+
+
+
+Unfished spawning stock output for`r spp` is estimated to be 22.9065 million eggs (95% confidence interval: 18-28 million eggs). The management target for `r spp` is defined as 25% of the unfished spawning output ($B_{25\%}$), which is estimated by the model to be 5.72662 million eggs (95% confidence interval: 4.5-6.9), which corresponds to an exploitation rate of 0.18. This harvest rate provides an equilibrium yield of 2480.73 mt at $B_{25\%}$ (95% confidence interval: 2120-2841 mt). The model estimate of maximum sustainable yield (MSY) is 2481.72 mt (95% confidence interval: 2121-2842 mt). The estimated spawning stock output at MSY is 5.51571 million eggs (95% confidence interval: 4.3-6.7 million eggs). The exploitation rate corresponding to the estimated  $F_{MSY}$ proxy of 29% is 0.18. The equilibrium estimates of yield relative to biomass is provided in Figure XX.
 
 ```{r, results = 'asis'}
 add_figure(
