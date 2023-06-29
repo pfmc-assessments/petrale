@@ -23,12 +23,11 @@ Spatial and spatiotemporal variation was included in the encounter probability a
 
 #### Length Compositions
 
-Length bins from 12 to 62 cm in 2 cm increments were used to summarize the length frequency of the survey catches in each year. Table XX shows the number of lengths taken by the survey. The length frequency distributions for the \gls{s-tri} from 1980-2004 are shown in Figures XX and XX. 
+Length bins from 12 to 62 cm in 2 cm increments were used to summarize the length frequency of the survey catches in each year. Table \ref{tab:sample-size-length-tri} shows the number of lengths taken by the survey. The length frequency distributions for the \gls{s-tri} from 1980-2004 are shown in Figures XX and XX. 
 
 Prior to 1989, only limited length samples were collected and those samples were limited to the Northern area of the survey; therefore, length samples from years prior to 1989 are not used in the assessment. Less than a half percent of all length samples were collected in depths deeper than 350 m. Therefore, truncation of data to depths less than 350 m (for development of a single abundance index) did not impact length composition samples. 
 
-Length compositions were separated into males and females. These length compositions were expanded to account for subsampling tows, with expansion based upon the stratification by depth and latitude.
-The stratifications for length data expansions are provided in *Table XX.
+Length compositions were separated into males and females. These length compositions were expanded to account for subsampling tows, with expansion based upon the stratification by depth and latitude. The stratifications for length data expansions are provided in Table \ref{tab:strata-tri}.
 
 The input sample sizes for length composition data for all fishery-independent surveys were calculated based on Stewart and Hamel (*2014) as: 
 
