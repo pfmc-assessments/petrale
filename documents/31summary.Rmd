@@ -34,7 +34,7 @@ Response: Incorporation of fishery catches as well as index on abundance from Ca
 \item Increased collection of commercial fishery age data as well as re-aging any available historical samples from California would help reduce uncertainty. While some recent age data were made available from California, sample sizes could be increased and this data collection needs to continue into the future. Without good age data, the ability to estimate year-class strength and the extent of variation in recruitment is compromised.
 
 
-Response: The sample sizes of ages used in this assessment  are available in *Table XX. These ages include previously abailable as well as newly estimated ages.
+Response: Additional age estimates were generated since 2019, and these ages were included in this assessment.
 
 \item Where possible, historical otolith samples aged using a combination of surface and break-and-burn methods should be re-aged using the break-and-burn method. Early surface read otoliths should also be re-aged using the break and burn method. Historical otoliths aged with a standard method will allow the further evaluation of the potential impacts of consistent under-aging using surface read methods, changes in selectivity during early periods without any composition information, and potential changes in growth.
 
