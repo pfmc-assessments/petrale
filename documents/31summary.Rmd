@@ -8,7 +8,7 @@ The 2005 `r spp` assessment was conducted as two separate stocks, the northern s
 
 The 2009 and 2011 assessments treated `r spp` as a single coastwide stock, with the fleets and landings structured by state (WA, OR, CA) area of catch. During the 2011 STAR panel concerns were raised regarding the difficulty of discriminating landings from Washington and Oregon waters, particularly in light of the Oregon historical landings reconstruction that includes a summary of data by port of landing but not by catch area, due to the fact that the Oregon and Washington vessels commonly fish in each other's waters and land in each other's ports. The availability of the historical comprehensive landings reconstruction for Oregon by port of landing lead the STAR panel to recommend combining the Washington and Oregon fleets within the coastwide stock assessment using port of landing rather than catch area. 
 
-Starting with the 2013 stock assessment, the coastwide stock assessment now summarizes `r spp` landings by the port of landing and combines Washington and Oregon into a single fleet [@haltuch_status_2013]. The 2019 update assessment [@wetzel_status_2019] assumed the same approach as the 2013 stock assessment. This assessment as well models the resource as a single coastwide stock, with two fishing fleets, such as North (that combined Washington and Oregon) and South (that represents California fishery).
+Starting with the 2013 stock assessment, the coastwide stock assessment now summarizes `r spp` landings by the port of landing and combines Washington and Oregon into a single fleet [@haltuch_status_2013]. The 2015 and 2019 update assessments [@stawitz_stock_2015; @wetzel_status_2019] use the same approach as required by the terms of reference for updates. This assessment as well models the resource as a single coastwide stock, with two fishing fleets, North (Washington and Oregon) and South (California).
 
 ### Most Recent STAR Panel and SSC Recommendations 
 
@@ -31,7 +31,7 @@ The most recent STAR panel for `r spp` was for the 2013 full assessment. The STA
 4. Increased collection of commercial fishery age data as well as re-aging any available historical samples from California would help reduce uncertainty. While some recent age data were made available from California, sample sizes could be increased and this data collection needs to continue into the future. Without good age data, the ability to estimate year-class strength and the extent of variation in recruitment is compromised.
 
 
-  Response: Additional age estimates were generated since 2019, and these ages were included in this assessment.
+  Response: Additional age reads from California estimates were generated since 2019, and these ages were included in this assessment.
 
 5. Where possible, historical otolith samples aged using a combination of surface and break-and-burn methods should be re-aged using the break-and-burn method. Early surface read otoliths should also be re-aged using the break and burn method. Historical otoliths aged with a standard method will allow the further evaluation of the potential impacts of consistent under-aging using surface read methods, changes in selectivity during early periods without any composition information, and potential changes in growth.
 

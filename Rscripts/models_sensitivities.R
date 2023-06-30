@@ -2,6 +2,7 @@
 # matching google sheet 
 # https://docs.google.com/spreadsheets/d/1Qwp-jbNStukj9rFzI1c18ezf6BD-p7gjp5gH50mPkdQ/edit#gid=0
 
+# Dirichlet-multinomial likelihood
 r4ss::copy_SS_inputs(dir.old = mod.34.1$inputs$dir,
   "models/2023.a034.301_DM", copy_exe = TRUE, overwrite = TRUE)
 file.copy(file.path(mod.34.1$inputs$dir, "Report.sso"),
@@ -19,6 +20,54 @@ inputs$dat$agecomp <-
 SS_write(inputs, dir = dir, overwrite = TRUE)
 tune_comps(dir = dir, init_run = TRUE, niters_tuning = 1)
 
+# No special project samples from Oregon
+# Created by temporarily modifying the Rscripts\process_pacfin_bds.R
+# to change dir from "data-raw" to "data-raw_no_earlyOR"
+# and keep_sample_type = c("M", "S") to keep_sample_type = c("M")
+
+bdsages <- read.csv("data-raw_no_earlyOR/pacfin/forSS_annual/Age_for_SS3_30.Jun.2023_data_from_08.May.2023.csv")
+files <- SS_read(mod.34.1$inputs$dir)
+# compare tables
+table(files$dat$agecomp$FltSvy, files$dat$agecomp$Ageerr)
+  #      2   3   4   5   6   7   8
+  # -4  16   0   0   0   0   3   0
+  # -2   0   0   0   0   0   0  19
+  # -1   0   0   0   0  31   0   3
+  # 1   18   5  18   2   0  12   0
+  # 2   15   0   3   0   0   0   0
+  # 4  559   0   0   0   0 105   0
+table(bdsages$fleet, bdsages$ageErr)
+  #    2  3  4  5  6  7  8
+  # 1 18  4 12  2 31 12  0
+  # 2 15  0  3  0  0  0 19
+
+# adding revised age comp to data file
+names(bdsages) <- names(files$dat$agecomp)
+files$dat$agecomp <- rbind(bdsages, files$dat$agecomp[!abs(files$dat$agecomp$FltSvy) %in% 1:2,])
+
+# names of ageing error definitions
+# (from models\2019.001.001_base\2019_petrale.dat)
+ageerr_names <- c(
+  "no error", # 1
+  "CAP BB", # 2
+  "CAP Surface", # 3
+  "CAP BB/Surface", # 4
+  "WDFW Combo", # 5
+  "WDFW Surface", # 6
+  "WDFW BB", # 7
+  "CAP Surface Pre-1990" # 8
+)
+# use negative fleet to exclude CAP Surface Pre-1990 and WDFW Surface from likelihood
+files$dat$agecomp <-
+  files$dat$agecomp %>%
+  dplyr::mutate(FltSvy = ifelse(Ageerr %in% c(6, 8), yes = -abs(FltSvy), no = FltSvy))
+dir <- "models/2023.a034.303"
+SS_write(files, dir)
+
+
+
+
+# all main recdevs
 dir <- "models/2023.a034.603_all_main_devs"
 r4ss::copy_SS_inputs(dir.old = mod.34.1$inputs$dir,
   dir.new = dir, copy_exe = TRUE, overwrite = TRUE)
@@ -36,11 +85,13 @@ r4ss::copy_SS_inputs(dir.old = mod.34.1$inputs$dir,
 # command below is equivalent to mod.34.301 = SS_output("models/2023.a034.301")
 get_mod(34,301)
 get_mod(34,302)
-mod_list <- list(mod.34.1, mod.34.301, mod.34.302)
-mod_names <- c("Base", "Dirichlet-multinomial weights", "Include early age comps")
+get_mod(34,303)
+mod_list <- list(mod.34.1, mod.34.301, mod.34.302, mod.34.303)
+mod_names <- c("Base", "Dirichlet-multinomial weights", 
+  "Include early age comps", "Exclude early Oregon 'special project' samples")
 # make table
 sens_make_table(num = 34, sens_mods = mod_list, plot = TRUE, 
-  sens_type = "comp", sens_names = mod_names, uncertainty = 1)
+  sens_type = "comp", sens_names = mod_names, uncertainty = 1, legendloc = "topright")
 
 
 # BIOLOGY sensitivities

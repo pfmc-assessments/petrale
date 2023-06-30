@@ -35,6 +35,7 @@ sa4ss::table_format(x = len_samps_comm,
                    "Trips South", "Fish South", "Input N South"),
                  )
 
+#age_samps_comm <- 
 ```
 TODO: add tables of commercial age samples by fleet and ageing error type
 
@@ -62,6 +63,21 @@ sa4ss::table_format(x = age_samps_WCGBTS,
                  col_names = gsub("_", " ", names(age_samps_WCGBTS))
                  )
 
+```
+
+\clearpage
+
+```{r, tables-ageing}
+table_ageing_error(mod_base) %>%
+  sa4ss::table_format(
+    caption = "Estimated ageing error vectors applied to ages read by the Cooperative Ageing Project (CAP) lab used in the assessment model.",
+    label = 'ageing-error-cap'
+  )
+table_ageing_error(mod_base, matrices = 5:7) %>%
+  sa4ss::table_format(
+    caption = "Estimated ageing error vectors applied to ages read by the Washington Department of Fish and Wildlife (WDFW) lab used in the assessment model.",
+    label = 'ageing-error-wdfw'
+  )
 ```
 
 ```{r, tables-strata, results = 'asis'}
@@ -148,23 +164,23 @@ table_sens("../tables/sens_table_old_vs_new.csv",
 ```{r tables-sens-index, results = "asis"}
 table_sens("../tables/sens_table_index.csv",
            pretty = FALSE, # don't modify model names in this case because they are already OK
-	       sens_group = "index",
-           caption_extra = "The indices and total likelihoods are not comparable for the models that add or subtract data (2004 triennial and fishery CPUE).")
+	       sens_group = "indices",
+           caption_extra = "The index and total likelihoods are not comparable for the models that add or subtract data (2004 triennial and fishery CPUE).")
 ```       
 \clearpage
 
 ```{r tables-sens-comp, results = "asis"}
 table_sens("../tables/sens_table_comp.csv",
            pretty = FALSE, # don't modify model names in this case because they are already OK
-	       sens_group = "comp",
-           caption_extra = "The length, age, and total likelihoods are not comparable across models due to differences in weighting.")
+	       sens_group = "composition data",
+           caption_extra = "The length, age, and total likelihoods are not comparable across models due to differences in weighting and included data.")
 ```           
 \clearpage
 
 ```{r tables-sens-bio, results = "asis"}
 table_sens("../tables/sens_table_bio.csv",
            pretty = FALSE, # don't modify model names in this case because they are already OK
-	       sens_group = "bio",
+	       sens_group = "biology",
            caption_extra = "Sensitivity to using the 2019 fecundity is represented in the bridging analysis.")
 ```           
 \clearpage
@@ -172,7 +188,7 @@ table_sens("../tables/sens_table_bio.csv",
 ```{r tables-sens-recruit, results = "asis"}
 table_sens("../tables/sens_table_recruit.csv",
            pretty = FALSE, # don't modify model names in this case because they are already OK
-	       sens_group = "recruit",
+	       sens_group = "recruitment and environmental index",
            caption_extra = "The indices and total likelihoods are not comparable for the environmental index model due to the additional data.")
 ```           
 \clearpage
@@ -180,7 +196,7 @@ table_sens("../tables/sens_table_recruit.csv",
 ```{r tables-sens-Canada, results = "asis"}
 table_sens("../tables/sens_table_Canada.csv",
            pretty = FALSE, # don't modify model names in this case because they are already OK
-	       sens_group = "Canada",
+	       sens_group = "the trans-boundary nature of the stock",
            caption_extra = "The indices and total likelihoods are not comparable for the models that include the Canadian index.")
 ```           
 \clearpage

@@ -9,7 +9,7 @@
 #### source this script (may take 4-5 minutes)
 if (FALSE) {
   tictoc::tic()
-  source("R/process_pacfin_bds.R")
+  source("Rscripts/process_pacfin_bds.R")
   tictoc::toc()
   # 280.06 sec elapsed
 }
@@ -28,6 +28,7 @@ library(nwfscSurvey)
 # NOTE: working directory needs to match local location of
 # git repository at https://github.com/pfmc-assessments/petrale
 dir <- "data-raw"
+# dir <- "data-raw_no_earlyOR" # use for sensitivity 303
 
 # Load in the PacFIN bds data
 # requested via https://github.com/pfmc-assessments/PacFIN.Utilities/issues/87
@@ -153,6 +154,19 @@ table(bds.pacfin$SAMPLE_YEAR[bds.pacfin$AGENCY_CODE == "C"])
 range(CALCOM$SAMPLE_DATE)
 # [1] "1/10/1949" "9/9/1988"
 # NOTE: the 1 PacFIN sample from 1979 was on 9/27/1979 and that dat isn't found in the CALCOM data
+#### update on 30 June 2023:
+# Range above was based on strings
+calcom_date <- as.Date(CALCOM$SAMPLE_DATE, format = "%m/%d/%Y")
+range(calcom_date)
+# [1] "1948-08-05" "1992-01-23"
+calcom_year <- as.numeric(format(calcom_date, "%Y"))
+table(calcom_year)
+# 1948 1949 1962 1964 1965 1966 1967 1968 1969 1970 1971 1972 1973 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987 
+#  405  458  150  970  608 2248 2296 3914 2612 1146 1699 2182 2228 2107 1199 1730 2555 2101  847 5041 4656 2930 2451 1570 1225 1351 1000 
+# 1988 1989 1990 1991 1992
+#  516  841  252  418   88
+### TODO: fix potential double-counting of samples from
+
 #
 # NOTE: all CalCOM data are assigned to AGE_METHOD1 = "S",
 #       but the 2019 assessment used
@@ -191,6 +205,7 @@ CombinedDat <- combineCalCOM(Pdata = bds.pacfin, CalCOM = CALCOM)
 Pdata <- cleanPacFIN(
   Pdata = CombinedDat,
   keep_sample_type = c("M", "S"),
+  #keep_sample_type = c("M"), # use for sensitivity 303
   keep_age_method = c("B", "S"),
   CLEAN = TRUE,
   verbose = TRUE
@@ -1193,17 +1208,6 @@ CAAL_comps_annual2 <- CAAL_comps_annual2 %>%
 # fleet assignment for coastwide age comps
 age_comps_coast2$fleet <- 1
 
-# remove extra sample size columns (not present for CAAL data)
-# the "remove_cols" vector is set earlier (prior to processing length comps)
-age_comps_annual2 <- age_comps_annual2 %>%
-  dplyr::select(!remove_cols)
-age_comps_unexpanded_annual2 <- age_comps_unexpanded_annual2 %>%
-  dplyr::select(!remove_cols)
-age_comps_seas2 <- age_comps_seas2 %>%
-  dplyr::select(!remove_cols)
-age_comps_coast2 <- age_comps_coast2 %>%
-  dplyr::select(!remove_cols)
-
 # sort by fleet, year, and then ageing error type
 age_comps_seas2 <- age_comps_seas2 %>%
   dplyr::arrange(fleet, year, ageErr)
@@ -1214,6 +1218,27 @@ age_comps_coast2 <- age_comps_coast2 %>%
 # CAAL comps also need sorting by sex and length bin
 CAAL_comps_annual2 <- CAAL_comps_annual2 %>%
   dplyr::arrange(fleet, year, sex, LbinLo, ageErr)
+
+# write to CSV file before filtering columns
+today_date <- format(as.Date(Sys.time()), "%d.%b.%Y")
+write.csv(age_comps_annual2,
+  file = file.path(
+    dir, "pacfin", "forSS_annual",
+    paste0("Age_for_SS3_ALL_COLUMNS_", today_date, "_data_from_", out_date, ".csv")
+  ),
+  row.names = FALSE
+)
+
+# remove extra sample size columns (not present for CAAL data)
+# the "remove_cols" vector is set earlier (prior to processing length comps)
+age_comps_annual2 <- age_comps_annual2 %>%
+  dplyr::select(!remove_cols)
+age_comps_unexpanded_annual2 <- age_comps_unexpanded_annual2 %>%
+  dplyr::select(!remove_cols)
+age_comps_seas2 <- age_comps_seas2 %>%
+  dplyr::select(!remove_cols)
+age_comps_coast2 <- age_comps_coast2 %>%
+  dplyr::select(!remove_cols)
 
 # write to CSV file
 today_date <- format(as.Date(Sys.time()), "%d.%b.%Y")

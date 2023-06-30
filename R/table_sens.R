@@ -19,7 +19,7 @@
 #' }
 #'
 table_sens <- function(file_csv,
-                       caption = "Differences in likelihood, estimates of key parameters, and estimates of derived quantities between the base model and several alternative models (columns). See main text for details on each sensitivity analysis. Red values indicate negative log likelihoods that were lower than that for the base model.",
+                       caption = "Differences in negative log-likelihood, estimates of key parameters, and estimates of derived quantities between the base model and several alternative models (columns). See main text for details on each sensitivity analysis. Red values indicate negative log-likelihoods that were lower (fit better to that component) than the base model.",
                        caption_extra = "",
                        sens_group = NULL,
                        dir = file.path("..", "tables"),
@@ -33,6 +33,13 @@ table_sens <- function(file_csv,
         "alternative models related to",
         sens_group
       ),
+      x = caption
+    )
+    caption = gsub(
+      pattern = "Differences",
+      replacement = paste(
+        stringr::str_replace(sens_group, "^\\w{1}", toupper), # capitalize first word
+        "sensitivity analyses: differences"),
       x = caption
     )
   }

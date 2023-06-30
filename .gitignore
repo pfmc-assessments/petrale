@@ -55,6 +55,7 @@ vignettes/*.pdf
 /documents/NA 
 /models/
 /data-raw/
+/data-raw*
 /Rscripts/ignored/
 /figures/ignored/
 /figures/data/
