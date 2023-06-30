@@ -23,6 +23,8 @@ were more prominent when models did not include spatial effects and were include
 Spatial and spatiotemporal variation was included in the encounter probability and the positive catch rate model.
 Spatial variation was approximated using 500 knots, where more knots led to non-estimable standard errors because the positive encounters are too sparse to support the dense spatiotemporal structure.
 
+The estimated distribution of `r spp` density for 2004 is shown in Figure \ref{fig:survey-density}.
+
 #### Length and Age Compositions
 
 Length bins from 12 to 62 cm in 2 cm increments were used to summarize the length frequency of the survey catches in each year. The first length bin includes all observations less than 14 cm and the last bin includes all fish larger than 62 cm. Table \ref{tab:sample-size-length-wcgbts} shows the number of lengths taken by the survey. 
@@ -31,17 +33,10 @@ Length compositions were separated into males and females. These length composit
 
 Age distributions included bins from age 1 to age 17, with the last bin including all fish of greater age. Table \ref{tab:sample-size-age-wcgbts} shows the number of ages taken by the survey. Age distributions were included in the model as conditional-age-at-length observations. The marginal \Gls{s-wcgbt} age-compositions were also included, but only for easier viewing of strong cohorts. The conditional-age-at-length data were not expanded and were binned according to length, age, sex, and year.
 
-The input sample sizes for length and marginal age-composition data for all fishery-independent surveys were calculated based on Stewart and Hamel (*2014) as: 
+The input sample sizes for length and marginal age-composition data for all fishery-independent surveys 
+The input sample sizes for length composition data for all fishery-independent surveys were calculated based on Stewart and Hamel [-@stewart_bootstrapping_2014] as $\text{Input N}_{y} = 3.09*N_{tow}$ where the 3.09 value was estimated for a group of 8 flatfish species including `r spp`.
 
-\begin{centering}
-
-$\text{Input N}_{y} = (0.138*(\sum_{}^{N} \text{fish}_{y} / \sum_{}^{N} \text{tows}_{y}) + 1)*\sum_{}^{N} \text{tows}_y$ 
-
-\end{centering}
-
-where fish is the number of `r spp` by year $y$ and $N$ the total number of tows by year.  
-
-The input sample size of conditional-age-at-length data was set at the number of fish at each length by sex and by year. 
+The input sample size of conditional-age-at-length (CAAL) data was set at the number of fish at each length by sex and by year. The marginal age compositions were only used for comparing the implied fits while the CAAL data were used in the likelihood.
 
 ### Fishery-independent data sources considered but not used
 

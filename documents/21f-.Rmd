@@ -1,7 +1,7 @@
 ## Fishery-Dependent Data
 Fishery removals in this assessment were divided between two fleets: 1) North and 2) South. Landings for the North fleet are defined as fish landed in Washington and Oregon ports. Landings for the South feet are defined as fish landed in California ports. Landings for Washington and Oregon are summed into a single North fleet (consistent with previous several assessments) due to the fact that vessels commonly fish and land in each other's waters and ports.
 
-The landings of `r spp` are made primarily by groundfish bottom trawl gear; landings by gear types other than bottom trawl have been inconsequential, averaging less than 2.5% of the coast-wide landings. The non-trawl landings are included along with the trawl landings in a single gears fleets.
+The landings of `r spp` are made primarily by groundfish bottom trawl gear; landings by gear types other than bottom trawl have been inconsequential, averaging less than 2.5% of the coastwide landings. The non-trawl landings are included along with the trawl landings in a single gears fleets.
 
 ### Commercial Fishery Landings
 
@@ -17,7 +17,7 @@ The Washington historical landings (1938 -1980) were provided by Washington Depa
 
 The  Oregon historical landings (1896-1986) were obtained from Oregon historical catch reconstruction, conducted by Oregon Department of Fish and Wildlife in collaboration with NWFSC [@karnowski_historical_2014]. 
 
-The California historical landings were informed by several sources. Landings from the most recent “historical” period (between 1969 and 1980) were available from the California Cooperative Groundfish Survey (CalCOM) database. Earlier landing records (between 1931 and 1968) were reconstructed by the Southwest Fisheries Science Center  [@ralston_documentation_2010]. Ralston et al. (2010) included only California landings made in California ports, therefore Ralston et al. (2010) estimates were supplemented by catches landed in California, but made in waters of Oregon and Washington, provided by the SWFSC (pers. comm. E.J. Dick, SWFSC). The earliest California landings were obtained from California Department of Fish and Game (CDFG) Fish Bulletins for 1916-1930 landings [@heimann_pacific_1970] as reconstructed by Lai et al. [-@lai_stock_2005] and used in previous assessments. The California fishery began in 1876, but no landings data are available from 1876-1915. Therefore, consistent with previous `r spp` assessments, a linear interpolation between landings of 1 ton in 1876 and the landings recorded for 1916 are used to filling this period.
+The California historical landings were informed by several sources. Landings from the most recent “historical” period (between 1969 and 1980) were available from the California Cooperative Groundfish Survey (CalCOM) database. Earlier landing records (between 1931 and 1968) were reconstructed by the Southwest Fisheries Science Center  [@ralston_documentation_2010]. Ralston et al. (2010) included only California landings made in California ports, therefore Ralston et al. (2010) estimates were supplemented by catches landed in California, but made in waters of Oregon and Washington, provided by the SWFSC (pers. comm. E.J. Dick, SWFSC). The earliest California landings were obtained from California Department of Fish and Game (CDFW) Fish Bulletins for 1916-1930 landings [@heimann_pacific_1970] as reconstructed by Lai et al. [-@lai_stock_2005] and used in previous assessments. The California fishery began in 1876, but no landings data are available from 1876-1915. Therefore, consistent with previous `r spp` assessments, a linear interpolation between landings of 1 ton in 1876 and the landings recorded for 1916 are used to filling this period.
 
 Comparison of `r spp` historical landings by state and fleet between this and 2019 assessment is provided in Figure \ref{fig:catch-comparison}. Historical Oregon and California landings did not change. Slight discrepancies between 2019 and 2023 California landings in Figure \ref{fig:catch-comparison} is caused by the fact that fishing year in 2019 model was defined from November of previous year to October of current year, since North and South fleets were further divided into Winter and Summer fisheries. We did not have access to original annual landings used in 2013 full assessment and then in 2019 update assessment, and therefore comparison between 2019 and 2023 California landings in Figure \ref{fig:catch-comparison} is approximate, but still able to illustrate that California landings did not change. The noticeable difference in this assessment from 2019 model is in Washington landings. This year Washington Department of Fish and Wildlife completed historical catch reconstruction of `r spp`, and newly estimated landings are lower than those used in previous assessment. We were not able to locate the source of historical Washington landings used in 2013 and then in 2019 assessments, but newly estimated Washington landings are more consistent with history of commercial removals on the U.S. West Coast and represent improvement to the assessment.  
 
@@ -36,7 +36,7 @@ WCGOP provided estimates of discard mean body weight, and these data were used i
 
 ### Fishery Length and Age Data
 
-The fishery length and age data for North fleet were obtained from PacFIN BDS database and contained data from Oregon and Washington. For South fleet, length and age data were obtained from PacFIN BDS database and also from the California Cooperative Groundfish Survey (CalCOM), the latter were provided by CDFG (pers.comm. B. Erwin, CDFG). 
+The fishery length and age data for North fleet were obtained from PacFIN BDS database and contained data from Oregon and Washington. For South fleet, length and age data were obtained from PacFIN BDS database and also from the California Cooperative Groundfish Survey (CalCOM), the latter were provided by CDFW (pers.comm. B. Erwin, CDFW). 
 
 Length bins from 12 to 62 cm in 2 cm increments were used to summarize the length frequency of the catches in each year. The first length bin includes all observations less than 14 cm and the last bin includes all fish larger than 62 cm. Age distributions included bins from age 1 to age 17, with the last bin including all fish of greater age.
 
@@ -48,7 +48,16 @@ Also, some of the early historical `r spp` ages were estimated using surface age
 
 Length and age data collected from commercial landings for each fleet are summarized by the number of trips and fish sampled by year (Tables \ref{tab:sample-size-length-by-fleet} and XX). Figures \ref{fig:len-all-bubbles} and \ref{fig:age-all-bubbles} show plots of the commercial length and age composition data across time for each fishery fleet.
 
-The input sample sizes for length and age frequency distributions by year were calculated as a function of the number of trips and number of fish via the Stewart Method (pers.comm. I. Stewart, International Pacific Halibut Commission (IPHC)). The method is based on analysis of the input and model derived effective sample sizes from West Coast groundfish stock assessments. A piece-wise linear regression was used to estimate the increase in effective sample size per sample based on fish-per-sample and the maximum effective sample size for large numbers of individual fish.
+The input sample sizes for length and age frequency distributions by year were calculated as a function of the number of trips and number of fish via the Stewart Method (pers.comm. I. Stewart, International Pacific Halibut Commission (IPHC)). The method is based on analysis of the input and model derived effective sample sizes from West Coast groundfish stock assessments. A piece-wise linear regression was used to estimate the increase in effective sample size per sample based on fish-per-sample and the maximum effective sample size for large numbers of individual fish. The resulting equations are:
+
+\begin{centering}
+
+Input N = $N_{\text{trips}} + 0.138 * N_{\text{fish}}$ if $N_{\text{fish}}/N_{\text{trips}}$ is $<$ 44,
+
+Input N = $7.06 * N_{\text{trips}}$ if $N_{\text{fish}}/N_{\text{trips}}$ is $\geq$ 44.
+
+\end{centering}
+
 
 Discard length composition data for both fleets were available from WCGOP, and for North fleet from Pikitch study as well. WCGOP length composition data were not sex-specific. WCGOP raw observations were expanded the haul level, to account for differences in catch among hauls. Pikitch data (although available by sex) were very limited (32 fish sampled for length), and was included in the assessment for females and males combined. 
 

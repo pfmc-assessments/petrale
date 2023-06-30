@@ -6,7 +6,7 @@ The instantaneous rate of natural mortality for a wild fish population is notori
 
 An archived set of commercial samples, collected from Northern California between the late 1950s and early 1980s, recently found that multiple samples were aged between 20-31 years old, suggesting a similar range of $M$ values for U.S. West Coast `r spp`. U.S. stock assessments prior to 2009 and current British Columbia stock assessments assumed a value of $M$ = 0.2 yr^-1^ for both sexes. The 2013 stock assessment used a meta-analysis value produced the following normal prior distributions for females (mean = 0.151, sd = 0.16) and males (0.206, sd = 0.218) based on Hamel [-@hamel_method_2015] with maximum age for females and males of 32 and 29 years, respectively.
 
-[@hamel_method_2015], recently updated by Hamel and Cope (*2022), represents current method for developing a prior on natural mortality for West Coast groundfish stock assessments. This method combines meta-analytic approaches relating the natural mortality rate to other life-history parameters to develop a general prior on $M$ for many fish species. This approach modifies work done by Then et al.[-@then_evaluating_2015] who estimated $M$ and recommended $M$ estimates based on maximum age alone. Hamel [-@hamel_method_2015] re-evaluated the data used by Then et al. [-@then_evaluating_2015] by fitting the one-parameter $A_{\text{max}}$, model under a log-log transformation. The method was updated by Hamel and Cope (2022), who reduced the variance around the estimate. The equation for the point estimate (i.e., the median in real space) for $M$, based on Hamel and Cope (2022) is:
+Hamel [-@hamel_method_2015], recently updated by Hamel and Cope [-@hamel_development_2022], represents current method for developing a prior on natural mortality for West Coast groundfish stock assessments. This method combines meta-analytic approaches relating the natural mortality rate to other life-history parameters to develop a general prior on $M$ for many fish species. This approach modifies work done by Then et al.[-@then_evaluating_2015] who estimated $M$ and recommended $M$ estimates based on maximum age alone. Hamel [-@hamel_method_2015] re-evaluated the data used by Then et al. [-@then_evaluating_2015] by fitting the one-parameter $A_{\text{max}}$, model under a log-log transformation. The method was updated by Hamel and Cope [-@hamel_development_2022], who reduced the variance around the estimate. The resulting equation for the point estimate (i.e., the median in real space) for $M$, is:
 
 \begin{centering}
 
@@ -16,7 +16,7 @@ $M=\frac{5.4}{A_{\text{max}}}$
 
 where  $A_{\text{max}}$ is the maximum age of the focal species. The above is also the median of the prior. The prior is defined as a lognormal distribution with mean $ln(5.4/A_{\text{max}})$ and SE = 0.31. 
 
-Maximum age was assumed to be 32 and 29 years for females and males, respectively, consustent with several previous assessments. Using the Hamel and Cope (2022) approach above, the prior value for females in regular space is `r round(5.4/32, 3)` and for males is `r round(5.4/29, 3)`. 
+Maximum age was assumed to be 32 and 29 years for females and males, respectively, consustent with several previous assessments. Using the Hamel and Cope [-@hamel_development_2022] approach above, the prior value for females in regular space is `r round(5.4/32, 3)` and for males is `r round(5.4/29, 3)`. 
 
 ### Maturation and Fecundity{#mat_fecund}
 
@@ -24,13 +24,13 @@ A new maturity ogive was developed for this assessment (pers. comm. M. Head, NWF
 
 A fecundity relationship published in 2019 [@lefebvre_reproductive_2019] was used as a sensitivity analysis in the previous assessment and has been adopted for the base model in this one. The relationship shows a slightly faster increase in the number of eggs per unit length than when fecundity was assumed proportional to body weight. The addition of this fecundity relationship means that spawning output is reported in trillions of eggs rather than metric tons. 
 
-TODO: add figure (perhaps copied from 2019 assessment) and note the parameter values.
+<!-- TODO: add figure (perhaps copied from 2019 assessment) and note the parameter values. -->
 
 ### Sex Ratio
 
-This assessment assumes `r spp` to have a 50% sex ratio at birth between females and males off the U.S West Coast. Similarly, Canadian data from the 2004 published stock assessment also suggests sex ratios of `r spp` in British Columbia are generally 50% males and 50% females [@starr_petrale_2004]. In 2019 update assessment, it was noted that the \Gls{s-wcgbt} data indicates that the proportion of females in the population across the mid-range lengths can be lower than 50%. 
+The sex ratio of the smallest and youngest `r spp` observed in the \Gls{s-wcgbt} (less than 35 cm or younger than age 5) is less than 50%. No study on `r spp` sex determination has been conducted, but environmental sex determination (ESD) has been established for many other flatfish, where environmental factors can influence phenotypic sex in the female genotype, resulting in male-skewed sex ratios [@luckenbach_sex_2009; @honeycutt_warmer_2019]. The sex ratio of larger and older fish is skewed toward females presumably due to lower natural mortality.
 
-As a part of this assessment, we explored multiple model formulations with age-0 fraction female estimated internally. However, in many of those formulations, age-0 fraction female was estimated above 50% (unlike suggested in 2019 assessment), and estimates of other life history parameters were rather unreasonable. The reasonable estimate of age-0 fraction female was achieved only when a single selectivity curve was assumed for the females and males in the \Gls{s-wcgbt}, which deteriorated fit to length composition data. The value of estimated age-0 fraction female in that model run was 0.48, and it was assumed reasonable to continue to use a 50% sex ratio at birth between females and males, consistent with previous assessments.   
+As a part of this assessment, we explored multiple model formulations with age-0 fraction female estimated internally. However, in many of those formulations, age-0 fraction female was estimated above 50% due to confounding with sex-specific selectivity. The reasonable estimate of age-0 fraction female was achieved only when a single selectivity curve was assumed for the females and males in the \Gls{s-wcgbt}, which deteriorated fit to length composition data. Furthermore, the length and age bins which are skewed male in the \Gls{s-wcgbt} contain so few fish relative to larger sizes, that the influence of a sex ratio estimate different from 50% was minimal. The value of estimated age-0 fraction female in that model run was 0.48, and it was assumed reasonable to continue to use a 50% sex ratio at birth between females and males, consistent with previous assessments.   
 
 ### Length-Weight Relationship
 
