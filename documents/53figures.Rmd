@@ -77,6 +77,12 @@ label = "survey-density"
 )
 
 sa4ss::add_figure(
+filein = "../figures/indices/depth_vs_lat_tri_petrale.png", 
+caption = paste("Distribution of petrale catch rates in the Triennial survey. The dashed lines represent the 366 m and 37 degree limits of the early years of the survey which were used to truncate the data to provide a consistent spatial coverage for the index standardization and length composition data"),
+label = "depth-vs-lat-tri"
+)
+
+sa4ss::add_figure(
 filein = "../figures/indices/presence-absence_by_depth.png", 
 caption = paste("Presence/absence of petrale sole by depth",
   "in the WCGBTS. Bar widths are proportional to the number of hauls in that bin.",
@@ -104,6 +110,12 @@ filein = "../figures/indices/index_WCGBTS.png",
 caption = paste("Estimated index from the geostatistical standardization of the",
   "WCGBTS including estimated biomass in each state."),
 label = "survey-wcgbts"
+)
+
+sa4ss::add_figure(
+filein = "../figures/indices/2021 NA large Petrale sole catch combined.png", 
+caption = "Photos from the largest recorded petrale sole catch on the WCGBTS: 8390 kg from a 15-minute tow on 23 September 2021. The photos were taken by John Buchanan on board the F/V Noah's Ark. The location was 123.9581 W, 38.92528 N with average haul depth of 310 m.",
+label = "large-2021-haul"
 )
 
 ```
@@ -215,7 +227,6 @@ label = 'index-tri-fit')
 
 \clearpage
 
-<!-- TODO: add Francis plots -->
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots",  "comp_lenfit__aggregated_across_time.png"), 
@@ -255,7 +266,7 @@ label = 'len-francis-tri')
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots",  "comp_lenfit_data_weighting_TA1.8_WCGBTS.png"), 
 caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the WCGBTS. 95% intervals for the observations are based on the adjusted input sample sizes."),
-label = 'len-francis-wcgbts')
+label = 'len-francis-wcgbt')
 
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots", "comp_agefit__aggregated_across_time.png"), 
