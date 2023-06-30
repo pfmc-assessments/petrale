@@ -160,7 +160,7 @@ label = 'bridge3-bratio')
 
 \clearpage
 
-### Biology
+<!--  Biology -->
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots", "bio1_sizeatage.png"),
@@ -179,7 +179,7 @@ label = 'maturity')
 ```
 
 
-### Selectivity
+<!--  Selectivity -->
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots",  "sel01_multiple_fleets_length1.png"), 
@@ -207,7 +207,7 @@ label = 'sel-tv-mal')
 
 ```
 
-### Fits to Data
+<!--  Fits to Data -->
 
 \clearpage
 
@@ -340,7 +340,7 @@ label = 'mnwt_fitSouth')
 
 \clearpage
 
-### Time-series and recruitment
+<!--  Time-series and recruitment -->
 
 <!-- ======================================================= -->  
 <!-- ****************** Time Series ************************ --> 
@@ -419,7 +419,7 @@ label = 'dynamic-b0')
 
 \clearpage
 
-### Sensitivity Analyses and Retrospectives
+<!--  Sensitivity Analyses and Retrospectives -->
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -522,7 +522,7 @@ label = 'retro-depl')
 
 \clearpage
 
-### Likelihood Profiles
+<!--  Likelihood Profiles -->
 
 ```{r, results = 'asis'}
 add_figure(
@@ -587,4 +587,4 @@ label = 'm-profile-pars')
 ```
 
 
-### Reference Points and Forecasts
+<!-- ### Reference Points and Forecasts -->

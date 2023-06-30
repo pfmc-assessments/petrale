@@ -3,6 +3,8 @@
 ## Reference Points
 Estimated reference points are reported in Table \ref{tab:referenceES}.
 
+Unfished spawning stock output for `r spp` is estimated to be 22.9 trillion eggs (95% confidence interval: 18-28 trillion eggs). The management biomass target for `r spp` is defined as 25% of the unfished spawning output ($B_{25\%}$), which is estimated by the model to be 5.7 trillion eggs (95% confidence interval: 4.5-6.9 trillion eggs), which corresponds to an exploitation rate (catch / age 3+ biomass) of 0.18. This harvest rate provides an equilibrium yield of 2481 mt at $B_{25\%}$ (95% confidence interval: 2120-2841 mt). Catch limits are determined by an SPR = 30% reference point which is associated with equilibrium exploitation rate of 0.17. The model estimate of maximum sustainable yield (MSY) is 2482 mt (95% confidence interval: 2121-2842 mt). The estimated spawning stock output at MSY is 5.5 trillion eggs (95% confidence interval: 4.3-6.7 trillion eggs). The exploitation rate corresponding to the estimated  $F_{MSY}$ proxy of SPR = 29% is 0.18. 
+
 ## Unresolved Problems and Major Uncertainties (Not required in draft assessment undergoing review)
 
 ## Harvest Projections and Decision Tables (Not required in draft assessment undergoing review)
