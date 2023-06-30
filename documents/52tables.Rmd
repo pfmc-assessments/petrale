@@ -34,10 +34,20 @@ sa4ss::table_format(x = len_samps_comm,
                   "Fish North", "Input N North",
                    "Trips South", "Fish South", "Input N South"),
                  )
-
-#age_samps_comm <- 
 ```
-TODO: add tables of commercial age samples by fleet and ageing error type
+
+\clearpage
+
+```{r, tables-samples2, results = 'asis'}
+age_samps_comm <- read.csv("../tables/age_samps_comm_by_fleet.csv")
+sa4ss::table_format(x = age_samps_comm,
+                 caption = 'Sample sizes of commercial age composition data by year, fleet, and ageing error matrix (Age-Mat) applied to those observations in the model. The AgeMat codes are as follows: C-S1: CAP Surface Pre-1990 (EXCLUDED FROM BASE MODEL), C-S2: CAP Surface, C-C: CAP Combo, C-BB: CAP Break-Burn, W-S: WDFW Surface (EXCLUDED FROM BASE MODEL), W-C: WDFW Combo, W-BB: WDFW Break-Burn. Note that there are repeated years in this table and in the model for years where there are multiple ageing error matrices applied within the same year/fleet combination.',
+                 label = 'sample-size-age-by-fleet',
+                 col_names = c("year", "North Ntrips", "North Nfish", "North InputN", "North AgeMat", 
+                                       "South Ntrips", "South Nfish", "South InputN", "South AgeMat")
+                 )
+
+```
 
 \clearpage
 
@@ -70,12 +80,12 @@ sa4ss::table_format(x = age_samps_WCGBTS,
 ```{r, tables-ageing}
 table_ageing_error(mod_base) %>%
   sa4ss::table_format(
-    caption = "Estimated ageing error vectors applied to ages read by the Cooperative Ageing Project (CAP) lab used in the assessment model.",
+    caption = "Estimated ageing error vectors used in the assessment model for true ages 0-30 read by the Cooperative Ageing Project (CAP) lab. The ages associated with 'CAP Surface Pre-1990' were excluded from the base model. Note that the population age bins extend to age 40, and the largest observed age is 32.",
     label = 'ageing-error-cap'
   )
-table_ageing_error(mod_base, matrices = 5:7) %>%
+table_ageing_error(mod_base, matrices = c(6,5,7)) %>%
   sa4ss::table_format(
-    caption = "Estimated ageing error vectors applied to ages read by the Washington Department of Fish and Wildlife (WDFW) lab used in the assessment model.",
+    caption = "Estimated ageing error vectors used in the assessment model for true ages 0-30 read by the Washington Department of Fish and Wildlife (WDFW) lab. The ages associated with 'WDFW Surface' were excluded from the base model. Note that the population age bins extend to age 40, and the largest observed age is 32.",
     label = 'ageing-error-wdfw'
   )
 ```

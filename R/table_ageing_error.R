@@ -7,18 +7,18 @@
 #' @example 
 #' \dontrun{
 #'   table_ageing_error(model) # all CAP types
-#'   table_ageing_error(model, matrices = 5, 6, 7) # all WDFW types
+#'   table_ageing_error(model, matrices = c(6, 5, 7)) # all WDFW types
 #' }
 
 table_ageing_error <- function(
     model,
     ages = 0:30,
-    matrices = c(2, 3, 4, 8),
+    matrices = c(8, 3, 4, 2),
     ageerr_names = c(
       "no error", # 1
       "CAP BB", # 2
       "CAP Surface", # 3
-      "CAP BB/Surface", # 4
+      "CAP Combo", # 4
       "WDFW Combo", # 5
       "WDFW Surface", # 6
       "WDFW BB", # 7
