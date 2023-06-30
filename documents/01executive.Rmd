@@ -240,8 +240,7 @@ sa4ss::table_format(x = table_vi,
 
 ## Unresolved problems and major uncertainties{-}
 
-TODO: Replace text with
-any special issues that complicate scientific assessment, questions about the best model scenario, etc.
+Not required in draft assessment undergoing review.
 
 ## Decision table and projections{-}
 
