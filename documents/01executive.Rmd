@@ -1,8 +1,8 @@
 ```{r executive, echo = FALSE}
 executive <- list()
 executive[["stock"]] <- paste0("This assessment reports the status of ",
-  spp, " (_", spp.sci, "_) off the ", coast, 
-  " coast using data through 2022.")
+  spp, " (_", spp.sci, "_) off the U.S. West",
+  " Coast using data through 2022.")
 ```
 
 # One-page summary{-}
@@ -17,14 +17,14 @@ executive[["stock"]] <- paste0("This assessment reports the status of ",
 
 ## Stock{-}
 
-`r executive[["stock"]]` While `r spp` are modeled as a single stock, the spatial aspects of the coastwide population are addressed through geographic separation of data sources/fleets where possible. There is currently no genetic evidence suggesting distinct biological stocks of `r spp` off the U.S. coast. The limited tagging data available to describe adult movement suggests that `r spp` may have some homing ability for deep water spawning sites but also have the ability to move long distances between spawning sites.
+`r executive[["stock"]]` While `r spp` are modeled as a single stock, the spatial aspects of the coastwide population are addressed through geographic separation of data sources/fleets where possible. There is currently no genetic evidence suggesting distinct biological stocks of `r spp` off the U.S. West Coast. The limited tagging data available to describe adult movement suggests that `r spp` may have some homing ability for deep water spawning sites but also have the ability to move long distances between spawning sites.
 
 
 ## Catches{-}
 
-`r Spp` has  consistently been the most commercially valuable flatfish targeted in the California Current Ecosystem. It has been caught in the flatfish fishery off the U.S. Pacific coast since the late 19th century, nearly exclusively by trawl fleets; non-trawl gears contribute only a small fraction of the catches across all years. 
+`r Spp` has  consistently been the most commercially valuable flatfish targeted in the California Current Ecosystem. It has been caught in the flatfish fishery off the U.S. West Coast since the late 19th century, nearly exclusively by trawl fleets; non-trawl gears contribute only a small fraction of the catches across all years. 
 
-The earliest catches of `r spp` are reported in 1876 in California and 1884 in Oregon.  `r Spp` were lightly exploited during the early 1900s, but new gear technology in the 1930s allowed trawling on new grounds and the fishery expanded to greater depths and to Oregon and Washington waters, resulting in larger landings. The `r spp` catches further increased during World War II in response to increased demands. Also, during the "vitamin A rush" in the late 1930s and 1940s it was found that `r spp` has high levels, which contributed to increased catches of this species as well. By the 1950s, the fishery was well developed with the stock showing declines in biomass and catches (Figures \ref{fig:es-catch} and \ref{fig:es-ssb}). Also in the 1950s, winter spawning grounds at deeper depths with dense concentrations of `r spp` were discovered, and catches increased accordingly. The rate of decline in spawning biomass accelerated through the 1970s reaching minimums generally around or below 10% of the unexploited levels during the 1980s through the early 2000s (Figure \ref{fig:es-depl}). Recent annual catches between 1981-2022 range between 803 and 3060 mt per year and the most recent year landings are shown in Table \ref{tab:removalsES}. 
+The earliest catches of `r spp` are reported in 1876 in California and 1884 in Oregon.  `r Spp` were lightly exploited during the early 1900s, but new gear technology in the 1930s allowed trawling on new grounds and the fishery expanded to greater depths and to Oregon and Washington waters, resulting in larger landings. The `r spp` catches further increased during World War II in response to increased demands. Also, during the "vitamin A rush" in the late 1930s and 1940s it was found that `r spp` has high levels, which contributed to increased catches of this species as well. By the 1950s, the fishery was well developed with the stock showing declines in biomass and catches (Figures \ref{fig:es-catch} and \ref{fig:es-ssb}). Also in the 1950s, winter spawning grounds at deeper depths with dense concentrations of `r spp` were discovered, and catches increased accordingly. The rate of decline in spawning biomass accelerated through the 1970s reaching minimums estimated to be generally around or below 10% of the unexploited levels during the 1980s through the early 2000s (Figure \ref{fig:es-depl}). Recent annual catches between 1981-2022 range between 803 and 3060 mt per year and the most recent year landings are shown in Table \ref{tab:removalsES}. 
 
 `r Spp` are a desirable market species and discarding has historically been low (less than 5%), with most of the discarding due to small sizes. 
 
@@ -248,7 +248,7 @@ Not required in draft assessment undergoing review.
 
 ## Scientific uncertainty{-}
 
-The model estimated uncertainty around the `r endyr+1` spawning output for is $\sigma$ = `r round(mod_base$Pstar_sigma, 2)`. The uncertainty around the OFL is $\sigma$ = `r round(mod_base$OFL_sigma, 2)`. These values are lower than for many west coast groundfish stocks for several reasons: large sample sizes of length and age data from fisheries and surveys, high frequency of occurrence in the \Gls{s-wcgbt} thanks to petrale primarily residing in trawlable habitat within the scope of the survey, and strong contrast in the data caused by fishing down the stock to a low level followed by rapid rebuilding. Nevertheless, these $\sigma$ values surely underestimate the overall uncertainty as they do not incorporate the model structural uncertainty and do not account for any time-varying dynamics other than recruitment.
+The model estimated uncertainty around the `r endyr+1` spawning output for is $\sigma$ = `r round(mod_base$Pstar_sigma, 2)`. The uncertainty around the OFL is $\sigma$ = `r round(mod_base$OFL_sigma, 2)`. These values are lower than for many West Coast groundfish stocks for several reasons: large sample sizes of length and age data from fisheries and surveys, high frequency of occurrence in the \Gls{s-wcgbt} thanks to petrale primarily residing in trawlable habitat within the scope of the survey, and strong contrast in the data caused by fishing down the stock to a low level followed by rapid rebuilding. Nevertheless, these $\sigma$ values surely underestimate the overall uncertainty as they do not incorporate the model structural uncertainty and do not account for any time-varying dynamics other than recruitment.
 
 The estimated uncertainty values are lower than the Category 1 default $\sigma = 0.5$, so all projections will use the default $\sigma$.
 

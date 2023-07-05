@@ -1,5 +1,5 @@
 Package: petrale
-Title: Estimate status of Petrale Sole along the US West coast
+Title: Estimate status of Petrale Sole along the U.S. West coast
 Version: 2023.01
 Authors@R: c(person(given = c("Ian", "G."),
            family = "Taylor",
@@ -14,7 +14,7 @@ Authors@R: c(person(given = c("Ian", "G."),
     )
     )
 Description: Work up data and document decisions made when determining the 
-    status of Petrale Sole off of the US West Coast in 2023.
+    status of Petrale Sole off of the U.S. West Coast in 2023.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8

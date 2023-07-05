@@ -71,7 +71,7 @@ plot_stock_boundary_map <- function(names = c("North\nfleet", "South\nfleet"),
   abline(h = 42, lty = 3)
   #text(-127, 40, expression("40"*degree*"10'"), pos = 3)
   text(-127, 42 - 0.1, expression("42"*degree*""), pos = 3)
-  # add map with US states boundaries on top
+  # add map with U.S. states boundaries on top
   maps::map("state",
     regions = c(
       "Wash", "Oreg", "Calif", "Idaho",

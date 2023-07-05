@@ -7,7 +7,7 @@ The landings of `r spp` are made primarily by groundfish bottom trawl gear; land
 
 #### Recent Landings
 
-Recent commercial landings of `r spp` (1981-2022 for California and Washington; 1987-2022 for Oregon) were obtained from the Pacific Fisheries Information Network (PacFIN, www.pacfin.com), a regional fisheries database that manages fishery-dependent information in cooperation with west coast state agencies and NOAA Fisheries. Catch data were extracted from PacFIN on June 12, 2023, by state and then combined into the fishing fleets used in the assessment. Time series of recent landings by fleet and state are reported in Table \ref{tab:catch-table} and shown in Figures \ref{fig:catch-figures-r4ss} to \ref{fig:catch-comparison}.
+Recent commercial landings of `r spp` (1981-2022 for California and Washington; 1987-2022 for Oregon) were obtained from the Pacific Fisheries Information Network (PacFIN, www.pacfin.com), a regional fisheries database that manages fishery-dependent information in cooperation with West Coast state agencies and NOAA Fisheries. Catch data were extracted from PacFIN on June 12, 2023, by state and then combined into the fishing fleets used in the assessment. Time series of recent landings by fleet and state are reported in Table \ref{tab:catch-table} and shown in Figures \ref{fig:catch-figures-r4ss} to \ref{fig:catch-comparison}.
 
 #### Historical Landings
 

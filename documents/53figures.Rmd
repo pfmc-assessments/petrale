@@ -16,8 +16,8 @@ plot_info = read.csv(file.path(mod_loc_relative, "plots", "plotinfotable_for_doc
 sa4ss::add_figure(
 filein = "../figures/map/map_of_fleet_areas_42.png", 
 caption = 
-  "Map of the U.S. west coast Exclusive Economic Zone within which the assessment is focused. The dashed line and colors delineate the two fishing fleets represented in the model: North (blue) and South (red).",
-  alt_caption = "Outline of U.S. west coast split at forty-two degrees north latitude",
+  "Map of the U.S. West Coast Exclusive Economic Zone within which the assessment is focused. The dashed line and colors delineate the two fishing fleets represented in the model: North (blue) and South (red).",
+  alt_caption = "Outline of U.S. West Coast split at forty-two degrees north latitude",
 label = "map"
 )
 ```
