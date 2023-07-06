@@ -24,6 +24,8 @@ sa4ss::table_format(x = catch_table,
                  )
 ```
 
+\clearpage
+
 ```{r, tables-samples, results = 'asis'}
 len_samps_comm <- read.csv("../tables/length_samps_comm_by_fleet.csv")
 
@@ -108,6 +110,8 @@ sa4ss::table_format(x = strata_Tri,
                  col_names = col_names)
 ```
 
+\clearpage
+
 ```{r, tables-discards, results = 'asis'}
 discard_rates <- read.csv("../tables/discard_rates.csv")
 discard_rates[is.na(discard_rates)] <- ""
@@ -130,7 +134,8 @@ sa4ss::table_format(config_summary,
   label = "config-summary")
 ```
 \clearpage
-```{r tables-model-pars, results = "asis"}
+
+```{r tables-model-pars1, results = "asis"}
 par_summary <- read.csv("../tables/par_summary.csv")
 sa4ss::table_format(par_summary,
   col_names = c("Specification", "Base", "2019 model", "Source of difference"),
@@ -142,10 +147,14 @@ sa4ss::table_format(par_summary,
   col_to_adjust = 1:4) %>% 
     kableExtra::kable_styling(latex_options = c("striped")) %>%
     kableExtra::row_spec(1, bold = TRUE)
+```
 
-cat("\\begin{landscape}")
+\clearpage
+
+```{r tables-model-pars2, results = "asis"}
+#cat("\\begin{landscape}")
 table_pars_split(mod_base)
-cat("\\end{landscape}")
+#cat("\\end{landscape}")
 ```
 
 ```{r tables-timeseries, results = "asis"}
