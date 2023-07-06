@@ -24,13 +24,21 @@ executive[["stock"]] <- paste0("This assessment reports the status of ",
 
 `r Spp` has  consistently been the most commercially valuable flatfish targeted in the California Current Ecosystem. It has been caught in the flatfish fishery off the U.S. West Coast since the late 19th century, nearly exclusively by trawl fleets; non-trawl gears contribute only a small fraction of the catches across all years. 
 
-The earliest catches of `r spp` are reported in 1876 in California and 1884 in Oregon.  `r Spp` were lightly exploited during the early 1900s, but new gear technology in the 1930s allowed trawling on new grounds and the fishery expanded to greater depths and to Oregon and Washington waters, resulting in larger landings. The `r spp` catches further increased during World War II in response to increased demands. Also, during the "vitamin A rush" in the late 1930s and 1940s it was found that `r spp` has high levels, which contributed to increased catches of this species as well. By the 1950s, the fishery was well developed with the stock showing declines in biomass and catches (Figures \ref{fig:es-catch} and \ref{fig:es-ssb}). Also in the 1950s, winter spawning grounds at deeper depths with dense concentrations of `r spp` were discovered, and catches increased accordingly. The rate of decline in spawning biomass accelerated through the 1970s reaching minimums estimated to be generally around or below 10% of the unexploited levels during the 1980s through the early 2000s (Figure \ref{fig:es-depl}). Recent annual catches between 1981-2022 range between 803 and 3060 mt per year and the most recent year landings are shown in Table \ref{tab:removalsES}. 
+The earliest catches of `r spp` are reported in 1876 in California and 1884 in Oregon.  `r Spp` were lightly exploited during the early 1900s, but new gear technology in the 1930s allowed trawling on new grounds and the fishery expanded to greater depths and to Oregon and Washington waters, resulting in larger landings. The `r spp` catches further increased during World War II in response to increased demands. Also, during the "vitamin A rush" in the late 1930s and 1940s it was found that `r spp` has high levels, which contributed to increased catches of this species as well. By the 1950s, the fishery was well developed with the stock showing declines in biomass and catches (Figures \ref{fig:es-catch} and \ref{fig:es-ssb}). Also in the 1950s, winter spawning grounds at deeper depths with dense concentrations of `r spp` were discovered, and catches increased accordingly. The rate of decline in spawning biomass accelerated through the 1970s reaching minimums estimated to be generally around or below 10% of the unexploited levels during the 1980s through the early 2000s (Figure \ref{fig:es-depl}). Recent annual catches between 1981-2022 range between 803 and 3060 mt per year and the most recent landings are shown in Table \ref{tab:removalsES}. 
 
 `r Spp` are a desirable market species and discarding has historically been low (less than 5%), with most of the discarding due to small sizes. 
 
 In this assessment, fishery removals have been divided between two fleets: 1) North and 2) South. Landings for the North fleet are defined as fish landed in Washington and Oregon ports. Landings for the South fleet are defined as fish landed in California ports.
 
 \clearpage
+
+```{r, results = 'asis'}
+tab <- read.csv(file.path(mod_loc_relative, "tables/b_SSB_ES.csv"))
+sa4ss::table_format(tab,
+    caption = "Estimated ageing error vectors used in the assessment model for true ages 0-30 read by the Cooperative Ageing Project (CAP) lab. The ages associated with 'CAP Surface Pre-1990' were excluded from the base model. Note that the population age bins extend to age 40, and the largest observed age is 32.",
+    label = 'ageing-error-cap'
+  )
+```
 
 \input{tex_tables/a_Catches_ES.tex}
 
@@ -45,16 +53,16 @@ label = 'es-catch')
 
 ## Data and assessment{-}
 
-This assessment uses the stock assessment framework Stock Synthesis (SS3; (Methot and Wetzel 2013)). Version: `{r strsplit(model$SS_version,";")[[1]][1])}`.
+This assessment uses the stock assessment framework Stock Synthesis (SS3; (Methot and Wetzel 2013)) version 3.30.21.00 released 10 February, 2023.
 The last full assessment of `r spp` was conducted in 2013 and most recent update assessment in 2019. 
 
 The modeling period begins in 1876, assuming an unfished equilibrium state of the stock in 1875. The assessment treats females and males separately due to differences in biology and life history parameters between sexes, and the coastwide population is modeled allowing separate growth and mortality parameters for each sex (a two-sex model). The model also allows for differences in selectivity between sexes. 
 
-Types of data that inform the model include catch, length and age frequency data from two commercial fleets, that include 1) North and 2) South. Biological data are derived from both port and on-board observer sampling programs. The National Marine Fisheries Service (NMFS) \gls{s-tri}  (1980, 1983, 1986, 1989, 1992, 1995, 1998, 2001, and 2004) and the  \Gls{s-wcgbt} (2003-2022) relative biomass indices and biological sampling provide fishery independent information on relative trend and demographics of the `r spp` stock.
+Types of data that inform the model include catch, length and age frequency data from two commercial fleets, that include 1) North and 2) South. Biological data are derived from both port and on-board observer sampling programs. The \gls{s-tri}  (1980, 1983, 1986, 1989, 1992, 1995, 1998, 2001, and 2004) and the \gls{s-wcgbt} (2003-2019, 2021-2022) relative biomass indices and biological sampling provide fishery independent information on relative trend and demographics of the `r spp` stock.
 
 The definition of fishing fleets changed in this assessment relative to the 2019 assessment. Previously, North and South fleets were additionally divided into seasonal fisheries (Winter and Summer), with fishing year starting in November of previous year. In this assessment, Winter and Summer fisheries are combined within each fleet into annual fisheries with removals corresponding to calendar year.
 
-Growth is assumed to follow the von Bertalanffy growth model, and the assessment explicitly estimates all parameters describing somatic growth. Natural mortality is estimated for both sexes using meta-analytical prior. Externally estimated life history parameters, including those defining the length-weight relationship, female fecundity and maturity schedule were revised for this assessment to incorporate new information. Recruitment dynamics are assumed to follow the Beverton-Holt stock-recruit function, and recruitment deviations are estimated. Stock-recruitment steepness is fixed at the value generated from meta-analytical study.
+Growth is assumed to follow the von Bertalanffy growth model, and the assessment explicitly estimates all parameters describing somatic growth. Natural mortality is estimated for both sexes using a meta-analytical prior. Externally estimated life history parameters, including those defining the length-weight relationship, female fecundity and maturity schedule were revised for this assessment to incorporate new information. Recruitment dynamics are assumed to follow the Beverton-Holt stock-recruit function, and recruitment deviations are estimated. Stock-recruitment steepness is fixed at the value generated from meta-analytical study.
 
 ## Stock biomass and dynamics{-}
 
@@ -88,9 +96,9 @@ Growth is assumed to follow the von Bertalanffy growth model, and the assessment
 
 ```
 
-The base model estimate of biomass time series is similar to previous assessments (Figure \ref{fig:smry-bio-historical}), with estimated biomass of ages 3 and older estimated around `r smry_equ` mt in the unfished equilibrium, declining to a minimum of `r smry_min` mt in `r smry_minyr`, rebuilding quickly to a recent peak of `r smry_max_recent` mt in `r smry_maxyr_recent` due to 3 years of very high recruitments from 2006 to 2008, and then declining to `r smry_2023` mt in 2023 due to low or average recruitment in the years since.
+The base model estimate of biomass time series is similar to previous assessments with estimated biomass of ages 3 and older estimated around `r smry_equ` mt in the unfished equilibrium, declining to a minimum of `r smry_min` mt in `r smry_minyr`, rebuilding quickly to a recent peak of `r smry_max_recent` mt in `r smry_maxyr_recent` due to 3 years of very high recruitments from 2006 to 2008, and then declining to `r smry_2023` mt in 2023 due to low or average recruitment in the years since.
 
-In terms of fraction of unfished spawning output (Figure \ref{fig:depl}), the minimum was `r Bratio_min` in `r Bratio_minyr`, the recent peak was `r Bratio_max_recent` in `r Bratio_maxyr_recent` and the 2023 estimate is `r Bratio_2023`.
+In terms of fraction of unfished spawning output, the minimum was `r Bratio_min` in `r Bratio_minyr`, the recent peak was `r Bratio_max_recent` in `r Bratio_maxyr_recent` and the 2023 estimate is `r Bratio_2023` (Figure \ref{fig:es-depl}, Table \ref{tab:ssbES}).
 
 \input{tex_tables/b_SSB_ES.tex}
 
@@ -132,7 +140,7 @@ if (!is.na(mod_base$log_det_hessian)) {
 
 ## Recruitment{-}
 
-Recruitment dynamics are assumed to follow Beverton-Holt stock-recruit function and the steepness parameter was fixed at the value of 0.8, which is the mean of steepness prior probability distribution, derived from meta-analysis of flatfish stocks. The level of virgin recruitment (R0) is estimated to inform the magnitude of the initial stock size. Annual recruitment is treated as stochastic. ‘Main’ recruitment deviations were estimated for modeled years that had information about recruitment, between 1959 and 2020. We additionally estimated ‘early’ deviations between 1845 and 1958. 
+Recruitment dynamics (Figure \ref{fig:es-recruits}, Table \ref{tab:recrES}) are assumed to follow Beverton-Holt stock-recruit function and the steepness parameter was fixed at the value of 0.8, which is the mean of steepness prior probability distribution, derived from meta-analysis of flatfish stocks. The level of virgin recruitment (R0) is estimated to inform the magnitude of the initial stock size. Annual recruitment is treated as stochastic. ‘Main’ recruitment deviations were estimated for modeled years that had information about recruitment, between 1959 and 2020. We additionally estimated ‘early’ deviations between 1845 and 1958. 
 
 The recruitment time series is punctuated by four large recruitment events in 1965, 2006, 2007, and 2008. The 1965 recruitment was estimated at about 40 million age-0 recruits while the latter three were in the 25-30 million range. The rest of the time series is close to 10 million recruits per year. The recruitment in 2012 was almost 20 million (a positive deviation from the stock-recruit curve of 0.56) but the years since are estimated to have had below-average or close-to-average recruitment, with a low point in 2017 of about 8 million recruits (deviation = -0.44).
 
@@ -173,14 +181,16 @@ if (!is.na(mod_base$log_det_hessian)) {
 \clearpage
 ## Exploitation status{-}
 
-The estimated time series of exploitation shows an accelerating increase in fishing intensity and exploitation rate with a peak around 1990 when the spawning potential ratio (SPR, spawning output relative to spawning output at unfished equilibrium) fell to 0.09 relative to a reference point of 0.3 and the exploitation rate (catch relative to age 3+ biomass) was close to 0.4. These rates are estimated to have declined slowly up to the point where the overfishing declaration led to dramatic decrease in catch in 2010, when SPR increased above the reference point to about 0.36. The fishing intensity has increased since that time due to the rebuilding of the stock, but is estimated to have remained below the reference point in the years since.
+Two measures of exploitation are fishing intensity and exploitation rate. Fishing intensity is defined here as 1 - SPR, where SPR is the equilibrium spawning output at a given combination of F and selectivity relative to spawning output at unfished equilibrium. Using the units of 1-SPR means that more intense fishing is associated with a higher value. The value of 1-SPR in the absence of fishing is 0 and the maximum is 1.0 if all spawning fish are being killed before spawning. The \gls{pfmc} has chosen an SPR target of 0.3 for `r spp` so harvest which leads to SPR below 0.3, or fishing intensity (1-SPR) greater than 0.7 would be overfishing. Exploitation rate is defined as the catch relative to age 3+ biomass. This metric is included because interpretation is simple, but it is not used as a basis for management. 
+
+The estimated time series of exploitation (Figures \ref{fig:es-1-spr} and \ref{fig:es-phase}, Table \ref{tab:exploitES}) shows an accelerating increase in fishing intensity and exploitation rate with a peak around 1990 when the 1-SPR increased to 0.91 and the exploitation rate was close to 0.4. These rates are estimated to have declined slowly up to the point where the overfishing declaration led to dramatic decrease in catch in 2010, when 1-SPR fell below the reference point to about 0.64. The fishing intensity has increased since that time due to the rebuilding of the stock, but is estimated to have remained below the reference point in the years since.
 
 \input{tex_tables/d_SPR_ES.tex}
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(mod_loc_relative, "plots", "SPR2_minusSPRseries.png"), 
-caption = "Estimated 1 - relative spawning ratio (SPR) by year for the base model. The management target is plotted as a red horizontal line and values above this reflect harvest in excess of the proxy harvest rate",
+filein = file.path(mod_loc_relative, "plots", "SPR3_ratiointerval.png"), 
+caption = "Estimated time series of the fishing intensity (1 - SPR), where SPR is the spawning potential ratio, with approximate 95% asymptotic intervals. The horizontal line at 0.7 corresponds to SPR = 0.3, the management reference point for petrale sole. The horizontal line at 1.0 corresponds to SPR = 0 (all spawning fish removed from the population).",
 label = 'es-1-spr')
 ```
 
@@ -190,13 +200,13 @@ label = 'es-1-spr')
 
 Haltuch et al. [-@haltuch_oceanographic_2020] examined the relationship between `r spp` recruitment and oceanographic drivers based on model output from a Regional Ocean Modeling System (ROMS) model for the California Current Ecosystem (Neveu et al. 2016). The results suggested that ROMS output might be useful as the basis for an environmental index of recruitment for `r spp`, to allow for better model precision and near-term forecasting. However, the ROMS model used by Haltuch et al. [-@haltuch_oceanographic_2020] was consistent in structure and inputs for 1980-2010. From 2011 forward, ROMS outputs exhibit distinct discontinuities with 1980-2010 period, showing changes in scale and trend across the 2010/2011 boundary. 
 
-Due to discontinuity in ROMS models between periods before and after 2011, the index developed by Haltuch et al. [-@haltuch_oceanographic_2020] could not be used for this stock assessment. However, an alternative oceanographic model products by Copernicus Marine Environment Monitoring Service (CMEMS) (https://marine.copernicus.eu/) and Mercator Ocean International (MOI) (https://www.mercator-ocean.eu/) were investigated to test if this modelling framework could be used to produce an environmental index of `r spp` recruitment. This new effort is ongoing, and has not yet been published or reviewed by the SSC. In this assessment, we explore the impact of the current CMEMS-based environmental index of `r spp` recruitment via sensitivity analysis.
+Due to discontinuity in ROMS models between periods before and after 2011, the index developed by Haltuch et al. [-@haltuch_oceanographic_2020] could not be used for this stock assessment. However, an alternative oceanographic model products by Copernicus Marine Environment Monitoring Service (CMEMS) (https://marine.copernicus.eu/) and Mercator Ocean International (MOI) (https://www.mercator-ocean.eu/) were investigated to test if this modelling framework could be used to produce an environmental index of `r spp` recruitment. This new effort is ongoing, and has not yet been published or reviewed by the \gls{ssc} of the \gls{pfmc}. In this assessment, we explore the impact of the current CMEMS-based environmental index of `r spp` recruitment via sensitivity analysis.
 
 Appendix A of this report describes the most recent, preliminary efforts in developing a new environmental index of `r spp` recruitment based on CMEMS products. Appendix A also discusses potential reasons for why the ROMS time series changed over the 2010/2011 boundary and how those changes might impact the ROMS-based recruitment index from Haltuch et al. [-@haltuch_oceanographic_2020].
 
 ## Reference points{-}
 
-Unfished spawning stock output for `r spp` is estimated to be 22.9 trillion eggs (95% confidence interval: 18-28 trillion eggs). The management biomass target for `r spp` is defined as 25% of the unfished spawning output ($B_{25\%}$), which is estimated by the model to be 5.7 trillion eggs (95% confidence interval: 4.5-6.9 trillion eggs), which corresponds to an exploitation rate (catch / age 3+ biomass) of 0.18. This harvest rate provides an equilibrium yield of 2481 mt at $B_{25\%}$ (95% confidence interval: 2120-2841 mt). Catch limits are determined by an SPR = 30% reference point which is associated with equilibrium exploitation rate of 0.17. The model estimate of maximum sustainable yield (MSY) is 2482 mt (95% confidence interval: 2121-2842 mt). The estimated spawning stock output at MSY is 5.5 trillion eggs (95% confidence interval: 4.3-6.7 trillion eggs). The exploitation rate corresponding to the estimated  $F_{MSY}$ proxy of SPR = 29% is 0.18. 
+Unfished spawning stock output for `r spp` is estimated to be 22.9 trillion eggs (95% confidence interval: 18-28 trillion eggs). The management biomass target for `r spp` is defined as 25% of the unfished spawning output ($B_{25\%}$), which is estimated by the model to be 5.7 trillion eggs (95% confidence interval: 4.5-6.9 trillion eggs), which corresponds, in a theoretical equilibrium state, to an exploitation rate (catch / age 3+ biomass) of 0.18 (Figure \ref{es-yield}, Table \ref{tab:referenceES}). This harvest rate provides an equilibrium yield of 2481 mt at $B_{25\%}$ (95% confidence interval: 2120-2841 mt). Catch limits are determined by an SPR = 30% reference point which is associated with equilibrium exploitation rate of 0.17. The model estimate of maximum sustainable yield (MSY) is 2482 mt (95% confidence interval: 2121-2842 mt). The estimated spawning stock output at MSY is 5.5 trillion eggs (95% confidence interval: 4.3-6.7 trillion eggs). The exploitation rate corresponding to the estimated  $F_{MSY}$ proxy of SPR = 29% is 0.18. 
 
 ```{r, results = 'asis'}
 add_figure(
@@ -222,18 +232,13 @@ label = 'es-yield')
 ## Management performance{-}
 
 In the last ten years total dead catches (including estimated dead discards) 
-have been below the annual catch limit, although the attainment has greater than
+have been below the annual catch limit, although the attainment has been greater than
 90\% in many of those years.
 
 ```{r, tables-vi, results = 'asis'}
 table_vi <- read.csv("../tables/table_vi.csv")
 sa4ss::table_format(x = table_vi,
-                 caption = paste("Recent trend in the overfishing limits (OFLs),",
-                 "the acceptable biological catches (ABCs),",
-                 "the annual catch limits (ACLs), the total landings, ",
-                 "and total mortality (mt).",
-                 "The 'Total dead' values may differ from the GEMM estimates because",
-                 "the discard mortality is computed within the model based on estimated retention curves."),
+                 caption = "Recent trend in the overfishing limits (OFLs), the acceptable biological catches (ABCs), the annual catch limits (ACLs), the total landings, and total mortality (mt). The 'Total dead' values may differ from Groundfish Expanded Mortality Multi-Year (GEMM) estimates because the discard mortality is computed within the model based on estimated retention curves.",
                  label = 'table-vi'
                  )
 ```
@@ -248,7 +253,7 @@ Not required in draft assessment undergoing review.
 
 ## Scientific uncertainty{-}
 
-The model estimated uncertainty around the `r endyr+1` spawning output for is $\sigma$ = `r round(mod_base$Pstar_sigma, 2)`. The uncertainty around the OFL is $\sigma$ = `r round(mod_base$OFL_sigma, 2)`. These values are lower than for many West Coast groundfish stocks for several reasons: large sample sizes of length and age data from fisheries and surveys, high frequency of occurrence in the \Gls{s-wcgbt} thanks to petrale primarily residing in trawlable habitat within the scope of the survey, and strong contrast in the data caused by fishing down the stock to a low level followed by rapid rebuilding. Nevertheless, these $\sigma$ values surely underestimate the overall uncertainty as they do not incorporate the model structural uncertainty and do not account for any time-varying dynamics other than recruitment.
+The model estimated uncertainty around the `r endyr+1` spawning output for is $\sigma$ = `r round(mod_base$Pstar_sigma, 2)`. The uncertainty around the OFL is $\sigma$ = `r round(mod_base$OFL_sigma, 2)`. These values are lower than for many West Coast groundfish stocks for several reasons: large `r spp` sample sizes of length and age data from fisheries and surveys, high frequency of occurrence in the \gls{s-wcgbt} thanks to petrale primarily residing in trawlable habitat within the scope of the survey, and strong contrast in the data caused by fishing down the stock to a low level followed by rapid rebuilding. Nevertheless, these $\sigma$ values surely underestimate the overall uncertainty as they do not incorporate the model structural uncertainty and do not account for any time-varying dynamics other than recruitment.
 
 The estimated uncertainty values are lower than the Category 1 default $\sigma = 0.5$, so all projections will use the default $\sigma$.
 
@@ -264,6 +269,6 @@ Progress on a number of research topics and data issues would substantially impr
 
 \item Further studies of transboundary movement of `r spp` between U.S. and Canadian waters would be beneficial for understanding of extend of `r spp` to help lay the groundwork for future collaborative effort between U.S. and Canada and potential transboundary assessment.
 
-\item The analytical solution for catchability (i.e., observed / predicted biomass) for the \Gls{s-wcgbt} is above 1.0 in the base model.  This was also the case in previous assessments of `r spp` and other flatfish assessments.  Further research into flatfish behaviors in response to survey gear will enhance the interpretation of catchability values for `r spp` off the West Coast.
+\item The analytical solution for catchability (i.e., observed / predicted biomass) for the \gls{s-wcgbt} is above 1.0 in the base model.  This was also the case in previous assessments of `r spp` and other flatfish assessments.  Further research into flatfish habitat use and behaviors in response to survey gear will enhance the interpretation of catchability values for `r spp` off the West Coast.
 
 \end{enumerate}

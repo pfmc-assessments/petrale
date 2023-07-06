@@ -10,7 +10,7 @@ Unfished spawning stock output for `r spp` is estimated to be 22.9 trillion eggs
 ## Harvest Projections and Decision Tables (Not required in draft assessment undergoing review)
 
 ## Evaluation of Scientific Uncertainty
-The model estimated uncertainty around the `r endyr+1` spawning output for is $\sigma$ = `r round(mod_base$Pstar_sigma, 2)`. The uncertainty around the OFL is $\sigma$ = `r round(mod_base$OFL_sigma, 2)`. These values are lower than for many West Coast groundfish stocks for several reasons: large sample sizes of length and age data from fisheries and surveys, high frequency of occurrence in the \Gls{s-wcgbt} thanks to petrale primarily residing in trawlable habitat within the scope of the survey, and strong contrast in the data caused by fishing down the stock to a low level followed by rapid rebuilding. Nevertheless, these $\sigma$ values surely underestimate the overall uncertainty as they do not incorporate the model structural uncertainty and do not account for any time-varying dynamics other than recruitment.
+The model estimated uncertainty around the `r endyr+1` spawning output for is $\sigma$ = `r round(mod_base$Pstar_sigma, 2)`. The uncertainty around the OFL is $\sigma$ = `r round(mod_base$OFL_sigma, 2)`. These values are lower than for many West Coast groundfish stocks for several reasons: large sample sizes of length and age data from fisheries and surveys, high frequency of occurrence in the \gls{s-wcgbt} thanks to petrale primarily residing in trawlable habitat within the scope of the survey, and strong contrast in the data caused by fishing down the stock to a low level followed by rapid rebuilding. Nevertheless, these $\sigma$ values surely underestimate the overall uncertainty as they do not incorporate the model structural uncertainty and do not account for any time-varying dynamics other than recruitment.
 
 The estimated uncertainty values are lower than the Category 1 default $\sigma = 0.5$, so all projections will use the default $\sigma$.
 
@@ -26,6 +26,6 @@ Progress on a number of research topics and data issues would substantially impr
 
 \item Further studies of transboundary movement of `r spp` between U.S. and Canadian waters would be beneficial for understanding of extend of `r spp` to help lay the groundwork for future collaborative effort between U.S. and Canada and potential transboundary assessment.
 
-\item The analytical solution for catchability (i.e., observed / predicted biomass) for the \Gls{s-wcgbt} is above 1.0 in the base model.  This was also the case in previous assessments of `r spp` and other flatfish assessments.  Further research into flatfish behaviors in response to survey gear will enhance the interpretation of catchability values for `r spp` off the West Coast.
+\item The analytical solution for catchability (i.e., observed / predicted biomass) for the \gls{s-wcgbt} is above 1.0 in the base model.  This was also the case in previous assessments of `r spp` and other flatfish assessments.  Further research into flatfish behaviors in response to survey gear will enhance the interpretation of catchability values for `r spp` off the West Coast.
 
 \end{enumerate}
