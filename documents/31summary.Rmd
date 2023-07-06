@@ -16,7 +16,7 @@ The most recent STAR panel for `r spp` was for the 2013 full assessment. The STA
 
 1. The states of California and Oregon have completed comprehensive historical catch reconstructions. Washington historical data are not yet available. Completion of Washington historical catch reconstruction would provide a better catch series.
 
-  Response: For this assessment, WDFW completed catch reconstruction of `r spp` (pers. comm. T. Tsou, WDFW). These newly estimated landings were used in this assessment.  
+  Response: This year Washington Department of Fish and Wildlife completed historical catch reconstruction of `r spp` (pers. comm. T. Tsou, WDFW). These newly estimated landings were used in this assessment. These newly estimated landings are lower than those used in previous assessment. We were not able to locate the source of Washington historical landings used in 2013 (and following update assessments), but historical landings in 2013 assessment were based on preliminary estimates and might have included catches from Puget Sound and Canadian waters (pers. comm. T. Tsou, WDFW). New Washington historical landings are more consistent with history of commercial removals on the U.S. West Coast and represent improvement to the assessment. 
 
 2. Update both the maturity and fecundity relationships using samples with wider geographic coverage to include California, and from more recent years for `r spp` would be beneficial. 
 
