@@ -41,6 +41,7 @@ get_mod <- function(num = NULL,
                     dir = NULL,
                     covar = TRUE,
                     assign = TRUE,
+                    SpawnOutputLabel = "Spawning output (trillions of eggs)",
                     printstats = FALSE,
                     plot = FALSE,
                     verbose = TRUE,
@@ -61,6 +62,7 @@ get_mod <- function(num = NULL,
   mod <- r4ss::SS_output(
     dir = dir,
     covar = covar,
+    SpawnOutputLabel = SpawnOutputLabel,
     printstats = printstats,
     verbose = FALSE
   )

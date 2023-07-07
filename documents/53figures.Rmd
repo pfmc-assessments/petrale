@@ -69,10 +69,7 @@ label = "catch-comparison"
 ```{r, index-figures, results = "asis"}
 sa4ss::add_figure(
 filein = "../figures/indices/survey_density.png", 
-caption = paste("Predicted density from the geostatistical standardization of the",
-  "Triennial Survey (left) and the WCGBTS (right) in 2004, the one year in which",
-  "both surveys were conducted. Density is on a log scale and the colors correspond",
-  "to different scales as shown in the two legends."),
+caption = "Predicted density from the geostatistical standardization of the Triennial Survey (left) and the West Coast Groundfish Bottom Trawl Survey (WCGBTS, right) in 2004, the one year in which both surveys were conducted. Density is on a log scale and the colors correspond to different scales as shown in the two legends.",
 label = "survey-density"
 )
 
@@ -100,15 +97,13 @@ label = "presence-absence-by-latitude"
 
 sa4ss::add_figure(
 filein = "../figures/indices/index_Tri.png", 
-caption = paste("Estimated index from the geostatistical standardization of the",
-  "Triennial Survey including estimated biomass in each state."),
+caption = "Estimated coastwide index from the geostatistical standardization of the Triennial Survey. The subset of the biomass estimated within the waters off each state is shown as well.",
 label = "survey-tri"
 )
 
 sa4ss::add_figure(
 filein = "../figures/indices/index_WCGBTS.png", 
-caption = paste("Estimated index from the geostatistical standardization of the",
-  "WCGBTS including estimated biomass in each state."),
+caption = "Estimated coastwide index from the geostatistical standardization of the WCGBTS. The subset of the biomass estimated within the waters off each state is shown as well.",
 label = "survey-wcgbts"
 )
 

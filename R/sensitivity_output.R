@@ -331,7 +331,7 @@ sens_make_table_old_vs_new <- function(sens_mods = NULL,
   thingnames <- c(
     "Recr_Virgin", "steep", "NatM", "Linf",
     "SmryBio_unfished",
-    "SSB_Virg", "SSB_2019", "SSB_2023",
+    #"SSB_Virg", "SSB_2019", "SSB_2023",
     "Bratio_2019", "Bratio_2023",
     "SPRratio_2018", "SPRratio_2022",
     "Ret_Catch_MSY", "Dead_Catch_MSY",
