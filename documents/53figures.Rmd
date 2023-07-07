@@ -245,12 +245,12 @@ label = 'len-all-pearson')
 
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots",  "comp_lenfit_data_weighting_TA1.8_North.png"), 
-caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the North fleet. Retained catch is shown in the top and discards on the bottom. 95% intervals for the observations are based on the adjusted input sample sizes."),
+caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the North fleet. Retained catch is shown in the top and discards on the bottom (NOTE: the figure title indicates that discards and retained are shown in both plots, but this is incorrect.). 95% intervals for the observations are based on the adjusted input sample sizes."),
 label = 'len-francis-north')
 
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots",  "comp_lenfit_data_weighting_TA1.8_South.png"), 
-caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the South fleet. Retained catch is shown in the top and discards on the bottom. 95% intervals for the observations are based on the adjusted input sample sizes."),
+caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the South fleet. Retained catch is shown in the top and discards on the bottom. (NOTE: the figure title indicates that discards and retained are shown in both plots, but this is incorrect.) 95% intervals for the observations are based on the adjusted input sample sizes."),
 label = 'len-francis-south')
 
 sa4ss::add_figure(
