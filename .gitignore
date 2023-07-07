@@ -61,7 +61,6 @@ vignettes/*.pdf
 /figures/data/
 /figures/compare/
 # these are a repeat of tables in the model folder
-/documents/tex_tables/ 
 /documents/temp_tex_tables/ 
 
 # Temporary files created by R markdown
