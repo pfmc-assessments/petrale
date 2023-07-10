@@ -10,7 +10,7 @@ Bridging analysis was conducted to illustrate the impact of incremental changes.
 
 \item Upgraded to Stock Synthesis version 3.30.21 (released in February 2023). This is standard practice to capitalize on newly developed features and corrections to older versions as well as improvements in computational efficiency.  No discernible differences were produce by this change.
 
-\item Updated historical and current fishery removals, to include most up to date information. This year WDFW completed historical catch reconstruction of `r spp` and newly estimated landings are lower than those used in previous assessment. Newly estimated Washington landings are also more consistent with history of commercial removals on the West Coast and represent improvement to the assessment.
+\item Updated historical and current fishery removals, to include most up to date information. This year WDFW completed historical catch reconstruction of `r spp` and newly estimated landings are lower than those used in previous assessment. Historical landings in 2013 assessment were based on preliminary estimates and might have included catches from Puget Sound and Canadian waters (pers. comm. T. Tsou, WDFW). New Washington historical landings are more consistent with history of commercial removals on the U.S. West Coast and represent improvement to the assessment. 
 
 \item Removed fishery CPUE time series. This change did not impact the assessment outputs or model fits (Figure \ref{fig:bridge1-ssb}).
 
