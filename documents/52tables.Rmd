@@ -157,6 +157,8 @@ table_pars_split(mod_base)
 #cat("\\end{landscape}")
 ```
 
+\clearpage
+
 ```{r tables-timeseries, results = "asis"}
 table_ts(mod_base)
 ```

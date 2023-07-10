@@ -34,4 +34,7 @@ Progress on a number of research topics and data issues would substantially impr
 
 \item The analytical solution for catchability (i.e., observed / predicted biomass) for the \gls{s-wcgbt} is above 1.0 in the base model.  This was also the case in previous assessments of `r spp` and other flatfish assessments.  Further research into flatfish behaviors in response to survey gear will enhance the interpretation of catchability values for `r spp` off the West Coast.
 
+\item Exploration of fine-scale differences in sex-specific spatial distribution or behavior that could lead to the differences in estimated selectivity would be helpful, as would investigating the possibility of environmental sex determination in `r spp`.
+
+\item The observed age data from the most recent few years in all sources shows slightly-older-than-expected distributions of ages. This could be a function of some unmodeled process related to time-varying growth, ageing error, or recruitment. As more ageing is conducted in the years ahead, it will be easier to determine the most likely drivers of this pattern and explore ways to improve the fit to these data.
 \end{enumerate}

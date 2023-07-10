@@ -18,7 +18,7 @@
 
 table_pars_split <- function(output,
                              rows = NULL,
-                             rows_per_table = 25,
+                             rows_per_table = 40,
                              caption = "Parameter estimates, estimation phase, parameter bounds, estimation status, estimated standard deviation (SD), prior information [distribution(mean, SD)] used in the base model.",
                              label = "table-pars-base") {
   # get parameters from model
