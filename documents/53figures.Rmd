@@ -1,4 +1,7 @@
 \clearpage
+
+\newgeometry{left=1in,right=1in, bottom=1cm, top=1cm} 
+
 # Figures
 ```{r, read-csv, results = "asis"}
 plot_info = read.csv(file.path(mod_loc_relative, "plots", "plotinfotable_for_doc.csv"))
@@ -133,22 +136,22 @@ label = 'smry-bio-historical')
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path("../figures/bridging/Comparison plots - first set/compare1_spawnbio.png"),
-caption = "Time series of estimated spawning biomass (1,000s of mt) for the 2019 assessment model and bridging steps 1 to 5.",
+caption = "Time series of estimated spawning biomass (1,000s of mt) for the 2019 assessment model and bridging steps 1 to 5. The changes are cumulative.",
 label = 'bridge1-ssb')
 
 sa4ss::add_figure(
 filein = file.path("../figures/bridging/Comparison plots - second set/compare1_spawnbio.png"),
-caption = "Time series of estimated spawning biomass (1,000s of mt) for bridging steps 5 to 8.",
+caption = "Time series of estimated spawning biomass (1,000s of mt) for bridging steps 5 to 8. The changes are cumulative.",
 label = 'bridge2-ssb')
 
 sa4ss::add_figure(
 filein = file.path("../figures/bridging/Comparison plots - third set/compare1_spawnbio.png"),
-caption = "Time series of estimated spawning biomass (1,000s of mt) for briding steps 8 to 13, where the final step is the 2023 base model. The change in fecundity associated with the final step (2023 base, red line) changes the units of spawning output to trillions of eggs so the values are not comparable.",
+caption = "Time series of estimated spawning biomass (1,000s of mt) for briding steps 8 to 13, where the final step is the 2023 base model. The change in fecundity associated with the final step (2023 base, red line) changes the units of spawning output to trillions of eggs so the values are not comparable. The changes are cumulative.",
 label = 'bridge3-ssb')
 
 sa4ss::add_figure(
 filein = file.path("../figures/bridging/Comparison plots - third set/compare3_Bratio.png"),
-caption = "Time series of fraction of unfished spawning output for briding steps 8 to 13, where the final step is the 2023 base model.",
+caption = "Time series of fraction of unfished spawning output for briding steps 8 to 13, where the final step is the 2023 base model. The changes are cumulative.",
 label = 'bridge3-bratio')
 
 ```
@@ -192,19 +195,19 @@ sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "custom_plots", "selectivity_time-varying_fem.png"), 
 caption = paste("Time-varying female selectivity (top) and retention (bottom)",
   "for the fishing fleets. Retention is the same for females and males.",
-  "Note: the legend shows the "),
+  "Note: the legend shows the time periods in which there are blocks on either retention or discards even if they don't apply in each case."),
 label = 'sel-tv-fem')
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "custom_plots",  "selectivity_time-varying_mal.png"), 
 caption = paste("Time-varying male selectivity (top) and retention (bottom)",
-  "for the fishing fleets. Retention is the same for females and males."),
+  "for the fishing fleets. Retention is the same for females and males.",
+  "Note: the legend shows the time periods in which there are blocks on either retention or discards even if they don't apply in each case."),  
 label = 'sel-tv-mal')
 
 ```
 
 <!--  Fits to Data -->
 
-\clearpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -212,15 +215,14 @@ filein = file.path(mod_loc_relative, "plots",  "index2_cpuefit_WCGBTS.png"),
 caption = paste("Fit to index data for WCGBTS. Lines indicate 95% uncertainty",
   "interval around index values based on the model assumption of lognormal error."),
 label = 'index-wcgbts-fit')
-
+```
+```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots",  "index2_cpuefit_Triennial.png"), 
 caption = paste("Fit to index data for the Triennial survey. Lines indicate 95% uncertainty",
   "interval around index values based on the model assumption of lognormal error with and without estimated additional uncertainty parameter."),
 label = 'index-tri-fit')
 ```
-
-\clearpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
@@ -308,8 +310,6 @@ label = 'caal-fit2')
 
 ```
 
-\clearpage
-
 ```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots",  "discard_fitNorth.png"), 
@@ -320,7 +320,9 @@ sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots",  "discard_fitSouth.png"), 
 caption = paste("Discard fraction for the South fishery with 95% intervals (black) with fit of expected value (blue)."),
 label = 'discard_fitSouth')
+```
 
+```{r, results = 'asis'}
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots",  "bodywt_fit_fltNorth.png"), 
 caption = paste("Mean individual body weight of the discards for the North fishery with 95% intervals (black) with fit of expected value (blue)."),
@@ -333,7 +335,6 @@ label = 'mnwt_fitSouth')
 
 ```
 
-\clearpage
 
 <!--  Time-series and recruitment -->
 
@@ -368,8 +369,6 @@ caption = "Estimated time series of recruitment deviations with approximate 95% 
 label = 'rec-devs')
 
 ```
-
-\clearpage
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(

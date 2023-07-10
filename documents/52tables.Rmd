@@ -82,12 +82,12 @@ sa4ss::table_format(x = age_samps_WCGBTS,
 ```{r, tables-ageing}
 table_ageing_error(mod_base) %>%
   sa4ss::table_format(
-    caption = "Estimated ageing error vectors used in the assessment model for true ages 0-30 read by the Cooperative Ageing Project (CAP) lab. The ages associated with 'CAP Surface Pre-1990' were excluded from the base model. Note that the population age bins extend to age 40, and the largest observed age is 32.",
+    caption = "Estimated ageing error vectors used in the assessment model for true ages 0--30 read by the Cooperative Ageing Project (CAP) lab. The ages associated with 'CAP Surface Pre-1990' were excluded from the base model. Note that the population age bins extend to age 40, and the largest observed age is 32.",
     label = 'ageing-error-cap'
   )
 table_ageing_error(mod_base, matrices = c(6,5,7)) %>%
   sa4ss::table_format(
-    caption = "Estimated ageing error vectors used in the assessment model for true ages 0-30 read by the Washington Department of Fish and Wildlife (WDFW) lab. The ages associated with 'WDFW Surface' were excluded from the base model. Note that the population age bins extend to age 40, and the largest observed age is 32.",
+    caption = "Estimated ageing error vectors used in the assessment model for true ages 0--30 read by the Washington Department of Fish and Wildlife (WDFW) lab. The ages associated with 'WDFW Surface' were excluded from the base model. Note that the population age bins extend to age 40, and the largest observed age is 32.",
     label = 'ageing-error-wdfw'
   )
 ```

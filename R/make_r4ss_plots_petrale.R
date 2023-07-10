@@ -50,6 +50,26 @@ make_r4ss_plots_petrale <- function(mod, plot = c(1:26, 31:50),
     )
   }
 
+  # separate Francis plots
+  if (33 %in% plot) {
+    for (f in 1:2) {
+      for (part in 1:2) {
+        png(file.path(dir_custom, 
+          paste0("Francis_plot_flt", f, "_part", part, ".png")),
+          width = 6.5, height = 4, res = 300, units = 'in', pointsize = 10)
+        SSMethod.TA1.8(
+                      fit = mod, type = "len",
+                      part = part,
+                      fleet = f, #fleetnames = mod$FleetNames, 
+                      datonly = FALSE,
+                      plotadj = TRUE,
+                      printit = FALSE
+                    )
+        dev.off()
+      }
+    }
+  }
+
   # make default plots for most things
   if (any(1:26 %in% plot)) {
     r4ss::SS_plots(mod,
