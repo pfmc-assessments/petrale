@@ -1,7 +1,8 @@
 ## Base Model Results
+As a supplement to the model results figures included in this report and described below, a full set of diagnostic plots created by the {r4ss} package [@taylor_beyond_2021] is available at https://pfmc-assessments.github.io/petrale/ along with the Stock Synthesis input files.
 
 ### Parameter Estimates
-Estimated and fixed parameter values are shown in Tables \ref{tab:table-pars-base-1}-\ref{tab:table-pars-base-13}.
+Estimated and fixed parameter values are shown in Tables \ref{tab:table-pars-base-1}-\ref{tab:table-pars-base-8}.
 
 Estimates of key parameters include 
 female $M$ = 
