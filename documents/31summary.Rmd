@@ -41,12 +41,12 @@ The most recent STAR panel for `r spp` was for the 2013 full assessment. The STA
 6. The effect of the implementation of the IFQ (catch shares) program that began during 2011 on fleet behavior, including impacts on discards, fishery selectivity, and fishing locations, would benefit from further study.
 
 
-  Response: In this assessment, additional flexibility is allowed for the period after IFQ program was implemted, through time varying selectivity and retention parameters, to account for changes in discard rates and fishery selection. 
+  Response: In this assessment, additional flexibility is given to the model, through time varying selectivity and retention parameters for the period after 2011, to account for changes in discard rates and fishery selection after IFQ program was implemented.
 
 7. The extent of spatial variability on productivity processes such as growth, recruitment, and maturity is currently unknown and would benefit from further research. 
 
 
-  Response: Progress has been made in exploring time varying growth of multiple groundfish species, including `r spp` [@gertseva_spatial_2017]. In the early stages of this assessment a two-area spatial model was developed but the additional complexity required by estimating the distribution of annual recruitment among two areas was not supported by the age data available from California so that model was not pursued in depth.
+  Response: Progress has been made in exploring spatial variability in growth of multiple groundfish species, including `r spp`. Gertseva et al.  [-@gertseva_spatial_2017], for instance,  found that detecting spatial growth variability in `r spp` is complicated by the seasonal migrations of fish between shallow northern feeding grounds during warm summer months to southern offshore spawning areas in autumn and winter, and suggested that it could potentially be a sex–area interaction in `r spp` growth.  In the early stages of this assessment a two-area spatial model was developed but the additional complexity required by estimating the distribution of annual recruitment among two areas was not supported by the age data available from California so that model was not pursued in depth.
 
 8. The Panel appreciated the delta-GLMM approach to derive an index of stock size from commercial CPUE data. However, there may still be factors other than stock size that affect time-trends in the standardized CPUE indices. The panel recommends:
 
