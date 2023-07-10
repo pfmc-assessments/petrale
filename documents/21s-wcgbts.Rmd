@@ -31,12 +31,12 @@ Length bins from 12 to 62 cm in 2 cm increments were used to summarize the lengt
 
 Length compositions were separated into males and females. These length compositions were expanded to account for subsampling tows, with further expansion based upon the stratification by depth and latitude. The stratifications for length data expansions are provided in Table \ref{tab:strata-wcgbts}.
 
-Age distributions included bins from age 1 to age 17, with the last bin including all fish of greater age. Table \ref{tab:sample-size-age-wcgbts} shows the number of ages taken by the survey. Age distributions were included in the model as conditional-age-at-length observations. The marginal \gls{s-wcgbt} age-compositions were also included, but only for easier viewing of strong cohorts. The conditional-age-at-length data were not expanded and were binned according to length, age, sex, and year.
+Age distributions included bins from age 1 to age 17, with the last bin including all fish of greater age. Table \ref{tab:sample-size-age-wcgbts} shows the number of ages taken by the survey. Age distributions were included in the model as conditional-age-at-length (CAAL) observations. The marginal \gls{s-wcgbt} age-compositions were also included, but only for easier viewing of strong cohorts. The conditional-age-at-length data were not expanded and were binned according to length, age, sex, and year.
 
 The input sample sizes for length and marginal age-composition data for all fishery-independent surveys 
 The input sample sizes for length composition data for all fishery-independent surveys were calculated based on Stewart and Hamel [-@stewart_bootstrapping_2014] as $\text{Input N}_{y} = 3.09*N_{tow}$ where the 3.09 value was estimated for a group of 8 flatfish species including `r spp`.
 
-The input sample size of conditional-age-at-length (CAAL) data was set at the number of fish at each length by sex and by year. The marginal age compositions were only used for comparing the implied fits while the CAAL data were used in the likelihood.
+The input sample size of CAAL data was set at the number of fish at each length by sex and by year. The marginal age compositions were only used for comparing the implied fits while the CAAL data were used in the likelihood.
 
 ### Fishery-independent data sources considered but not used
 
