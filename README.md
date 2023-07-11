@@ -18,10 +18,11 @@ library(magrittr)
 # (depends on model files in "models" directory)
 compile_petrale(get_dir_petrale(26,1))
 
+# update r4ss to branch related to units of spawning output
+pak::pkg_install("r4ss/r4ss@spawn_output_label_838")
 
 ## other helpful functions
-```
-# # first run `devtool::load_all()` in the petrale folder
+# first run `devtool::load_all()` in the petrale folder
 get_mod(26, 1)
 # # reports the following
 # id = 2023.a026.001
