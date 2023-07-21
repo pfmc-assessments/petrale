@@ -14,14 +14,15 @@ devtools::load_all()
 # load other libraries
 library(sa4ss)
 library(magrittr)
-# compile document for model 2023.a024.034
+# compile document for current base model
 # (depends on model files in "models" directory)
-compile_petrale(get_dir_petrale(26,1))
+compile_petrale()
 
+# update r4ss to branch related to units of spawning output
+pak::pkg_install("r4ss/r4ss@spawn_output_label_838")
 
 ## other helpful functions
-```
-# # first run `devtool::load_all()` in the petrale folder
+# first run `devtool::load_all()` in the petrale folder
 get_mod(26, 1)
 # # reports the following
 # id = 2023.a026.001
