@@ -255,6 +255,10 @@ Main life history parameters, such as natural mortality and stock-recruit curve 
 
 Not required in draft assessment undergoing review.
 
+\clearpage
+\input{tex_tables/decision_table.tex}
+
+\clearpage
 ## Scientific uncertainty{-}
 
 The model estimated uncertainty around the `r endyr+1` spawning output for is $\sigma$ = `r round(mod_base$Pstar_sigma, 2)`. The uncertainty around the OFL is $\sigma$ = `r round(mod_base$OFL_sigma, 2)`. These values are lower than for many West Coast groundfish stocks for several reasons: large `r spp` sample sizes of length and age data from fisheries and surveys, high frequency of occurrence in the \gls{s-wcgbt} thanks to `r spp` primarily residing in trawlable habitat within the scope of the survey, and strong contrast in the data caused by fishing down the stock to a low level followed by rapid rebuilding. Nevertheless, these $\sigma$ values surely underestimate the overall uncertainty as they do not incorporate the model structural uncertainty and do not account for any time-varying dynamics other than recruitment.
