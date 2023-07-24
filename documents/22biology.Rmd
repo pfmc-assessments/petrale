@@ -24,8 +24,6 @@ A new maturity ogive was developed for this assessment (pers. comm. M. Head, NWF
 
 A fecundity relationship published in 2019 [@lefebvre_reproductive_2019] was used as a sensitivity analysis in the previous assessment and has been adopted for the base model in this one. The relationship shows a slightly faster increase in the number of eggs per unit length than when fecundity was assumed proportional to body weight. The addition of this fecundity relationship means that spawning output is reported in trillions of eggs rather than metric tons of spawning biomass. A comparison of the fecundity and weight-length relationships is provided in Figure \ref{fig:fecundity}.
 
-<!-- TODO: add figure (perhaps copied from 2019 assessment) and note the parameter values. -->
-
 ### Sex Ratio
 
 The fraction of the smallest and youngest `r spp` observed in the \gls{s-wcgbt} (less than 35 cm or younger than age 5) identified as female is less than 50%. No study on what determines phenotypic sex for `r spp` has been conducted, but environmental sex determination (ESD) has been established for many other flatfish, where environmental factors can influence phenotypic sex in the female genotype, resulting in male-skewed sex ratios [@luckenbach_sex_2009; @honeycutt_warmer_2019]. The sex ratio of larger and older fish is skewed toward females presumably due to lower natural mortality.

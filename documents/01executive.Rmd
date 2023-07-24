@@ -255,6 +255,8 @@ Main life history parameters, such as natural mortality and stock-recruit curve 
 
 Not required in draft assessment undergoing review.
 
+\input{tex_tables/projections.tex}
+
 \clearpage
 \input{tex_tables/decision_table.tex}
 

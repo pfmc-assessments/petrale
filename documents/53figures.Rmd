@@ -497,30 +497,31 @@ figures_diags <- "../figures/diags_model34/"
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(figures_diags, "retro_compare2_spawnbio_uncertainty.png"), 
-caption = "Change in the estimate of spawning output when the most recent 5 years of data area removed sequentially",
+filein = file.path(figures_diags, "updated_retro/compare2_spawnbio_uncertainty.png"), 
+caption = "Retrospective results: change in the estimate of spawning output when the most recent 5 years of data area removed sequentially. The Mohn's rho values are averages across the respective number of peels in each case. See equation (2) in Hurtado-Ferro et al. [-@hurtado-ferro_looking_2015] for additional details.",
 label = 'retro-ssb')
 ```
 
-\clearpage
+```{r, results = 'asis'}
+add_figure(
+filein = file.path(figures_diags, "updated_retro/retro_percent_difference_4_panel.png"), 
+caption = "Retrospective results: percent change from the base model for exploitation rate (F), fraction unfished, and spawning output.",
+label = 'retro-percent-change')
+```
 
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(figures_diags, "retro_compare13_indices_flt4.png"), 
-caption = "Change in the fit to the WCGBTS index when the most recent 5 years of data area removed sequentially",
+caption = "Retrospective results: change in the fit to the WCGBTS index when the most recent 5 years of data area removed sequentially",
 label = 'retro-index')
 ```
 
-\clearpage
-
 ```{r, results = 'asis'}
-add_figure(
-filein = file.path(figures_diags, "retro_compare4_Bratio_uncertainty.png"),
-caption = "Change in the estimate of fraction unfished when the most recent 5 years of data area removed sequentially",
-label = 'retro-depl')
+# add_figure(
+# filein = file.path(figures_diags, "retro_compare4_Bratio_uncertainty.png"),
+# caption = "Change in the estimate of fraction unfished when the most recent 5 years of data area removed sequentially",
+# label = 'retro-depl')
 ```
-
-\clearpage
 
 <!--  Likelihood Profiles -->
 

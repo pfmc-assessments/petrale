@@ -20,7 +20,7 @@ These groups included the following runs:
 - Composition data
   - Tuning the sample sizes using the Dirichlet-Multinomial likelihood.
   - Early surface read ages are included and retuned.
-  - Early ages from Oregon marked `special request` are excluded.
+  - Early ages from Oregon marked "special request" are excluded.
 
 - Biology
   - Weight-Length relationship from 2019 assessment.
@@ -52,7 +52,7 @@ Studies on stock structure and movement of `r spp` indicating transboundary move
 
 ### Retrospective Analysis
 
-A five-year retrospective analysis was conducted by successively removing years of data starting from 2022 (i.e., “Data -1 Years” corresponds to data through 2021 instead of 2022). The estimated spawning output exhibited small changes in the initial equilibrium and the final few years of the model (Figure \ref{fig:retro-ssb}). These changes are driven primarily by the fit to the \gls{s-wcgbt}, where the combination of the lower observed index in 2018 and 2019 and the absence of a survey in 2020 resulted in the Data-2 through Data-4 retrospectives to a more steeply declining trend at the end of the time series (Figure \ref{fig:retro-index}). Estimates of the fraction of unfished spawning output showed very little change across retrospectives (Figure \ref{fig:retro-depl}).
+A five-year retrospective analysis was conducted by successively removing years of data starting from 2022 (i.e., “Data -1 Years” corresponds to data through 2021 instead of 2022). The estimated spawning output exhibited small changes in the initial equilibrium and the final few years of the model (Figures \ref{fig:retro-ssb} and \ref{fig:retro-percent-change}). These changes are driven primarily by the fit to the \gls{s-wcgbt}, where the combination of the lower observed index in 2018 and 2019 and the absence of a survey in 2020 resulted in the Data-2 through Data-4 retrospectives to a more steeply declining trend at the end of the time series (Figure \ref{fig:retro-index}).
 
 ### Historical Analysis
 The second type of retrospective analysis addresses assessment error, or at least in the historical context of the current result, given previous analyses. Figure \ref{fig:smry-bio-historical} illustrates the comparison of biomass time series across multiple previous assessments and shows that the base model output follows the same trajectory as previous assessment and estimate stock scale  is in the middle range of previous assessments.

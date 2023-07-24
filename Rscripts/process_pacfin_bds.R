@@ -6,6 +6,8 @@
 #
 ################################################################################################
 
+save <- FALSE
+
 #### source this script (may take 4-5 minutes)
 if (FALSE) {
   tictoc::tic()
@@ -161,8 +163,8 @@ range(calcom_date)
 # [1] "1948-08-05" "1992-01-23"
 calcom_year <- as.numeric(format(calcom_date, "%Y"))
 table(calcom_year)
-# 1948 1949 1962 1964 1965 1966 1967 1968 1969 1970 1971 1972 1973 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987 
-#  405  458  150  970  608 2248 2296 3914 2612 1146 1699 2182 2228 2107 1199 1730 2555 2101  847 5041 4656 2930 2451 1570 1225 1351 1000 
+# 1948 1949 1962 1964 1965 1966 1967 1968 1969 1970 1971 1972 1973 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987
+#  405  458  150  970  608 2248 2296 3914 2612 1146 1699 2182 2228 2107 1199 1730 2555 2101  847 5041 4656 2930 2451 1570 1225 1351 1000
 # 1988 1989 1990 1991 1992
 #  516  841  252  418   88
 ### TODO: fix potential double-counting of samples from
@@ -205,7 +207,7 @@ CombinedDat <- combineCalCOM(Pdata = bds.pacfin, CalCOM = CALCOM)
 Pdata <- cleanPacFIN(
   Pdata = CombinedDat,
   keep_sample_type = c("M", "S"),
-  #keep_sample_type = c("M"), # use for sensitivity 303
+  # keep_sample_type = c("M"), # use for sensitivity 303
   keep_age_method = c("B", "S"),
   CLEAN = TRUE,
   verbose = TRUE
@@ -338,10 +340,12 @@ table(Pdata[Pdata$outlier, "lengthcm"], Pdata[Pdata$outlier, "Age"])
 
 # Save the filtered data
 today_date <- format(as.Date(Sys.time()), "%d.%b.%Y")
-save(Pdata, file = file.path(dir, paste0("Cleaned_PacFIN.PTRL.bds.", today_date, ".Rda")))
+if (save) {
+  save(Pdata, file = file.path(dir, paste0("Cleaned_PacFIN.PTRL.bds.", today_date, ".Rda")))
+}
 
 # # Load the filtered data saved above to skip the cleaning steps (need to change the date)
-# load("data-raw/Cleaned_PacFIN.PTRL.bds.16.Mar.2023.Rda")
+# load("data-raw/Cleaned_PacFIN.PTRL.bds.30.Jun.2023.Rda")
 
 # plot of age vs length with outliers shown as larger points
 ggplot(Pdata, aes(x = Age, y = lengthcm)) +
@@ -349,9 +353,11 @@ ggplot(Pdata, aes(x = Age, y = lengthcm)) +
   geom_jitter(aes(col = SEX, size = factor(outlier), alpha = 0.2)) +
   guides(alpha = FALSE)
 # save plot
-ggsave("figures/data/pacfin_outliers.png",
-  width = 6.5, height = 5, units = "in", scale = 1.5
-)
+if (save) {
+  ggsave("figures/data/pacfin_outliers.png",
+    width = 6.5, height = 5, units = "in", scale = 1.5
+  )
+}
 
 # summary of how many outliers were identified
 table(Pdata$outlier[!is.na(Pdata$Age)])
@@ -580,7 +586,7 @@ Pdata_exp2_annual <- getExpansion_2(
 #    <dbl> <chr>                    <int> <int>
 # 1   2023 WA_ALL                    1708     2
 
-test <- Pdata_exp1_annual %>% 
+test <- Pdata_exp1_annual %>%
   dplyr::filter(SOURCE_AGID == "CalCOM")
 test_exp2_annual <- getExpansion_2(
   Pdata = test,
@@ -801,30 +807,34 @@ len_comps_coast <- writeComps(
 # len_comps_annual2 <- rbind(len_comps_annual$Uout, len_comps_annual$FthenM)
 
 # select only the sexed fish
-len_comps_annual2 <- len_comps_annual$FthenM
-len_comps_unexpanded_annual2 <- len_comps_unexpanded_annual$FthenM
-len_comps_seas2 <- len_comps_seas$FthenM
-len_comps_coast2 <- len_comps_coast$FthenM
+  len_comps_annual2 <- len_comps_annual$FthenM
+  len_comps_unexpanded_annual2 <- len_comps_unexpanded_annual$FthenM
+  # separate female and male vectors
+  # to explore issues raised in Black Rockfish STAR
+  names(len_comps_annual$Fout) <- 
+    names(len_comps_annual$FthenM)
+  names(len_comps_annual$Mout) <- 
+    names(len_comps_annual$FthenM)
+  len_comps_annual2_sex12 <- rbind(len_comps_annual$Fout, len_comps_annual$Mout)
+  len_comps_seas2 <- len_comps_seas$FthenM
+  len_comps_coast2 <- len_comps_coast$FthenM
+  len_comps_seas2 <- len_comps_seas$FthenM
+  len_comps_coast2 <- len_comps_coast$FthenM
 
-
+assign_fleets <- function(x) {
+  x %>%
+  dplyr::mutate(
+    fleet =
+      dplyr::case_when(
+        fleet == "WA_OR_ALL" ~ 1,
+        fleet == "CA_ALL" ~ 2
+      )
+  )
+}
 # assign fleets for annual model
-len_comps_annual2 <- len_comps_annual2 %>%
-  dplyr::mutate(
-    fleet =
-      dplyr::case_when(
-        fleet == "WA_OR_ALL" ~ 1,
-        fleet == "CA_ALL" ~ 2
-      )
-  )
-
-len_comps_unexpanded_annual2 <- len_comps_unexpanded_annual2 %>%
-  dplyr::mutate(
-    fleet =
-      dplyr::case_when(
-        fleet == "WA_OR_ALL" ~ 1,
-        fleet == "CA_ALL" ~ 2
-      )
-  )
+len_comps_annual2 <- len_comps_annual2 %>% assign_fleets()
+len_comps_unexpanded_annual2 <- len_comps_unexpanded_annual2 %>% assign_fleets()
+len_comps_annual2_sex12 <- len_comps_annual2_sex12 %>% assign_fleets()
 
 # assign fleets for seasonal model:
 # Fleets:
@@ -848,12 +858,14 @@ len_comps_coast2$fleet <- 1
 
 # save Rdata file with stuff
 today_date <- format(as.Date(Sys.time()), "%d.%b.%Y")
-save(len_comps_seas2, len_comps_annual2, len_comps_coast2,
-  file = paste0(
-    "data-raw/pacfin/len_comps_all_", today_date,
-    "_data_from_", out_date, ".Rdata"
+if (save) {
+  save(len_comps_seas2, len_comps_annual2, len_comps_coast2,
+    file = paste0(
+      "data-raw/pacfin/len_comps_all_", today_date,
+      "_data_from_", out_date, ".Rdata"
+    )
   )
-)
+}
 
 ## exploring Nsamps vs InputN
 # plot(len_comps_annual2$year, len_comps_annual2$Nsamps/len_comps_annual2$InputN, ylim = c(0, 100))
@@ -878,6 +890,8 @@ len_comps_annual2 <- len_comps_annual2 %>%
   dplyr::select(!remove_cols)
 len_comps_unexpanded_annual2 <- len_comps_unexpanded_annual2 %>%
   dplyr::select(!remove_cols)
+len_comps_annual2_sex12 <- len_comps_annual2_sex12 %>%
+  dplyr::select(!remove_cols)
 len_comps_seas2 <- len_comps_seas2 %>%
   dplyr::select(!remove_cols)
 len_comps_coast2 <- len_comps_coast2 %>%
@@ -885,6 +899,8 @@ len_comps_coast2 <- len_comps_coast2 %>%
 
 # sort by fleet, year, and then sex error type
 len_comps_annual2 <- len_comps_annual2 %>%
+  dplyr::arrange(fleet, year, sex)
+len_comps_annual2_sex12 <- len_comps_annual2_sex12 %>%
   dplyr::arrange(fleet, year, sex)
 len_comps_unexpanded_annual2 <- len_comps_unexpanded_annual2 %>%
   dplyr::arrange(fleet, year, sex)
@@ -894,35 +910,44 @@ len_comps_coast2 <- len_comps_coast2 %>%
   dplyr::arrange(fleet, year, sex)
 
 # write SS3 format comps to CSV files
-write.csv(len_comps_annual2,
-  file = file.path(
-    dir, "pacfin", "forSS_annual",
-    paste0("Len_for_SS3_", today_date, "_data_from_", out_date, ".csv")
-  ),
-  row.names = FALSE
-)
-write.csv(len_comps_unexpanded_annual2,
-  file = file.path(
-    dir, "pacfin", "forSS_annual_unexpanded",
-    paste0("Len_for_SS3_", today_date, "_data_from_", out_date, ".csv")
-  ),
-  row.names = FALSE
-)
-write.csv(len_comps_seas2,
-  file = file.path(
-    dir, "pacfin", "forSS_seas",
-    paste0("Len_for_SS3_", today_date, "_data_from_", out_date, ".csv")
-  ),
-  row.names = FALSE
-)
-write.csv(len_comps_coast2,
-  file = file.path(
-    dir, "pacfin", "forSS_coast",
-    paste0("Len_for_SS3_", today_date, "_data_from_", out_date, ".csv")
-  ),
-  row.names = FALSE
-)
-
+if (save) {
+  write.csv(len_comps_annual2,
+    file = file.path(
+      dir, "pacfin", "forSS_annual",
+      paste0("Len_for_SS3_", today_date, "_data_from_", out_date, ".csv")
+    ),
+    row.names = FALSE
+  )
+  dir.create('data-raw/pacfin/forSS_annual_sex12')
+  write.csv(len_comps_annual2_sex12,
+    file = file.path(
+      dir, "pacfin", "forSS_annual_sex12",
+      paste0("Len_for_SS3_", today_date, "_data_from_", out_date, ".csv")
+    ),
+    row.names = FALSE
+  )
+  write.csv(len_comps_unexpanded_annual2,
+    file = file.path(
+      dir, "pacfin", "forSS_annual_unexpanded",
+      paste0("Len_for_SS3_", today_date, "_data_from_", out_date, ".csv")
+    ),
+    row.names = FALSE
+  )
+  write.csv(len_comps_seas2,
+    file = file.path(
+      dir, "pacfin", "forSS_seas",
+      paste0("Len_for_SS3_", today_date, "_data_from_", out_date, ".csv")
+    ),
+    row.names = FALSE
+  )
+  write.csv(len_comps_coast2,
+    file = file.path(
+      dir, "pacfin", "forSS_coast",
+      paste0("Len_for_SS3_", today_date, "_data_from_", out_date, ".csv")
+    ),
+    row.names = FALSE
+  )
+}
 ##########################################################
 # Calculate the expansion for age data
 ##########################################################
@@ -977,14 +1002,20 @@ Adata_exp2_seas <- getExpansion_2(
   Catch = catch_seas,
   Units = "MT",
   stratification.cols = c("state", "geargroup"),
-  savedir = file.path(dir, "pacfin", "plots_seas_Age")
+  savedir = ifelse(save,
+    file.path(dir, "pacfin", "plots_seas_Age"),
+    "ignored"
+  )
 )
 Adata_exp2_coast <- getExpansion_2(
   Pdata = Adata_exp1_coast,
   Catch = catch_annual,
   Units = "MT",
   stratification.cols = c("state", "geargroup"),
-  savedir = file.path(dir, "pacfin", "plots_coast_Age")
+  savedir = ifelse(save,
+    file.path(dir, "pacfin", "plots_coast_Age"),
+    "ignored"
+  )
 )
 
 # replace final sample size with lower cap
@@ -998,22 +1029,27 @@ Adata_exp2_coast$Final_Sample_Size <- capValues(Adata_exp2_coast$Expansion_Facto
 Adata_exp2_annual %>%
   ggplot(aes(x = Expansion_Factor_1_A, fill = SOURCE_AGID, colour = SOURCE_AGID)) +
   geom_histogram(alpha = 0.5, position = "stack")
-ggsave("figures/data/Expansion_Factor_1_A_26May.png",
-  width = 6.5, height = 5, units = "in", scale = 1.5
-)
+if (save) {
+  ggsave("figures/data/Expansion_Factor_1_A_26May.png",
+    width = 6.5, height = 5, units = "in", scale = 1.5
+  )
+}
 Adata_exp2_annual %>%
   ggplot(aes(x = Expansion_Factor_2, fill = SOURCE_AGID, colour = SOURCE_AGID)) +
   geom_histogram(alpha = 0.5, position = "stack")
-ggsave("figures/data/Expansion_Factor_2_A_26May.png",
-  width = 6.5, height = 5, units = "in", scale = 1.5
-)
+if (save) {
+  ggsave("figures/data/Expansion_Factor_2_A_26May.png",
+    width = 6.5, height = 5, units = "in", scale = 1.5
+  )
+}
 Adata_exp2_annual %>%
   ggplot(aes(x = Final_Sample_Size, fill = SOURCE_AGID, colour = SOURCE_AGID)) +
   geom_histogram(alpha = 0.5, position = "stack")
-ggsave("figures/data/Final_Sample_Size_A_26May.png",
-  width = 6.5, height = 5, units = "in", scale = 1.5
-)
-
+if (save) {
+  ggsave("figures/data/Final_Sample_Size_A_26May.png",
+    width = 6.5, height = 5, units = "in", scale = 1.5
+  )
+}
 age_comps_annual <- getComps(
   Adata_exp2_annual,
   defaults = c("fleet", "fishyr", "season", "ageerr"),
@@ -1161,22 +1197,12 @@ for (ageerr in unique(CAAL_comps_annual$ageerr)) {
 
 # assign fleets for annual model
 age_comps_annual2 <- age_comps_annual2 %>%
-  dplyr::mutate(
-    fleet =
-      dplyr::case_when(
-        fleet == "WA_OR_ALL" ~ 1,
-        fleet == "CA_ALL" ~ 2
-      )
-  )
+  assign_fleets()
+
 age_comps_unexpanded_annual2 <-
   age_comps_unexpanded_annual2 %>%
-  dplyr::mutate(
-    fleet =
-      dplyr::case_when(
-        fleet == "WA_OR_ALL" ~ 1,
-        fleet == "CA_ALL" ~ 2
-      )
-  )
+  assign_fleets()
+
 # assign fleets for seasonal model:
 # Fleets:
 # 1 = WinterN
@@ -1221,14 +1247,15 @@ CAAL_comps_annual2 <- CAAL_comps_annual2 %>%
 
 # write to CSV file before filtering columns
 today_date <- format(as.Date(Sys.time()), "%d.%b.%Y")
-write.csv(age_comps_annual2,
-  file = file.path(
-    dir, "pacfin", "forSS_annual",
-    paste0("Age_for_SS3_ALL_COLUMNS_", today_date, "_data_from_", out_date, ".csv")
-  ),
-  row.names = FALSE
-)
-
+if (save) {
+  write.csv(age_comps_annual2,
+    file = file.path(
+      dir, "pacfin", "forSS_annual",
+      paste0("Age_for_SS3_ALL_COLUMNS_", today_date, "_data_from_", out_date, ".csv")
+    ),
+    row.names = FALSE
+  )
+}
 # remove extra sample size columns (not present for CAAL data)
 # the "remove_cols" vector is set earlier (prior to processing length comps)
 age_comps_annual2 <- age_comps_annual2 %>%
@@ -1242,42 +1269,43 @@ age_comps_coast2 <- age_comps_coast2 %>%
 
 # write to CSV file
 today_date <- format(as.Date(Sys.time()), "%d.%b.%Y")
-write.csv(age_comps_annual2,
-  file = file.path(
-    dir, "pacfin", "forSS_annual",
-    paste0("Age_for_SS3_", today_date, "_data_from_", out_date, ".csv")
-  ),
-  row.names = FALSE
-)
-write.csv(age_comps_unexpanded_annual2,
-  file = file.path(
-    dir, "pacfin", "forSS_annual_unexpanded",
-    paste0("Age_for_SS3_", today_date, "_data_from_", out_date, ".csv")
-  ),
-  row.names = FALSE
-)
-write.csv(age_comps_seas2,
-  file = file.path(
-    dir, "pacfin", "forSS_seas",
-    paste0("Age_for_SS3_", today_date, "_data_from_", out_date, ".csv")
-  ),
-  row.names = FALSE
-)
-write.csv(age_comps_coast2,
-  file = file.path(
-    dir, "pacfin", "forSS_coast",
-    paste0("Age_for_SS3_", today_date, "_data_from_", out_date, ".csv")
-  ),
-  row.names = FALSE
-)
-write.csv(CAAL_comps_annual2,
-  file = file.path(
-    dir, "pacfin", "forSS_annual",
-    paste0("CAAL_for_SS3_", today_date, "_data_from_", out_date, ".csv")
-  ),
-  row.names = FALSE
-)
-
+if (save) {
+  write.csv(age_comps_annual2,
+    file = file.path(
+      dir, "pacfin", "forSS_annual",
+      paste0("Age_for_SS3_", today_date, "_data_from_", out_date, ".csv")
+    ),
+    row.names = FALSE
+  )
+  write.csv(age_comps_unexpanded_annual2,
+    file = file.path(
+      dir, "pacfin", "forSS_annual_unexpanded",
+      paste0("Age_for_SS3_", today_date, "_data_from_", out_date, ".csv")
+    ),
+    row.names = FALSE
+  )
+  write.csv(age_comps_seas2,
+    file = file.path(
+      dir, "pacfin", "forSS_seas",
+      paste0("Age_for_SS3_", today_date, "_data_from_", out_date, ".csv")
+    ),
+    row.names = FALSE
+  )
+  write.csv(age_comps_coast2,
+    file = file.path(
+      dir, "pacfin", "forSS_coast",
+      paste0("Age_for_SS3_", today_date, "_data_from_", out_date, ".csv")
+    ),
+    row.names = FALSE
+  )
+  write.csv(CAAL_comps_annual2,
+    file = file.path(
+      dir, "pacfin", "forSS_annual",
+      paste0("CAAL_for_SS3_", today_date, "_data_from_", out_date, ".csv")
+    ),
+    row.names = FALSE
+  )
+}
 ##########################################################
 # Calculate empirical weight-at-age matrix
 ##########################################################

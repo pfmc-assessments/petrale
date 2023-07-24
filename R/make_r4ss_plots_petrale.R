@@ -70,6 +70,21 @@ make_r4ss_plots_petrale <- function(mod, plot = c(1:26, 31:50),
     }
   }
 
+  # discard plots with different ylim
+  if (34 %in% plot) {
+    for (f in 1:2) {
+      SSplotDiscard(
+        mod, 
+        subplots = 2, 
+        fleets = f, 
+        ymax = 0.25, 
+        print = TRUE,
+        plot = FALSE, 
+        plotdir = file.path(mod$inputs$dir, "custom_plots")
+      )
+    }
+  }
+
   # make default plots for most things
   if (any(1:26 %in% plot)) {
     r4ss::SS_plots(mod,

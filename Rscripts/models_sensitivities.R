@@ -72,8 +72,6 @@ dir <- "models/2023.a034.603_all_main_devs"
 r4ss::copy_SS_inputs(dir.old = mod.34.1$inputs$dir,
   dir.new = dir, copy_exe = TRUE, overwrite = TRUE)
 
-# TODO: add plot or table of DM vs Francis weights 
-# (or maybe just summarize DM weight values in text)
 
 # plot(0, type = 'n', xlim = c(0,1.05), ylim = c(0,1.05), xaxs = 'i', yaxs = 'i')
 # points(mod.34.1$Length_Comp_Fit_Summary$Curr_Var_Adj,
