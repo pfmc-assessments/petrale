@@ -1,5 +1,7 @@
 if (FALSE) {
+  # make tables in CSV format
   SSexecutivesummary(mod.34.10, forecast_ofl = c(3763, 3563))
+  # 
   save_loc <- file.path(mod.34.10$inputs$dir, "tex_tables")
   dir.create(save_loc)
   sa4ss::es_table_tex(
@@ -7,6 +9,10 @@ if (FALSE) {
     save_loc = save_loc
   )
 
+  SSexecutivesummary(mod.34.10, forecast_ofl = c(3763, 3563), 
+    format = FALSE, plotfolder = file.path(mod.34.10$inputs$dir, "tables_no_format"))
+
+  # this doesn't seem to be doing anything
   sa4ss::es_table_tex(
     # dir = mod.34.10$inputs$dir,
     dir = "models/2023.a034.010_fixed_forecast_catch/tables/",
@@ -17,15 +23,6 @@ if (FALSE) {
 
 
 
-  # Row-group names for first column; kableExtra::linebreak allows for hard returns
-  rowgroupnames <- kableExtra::linebreak(
-    x = c(
-      # "Recent\n avg.\n catch",
-      # "ACL\n$P^*$=0.40",
-      "ACL $P^*$=0.45"
-    ),
-    align = "l"
-  )
 } # end if (FALSE) to help with sourcing the commands below
 
 
