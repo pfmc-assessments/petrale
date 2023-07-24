@@ -1,4 +1,7 @@
 if (FALSE) {
+  get_mod(34,10) # forecast recruits based on long-term average
+  get_mod(34,11) # forecast recruits based on stock-recruit
+
   # make tables in CSV format
   SSexecutivesummary(mod.34.10, forecast_ofl = c(3763, 3563))
   # 
@@ -12,16 +15,18 @@ if (FALSE) {
   SSexecutivesummary(mod.34.10, forecast_ofl = c(3763, 3563), 
     format = FALSE, plotfolder = file.path(mod.34.10$inputs$dir, "tables_no_format"))
 
-  # this doesn't seem to be doing anything
-  sa4ss::es_table_tex(
-    # dir = mod.34.10$inputs$dir,
-    dir = "models/2023.a034.010_fixed_forecast_catch/tables/",
-    csv_name = "table_label_projection_modified.csv",
-    digits = 0,
-    save_loc = save_loc
-  )
+  # make alternative projection table (depends on unformatted exec summary table above)
+  projection_table(mod.34.10)
 
+  dir.create('figures/forecasts')
+  SSplotCatch(mod.34.10, maxyr = 2035, forecastplot = TRUE, subplots = 5, 
+    print = TRUE, plot = FALSE, plotdir = "figures/forecasts")
+  # attempt to add landings on top of total catch
+  #SSplotCatch(mod.34.10, maxyr = 2035, forecastplot = TRUE, subplots = 5, add = TRUE, fleetcols = 
+  #  rich.colors.short(2, alpha = 0.5))
 
+  SSplotComparisons(SSsummarize(list(mod.34.10, mod.34.11)),
+    endyrvec = 2035, xlim = c(2000, 2036), print = TRUE, plot = FALSE, plotdir = "figures/compare/forecast", legendlabels = c("Forecast recruitment based on long-term mean", "Forecast recruitment based on stock-recruit curve"))
 
 } # end if (FALSE) to help with sourcing the commands below
 
