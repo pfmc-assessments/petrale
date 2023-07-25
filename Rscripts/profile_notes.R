@@ -174,3 +174,20 @@ nwfscDiag::profile_plot(
   profilesummary = R0_summary
 )
 
+#### sigmaR profile
+sigmaR_vec <- seq(0.3, 0.8, 0.1)
+sigmaR_dir <- "models/2023.a034.001/diags_profile_sigmaR"
+sigmaR_para <- "SR_sigmaR"
+profile(
+  dir = sigmaR_dir,
+  string = sigmaR_para,
+  profilevec = sigmaR_vec,
+  newctlfile = "petrale_control.ss",
+  exe = "ss_win",
+  extras = "-nohess",
+  usepar = FALSE,
+  verbose = TRUE,
+  show_in_console = TRUE
+)
+sigmaR_mods <- SSgetoutput(sigmaR_dir, keyvec = 1:length(sigmaR_vec))
+sigmaR_summary <- SSsummarize(sigmaR_mods)

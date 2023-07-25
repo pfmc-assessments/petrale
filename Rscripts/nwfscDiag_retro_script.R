@@ -25,3 +25,22 @@ model_settings <- get_settings(settings = list(
 
 nwfscDiag::retro_wrapper( mydir = mydir, model_settings = model_settings,
   skipruns = TRUE)
+
+# additional explorations
+retro_mods <- SSgetoutput(dirvec = paste0("models/2023.a034.001/diags_retro/retro/retro-", 1:5))
+retro_mods2 <- retro_mods
+retro_mods2[[6]] <- mod.34.1
+retro_mods2 <- retro_mods2[c(6,1:5)]
+retro_summary <- SSsummarize(retro_mods2)
+png("figures/diags_model34/retro_recruits.png", 
+  width = 6.5, height = 5, res = 300, units = 'in', pointsize = 10
+)
+SSplotRetroRecruits(retro_summary, cohorts = 2006:2022, 
+  endyrvec = 2023 + 0:-5, main = "")
+dev.off()
+png("figures/diags_model34/retro_recruits_relative.png", 
+  width = 6.5, height = 5, res = 300, units = 'in', pointsize = 10
+)
+SSplotRetroRecruits(retro_summary, cohorts = 2006:2022, 
+  endyrvec = 2023 + 0:-5, relative = TRUE, main = "")
+dev.off()

@@ -166,6 +166,22 @@ mod_names <- c("Base",
 "Zero-centered recdevs", 
 "All recdevs in 'main' period"
 )
+SSplotComparisons(SSsummarize(list(mod.34.1, mod.34.606)),
+  print = TRUE, plotdir = "figures/compare/Comparison plots - recruitment",
+  indexfleets = 4, legendlabels = c("Base model", "with env. index"))
+
+rbind(
+  mod.34.1$likelihoods_by_fleet %>% 
+    dplyr::filter(Label == "Surv_like") %>%
+    dplyr::select(Triennial, WCGBTS),
+  mod.34.606$likelihoods_by_fleet %>% 
+    dplyr::filter(Label == "Surv_like" ) %>%
+    dplyr::select(Triennial, WCGBTS)
+)
+#   Triennial   WCGBTS
+# 1  -4.98340 -31.8745
+# 2  -4.64211 -29.8632
+
 # make table
 sens_make_table(num = 34, sens_mods = mod_list, plot = TRUE, 
   sens_type = "recruit", sens_names = mod_names, 
@@ -206,3 +222,8 @@ sens_make_table(num = 34, sens_mods = mod_list, plot = TRUE,
   legendncol = 1) # petrale declines too far so bumps into label
 
 SSplotComparisons(SSsummarize(mod_list), subplots = 11, indexfleets = 5)
+
+# STAR sensitivities
+get_mod(34, 506) # male MGparm offsets
+get_mod(34, 608) # estimate h (MLE = 0.961403)
+

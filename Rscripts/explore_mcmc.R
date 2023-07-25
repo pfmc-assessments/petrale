@@ -19,6 +19,7 @@ dir_model <- "models/2023.a024.010_recdev2_h0.8"
 dir_model <- "models/2019.001.001_base"
 dir_model <- "models/2023.a024.018_min_sample_retuned"
 dir_model <- "models/2023.a024.021_min_sample_retuned_recdev2_h0.8"
+dir_model <- "models/2023.a034.001"
 dir_adnuts <- file.path(dir_model, "adnuts_")
 #dir_adnuts <- file.path(dir_model, "adnuts2e6")
 # copy everything to a folder within the model directory
