@@ -1,13 +1,49 @@
 ## Base Model Results
-
+As a supplement to the model results figures included in this report and described below, a full set of diagnostic plots created by the {r4ss} package [@taylor_beyond_2021] is available at https://pfmc-assessments.github.io/petrale/ along with the Stock Synthesis input files.
 
 ### Parameter Estimates
-<!-- Parameters values are shown in Tables \ref{tab:table-pars-base-1}-\ref{tab:table-pars-base-16}. -->
+Estimated and fixed parameter values are shown in Tables \ref{tab:table-pars-base-1}-\ref{tab:table-pars-base-8}.
+
+Estimates of key parameters include 
+female $M$ = 
+`r round(model$parameters["NatM_uniform_Fem_GP_1", "Value"], 3)`, 
+male $M$ = 
+`r round(model$parameters["NatM_uniform_Mal_GP_1", "Value"], 3)`. 
+Females were estimated as growing larger than males with female length at age 17
+(the second reference age) equal to 
+`r round(model$parameters["L_at_Amax_Fem_GP_1", "Value"], 1)` cm compared to
+`r round(model$parameters["L_at_Amax_Mal_GP_1", "Value"], 1)` cm for males.
+The $L_\infty$ associated with the estimated growth parameters was 
+`r round(model$Growth_Parameters$Linf[1], 1)` cm for females and
+`r round(model$Growth_Parameters$Linf[2], 1)` cm for males.
 
 ### Fits to the Data
+The model fits the \gls{s-wcgbt} index very well, including a decline from 2005 to 2009 followed by a rapid increase to a plateau in 2013--2017 and a gradual decline to the most recent observations. The observations that fit the least well are 2018 and 2019, which were lower than the years before and after. The absence of a 2020 survey due to the COVID-19 pandemic makes it difficult to determine if those two years were just outliers or if there was some unexplained population dynamics leading to a reduction in available biomass for those years.
+
+When an extra standard deviation parameter was estimated for the \gls{s-wcgbt}, the value was minimal, indicating that the index fits well enough to not require additional tuning.
+
+The fit to length composition data was very good for all fleets when aggregating across years (\ref{fig:len-agg-fit}). The most visible lack of aggregate fit occurring for discards in the south, where the mode of the observed and expected distributions differed by 2 cm (30 cm vs 28 cm, respectively). However, the tails of the distribution were fit well. Pearson residuals for the individual years (Figure \ref{fig:len-all-pearson}) show short periods with notable residual patterns, such as 1975 and 1982--1983 for the North fleet suggesting unmodeled short-term dynamics in the fleet or population. However, there are not strong patterns within any group of length bin (horizontal stripes within the Pearson plots) indicating a systematic lack of fit.
+
+Expected mean length in each year matches both long-term and short-term trends (Figures \ref{fig:len-francis-north} to \ref{fig:len-francis-wcgbt}). A notable lack of fit visible in this diagnostic is for the 2021 \gls{s-wcgbt} where the largest in the history of the survey took place which was dominated by large females, resulting in an outlier in the observed mean lengths.
+
+The fit to the marginal age composition data was good for the North fleet when aggregated across years, but less good for the South (Figure \ref{fig:agg-marg-age-fit}). The North fleet has far more age data (Table \ref{tab:table-compweight-base}, Figures \ref{fig:age-all-bubbles} and \ref{fig:age-all-pearson}) due to large gaps in the years with samples from California and smaller sample sizes per year. The years 2018--2022 have the highest sample sizes and are characterized by older than expected fit. Examination of the distributions of ages within each length bin indicates that these fish are older than expected given their lengths.
+
+Fit to the conditional age-at-length (CAAL) data for the \gls{s-wcgbt} was generally good (Figures \ref{fig:caal-dat1}-\ref{fig:caal-fit2}), with a few notable blobs of residuals in 2005 (younger than expected fish in the 30--40cm range), 2014 (more young fish in the smaller length bins), and the last few years, where there are more old fish of both sexes in the larger length bins.
+This pattern of positive residuals for the oldest ages matches the lack of fit to the fishery ages for these years as well. Time varying growth was explored to resolve this lack of fit but did not substantially improve the fit.
+
+Fit to the discard rates (Figures \ref{fig:discard_fitNorth} and \ref{fig:discard_fitSouth}) and mean body weight of the discards (Figures \ref{fig:mnwt_fitNorth} and \ref{fig:mnwt_fitSouth}) was good thanks to consistently low and stable rates and the use of time blocks on the retention parameters to fit the years with significant change.
 
 ### Population Trajectory
+<!-- variables used in R code below are calculates are in the exec summary -->
 
-### Reference Points
+The base model estimate of biomass time series is similar to previous assessments (Figure \ref{fig:smry-bio-historical}), with estimated biomass of ages 3 and older estimated around `r smry_equ` mt in the unfished equilibrium, declining to a minimum of `r smry_min` mt in `r smry_minyr`, rebuilding quickly to a recent peak of `r smry_max_recent` mt in `r smry_maxyr_recent` due to 3 years of very high recruitments from 2006 to 2008, and then declining to `r smry_2023` mt in 2023 due to low or average recruitment in the years since.
 
+In terms of fraction of unfished spawning output (Figure \ref{fig:depl}), the minimum was `r Bratio_min` in `r Bratio_minyr`, the recent peak was `r Bratio_max_recent` in `r Bratio_maxyr_recent` and the 2023 estimate is `r Bratio_2023`.
 
+The recruitment time series is punctuated by four large recruitment events in 1965, 2006, 2007, and 2008 (Figures \ref{fig:stock-recruit}, \ref{fig:recruits}, and \ref{fig:rec-devs}). The 1965 recruitment was estimated at about 40 million age-0 recruits while the latter three were in the 25--30 million range. The rest of the time series is close to 10 million recruits per year. The recruitment in 2012 was almost 20 million (a positive deviation from the stock-recruit curve of 0.56) but the years since are estimated to have had below-average or close-to-average recruitment, with a low point in 2017 of about 8 million recruits (deviation = -0.44).
+
+The precision of the recruitment deviation estimates is highest for the cohorts informed by age data from the \gls{s-wcgbt} which began in 2003 (Figure \ref{fig:rec-devs}). Therefore the chosen bias adjustment have a relative narrow plateau from 2002 to 2015 (Figure \ref{fig:biasadj}), where cohorts born after that point have been observed for too few years to have as precise an estimate of their year-class strength.
+
+Two measures of exploitation are fishing intensity and exploitation rate. Fishing intensity is defined here as 1 - SPR, where SPR is the equilibrium spawning output at a given combination of F and selectivity relative to spawning output at unfished equilibrium. Using the units of 1-SPR means that more intense fishing is associated with a higher value. The value of 1-SPR in the absence of fishing is 0 and the maximum is 1.0 if all spawning fish are being killed before spawning. The \gls{pfmc} has chosen an SPR target of 0.3 for `r spp` so harvest which leads to SPR below 0.3, or fishing intensity (1-SPR) greater than 0.7 would be overfishing. Exploitation rate is defined as the catch relative to age 3+ biomass. This metric is included because interpretation is simple, but it is not used as a basis for management. 
+
+The estimated time series of exploitation (Figures \ref{fig:spr} and \ref{fig:phase}, Table \ref{tab:exploitES}) shows an accelerating increase in fishing intensity and exploitation rate with a peak around 1990 when the 1-SPR increased to 0.91 and the exploitation rate was close to 0.4. These rates are estimated to have declined slowly up to the point where the overfishing declaration led to dramatic decrease in catch in 2010, when 1-SPR fell below the reference point to about 0.64. The fishing intensity has increased since that time due to the rebuilding of the stock, but is estimated to have remained below the reference point in the years since.

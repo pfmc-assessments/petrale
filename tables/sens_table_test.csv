@@ -1,0 +1,22 @@
+"Label","Base model","Sensitivity 1","Sensitivity 2"
+"TOTAL likelihood (diff from base)",0,1.75900000000001,1.64600000000007
+"Survey likelihood (diff from base)",0,0.0703999999999994,0.0671000000000035
+"Length comp likelihood (diff from base)",0,0.000999999999976353,-1.01499999999999
+"Age comp likelihood (diff from base)",0,0.0720000000000027,0.978999999999985
+"Discard likelihood (diff from base)",0,0.00199999999998113,0.0029999999999859
+"Mean body weight likelihood (diff from base)",0,-0.00400000000000489,0.0289999999999964
+"Recruitment likelihood (diff from base)",0,1.64251,1.61172
+"Parm priors likelihood (diff from base)",0,-0.025599,-0.024351
+"Recruitment unfished millions",15.3571,15.4067,15.3981
+"Stock-recruit steepness (h)",0.8,0.8,0.8
+"M Female ",0.141813,0.142772,0.14268
+"M Male ",0.154788,0.155912,0.155902
+"Unfished age 3+ bio 1000 mt",42.1977,41.7621,41.7645
+"B0 trillions of eggs",22.9065,22.625,22.6214
+"B2023 trillions of eggs",7.68553,7.6924,7.69603
+"Fraction unfished 2023",0.335518,0.339996,0.340211
+"Fishing intensity 2022",0.65779,0.655577,0.655333
+"Retained Catch MSY mt",2471,2532,2533
+"Dead Catch MSY mt",2482,2547,2547
+"OFL mt 2023",3194,3397,3401
+"WCGBTS catchability",4.02252574454738,4.01963056839979,4.02651001692389

@@ -1,36 +1,50 @@
 ### \acrlong{s-wcgbt}
 
-The \Gls{s-wcgbt} is based on a random-grid design;
-covering the coastal waters from a depth of 55-1,280 m [@bradburn_2003_2011].
+
+#### Survey Description
+
+The \gls{s-wcgbt} is based on a random-grid design;
+covering the coastal waters from a depth of 55--1,280 m [@bradburn_2003_2011].
 This design generally uses four industry-chartered vessels per year assigned to a roughly equal number of randomly selected grid cells and divided into two 'passes' of the coast.
 Two vessels fish from north to south during each pass between late May to early October.
 This design therefore incorporates both vessel-to-vessel differences in catchability, as well as variance associated with selecting a relatively small number (approximately 700) of possible cells from a very large set of possible cells spread from the Mexican to the Canadian borders.
 
-The \Gls{s-wcgbt} commonly encounters `r spp` along the U.S West Coast, except south of Point Conception (Figure XX). The catch-per-unit-effort estimated from the survey is roughly constant north of 38$^\circ$. The survey does fish shallower than 54 m and the encounter rate of `r spp` declines at waters deeper than 400 m. Figure XX shows that the positive tows catch rate by depth peaks between 100-200 meters and declines as depth increases. The observed lengths captured across depths by the survey are shown in Figure XX.
+The \gls{s-wcgbt} commonly encounters `r spp` along the U.S West Coast, except south of Point Conception (Figure \ref{fig:survey-density}). They occur in about 75\% of tows shallower than 200 m. with few observations beyond 450 m. (Figure \ref{fig:presence-absence-by-depth}). `r Spp` occur throughout the surveyed latitudes with lower densities in southern California, a peak around the San Francisco area (37\textdegree N latitude, Figure \ref{fig:presence-absence-by-latitude}) and a general increase in presence with increasing latitude.
 
-Geostatistical models of biomass density were fit to survey data using Template ModelBuilder (TMB) (*Kristensen et al. 2016) via the R package Species Distribution Models with (sdmTMB) (Anderson et al. 2022). These models can account for latent spatial factors with a constant spatial Gaussian random field and spatiotemporal deviations to evolve as a random walk Guassian random field (Thorson et al. 2015). Tweedie, delta-binomial, delta-gamma, and mixture distributions, which allow for extreme catch events, were investigated. Results are shown only for the distribution that led to the best model diagnostics, e.g., similar distributions of theoretical normal quantiles and model quantiles, high precision, lack of extreme predictions that are incompatible with the life history, and low Akaike information criterion (AIC). Indices from this best model were predicted using a grid based on available survey locations. Code to reproduce the analysis is available at https://github.com/pfmc-assessments/indexwc.
+#### Index of Abundance
 
-The data were truncated to depths less than 675 m prior to modelling given that there were zero positive encounters in depths deeper than 675 m. The prediction grid was also truncated to only include available survey locations in depths between 55–675 m to limit extrapolating beyond the data and edge effects.
+Geostatistical models of biomass density were fit to survey data using \gls{tmb} [@kristensen_tmb:_2016] via the R package \gls{sdmtmb} [@Anderson:2022:SRP], as in case of \gls{s-tri}.
 
-The model used a delta model with a lognormal distribution for the catch-rate component, as it was shown that lognormal distribution is able to better account for extreme catch events, which was observed in case of petrale in 2014 and 2021 surveys. A logit-link was used for encounter probability and a log-link for positive catch rates. The response variable was catch (mt) with an offset of area (km2) to account for differences in effort. Fixed effects were estimated for each year. The following additional covariates were included: pass. Vessel-year effects, which have traditionally been included in index standardization for this survey, were not included as the estimated variance for the random effect was close to zero. Vessel-year effects were more prominent when models did not include spatial effects and were included for each unique combination of vessel and year in the data to account for the random selection of commercial vessels used during sampling (*Helser, Punt, and Methot 2004; Thorson and Ward 2014).
+The data were truncated to depths less than 675 m prior to modeling given that there were zero positive encounters in depths deeper than 675 m. The prediction grid was also truncated to only include available survey locations in depths between 55--675 m to limit extrapolating beyond the data and edge effects.
 
-Spatial and spatiotemporal variation was included in the encounter probability model and spatial variation was included in the positive catch rate model. The variance of the spa-tiotemporal effect was estimated to be less than 0.01 for the positive catch rate model and was therefore not included in the final model. Spatial and spatiotemporal variation was included in the encounter probability and the positive catch rate model. Spatial variation was approximated using 500 knots, where more knots led to non-estimable standard errors because the positive encounters are too sparse to support the dense spatiotemporal structure.
+The model used a delta model with a lognormal distribution for the catch-rate component. The model used a delta model with a lognormal distribution for the catch-rate component. The lognormal error structure was used because it is able to better account for extreme catch events observed for `r spp` in both surveys;  most recently extreme catch events occurred within the \gls{s-wcgbt} in 2021 and also in 2014. A logit-link was used for encounter probability and a log-link for positive catch rates. The response variable was catch (mt) with an offset of area (km$^2$) to account for differences in effort. Fixed effects were estimated for each year. The following additional covariates were included: pass. Vessel-year effects, which have traditionally been included in index standardization for this survey, were not included as the estimated variance for the random effect was close to zero. Vessel-year effects were more prominent when models did not include spatial effects and were included for each unique combination of vessel and year in the data to account for the random selection of commercial vessels used during sampling [@helser_generalized_2004; @thorson_accounting_2014].
 
-Length bins from 12 to 62 cm in 2 cm increments were used to summarize the length frequency of the survey catches in each year. The first length bin includes all observations less than 14 cm and the last bin includes all fish larger than 62 cm. Table XX shows the number of lengths taken by the survey. The stratification for length data expansion based on the design-based estimates is provided in Table XX.
+Spatial and spatiotemporal variation was included in the encounter probability and the positive catch rate model.
+Spatial variation was approximated using 500 knots, where more knots led to non-estimable standard errors because the positive encounters are too sparse to support the dense spatiotemporal structure.
 
+The estimated distribution of `r spp` density for 2004 is shown in Figure \ref{fig:survey-density}.
 
-Length compositions were separated into males and females. These length compositions were expanded to account for subsampling tows, with expansion based upon the stratification by depth and latitude. The stratifications for length data expansions are provided in *Table XX.
+#### Length and Age Compositions
 
-Age distributions included bins from age 1 to age 17, with the last bin including all fish of greater age. Table XX shows the number of ages taken by the survey.Age distributions were included in the model as conditional-age-at-length observations. The marginal \Gls{s-wcgbt} age-compositions were also included, but only for easier viewing of strong cohorts. The conditional-age-at-length data were not expanded and were binned according to length, age, sex, and year.
+Length bins from 12 to 62 cm in 2 cm increments were used to summarize the length frequency of the survey catches in each year. The first length bin includes all observations less than 14 cm and the last bin includes all fish larger than 62 cm. Table \ref{tab:sample-size-length-wcgbts} shows the number of lengths taken by the survey. 
 
-The input sample sizes for length and marginal age-composition data for all fishery-independent surveys were calculated based on Stewart and Hamel (*2014) as: 
+Length compositions were separated into males and females. These length compositions were expanded to account for subsampling tows, with further expansion based upon the stratification by depth and latitude. The stratifications for length data expansions are provided in Table \ref{tab:strata-wcgbts}.
 
-\begin{centering}
+Age distributions included bins from age 1 to age 17, with the last bin including all fish of greater age. Table \ref{tab:sample-size-age-wcgbts} shows the number of ages taken by the survey. Age distributions were included in the model as conditional-age-at-length (CAAL) observations. The marginal \gls{s-wcgbt} age-compositions were also included, but only for easier viewing of strong cohorts. The conditional-age-at-length data were not expanded and were binned according to length, age, sex, and year.
 
-$\text{Input N}_{y} = (0.138*(\sum_{}^{N} \text{fish}_{y} / \sum_{}^{N} \text{tows}_{y}) + 1)*\sum_{}^{N} \text{tows}_y$ 
+The input sample sizes for length and marginal age-composition data for all fishery-independent surveys 
+The input sample sizes for length composition data for all fishery-independent surveys were calculated based on Stewart and Hamel [-@stewart_bootstrapping_2014] as $\text{Input N}_{y} = 3.09*N_{tow}$ where the 3.09 value was estimated for a group of 8 flatfish species including `r spp`.
 
-\end{centering}
+The input sample size of CAAL data was set at the number of fish at each length by sex and by year. The marginal age compositions were only used for comparing the implied fits while the CAAL data were used in the likelihood.
 
-where fish is the number of `r spp` by year $y$ and $N$ the total number of tows by year.  
+### Fishery-independent data sources considered but not used
 
-The input sample size of conditional-age-at-length data was set at the number of fish at each length by sex and by year. 
+#### AFSC Slope Survey
+
+The AFSC Slope Survey (Slope Survey) operated during the months of October to November aboard the R/V Miller Freeman. Partial survey coverage of the U.S. West Coast occurred during the years 1988--1996 and complete coverage (north of 34°30'S Lat.) during the years 1997 and 1999--2001. Typically, only these four years that are seen as complete
+surveys are included in assessments. This survey was considered, but similarly to the past assessments not included in the model because the frequency of `r spp` occurrence was too low. Survey spatial coverage did not align well with range of `r spp` depth range, and the survey data was not sufficient to develop an informative index. 
+
+#### NWFSC Slope Survey
+
+The NWFSC also operated a Slope Survey during the years 1998--2002. However, this survey was not included in this assessment because the frequency of `r spp` occurrence was too low. Survey spatial coverage did not align well with range of `r spp` depth range, and the survey data was not sufficient to develop an informative index.
+

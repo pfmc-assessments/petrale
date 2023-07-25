@@ -10,7 +10,7 @@ old_vs_new_table <- sens_make_table_old_vs_new(
     sens_names = c("Base model", "2019 assessment")
   )
 
-# map catchability parameters
+# map catchability parameters to shared locations
 old_vs_new_table[old_vs_new_table$Label == "WCGBTS catchability", 3] <- 
   old_vs_new_table[old_vs_new_table$Label == "LnQ base NWFSC(7)", 3]
 old_vs_new_table[old_vs_new_table$Label == "Triennial catchability", 3] <- 

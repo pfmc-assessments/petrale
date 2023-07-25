@@ -46,7 +46,7 @@
 #' }
 #'
 compile_petrale <- function(
-    basemodelname = "2023.a024.018_min_sample_retuned",
+    basemodelname = "2023.a034.001",
     dir = "documents",
     time = 10,
     wipe = FALSE,
@@ -142,7 +142,8 @@ compile_precursor <- function(basemodel, plot = TRUE) {
   sa4ss::read_model(
     mod_loc = file.path("models", basemodel),
     create_plots = plot,
-    save_loc = file.path("models", basemodel, "tex_tables")
+    save_loc = file.path("models", basemodel, "tex_tables"),
+    SpawnOutputLabel = "Spawning output (trillions of eggs)"
   )
 
   # Load in the resulting 00mod file
@@ -165,18 +166,8 @@ compile_precursor <- function(basemodel, plot = TRUE) {
     csv_name = "table_labels.csv"
   )
 
-
-  # replace tables in main directory if they don't match
-  table_e1 <- readLines(file.path(tex_tables_dir1, "e_ReferencePoints_ES.tex"))
-  if (file.exists(file.path(tex_tables_dir2, "e_ReferencePoints_ES.tex"))) {
-    table_e2 <- readLines("documents/tex_tables/e_ReferencePoints_ES.tex")
-  } else {
-    table_e2 <- 0
-  }
-  if (any(table_e1 != table_e2)) {
-    message("copying tables from ", tex_tables_dir1, " to ", tex_tables_dir2)
-    R.utils::copyDirectory(tex_tables_dir1, tex_tables_dir2)
-  }
+  message("copying tables from ", tex_tables_dir1, " to ", tex_tables_dir2)
+  R.utils::copyDirectory(tex_tables_dir1, tex_tables_dir2, overwrite = TRUE)
 
   save(
     list = ls(envir = modenv),

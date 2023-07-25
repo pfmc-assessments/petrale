@@ -1,2 +1,13 @@
+\clearpage
+
 # Acknowledgments
-Here are all the mad props!
+
+Many people contributed to this assessment. In particular we would like to acknowledge the
+following:
+
+- All participants in the pre-assessment workshop for their contributions to our understanding of the data and `r spp` resource
+- Authors of the previous `r spp` assessments, especially Melissa Haltuch and Chantel Wetzel
+- Kelli Johnson, Chantel Wetzel, and the other contributors to the R packages on which the assessment process depends
+- Ali Whitman and Teresa Tsou for all their help with data from Oregon and Washington
+- Brenda Erwin for help with data from California
+- The assessment teams at NWFSC and SWFSC

@@ -24,10 +24,12 @@ sa4ss::table_format(x = catch_table,
                  )
 ```
 
-```{r, tables-samples, results = 'asis'}
-len_samps <- read.csv("../tables/length_samps_comm_by_fleet.csv")
+\clearpage
 
-sa4ss::table_format(x = len_samps,
+```{r, tables-samples, results = 'asis'}
+len_samps_comm <- read.csv("../tables/length_samps_comm_by_fleet.csv")
+
+sa4ss::table_format(x = len_samps_comm,
                  caption = 'Sample sizes of commercial length composition data by fleet.',
                  label = 'sample-size-length-by-fleet',
                  col_names = c("Year", "Trips North",
@@ -36,26 +38,142 @@ sa4ss::table_format(x = len_samps,
                  )
 ```
 
+\clearpage
+
+```{r, tables-samples2, results = 'asis'}
+age_samps_comm <- read.csv("../tables/age_samps_comm_by_fleet.csv")
+sa4ss::table_format(x = age_samps_comm,
+                 caption = 'Sample sizes of commercial age composition data by year, fleet, and ageing error matrix (Age-Mat) applied to those observations in the model. The AgeMat codes are as follows: C-S1: CAP Surface Pre-1990 (EXCLUDED FROM BASE MODEL), C-S2: CAP Surface, C-C: CAP Combo, C-BB: CAP Break-Burn, W-S: WDFW Surface (EXCLUDED FROM BASE MODEL), W-C: WDFW Combo, W-BB: WDFW Break-Burn. Note that there are repeated years in this table and in the model for years where there are multiple ageing error matrices applied within the same year/fleet combination.',
+                 label = 'sample-size-age-by-fleet',
+                 col_names = c("year", "North Ntrips", "North Nfish", "North InputN", "North AgeMat", 
+                                       "South Ntrips", "South Nfish", "South InputN", "South AgeMat")
+                 )
+
+```
+
+\clearpage
+
+```{r, tables-samples-surveys, results = 'asis'}
+len_samps_Tri <- read.csv("../tables/length_SampleSize_Tri.csv")
+sa4ss::table_format(x = len_samps_Tri,
+                 caption = 'Sample sizes of Triennial Survey length composition data.',
+                 label = 'sample-size-length-tri',
+                 col_names = gsub("_", " ", names(len_samps_Tri))
+                 )
+
+len_samps_WCGBTS <- read.csv("../tables/length_SampleSize_WCGBTS.csv")
+sa4ss::table_format(x = len_samps_WCGBTS,
+                 caption = 'Sample sizes of WCGBTS length composition data.',
+                 label = 'sample-size-length-wcgbts',
+                 col_names = gsub("_", " ", names(len_samps_WCGBTS))
+                 )
+
+age_samps_WCGBTS <- read.csv("../tables/age_SampleSize_WCGBTS.csv")
+sa4ss::table_format(x = age_samps_WCGBTS,
+                 caption = 'Sample sizes of WCGBTS age composition data.',
+                 label = 'sample-size-age-wcgbts',
+                 col_names = gsub("_", " ", names(age_samps_WCGBTS))
+                 )
+
+```
+
+\clearpage
+
+```{r, tables-ageing}
+table_ageing_error(mod_base) %>%
+  sa4ss::table_format(
+    caption = "Estimated ageing error vectors used in the assessment model for true ages 0--30 read by the Cooperative Ageing Project (CAP) lab. The ages associated with 'CAP Surface Pre-1990' were excluded from the base model. Note that the population age bins extend to age 40, and the largest observed age is 32.",
+    label = 'ageing-error-cap'
+  )
+table_ageing_error(mod_base, matrices = c(6,5,7)) %>%
+  sa4ss::table_format(
+    caption = "Estimated ageing error vectors used in the assessment model for true ages 0--30 read by the Washington Department of Fish and Wildlife (WDFW) lab. The ages associated with 'WDFW Surface' were excluded from the base model. Note that the population age bins extend to age 40, and the largest observed age is 32.",
+    label = 'ageing-error-wdfw'
+  )
+```
+
+```{r, tables-strata, results = 'asis'}
+strata_WCGBTS <- read.csv("../tables/strata_for_survey_comps_WCGBTS.csv")
+strata_Tri <- read.csv("../tables/strata_for_survey_comps_Tri.csv")
+col_names <- gsub(".Lower.Bound..m.", " lower bound (m)", names(strata_WCGBTS))
+col_names <- gsub(".Upper.Bound..m.", " upper bound (m)", col_names)
+col_names <- gsub("Latitude.", "Latitude ", col_names)
+
+sa4ss::table_format(x = strata_WCGBTS,
+                 caption = 'Latitude and depth strata used to expand the composition data for the WCGBTS. Note that the boundaries of the U.S. exclusive economic zone, to which survey operations are limited, span a range of latitudes. The latitudinal range of the hauls was 32.00 degrees to 48.46 degrees, so 32 and 49 are chosen to encompass that range.',
+                 label = 'strata-wcgbts',
+                 col_names = col_names)
+
+sa4ss::table_format(x = strata_Tri,
+                 caption = 'Latitude and depth strata used to expand the composition data for the Triennial Survey.',
+                 label = 'strata-tri',
+                 col_names = col_names)
+```
+
+\clearpage
+
+```{r, tables-discards, results = 'asis'}
+discard_rates <- read.csv("../tables/discard_rates.csv")
+discard_rates[is.na(discard_rates)] <- ""
+sa4ss::table_format(x = discard_rates,
+                 caption = 'Discard rates used in the model for each fleet.',
+                 label = 'discard-rates')
+```
+
+
+\clearpage
 
 <!-- ====================================================================== -->
 <!-- model tables -->
 <!-- ====================================================================== -->
-```{r tables-model, results = "asis"}
-cat("\\begin{landscape}")
-table_pars_split(mod_base)
-cat("\\end{landscape}")
+```{r tables-model-config, results = "asis"}
+config_summary <- read.csv("../tables/config_summary.csv")
+sa4ss::table_format(config_summary,
+  col_names = c("Specification", "Base", "2019 model"),
+  caption = "Specifications and structure of the base and 2019 models",
+  label = "config-summary")
 ```
+\clearpage
+
+```{r tables-model-pars1, results = "asis"}
+par_summary <- read.csv("../tables/par_summary.csv")
+sa4ss::table_format(par_summary,
+  col_names = c("Specification", "Base", "2019 model", "Source of difference"),
+  caption = "Summary of the estimated parameters in the base and 2019 models",
+  label = "par-summary",
+  custom_width = TRUE,
+  align = 'lccl',
+  width = c("8em","4em","4em", "20em"),
+  col_to_adjust = 1:4) %>% 
+    kableExtra::kable_styling(latex_options = c("striped")) %>%
+    kableExtra::row_spec(1, bold = TRUE)
+```
+
+\clearpage
+
+```{r tables-model-pars2, results = "asis"}
+#cat("\\begin{landscape}")
+table_pars_split(mod_base)
+#cat("\\end{landscape}")
+```
+
+\clearpage
 
 ```{r tables-timeseries, results = "asis"}
 table_ts(mod_base)
 ```
 
+\clearpage
+
 ```{r tables-weights, results = "asis"}
-table_compweight(mod_base)
+table_compweight(mod_base, 
+  caption_extra = paste("The WCGBTS age comps are conditioned on length,",
+   "so there are more observations with fewer samples per observation.")
+)
 ```
 
+\clearpage
 
-\begin{landscape}
 ```{r tables-old_vs_new, results = "asis"}
 table_sens("../tables/sens_table_old_vs_new.csv",
 	       sens_group = "old_vs_new",
@@ -64,10 +182,42 @@ table_sens("../tables/sens_table_old_vs_new.csv",
 ```
 \clearpage
 
-```{r tables-model-sens, results = "asis"}
+```{r tables-sens-index, results = "asis"}
+table_sens("../tables/sens_table_index.csv",
+           pretty = FALSE, # don't modify model names in this case because they are already OK
+	       sens_group = "indices",
+           caption_extra = "The index and total likelihoods are not comparable for the models that add or subtract data (2004 triennial and fishery CPUE).")
+```       
+\clearpage
+
+```{r tables-sens-comp, results = "asis"}
 table_sens("../tables/sens_table_comp.csv",
            pretty = FALSE, # don't modify model names in this case because they are already OK
-	       sens_group = "comp",
-           caption_extra = "The length, age, and total likelihoods are not comparable across models due to differences in weighting.")
+	       sens_group = "composition data",
+           caption_extra = "The length, age, and total likelihoods are not comparable across models due to differences in weighting and included data.")
 ```           
-\end{landscape}
+\clearpage
+
+```{r tables-sens-bio, results = "asis"}
+table_sens("../tables/sens_table_bio.csv",
+           pretty = FALSE, # don't modify model names in this case because they are already OK
+	       sens_group = "biology",
+           caption_extra = "Sensitivity to using the 2019 fecundity is represented in the bridging analysis.")
+```           
+\clearpage
+
+```{r tables-sens-recruit, results = "asis"}
+table_sens("../tables/sens_table_recruit.csv",
+           pretty = FALSE, # don't modify model names in this case because they are already OK
+	       sens_group = "recruitment and environmental index",
+           caption_extra = "The indices and total likelihoods are not comparable for the environmental index model due to the additional data.")
+```           
+\clearpage
+
+```{r tables-sens-Canada, results = "asis"}
+table_sens("../tables/sens_table_Canada.csv",
+           pretty = FALSE, # don't modify model names in this case because they are already OK
+	       sens_group = "the trans-boundary nature of the stock",
+           caption_extra = "The indices and total likelihoods are not comparable for the models that include the Canadian index.")
+```           
+\clearpage

@@ -1,11 +1,40 @@
 # Management 
 
 ## Reference Points
+Estimated reference points are reported in Table \ref{tab:referenceES}.
+
+Unfished spawning stock output for `r spp` is estimated to be 22.9 trillion eggs (95% confidence interval: 18--28 trillion eggs). The management biomass target for `r spp` is defined as 25% of the unfished spawning output ($B_{25\%}$), which is estimated by the model to be 5.7 trillion eggs (95% confidence interval: 4.5--6.9 trillion eggs), which corresponds to an exploitation rate (catch / age 3+ biomass) of 0.18. This harvest rate provides an equilibrium yield of 2481 mt at $B_{25\%}$ (95% confidence interval: 2120--2841 mt). Catch limits are determined by an SPR = 30% reference point which is associated with equilibrium exploitation rate of 0.17. The model estimate of maximum sustainable yield (MSY) is 2482 mt (95% confidence interval: 2121--2842 mt). The estimated spawning stock output at MSY is 5.5 trillion eggs (95% confidence interval: 4.3--6.7 trillion eggs). The exploitation rate corresponding to the estimated  $F_{MSY}$ proxy of SPR = 29% is 0.18. 
 
 ## Unresolved Problems and Major Uncertainties
+Uncertainty in this assessment model is explicitly captured in the asymptotic confidence intervals reported throughout this assessment for key parameters and management quantities. These intervals reflect the uncertainty in the model fit to the data sources included in the assessment, but do not include uncertainty associated with alternative model configurations or fixed parameters. To explore uncertainty associated with alternative model configurations and evaluate the responsiveness of model outputs to changes in key model assumptions, a variety of sensitivity runs were performed, including runs with different assumptions model structure and treatment of data, life-history parameters, stock-recruitment parameters, and many others. The uncertainty in natural mortality, stock-recruit steepness and the unfished recruitment level was also explored through likelihood profile analysis. Additionally, a retrospective analysis was conducted where the model was run after successively removing data from recent years, one year at a time.
 
-## Harvest Projections and Decision Tables
+Main life history parameters, such as natural mortality and stock-recruit curve steepness, generally contribute significant uncertainty to stock assessments, and they continue to be a major source of uncertainty in this assessment. These quantities are essential for understanding the dynamics of the stock and determining projected rebuilding. Steepness in this assessment was fixed at 0.8, which is meta-analytical steepness prior for Pleuronectidae. When estimated, steepness was approaching the upper parameter bound of 1, which was considered unrealistic as it was associated with less plausible estimates natural mortality around 0.10 (compared to base model estimates of 0.14 for females). Steepness likelihood profile illustrated that the starting and ending biomass and associated fraction unfished show almost no change across a wide range of steepness values. Natural mortality was estimated for both sexes using meta-analytical prior, but likelihood profile showed that the starting and ending biomass as well as associated fraction unfished are more sensitive to the changes in natural mortality than in steepness. In past several assessments, natural mortality was used as major axis of uncertainty. 
+
+## Harvest Projections and Decision Tables (Not required in draft assessment undergoing review)
 
 ## Evaluation of Scientific Uncertainty
+The model estimated uncertainty around the `r endyr+1` spawning output for is $\sigma$ = `r round(mod_base$Pstar_sigma, 2)`. The uncertainty around the OFL is $\sigma$ = `r round(mod_base$OFL_sigma, 2)`. These values are lower than for many West Coast groundfish stocks for several reasons: large sample sizes of length and age data from fisheries and surveys, high frequency of occurrence in the \gls{s-wcgbt} thanks to petrale primarily residing in trawlable habitat within the scope of the survey, and strong contrast in the data caused by fishing down the stock to a low level followed by rapid rebuilding. Nevertheless, these $\sigma$ values surely underestimate the overall uncertainty as they do not incorporate the model structural uncertainty and do not account for any time-varying dynamics other than recruitment.
+
+The estimated uncertainty values are lower than the Category 1 default $\sigma = 0.5$, so all projections will use the default $\sigma$.
+
+## Regional management considerations 
+Studies on stock structure and movement of `r spp` indicating transboundary movement of `r spp` between U.S. and Canadian waters. Within the scope of this assessment, we explored including multiple data sources from British Columbia waters to the base model via sensitivity analysis. Further studies of transboundary movement of `r spp` between U.S. and Canadian waters would be beneficial for understanding of extend of `r spp`to help lay the groundwork for future collaborative effort between U.S. and Canada and potential transboundary assessment.
 
 ## Research and Data Needs
+
+Progress on a number of research topics and data issues would substantially improve the ability of this assessment to reliably and precisely model `r spp` population dynamics in the future:
+
+\begin{enumerate}
+
+\item Continue research toward better understanding how climate forcing impacts density-independent survival during `r spp` early life stages and further development of environmental recruitment index. Such index can provide additional information on recruitment, not captured by other sources, in most recent years when youngest cohorts may be not yet selected by either surveys or fisheries. 
+
+\item The extent of spatial and temporal variability on productivity processes such as growth, recruitment, and maturity is currently unknown and would benefit from further research. It would allow to better understand patterns we see in data and account for potential spatio-temporal variability in life history parameters in the model. 
+
+\item Further studies of transboundary movement of `r spp` between U.S. and Canadian waters would be beneficial for understanding the extent of `r spp` movements to help lay the groundwork for future collaborative effort between U.S. and Canada and potential transboundary assessment.
+
+\item The analytical solution for catchability (i.e., observed / predicted biomass) for the \gls{s-wcgbt} is above 1.0 in the base model.  This was also the case in previous assessments of `r spp` and other flatfish assessments.  Further research into flatfish behaviors in response to survey gear will enhance the interpretation of catchability values for `r spp` off the West Coast.
+
+\item Exploration of fine-scale differences in sex-specific spatial distribution or behavior that could lead to the differences in estimated selectivity would be helpful, as would investigating the possibility of environmental sex determination in `r spp`.
+
+\item The observed age data from the most recent few years in all sources shows slightly-older-than-expected distributions of ages. This could be a function of some unmodeled process related to time-varying growth, ageing error, or recruitment. As more ageing is conducted in the years ahead, it will be easier to determine the most likely drivers of this pattern and explore ways to improve the fit to these data.
+\end{enumerate}
