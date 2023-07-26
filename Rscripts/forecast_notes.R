@@ -4,6 +4,7 @@ if (FALSE) {
 
   # make tables in CSV format
   SSexecutivesummary(mod.34.10, forecast_ofl = c(3763, 3563))
+  SSexecutivesummary(mod.34.11, forecast_ofl = c(3763, 3563))
   # 
   save_loc <- file.path(mod.34.10$inputs$dir, "tex_tables")
   dir.create(save_loc)
@@ -11,12 +12,20 @@ if (FALSE) {
     dir = mod.34.10$inputs$dir,
     save_loc = save_loc
   )
-
+  save_loc <- file.path(mod.34.11$inputs$dir, "tex_tables")
+  dir.create(save_loc)
+  sa4ss::es_table_tex(
+    dir = mod.34.11$inputs$dir,
+    save_loc = save_loc
+  )
   SSexecutivesummary(mod.34.10, forecast_ofl = c(3763, 3563), 
     format = FALSE, plotfolder = file.path(mod.34.10$inputs$dir, "tables_no_format"))
+  SSexecutivesummary(mod.34.11, forecast_ofl = c(3763, 3563), 
+    format = FALSE, plotfolder = file.path(mod.34.11$inputs$dir, "tables_no_format"))
 
   # make alternative projection table (depends on unformatted exec summary table above)
   projection_table(mod.34.10)
+  projection_table(mod.34.11)
 
   dir.create('figures/forecasts')
   SSplotCatch(mod.34.10, maxyr = 2035, forecastplot = TRUE, subplots = 5, 

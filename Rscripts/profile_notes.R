@@ -193,5 +193,81 @@ profile(
 sigmaR_mods <- SSgetoutput(sigmaR_dir, keyvec = 1:length(sigmaR_vec))
 sigmaR_summary <- SSsummarize(sigmaR_mods)
 
+sigmaR_vec <- c(0.3, 0.4, 0.6, 0.7, 0.8)
 sigmaR_mods <- SSgetoutput(dirvec = paste0(sigmaR_dir, "/sigmaR_", sigmaR_vec))
+get_mod(34, 610)
+sigmaR_mods2 <- list(
+  mod.34.610, 
+  sigmaR_mods[[1]], 
+  sigmaR_mods[[2]], 
+  mod.34.1, 
+  sigmaR_mods[[3]],
+  sigmaR_mods[[4]],
+  sigmaR_mods[[5]])
   
+sigmaR_sum <- SSsummarize(sigmaR_mods2)
+# leaving out unconverged sigmaR = 0.8 
+sigmaR_sum2 <- SSsummarize(sigmaR_mods2[1:6])
+sigmaR_sum$pars[sigmaR_sum$pars$Label == "SR_sigmaR", 1] <- 0
+
+main_devs_SD <- rep(NA, 7)
+alt_sigma_R <- rep(NA, 7)
+for (i in 1:7) {
+  print(i)
+  main_devs_SD[i] <- sigmaR_mods2[[i]]$sigma_R_info$SD_of_devs[1]
+  alt_sigma_R[i] <- sigmaR_mods2[[i]]$sigma_R_info$alternative_sigma_R[1]
+}
+
+SSplotProfile(sigmaR_sum, 
+  models = 2:7, 
+  profile.label = "SigmaR", 
+  profile.string = "sigmaR",
+  print = TRUE,
+  plotdir = "figures/diags_model34",
+  legendloc = "top")
+
+for(component in c("Length_like", "Age_like", "Surv_like")) {
+  PinerPlot(sigmaR_sum, 
+  models = 2:6, 
+  profile.label = "SigmaR", 
+  profile.string = "sigmaR",
+  component = component,
+  main = paste("Changes in", gsub("_", " ", component), "by fleet"),
+  print = TRUE,
+  plotdir = "figures/diags_model34",
+  legendloc = "top")
+  
+  file.copy("figures/diags_model34/profile_plot_likelihood.png", 
+    paste0("figures/diags_model34/sigma_R_profile_", component, ".png"))
+}
+
+SSplotComparisons(sigmaR_sum2, 
+  plot = FALSE,
+  print = TRUE, 
+  plotdir = "figures/compare/sigmaR_profile3",
+  legendlabels = c("No recdevs", paste0("sigmaR = ", seq(0.3, 0.7, 0.1))))
+# repeat plot 11 with legend in a different spot
+SSplotComparisons(sigmaR_sum2, 
+  subplots = 11, legendloc = 'topleft',
+  plot = FALSE,
+  print = TRUE, 
+  plotdir = "figures/compare/sigmaR_profile3",
+  legendlabels = c("No recdevs", paste0("sigmaR = ", seq(0.3, 0.7, 0.1))))
+
+png("figures/diags_model34/sigma_R_fig2.png", res = 300, units = 'in', width = 5, height = 5, pointsize = 10)
+plot(as.numeric(sigmaR_sum$pars[sigmaR_sum$pars$Label == "SR_sigmaR", 1:6]),
+  as.numeric(alt_sigma_R[1:6]), xlim = c(0,.9), ylim = c(0,.9),
+  xaxs = 'i', yaxs = 'i', pch = 16, col = 2,
+  xlab = "sigmaR", ylab = "Value")
+legend("topleft", col = c(2, 4), pch = 16,
+  legend = c("'Alternative sigmaR' suggested by tuning algorithm",
+    "SD of 'main' recdevs (1959-2020)"), bty = 'n')
+points(as.numeric(sigmaR_sum$pars[sigmaR_sum$pars$Label == "SR_sigmaR", 1:6]),
+  as.numeric(main_devs_SD[1:6]), pch = 16, col = 4)
+axis(1, at = seq(0.1, 0.7, 0.2))
+axis(2, at = seq(0.1, 0.7, 0.2))
+abline(0, 1, col = 2, lty = 2)
+abline(v = 0.5, h = 0.5, col = 'grey', lty = 3)
+dev.off()
+
+

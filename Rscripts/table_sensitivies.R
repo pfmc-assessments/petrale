@@ -15,7 +15,7 @@ old_vs_new_table <- sens_make_table_old_vs_new(
 old_vs_new_table[old_vs_new_table$Label == "M Female ", 3] <- 
   old_vs_new_table[old_vs_new_table$Label == "NatM Female ", 3]
 old_vs_new_table[old_vs_new_table$Label == "M Male ", 3] <- 
-  old_vs_new_table[old_vs_new_table$Label == "NatM Female ", 3]
+  old_vs_new_table[old_vs_new_table$Label == "NatM Male ", 3]
 old_vs_new_table[old_vs_new_table$Label == "WCGBTS catchability", 3] <- 
   old_vs_new_table[old_vs_new_table$Label == "LnQ base NWFSC(7)", 3]
 old_vs_new_table[old_vs_new_table$Label == "Triennial catchability", 3] <- 
