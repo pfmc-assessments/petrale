@@ -183,11 +183,15 @@ profile(
   string = sigmaR_para,
   profilevec = sigmaR_vec,
   newctlfile = "petrale_control.ss",
-  exe = "ss_win",
+  exe = "ss",
   extras = "-nohess",
   usepar = FALSE,
   verbose = TRUE,
-  show_in_console = TRUE
+  show_in_console = TRUE,
+  skipfinished = FALSE
 )
 sigmaR_mods <- SSgetoutput(sigmaR_dir, keyvec = 1:length(sigmaR_vec))
 sigmaR_summary <- SSsummarize(sigmaR_mods)
+
+sigmaR_mods <- SSgetoutput(dirvec = paste0(sigmaR_dir, "/sigmaR_", sigmaR_vec))
+  

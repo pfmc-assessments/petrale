@@ -34,13 +34,14 @@ tictoc::toc()
 tictoc::tic()
 fit <- adnuts::sample_rwm(model = 'ss', # this is the name of the executable
                           path = dir_adnuts, # directory with executable, input file, MLE output files (including covariance)
-                          iter = 3e5, # 2e5, # 2e6, # 200000,
+                          iter = 5e5, # 2e5, # 2e6, # 200000,
                           thin = 100, # thin to save memory, could try not
                           chains = 3)
 # By default the first 50% is burn in.
 tictoc::toc()
-save(fit, file = file.path(dir_adnuts, "fit_3e5_11June.Rdata"))
+save(fit, file = file.path(dir_adnuts, "fit_5e5_24July.Rdata"))
 
+library(magrittr)
 # get parameter names
 model <- r4ss::SS_output(dir_model, printstats = FALSE, verbose = FALSE)
 report_info <- 
