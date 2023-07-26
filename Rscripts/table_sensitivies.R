@@ -2,15 +2,20 @@
 if (FALSE) {
   get_mod(34, 1)
   get_mod(id = "2019.001.001")
+  get_mod(id = "2019.000.000")
 }
 
 old_vs_new_table <- sens_make_table_old_vs_new(
-    sens_mods = list(mod.34.1, mod.2019.001.001_base), 
+    sens_mods = list(mod.34.1, mod.2019.000.000_base_3.30.13), 
     plot = FALSE, write = FALSE, sens_type = "old_vs_new",
     sens_names = c("Base model", "2019 assessment")
   )
 
 # map catchability parameters to shared locations
+old_vs_new_table[old_vs_new_table$Label == "M Female ", 3] <- 
+  old_vs_new_table[old_vs_new_table$Label == "NatM Female ", 3]
+old_vs_new_table[old_vs_new_table$Label == "M Male ", 3] <- 
+  old_vs_new_table[old_vs_new_table$Label == "NatM Female ", 3]
 old_vs_new_table[old_vs_new_table$Label == "WCGBTS catchability", 3] <- 
   old_vs_new_table[old_vs_new_table$Label == "LnQ base NWFSC(7)", 3]
 old_vs_new_table[old_vs_new_table$Label == "Triennial catchability", 3] <- 
@@ -23,7 +28,8 @@ old_vs_new_table <- old_vs_new_table %>%
   !grepl("Winter", Label) & 
   !grepl("Summer", Label) &
   !grepl("Early", Label) &
-  !grepl("NWFSC", Label)
+  !grepl("NWFSC", Label) &
+  !grepl("NatM", Label)
   )
 
 old_vs_new_table$Label <- gsub("Triennial catchability", "Triennial catchability - early", 
