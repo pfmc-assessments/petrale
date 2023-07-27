@@ -74,7 +74,7 @@ for (ipar in seq_along(M_vec_up)) {
 
 M_mods <- SSgetoutput(M_dir_down, keyvec = 1:(length(M_vec_down) + length(M_vec_up)),
 getcomp = FALSE)
-M_mods[["MLE"]] <- mod_base
+M_mods[["MLE"]] <- mod.34.1
 M_summary <- SSsummarize(M_mods)
 M_vec <- M_summary$pars %>% 
   dplyr::filter(Label == M_para) %>% 
@@ -87,6 +87,11 @@ M_vec <- M_summary$pars %>%
   dplyr::filter(Label == M_para) %>% 
   dplyr::select(1:M_summary$n) %>%
   as.numeric()
+
+SSB_vs_M <- data.frame(M = M_vec, 
+SSB_2023 = as.numeric(M_summary$quants[M_summary$quants$Label == "SSB_2023", 1:13]))
+write.csv(SSB_vs_M, "tables/SSB_vs_M.csv", row.names = FALSE)
+
 
 nwfscDiag::get_summary(mydir = M_dir_down, 
  para = M_para,
