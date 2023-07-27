@@ -5,27 +5,30 @@ if (FALSE) {
   # make tables in CSV format
   SSexecutivesummary(mod.34.10, forecast_ofl = c(3763, 3563))
   SSexecutivesummary(mod.34.11, forecast_ofl = c(3763, 3563))
+  SSexecutivesummary(mod.34.920, forecast_ofl = c(3763, 3563))
+  SSexecutivesummary(mod.34.921, forecast_ofl = c(3763, 3563))
   # 
-  save_loc <- file.path(mod.34.10$inputs$dir, "tex_tables")
-  dir.create(save_loc)
+  save_loc0 <- file.path(mod.34.920$inputs$dir, "tex_tables")
+  save_loc1 <- file.path(mod.34.921$inputs$dir, "tex_tables")
+  dir.create(save_loc0)
+  dir.create(save_loc1)
   sa4ss::es_table_tex(
-    dir = mod.34.10$inputs$dir,
-    save_loc = save_loc
+    dir = mod.34.920$inputs$dir,
+    save_loc = save_loc0
   )
-  save_loc <- file.path(mod.34.11$inputs$dir, "tex_tables")
-  dir.create(save_loc)
   sa4ss::es_table_tex(
-    dir = mod.34.11$inputs$dir,
-    save_loc = save_loc
+    dir = mod.34.920$inputs$dir,
+    save_loc = save_loc1
   )
-  SSexecutivesummary(mod.34.10, forecast_ofl = c(3763, 3563), 
-    format = FALSE, plotfolder = file.path(mod.34.10$inputs$dir, "tables_no_format"))
-  SSexecutivesummary(mod.34.11, forecast_ofl = c(3763, 3563), 
-    format = FALSE, plotfolder = file.path(mod.34.11$inputs$dir, "tables_no_format"))
+  
+  SSexecutivesummary(mod.34.920, forecast_ofl = c(3763, 3563), 
+    format = FALSE, plotfolder = file.path(mod.34.920$inputs$dir, "tables_no_format"))
+  SSexecutivesummary(mod.34.921, forecast_ofl = c(3763, 3563), 
+    format = FALSE, plotfolder = file.path(mod.34.921$inputs$dir, "tables_no_format"))
 
   # make alternative projection table (depends on unformatted exec summary table above)
-  projection_table(mod.34.10)
-  projection_table(mod.34.11)
+  projection_table(mod.34.920)
+  projection_table(mod.34.921)
 
   dir.create('figures/forecasts')
   SSplotCatch(mod.34.10, maxyr = 2035, forecastplot = TRUE, subplots = 5, 
@@ -109,10 +112,18 @@ if (FALSE) {
 
   get_mod(34, 44)
   get_mod(34, 25)
-  SSplotComparisons(SSsummarize(list(mod.34.1, mod.34.25, mod.34.44)), 
-    uncertainty = c(TRUE, FALSE, FALSE), 
+  SSplotComparisons(SSsummarize(list(mod.34.1, mod.34.910, mod.34.930)), 
+    uncertainty = c(TRUE, FALSE, FALSE),
     legendlabels = c("Base M = 0.142", "Low state M = 0.072", "High state M = 0.219"),
     plotdir = "figures/forecasts", plot = FALSE, print = TRUE, filenameprefix = "states_v1_")
+  SSplotComparisons(SSsummarize(list(mod.34.920, mod.34.910, mod.34.930)), 
+    uncertainty = c(TRUE, FALSE, FALSE), endyrvec = 2034,
+    legendlabels = c("Base M = 0.142", "Low state M = 0.072", "High state M = 0.219"),
+    plotdir = "figures/forecasts", plot = FALSE, print = TRUE, filenameprefix = "states_Pstar45_")
+  SSplotComparisons(SSsummarize(list(mod.34.921, mod.34.911, mod.34.931)), 
+    uncertainty = c(TRUE, FALSE, FALSE), endyrvec = 2034,
+    legendlabels = c("Base M = 0.142", "Low state M = 0.072", "High state M = 0.219"),
+    plotdir = "figures/forecasts", plot = FALSE, print = TRUE, filenameprefix = "states_Pstar40_")
 
 # buffers for Pstart = 0.45 and 0.40
 PEPtools::get_buffer(years = 2023:2034, sigma = 0.5, pstar = 0.45)

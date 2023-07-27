@@ -105,8 +105,8 @@ table_decision <- function(
   # add column names
   rownames(results) <- NULL
   colnames(results) <- c(
-    "Mgmt", "Year", "Catch", "Low Spawn", "Low Frac",
-    "Base Spawn", "Base Frac", "High Spawn", "High Frac"
+    "Mgmt", "Year", "Catch", "Low Spawn M=0.072", "Low Frac M=0.072",
+    "Base Spawn M=0.142", "Base Frac M=0.142", "High Spawn M=0.219", "High Frac M=0.219"
   )
 
   results %>%

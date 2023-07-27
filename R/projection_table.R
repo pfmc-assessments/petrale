@@ -41,7 +41,7 @@ projection_table <- function(mod) {
 
   colnames(out) <- col_names
 
-  write.csv(out, "tables/projections_SR.csv", row.names = FALSE)
+  write.csv(out, "tables/projections.csv", row.names = FALSE)
 
 
   out.tex <- sa4ss::table_format(out,
@@ -55,5 +55,5 @@ projection_table <- function(mod) {
     # col_to_adjust = c(5,10,11),
     # width = c("0.7cm", "0.7cm", "0.7cm")
   )
-  writeLines(out.tex, "documents/tex_tables/projections_SR.tex")
+  writeLines(out.tex, "documents/tex_tables/projections.tex")
 }
