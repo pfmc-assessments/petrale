@@ -5,7 +5,7 @@
 # tab = readr::read_csv('models/ "tables", "g_Projections_ES.csv")) |> data.frame()
 # man = readr::read_csv(here('data/ACLs.csv')) |> data.frame()
 # read gmt table
-projection_table <- function(mod) {
+projection_table <- function(mod, file = "projections") {
   gmt_table <- read.csv("tables/GMT016-final specifications.csv", skip = 1)
   # read projection table
   tab <- read.csv(file.path(mod$inputs$dir, "tables_no_format/tables/g_Projections_ES.csv"))
@@ -41,7 +41,7 @@ projection_table <- function(mod) {
 
   colnames(out) <- col_names
 
-  write.csv(out, "tables/projections.csv", row.names = FALSE)
+  write.csv(out, file.path("tables", paste0(file, ".csv")), row.names = FALSE)
 
 
   out.tex <- sa4ss::table_format(out,
@@ -55,5 +55,5 @@ projection_table <- function(mod) {
     # col_to_adjust = c(5,10,11),
     # width = c("0.7cm", "0.7cm", "0.7cm")
   )
-  writeLines(out.tex, "documents/tex_tables/projections.tex")
+  writeLines(out.tex, file.path("documents/tex_tables", paste0(file, ".tex")))
 }

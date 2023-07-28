@@ -28,7 +28,7 @@ if (FALSE) {
 
   # make alternative projection table (depends on unformatted exec summary table above)
   projection_table(mod.34.920)
-  projection_table(mod.34.921)
+  projection_table(mod.34.921, file = "projections_Pstar40")
 
   dir.create('figures/forecasts')
   SSplotCatch(mod.34.10, maxyr = 2035, forecastplot = TRUE, subplots = 5, 
@@ -145,7 +145,7 @@ if (FALSE) {
 
 ### make decision table
 #devtools::load_all();
-caption <- "Decision table with 10-year projections. 'Mgmt' refers to the three management scenarios (A) the default harvest control rule $P^* = 0.45$, (B) harvest control rule with a lower $P^* = 0.40$. In each case the 2023 and 2024 catches are fixed at the ACLs which have been set for that year with estimated fleet allocation provided  by the GMT. The alternative states of nature ('Low', 'Base', and 'High') are provided in the columns, with Spawning Output ('Spawn', in trillions of eggs) and Fraction of unfished ('Frac') provided for each state. The colors of catch and fraction unfished are relative with lighter colors representing lower values."
+caption <- "Decision table with 10-year projections. 'Mgmt' refers to the three management scenarios (A) the default harvest control rule $P^* = 0.45$, (B) harvest control rule with a lower $P^* = 0.40$. In each case the 2023 and 2024 catches are fixed at the ACLs which have been set for that year with estimated fleet allocation provided  by the GMT. The alternative states of nature ('Low', 'Base', and 'High' as discussed in the text) are provided in the columns, with Spawning Output ('Spawn', in trillions of eggs) and Fraction of unfished ('Frac') provided for each state."
 
 tab <- table_decision(
   caption = caption,
@@ -155,5 +155,12 @@ tab <- table_decision(
 )
 writeLines(tab, "documents/tex_tables/decision_table.tex")
 
-# kableExtra::save_kable(file = "documents/tex_tables/decision_table.tex")
-
+# CSV version
+tab <- table_decision(
+  tex = FALSE,
+  caption = caption,
+  label = "es-decision",
+  list(mod.34.910, mod.34.920, mod.34.930),
+  list(mod.34.911, mod.34.921, mod.34.931)
+)
+write.csv(tab, "tables/decision_table.csv", row.names = FALSE)
