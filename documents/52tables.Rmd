@@ -67,7 +67,9 @@ sa4ss::table_format(x = len_samps_WCGBTS,
                  label = 'sample-size-length-wcgbts',
                  col_names = gsub("_", " ", names(len_samps_WCGBTS))
                  )
-
+```
+\clearpage
+```{r, tables-samples-surveys2, results = 'asis'}
 age_samps_WCGBTS <- read.csv("../tables/age_SampleSize_WCGBTS.csv")
 sa4ss::table_format(x = age_samps_WCGBTS,
                  caption = 'Sample sizes of WCGBTS age composition data.',

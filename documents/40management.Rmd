@@ -18,7 +18,7 @@ The model estimated uncertainty around the `r endyr+1` spawning output for is $\
 The estimated uncertainty values are lower than the Category 1 default $\sigma = 0.5$, so all projections will use the default $\sigma$.
 
 ## Regional management considerations 
-Studies on stock structure and movement of `r spp` indicating transboundary movement of `r spp` between U.S. and Canadian waters. Within the scope of this assessment, we explored including multiple data sources from British Columbia waters to the base model via sensitivity analysis. Further studies of transboundary movement of `r spp` between U.S. and Canadian waters would be beneficial for understanding of extend of `r spp`to help lay the groundwork for future collaborative effort between U.S. and Canada and potential transboundary assessment.
+Studies on stock structure and movement of `r spp` indicate transboundary movement of `r spp` between U.S. and Canadian waters as discussed in Section \ref{basic-information}. Within the scope of this assessment, we explored including multiple data sources from British Columbia waters to the base model via sensitivity analysis. Further studies of transboundary movement of `r spp` between U.S. and Canadian waters would be beneficial for understanding of extend of `r spp`to help lay the groundwork for future collaborative effort between U.S. and Canada and potential transboundary assessment.
 
 ## Research and Data Needs
 
@@ -28,7 +28,7 @@ Progress on a number of research topics and data issues would substantially impr
 
 \item Continue research toward better understanding how climate forcing impacts density-independent survival during `r spp` early life stages and further development of environmental recruitment index. Such index can provide additional information on recruitment, not captured by other sources, in most recent years when youngest cohorts may be not yet selected by either surveys or fisheries. 
 
-\item The extent of spatial and temporal variability on productivity processes such as growth, recruitment, and maturity is currently unknown and would benefit from further research. It would allow to better understand patterns we see in data and account for potential spatio-temporal variability in life history parameters in the model. 
+\item The extent of spatial, temporal, and density dependent variability on productivity processes such as growth, recruitment, and maturity is currently unknown and would benefit from further research. It would allow to better understand patterns we see in data and account for potential spatio-temporal variability in life history parameters in the model. 
 
 \item Further studies of transboundary movement of `r spp` between U.S. and Canadian waters would be beneficial for understanding the extent of `r spp` movements to help lay the groundwork for future collaborative effort between U.S. and Canada and potential transboundary assessment.
 

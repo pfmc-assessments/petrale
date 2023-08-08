@@ -166,7 +166,7 @@ caption = "Model estimated length-at-age in the beginning of the year. Shaded ar
 label = 'mod-est-len-age')
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "bio3_sizeatage_plus_WT_and_MAT.png"),
+filein = file.path(mod_loc_relative, "plots_bio_tall", "bio3_sizeatage_plus_WT_and_MAT.png"),
 caption = "Relationship between growth, maturity, and weight. Length at age is in the top-left panel with weight (thick lines) and maturity (thin lines) shown in top-right and lower-left panels",
 label = 'mod-est-len-age2')
 
@@ -412,8 +412,8 @@ fishery selectivities and retention curves and with steepness fixed at 0.80.",
 label = 'yield')
 
 add_figure(
-filein = file.path(mod_loc_relative, "plots", "ts_DynamicB0.png"), 
-caption = "Dynamic B0 plot. The lower line shows the time series of estimated Spawning output in the presence of fishing mortality. The upper line shows the time series that could occur under the same dynamics (including deviations in recruitment), but without fishing. The point at the left represents the unfished equilibrium.",
+filein = file.path(mod_loc_relative, "custom_plots", "ts_DynamicB0.png"), 
+caption = "Dynamic B0 plot. The lower line shows the time series of estimated spawning output in the presence of fishing mortality. The upper line shows the time series that could occur under the same dynamics (including deviations in recruitment), but without fishing. The point at the left represents the unfished equilibrium.",
 label = 'dynamic-b0')
 ```
 
@@ -425,7 +425,7 @@ label = 'dynamic-b0')
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_index1.png"), 
 label = 'sens-index1',
-caption = paste("Time series of spawning biomass (top) and fraction of unfished",
+caption = paste("Time series of spawning output (trillions of eggs, top) and fraction of unfished",
             "(bottom) for the sensitivity analyses related to",
             "index data."))
 ```
@@ -434,7 +434,7 @@ caption = paste("Time series of spawning biomass (top) and fraction of unfished"
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_comp1.png"), 
 label = 'sens-comp1',
-caption = paste("Time series of spawning biomass (top) and fraction of unfished",
+caption = paste("Time series of spawning output (trillions of eggs, top) and fraction of unfished",
             "(bottom) for the sensitivity analyses related to",
             "composition data."))
 
@@ -448,7 +448,7 @@ caption = paste("Time series of recruitment (top) and recruitment deviations",
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_bio1.png"), 
 label = 'sens-bio1',
-caption = paste("Time series of spawning biomass (top) and fraction of unfished",
+caption = paste("Time series of spawning output (trillions of eggs, top) and fraction of unfished",
             "(bottom) for the sensitivity analyses related to",
             "biology."))
 
@@ -456,7 +456,7 @@ caption = paste("Time series of spawning biomass (top) and fraction of unfished"
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_recruit1.png"), 
 label = 'sens-recruit1',
-caption = paste("Time series of spawning biomass (top) and fraction of unfished",
+caption = paste("Time series of spawning output (trillions of eggs, top) and fraction of unfished",
             "(bottom) for the sensitivity analyses related to",
             "recruitment."))
 
@@ -476,7 +476,7 @@ caption = paste0("Environmental index of recruitment used in the sensitivity ana
 
 # Canada sensitivities
 sa4ss::add_figure(
-  filein = "../models/2023.a034.703/plots/index9_standcpueall.png",
+  filein = "../figures/index9_standcpueall.png",
   label = 'sens-Canada0',
   caption = "Standardized indices showing comparison of the WCGBTS and Canadian indices as well as the Triennial index."
 )
@@ -484,7 +484,7 @@ sa4ss::add_figure(
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_Canada1.png"), 
 label = 'sens-Canada1',
-caption = paste("Time series of spawning biomass (top) and fraction of unfished",
+caption = paste("Time series of spawning output (trillions of eggs, top) and fraction of unfished",
             "(bottom) for the sensitivity analyses related to",
             "data from Canada."))
 
