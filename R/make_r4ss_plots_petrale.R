@@ -85,6 +85,15 @@ make_r4ss_plots_petrale <- function(mod, plot = c(1:26, 31:50),
     }
   }
 
+  # tall bio & legend fix 
+  if (35 %in% plot) {
+    SS_plots(mod, plot = 1, printfolder = 'plots_bio_tall')
+    SSplotDynamicB0(mod, legendloc = 'top', 
+      plotdir = file.path(mod$inputs$dir, 'custom_plots'), 
+      print = TRUE, pheight = 4)
+
+  }
+
   # make default plots for most things
   if (any(1:26 %in% plot)) {
     r4ss::SS_plots(mod,

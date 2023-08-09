@@ -222,6 +222,9 @@ sens_make_table(num = 34, sens_mods = mod_list, plot = TRUE,
   legendncol = 1) # petrale declines too far so bumps into label
 
 SSplotComparisons(SSsummarize(mod_list), subplots = 11, indexfleets = 5)
+SSplotIndices(mod.34.701, subplot = 9, 
+  fleetcols = c("blue", "red", "orange", "green3", "purple"),
+  print = TRUE, plotdir = 'figures')
 
 # STAR sensitivities
 get_mod(34, 506) # male MGparm offsets
