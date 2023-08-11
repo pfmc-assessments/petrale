@@ -42,8 +42,6 @@ label = "data-plot"
 <!-- ****************** Catches Used in the Model ************************* --> 
 <!-- ====================================================================== -->  
 
-## Catch and estimated discards
-
 ```{r, catch-figures-r4ss, results = "asis"}
 sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots", "catch2 landings stacked.png"), 
@@ -326,6 +324,11 @@ sa4ss::add_figure(
 filein = file.path(mod_loc_relative, "plots",  "discard_fitSouth.png"), 
 caption = paste("Discard fraction for the South fishery with 95% intervals (black) with fit of expected value (blue)."),
 label = 'discard_fitSouth')
+
+sa4ss::add_figure(
+filein = "../figures/discard_comparison.png",
+caption = "Estimated total discards (top) and discard fractions (bottom) for each fleet in the 2019 assessment (left) and base model (right).",
+label = 'discard_comparison')
 ```
 
 ```{r, results = 'asis'}
@@ -589,3 +592,14 @@ label = 'm-profile-pars')
 
 
 <!-- ### Reference Points and Forecasts -->
+```{r, results = 'asis'}
+add_figure(
+filein = "../figures/forecasts/states_Pstar45_compare1_spawnbio.png", 
+caption = "Spawning output time series and projections for the base model and states of nature using the default harvest control rule as shown in the decision table.",
+label = 'states-bio')
+
+add_figure(
+filein = "../figures/forecasts/states_Pstar45_compare3_Bratio.png", 
+caption = "Fraction unfished time series and projections for the base model and states of nature using the default harvest control rule as shown in the decision table.",
+label = 'states-fraction')
+```

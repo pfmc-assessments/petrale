@@ -52,10 +52,12 @@ if (FALSE) {
   
   # 75% intervals for Spawning Output in 2023
   # approach used in 2019 update
-  B2023_info <- mod.34.1$derived_quants["SSB_2023", c("Value", "Std")]
+  B2023_info <- mod.34.1$derived_quants["SSB_2023", c("Value", "StdDev")]
   B2023_info
   #            Value   StdDev
   # SSB_2023 7.68553 0.680777
+  B2023_info$StdDev / B2023_info$Value
+  # 0.08857906
 
   B2023_states <- B2023_info$Value + c(-1.15, 1.15) * B2023_info$StdDev
   B2023_states
@@ -64,9 +66,13 @@ if (FALSE) {
   # [1] 0.1389856
   mod.34.1$Pstar_sigma
   # [1] 0.08840604
+
+  ## symetric uncertainty
   B2023_states_v3 <- B2023_info$Value + c(-1.15, 1.15) * mod.34.1$Pstar_sigma * B2023_info$Value
   B2023_states_v3
   # [1] 6.904166 8.466894
+
+  # lognormal uncertainty is better
   B2023_states_v2 <- qlnorm(p = c(.125, 0.875), 
     meanlog = log(B2023_info$Value),
     sdlog =  mod.34.1$Pstar_sigma)
@@ -76,7 +82,9 @@ if (FALSE) {
   # finding M values that match the SSB values
   SSB_vs_M <- read.csv("tables/SSB_vs_M.csv")
   lm1 <- lm(SSB_2023 ~ M, data = SSB_vs_M)
-  lm1$coefficients[1]
+  lm1$coefficients
+  # (Intercept)           M 
+  #    6.181161   10.604555 
 
   M_lo1 <- (B2023_states[1] - lm1$coefficients[1]) / lm1$coefficients[2]
   M_hi1 <- (B2023_states[2] - lm1$coefficients[1]) / lm1$coefficients[2]

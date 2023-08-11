@@ -223,3 +223,19 @@ table_sens("../tables/sens_table_Canada.csv",
            caption_extra = "The indices and total likelihoods are not comparable for the models that include the Canadian index.")
 ```           
 \clearpage
+
+```{r projections, results = "asis"}
+# give ES tables new labels
+tab <- readLines("tex_tables/projections.tex")
+tab <- gsub("tab:project", "tab:project2", tab)
+cat(tab) # prints the table
+```
+
+\clearpage
+
+```{r decision, results = "asis"}
+# give ES tables new labels
+tab <- readLines("tex_tables/decision_table.tex")
+tab <- gsub("tab:es-decision", "tab:decision", tab)
+cat(tab) # prints the table
+```
