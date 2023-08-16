@@ -100,7 +100,11 @@ strata_Tri <- read.csv("../tables/strata_for_survey_comps_Tri.csv")
 col_names <- gsub(".Lower.Bound..m.", " lower bound (m)", names(strata_WCGBTS))
 col_names <- gsub(".Upper.Bound..m.", " upper bound (m)", col_names)
 col_names <- gsub("Latitude.", "Latitude ", col_names)
+```
 
+\clearpage
+
+```{r, tables-strata2, results = 'asis'}
 sa4ss::table_format(x = strata_WCGBTS,
                  caption = 'Latitude and depth strata used to expand the composition data for the WCGBTS. Note that the boundaries of the U.S. exclusive economic zone, to which survey operations are limited, span a range of latitudes. The latitudinal range of the hauls was 32.00 degrees to 48.46 degrees, so 32 and 49 are chosen to encompass that range.',
                  label = 'strata-wcgbts',
