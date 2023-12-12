@@ -1,27 +1,19 @@
+\pagebreak
+
+\counterwithin{table}{section}
+\counterwithin{figure}{section}
 # (APPENDIX) Appendix {-} 
 
 # Appendix A Environmental indices of petrale recruitment, and estimates of the abundance spatial distribution of juveniles
 
+\begin{center}
 Nick Tolimieri
+\end{center}
 
 ```{r r-chunk-options, echo=FALSE, warning=FALSE, message=FALSE}
 
-rm(list=ls())
 
 HomeFile = "../recruit_index/Petrale-Appendix-2023"
-
-library(knitr) 
-# knitr::opts_chunk$set(
-#   root.dir = HomeFile,
-#   fig.path = paste0(HomeFile,'/Figures/'),
-#   cache.path = 'cache/graphics-', 
-#   echo=FALSE,
-#   message=FALSE,
-#   include = TRUE,
-#   warning=FALSE,
-#   dev='png',
-#   dpi=300
-# )
 
 # set some locations
 data_loc = paste0(HomeFile,"/00_Data/")
@@ -106,53 +98,46 @@ if(1==2){ # copy or don't
 
 ```
 
-# Prior ROMS based indicators of petrale recriutment
+## Prior ROMS based indicators of petrale recriutment
 
-@haltuch2019petrale examined the relationship between recruitment deviations from the 2019 petrale assessment [@wetzel2019petrale] and oceanographic drivers based on model output from a Regional Ocean Modeling System (ROMS) model for the California Current Ecosystem [@neveu2016historical]. Potential drivers were selected based a conceptual life history model, which was used to generate life-stage-specific and spatio-temporally-specific mechanistic hypotheses regarding oceanographic variables that might likely influence survival at each life stage. The study area encompassed the region from 40 to 48°N in the California Current Ecosystem with individual predictors limited by depth or distance from shore (Table A\@ref(tab:life-history-table)). Model selection resulted in a single model in which four oceanographic variables explained 73% of the variation in in the recruitment deviations. Recruitment deviations were:
+@haltuch_oceanographic_2020 examined the relationship between recruitment deviations from the 2019 petrale assessment [@wetzel2019petrale] and oceanographic drivers based on model output from a Regional Ocean Modeling System (ROMS) model for the California Current Ecosystem [@neveu2016historical]. Potential drivers were selected based a conceptual life history model, which was used to generate life-stage-specific and spatio-temporally-specific mechanistic hypotheses regarding oceanographic variables that might likely influence survival at each life stage. The study area encompassed the region from 40 to 48°N in the California Current Ecosystem with individual predictors limited by depth or distance from shore (Table \@ref(tab:life-history-table)). Model selection resulted in a single model in which four oceanographic variables explained 73% of the variation in in the recruitment deviations. Recruitment deviations were:
 
 (1)	positively correlated with degree days during the female precondition period (DDpre), 
 (2)	positively correlated with mixed-layer depth during the egg stage (MLDegg), 
 (3)	negatively correlated with cross-shelf transport during the larval stage (CSTlarv), and 
 (4)	negatively correlated with cross-shelf transport during the benthic juvenile stage (CSTbjuv). 
 
-These results suggested that ROMS output might be useful as the basis for an environmental index of recruitment for petrale to allow for better model precision and near-term forecasting. However, while the ROMS model used by @haltuch2019petrale was consistent in structure and inputs for 1980-2010, the ROMS model was updated beginning in 2011 producing potential discontinuities in the ROMS predictions and the identified drivers from the earlier 1980-2010 time period. 
+These results suggested that ROMS output might be useful as the basis for an environmental index of recruitment for petrale to allow for better model precision and near-term forecasting. However, while the ROMS model used by @haltuch_oceanographic_2020 was consistent in structure and inputs for 1980-2010, the ROMS model was updated beginning in 2011 producing potential discontinuities in the ROMS predictions and the identified drivers from the earlier 1980-2010 time period. 
 
-Here, outputs from the updated ROMS model for 2011-2022 were compared to the 1980-2010 mode looking for discontinuities in ROMS time series used in @haltuch2019petrale with a focus on the the four predictors identified as important in that work. The conceptual life-history model and abbreviation for terms are shown in Table \@ref(tab:life-history-table).
+Here, outputs from the updated ROMS model for 2011-2022 were compared to the 1980-2010 mode looking for discontinuities in ROMS time series used in @haltuch_oceanographic_2020 with a focus on the the four predictors identified as important in that work. The conceptual life-history model and abbreviation for terms are shown in Table \@ref(tab:life-history-table).
 
 \newpage
-```{r life-history-table, eval=T}
+```{r life-history-table, eval=TRUE}
 
-# life_hist_table = data.frame(readxl::read_xlsx( "Petrale-life-history-table.xlsx"))
+# replace NAs with blank cells
+life_hist_table[is.na(life_hist_table)] <- ""
 
-lh_table = life_hist_table %>% flextable() %>% 
-  set_header_labels(Life.stage = "Life stage",
-                     Stage.duration = "Stage duration",
-                     Stage.depth = "Stage depth",
-                     ROMS = 'ROMS variable') %>%
-  width(j = "Hypothesis", width = 2) %>%
-  width(j = "ROMS", width = 1.5) %>%
-  width(j = "Abbrv.", width = 0.7) %>%
-  valign(valign='top') %>%
-  fontsize(size = 8, part = 'all') %>%
-  add_footer_lines("DD = degree days; T = temperature; MLD = mixed-layer depth, LST = longshore transport, CST = cross-shelf transport; pre = female preconditioning stage; egg = egg stage, larv = larval stage, pjuv = pelagic juveniles, bjuv = benthic juveniles. ")
+sa4ss::table_format(life_hist_table,
+  col_names = c("Life stage", "Year", "Stage duration", "Stage depth", "Abbrv.", "Hypothesis", "ROMS variable"),
+  caption = paste("Conceptual life-history model for petrale, including abbreviation of ROMS term. Reproduced from Haltuch et al. (2019).",
+    "DD = degree days; T = temperature; MLD = mixed-layer depth, LST = longshore transport, CST = cross-shelf transport; pre = female preconditioning stage; egg = egg stage, larv = larval stage, pjuv = pelagic juveniles, bjuv = benthic juveniles."),
+  label = "life-history-table",
+  custom_width = TRUE,
+  align = 'lllllll',
+  width = c("3.5em","3.5em","3.5em","3.5em","3.5em","12em","10em"),
+  col_to_adjust = 1:7) %>% 
+    kableExtra::kable_styling(latex_options = c("striped"))
 
-lh_table <- set_caption(lh_table, 
-  "Conceptual life-history model for petrale, including abbreviation of ROMS term. Reproduced from Haltuch et al. (2019).", 
-  autonum = officer::run_autonum(seq_id = "tab", bkm = "life-history-table"))
-
-
-lh_table
 
 ```
 
 \newpage
 
-## ROMS outputs
+### ROMS outputs
 
-Visual comparison of the 1980-2010 and the 2011-2022 ROMS outputs show distinct discontinuities between the two time periods in multiple time series (Fig. A\@ref(fig:roms-time-series)). In particular, DDpre and MLDegg (from the original recruitment analysis) both show distinction changes in scale and trend across the 2010/2011 boundary. The cross-shelf transport time series from the original model (CSTlarv and CSTbjuv.a) are not as distinct but do suggest some discontinuity between ROMS models. Other parameters also show rapid changes, such as the longshore transport terms for the egg stage (LSTegg and LSTegg2) as well as the temperature terms. In some cases, the 2014-2016 marine heatwave may have influenced the 2011+ outputs (and thus be real), but this effect is unlikely the case for many of the terms that jump sharply from 2010 to 2011.
+Visual comparison of the 1980-2010 and the 2011-2022 ROMS outputs show distinct discontinuities between the two time periods in multiple time series (Fig. \@ref(fig:roms-time-series)). In particular, DDpre and MLDegg (from the original recruitment analysis) both show distinction changes in scale and trend across the 2010/2011 boundary. The cross-shelf transport time series from the original model (CSTlarv and CSTbjuv.a) are not as distinct but do suggest some discontinuity between ROMS models. Other parameters also show rapid changes, such as the longshore transport terms for the egg stage (LSTegg and LSTegg2) as well as the temperature terms. In some cases, the 2014-2016 marine heatwave may have influenced the 2011+ outputs (and thus be real), but this effect is unlikely the case for many of the terms that jump sharply from 2010 to 2011.
 
-```{r roms-time-series, fig.width=6.5, fig.height=8, fig.cap= "ROMS predictors used in the original 1980-2010 analysis but updated to include 2011-2022 outputs. DD = degree days, CST = cross-shelf transport, LST = long-shore transport, MLD = mixed layer depth, pre = prespawning, egg = egg stage, larv = larval stage, pjuv = pelagic juveniles, bjuv = benthic juveniles. ‘a’ and ‘b’ suffixes indicate drivers with the same time period but different depth ranges due to differences in the literature.  Dotted red line indicates the 2010/2011 switch in model outputs."}
-
+```{r roms-time-series, include = FALSE}
 # source("01_ROMS_Prelim.r") # to process and update time series
 
 # roms = data.frame(read.table(paste0(data_loc,'/Data_ROMS.for.analysis.4day.mean-sum.csv'), header=TRUE, sep=','))
@@ -181,11 +166,23 @@ ggplot(roms_long, aes(x=year, y = roms_data)) +
   xlab("") + ylab("Index value")+
   theme_bw()
 
+# save as png
+ggsave(filename = "appendix_fig1.png", width = 6.5, height = 8, units = "in")
 ```
 
-There are multiple possibilities for how an individual ROMS time series may change over the 2010/2011 boundary and how those changes might impact the ROMS-recruitment model from @haltuch2019petrale. There might be no change in the extracted ROMS variable such that the relationship between the ROMS predictor and petrale recruitment deviations remains the same. That is, there is no change in the intercept, slope, or variance (Fig. A\@ref(fig:fake-figure)c). This outcome would be ideal because the current ROMS-recruitment model could be used unchanged with updated ROMS time series. The overall relationship might stay the same but variability in the ROMS parameter mighty change due to new observed model inputs leading to more correct estimates (Fig. A\@ref(fig:fake-figure)b). Essentially, the variance increase (or decreases) from 2011+ due to change in the ROMS model structure, including new or different time series of observed data, but the slope and intercept remain the same. This outcome could be modeled by allowing the variance to change across the 2010/2011 boundary.   
+```{r, results = "asis"}
+sa4ss::add_figure(
+  filein = "appendix_fig1.png", 
+  caption = 
+  "ROMS predictors used in the original 1980-2010 analysis but updated to include 2011-2022 outputs. DD = degree days, CST = cross-shelf transport, LST = long-shore transport, MLD = mixed layer depth, pre = prespawning, egg = egg stage, larv = larval stage, pjuv = pelagic juveniles, bjuv = benthic juveniles. 'a' and 'b' suffixes indicate drivers with the same time period but different depth ranges due to differences in the literature.  Dotted red line indicates the 2010/2011 switch in model outputs.",
+  label = "roms-time-series",
+  alt_caption = "Multi-panel figure showing time series of numerous environmental variables many of which show an obvious discontinuity between 2010 and 2011." 
+)
+```
 
-```{r fake-figure, fig.width = 4, fig.height = 4, fig.cap="Hypothetical relationships between ROMS predictors and petrale recruitment deviations across the 2010/,2011 boundary. a) the relationship is the same, b) a change in variance of the ROMS predictor, c) a change in the intercept, and d) a change in the slope. Colors represent different time periods."}
+There are multiple possibilities for how an individual ROMS time series may change over the 2010/2011 boundary and how those changes might impact the ROMS-recruitment model from @haltuch_oceanographic_2020. There might be no change in the extracted ROMS variable such that the relationship between the ROMS predictor and petrale recruitment deviations remains the same. That is, there is no change in the intercept, slope, or variance (Fig. \@ref(fig:fake-figure)c). This outcome would be ideal because the current ROMS-recruitment model could be used unchanged with updated ROMS time series. The overall relationship might stay the same but variability in the ROMS parameter mighty change due to new observed model inputs leading to more correct estimates (Fig. \@ref(fig:fake-figure)b). Essentially, the variance increase (or decreases) from 2011+ due to change in the ROMS model structure, including new or different time series of observed data, but the slope and intercept remain the same. This outcome could be modeled by allowing the variance to change across the 2010/2011 boundary.   
+
+```{r fake-figure, include = FALSE}
 
 theme_set(theme_bw() + theme(legend.position = 'none'))
 # x =  roms 
@@ -223,15 +220,29 @@ ggarrange(p1, p2, p3, p4,
           font.label = list(size = 10, face = "plain"),
           align = 'hv')
 
+# save as png
+ggsave(filename = "appendix_fig2.png", width = 4, height = 4, units = "in")
 ```
 
-Additionally, the absolute value of the ROMS variable might change (e.g., water column temperature is warmer than previously  modeled), but the overall relationship (slope) remains the same but with a different y-intercept (Fig. A\@ref(fig:fake-figure)c). Here, one could add a time-period term to the model to account for different intercepts in the two blocks of time. 
+```{r, results = "asis"}
+sa4ss::add_figure(
+  filein = "appendix_fig2.png", 
+  width = 100*4/6.5,
+  caption = 
+  "Hypothetical relationships between ROMS predictors and petrale recruitment deviations across the 2010/,2011 boundary. a) the relationship is the same, b) a change in variance of the ROMS predictor, c) a change in the intercept, and d) a change in the slope. Colors represent different time periods.",
+  label = "fake-figure",
+  alt_caption = "Four-panel figure showing hypothetical relationships where red and green points are either show the same pattern or differ in variability scale or trend." 
+)
+```
 
-Finally, the relationship between the ROMS predictor and recruitment deviations might actually change (Fig. A\@ref(fig:fake-figure)d). While one could include an interaction term in the model, this case represents the least desired outcome, as it is difficult to interpret the meaning of the interaction. Relationships between environmental variables and biological outcomes are often non-linear, with performance decreasing both above and below a species optimum (e.g., growth and temperature relationships for fish). Obviously, there can also be some combination of b-d, or the relationship can just breakdown completely.   
 
-## Refitting the @haltuch2019petrale model
+Additionally, the absolute value of the ROMS variable might change (e.g., water column temperature is warmer than previously  modeled), but the overall relationship (slope) remains the same but with a different y-intercept (Fig. \@ref(fig:fake-figure)c). Here, one could add a time-period term to the model to account for different intercepts in the two blocks of time. 
 
-To examine the impact of updating the ROMS model on the ROMS-recruitment relationship, the ROMS time series were updated (following @haltuch2019petrale) to include the new 2011+ ROMS outputs. The full ROMS time series were then fit against recruitment deviations from the 2019 petrale stock assessment [@wetzel2019petrale]. The best-fit model from @haltuch2019petrale was used as the base model: 
+Finally, the relationship between the ROMS predictor and recruitment deviations might actually change (Fig. \@ref(fig:fake-figure)d). While one could include an interaction term in the model, this case represents the least desired outcome, as it is difficult to interpret the meaning of the interaction. Relationships between environmental variables and biological outcomes are often non-linear, with performance decreasing both above and below a species optimum (e.g., growth and temperature relationships for fish). Obviously, there can also be some combination of b-d, or the relationship can just breakdown completely.   
+
+### Refitting the @haltuch_oceanographic_2020 model
+
+To examine the impact of updating the ROMS model on the ROMS-recruitment relationship, the ROMS time series were updated (following @haltuch_oceanographic_2020) to include the new 2011+ ROMS outputs. The full ROMS time series were then fit against recruitment deviations from the 2019 petrale stock assessment [@wetzel2019petrale]. The best-fit model from @haltuch_oceanographic_2020 was used as the base model: 
 
  _Recruitment Deviations ~ DDpre + MLDegg + CSTlarv + CSTbjuv.a_
 
@@ -256,19 +267,20 @@ roms_aic_table = roms_aic_table %>% dplyr::select(Model,AIC,nParams, Delta) %>%
   filter(Model != 'Polynomial') %>%
   rename(Parameters = nParams,
          `Delta AIC` = Delta)
-
-ROMS_AIC_TABLE = roms_aic_table %>% flextable() %>% autofit() %>%
-   colformat_double(j = ~ AIC, digits=3) %>%
-   colformat_double(j = ~ `Delta AIC`, digits=3) %>%
-   bold(i=3)
 ```
 
 ```{r model-fits}
-ROMS_AIC_TABLE <- set_caption(ROMS_AIC_TABLE, "Model fitting criteria for the ROMS-recruitment model fits. Bold indicates the moswl chosen as the best-fit model based on delta AIC < 2.0 and the fewest parameters.", 
-  autonum = officer::run_autonum(seq_id = "tab", bkm = "aictable"))
-
-ROMS_AIC_TABLE  
-
+# ROMS_AIC_TABLE  
+roms_aic_table %>% 
+  dplyr::mutate(dplyr::across(c(2, 4), round, 3)) %>%
+  sa4ss::table_format(
+    col_names = c("Model", "AIC", "Parameters", "Delta AIC"),
+    label = 'aictable',
+    caption = "Model fitting criteria for the ROMS-recruitment model fits. Bold indicates the best-fit model based on delta AIC < 2.0 and the fewest parameters.",
+    align = 'lrrr'
+    ) %>%
+      kableExtra::row_spec(3, bold = TRUE)
+    
 rownames(roms_aic_table) = roms_aic_table[,'Model']
 best_fit = roms_aic_table[3,'Model'] 
 ```
@@ -279,7 +291,7 @@ _Recruitment Deviations ~ Period + DDpre + MLDegg + CSTlarv + CSTbjuv.a + DDpre*
 
 This model explained slightly less variance (r^2^ = `r round(roms_best_refit_summary$r.squared,2)`) than the original 1980-2010 model (r^2^ = 0.73), but had `r roms_aic_table[best_fit,'Parameters'] - 1` parameters (excluding the intercept) and `r length(c(1981:2010, 2012:2018))` data points (1981:2010, 2012-2018), or just over five points per predictor term. Examination of the model coefficients (Table \@ref(tab:best-refit-coef)) indicates that the relationships between recruitment deviations and DDpre and MLDegg changed across the 2010/2011 boundary from positive to negative.
 
-Overall the model fit to the data was good and captured a decline in recruitment later in the time series (Fig. A\@ref(fig:fig-best-fit)). Forecasting through 2022 (latest ROMS output availability), suggested high recruitment in 2022. This model also over-predicted recruitment in 2015 during the 2014-2016 marine heatwave.  
+Overall the model fit to the data was good and captured a decline in recruitment later in the time series (Fig. \@ref(fig:fig-best-fit)). Forecasting through 2022 (latest ROMS output availability), suggested high recruitment in 2022. This model also over-predicted recruitment in 2015 during the 2014-2016 marine heatwave.  
 
 ```{r best-refit-coef}
 
@@ -297,26 +309,27 @@ best_refit_coef['CSTbjuv.a',1] <- "CSTbjuv"
 best_refit_coef['periodbefore:DDpre',1] <- "DDpre x Period"
 best_refit_coef['periodbefore:MLDegg',1] <- "MLDegg x Period"
 
-
-refit_coef = best_refit_coef %>% flextable() %>% autofit() %>%
-  colformat_double(j = ~ Estimate, digits=3) %>%
-  colformat_double(j = ~ SE, digits=3) %>%
-  colformat_double(j = ~ `t-value`, digits=3) %>%
-  colformat_double(j = ~ `p-value`, digits=3)
-
 pval = get_F_pvalue(roms_best_refit_summary)
-model_cap = paste0("Parameter estimates from the best-fit model including combined ROMS time series from 1981-2018. Model r^2 = ", round(roms_best_refit_summary$r.squared,2), ', ', pval,'.' )
+model_cap = paste0("Parameter estimates from the best-fit model including combined ROMS time series from 1981-2018. Model $r^2 = ", round(roms_best_refit_summary$r.squared,2), ', ', pval,'$.' )
 
-refit_coef <- set_caption(refit_coef, model_cap, 
-  autonum = officer::run_autonum(seq_id = "tab", bkm = "best-refit-coef"))
+# refit_coef
 
-refit_coef
+best_refit_coef %>% 
+  tibble::remove_rownames() %>%
+  dplyr::mutate(dplyr::across(c(2:5), round, 3)) %>%
+  sa4ss::table_format(
+    col_names = c("Model", "Estimate", "SE", "t-value", "p-value"),
+    caption = model_cap,
+    label = "best-refit-coef",
+    align = 'lrrrr'
+    )
+
 ```
 
 \
 \
 
-```{r fig-best-fit, fig.width=4, fig.height = 3, fig.cap="Model fit for ROMS predictors to the recruitment deviations for 1981-2018. Black line = model prediction including forecast to 2019-2022. Points are the recruitment deviations from the 2019 petrale stock assessment. Error envelopes indicate 1.0 s.e."}
+```{r fig-best-fit, include = FALSE}
 
 # predicted values and model fit from 02_Stats_Prelim.r
 # fish = data.frame(read.csv(paste0(data_loc, "Data_Fish_ROMS_predicted.csv"), header=T))
@@ -334,11 +347,24 @@ ggplot( fish_roms, aes(x=year, y=recdev)) +
   geom_segment( aes(x=1980, xend=2022,y=0,yend=0), linetype='dashed') +
   theme_bw()
 
+# save as png
+ggsave("appendix_fig3.png", width = 4, height = 3, units = "in")
 ```
 
-As noted earlier, the interaction makes it somewhat difficult to draw conclusions on the credibility of the model - especially given the large discontinuities in the ROMS outputs and the change in slope of some of the relationships. Therefore, the four-factor GAM output was examined to better understand the relationships between the ROMS predictors and recruitment deviations. The four-factor GAM explained about 65% of the variance in petrale recruitment deviations (Fig. A\@ref(fig:gam-fit), r^2^ = `r round(gam_4_sum$r.sq,2)`). While the fit is slightly lower than the linear model, the GAM did not over-predict the more or less average 2018 recruitment deviation, while slightly over-predicting several lower recruitment deviations earlier in the time series. In particular, the GAM model caught the low recruitment in 2015 but under predicted recruitment in 2016. 
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "appendix_fig3.png", 
+  width = 100*4/6.5,
+  caption = 
+  "Model fit for ROMS predictors to the recruitment deviations for 1981-2018. Black line = model prediction including forecast to 2019-2022. Points are the recruitment deviations from the 2019 petrale stock assessment. Error envelopes indicate 1.0 s.e.",
+  label = "fig-best-fit",
+  alt_caption = "Jagged black line showing time series centered around zero showing moderately good fit to black points. Points that are fit the least well are a low observation in 1986 and high observations in 2006-2008 where in all cases the fit is closer to zero than the observations. Many of the points fall outside the gray polygon indicating uncertainty in the fit." 
+)
+```
 
-```{r gam-fit, fig.width=4, fig.height=3, fig.cap="GAM model fit to the recruitment deviations for 1981-2018. Black line = model prediction including forecast to 2019-2022. Points are the recruitment deviations from the 2019 petrale stock assessment. Error envelopes indicate 1.0 s.e."}
+As noted earlier, the interaction makes it somewhat difficult to draw conclusions on the credibility of the model - especially given the large discontinuities in the ROMS outputs and the change in slope of some of the relationships. Therefore, the four-factor GAM output was examined to better understand the relationships between the ROMS predictors and recruitment deviations. The four-factor GAM explained about 65% of the variance in petrale recruitment deviations (Fig. \@ref(fig:gam-fit), r^2^ = `r round(gam_4_sum$r.sq,2)`). While the fit is slightly lower than the linear model, the GAM did not over-predict the more or less average 2018 recruitment deviation, while slightly over-predicting several lower recruitment deviations earlier in the time series. In particular, the GAM model caught the low recruitment in 2015 but under predicted recruitment in 2016. 
+
+```{r gam-fit, include = FALSE}
 # predicted values and model fit from 02_Stats_Prelim.r
 
 ggplot( fish_roms, aes(x=year, y=recdev)) +
@@ -352,36 +378,61 @@ ggplot( fish_roms, aes(x=year, y=recdev)) +
   geom_segment( aes(x=1980, xend=2022,y=0,yend=0), linetype='dashed') +
   theme_bw()
 
-
+# save as png
+ggsave("appendix_fig4.png", width = 4, height = 3, units = "in")
 ```
 
-For CSTlarv the new data fall within the same range as the 1980-2010 models, although there may be a slight change in the slope (Fig. A\@ref(fig:gam-smooth)). CSTbjuv appearsnon-linear but largely due to one data point (Fig. A\@ref(fig:gam-smooth)). Nevertheless, the newer values are all lower than the earlier period with the exception of one point. 
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "appendix_fig4.png", 
+  width = 100*4/6.5,
+  caption = 
+  "GAM model fit to the recruitment deviations for 1981-2018. Black line = model prediction including forecast to 2019-2022. Points are the recruitment deviations from the 2019 petrale stock assessment. Error envelopes indicate 1.0 s.e.",
+  label = "gam-fit",
+  alt_caption = "Similar to previous figure: jagged black line showing time series centered around zero showing moderately good fit to black points. Points that are fit the least well are a low observation in 1986 and high observations in 2006-2008 where in all cases the fit is closer to zero than the observations. Many of the points fall outside the gray polygon indicating uncertainty in the fit. Forecast years differ from the previous figure (negative for final year instead of positive)." 
+)
+```
 
-Likewise, for MLD, the newer ROMS model predicts a shallower MLD and there appears to be a shift in the slope of the relationship (Fig. A\@ref(fig:gam-smooth)). With a continuous time series, one might reasonably interpret this non-linear relationship as reasonable, but given that the shift is associated with two different models, it seems more likely that the pattern is an artifact of the model discontinuity.  
+For CSTlarv the new data fall within the same range as the 1980-2010 models, although there may be a slight change in the slope (Fig. \@ref(fig:gam-smooth)). CSTbjuv appearsnon-linear but largely due to one data point (Fig. \@ref(fig:gam-smooth)). Nevertheless, the newer values are all lower than the earlier period with the exception of one point. 
+
+Likewise, for MLD, the newer ROMS model predicts a shallower MLD and there appears to be a shift in the slope of the relationship (Fig. \@ref(fig:gam-smooth)). With a continuous time series, one might reasonably interpret this non-linear relationship as reasonable, but given that the shift is associated with two different models, it seems more likely that the pattern is an artifact of the model discontinuity.  
 
 ### Other models
 
-For DDpre, the 2011+ data are much “warmer” and in a different part of the graph, with the exception of one earlier period data point for DDpre (Fig. A\@ref(fig:gam-smooth)). For DDpre, the convex shape of the relationship would make some sense if there were no obvious shifts in temperature between time periods. Temperature typically impacts growth and survival for many fishes with an optimal temperature and declining performance in either warmer or colder waters. However, given the discontinuity between with the 2011+ data being warmer (Fig. A\@ref(fig:roms-time-series)), it seem more likely that this result is an artifact of the different ROMS models and not a biological one. 
+For DDpre, the 2011+ data are much “warmer” and in a different part of the graph, with the exception of one earlier period data point for DDpre (Fig. \@ref(fig:gam-smooth)). For DDpre, the convex shape of the relationship would make some sense if there were no obvious shifts in temperature between time periods. Temperature typically impacts growth and survival for many fishes with an optimal temperature and declining performance in either warmer or colder waters. However, given the discontinuity between with the 2011+ data being warmer (Fig. \@ref(fig:roms-time-series)), it seem more likely that this result is an artifact of the different ROMS models and not a biological one. 
 
-```{r gam-smooth, fig.width=5, fig.height=5, fig.cap="Smooths from the four-factor GAM. Black points are 1981-2010. Red points are 2012-2018. Numbers in parentheses on the y-axis are the estimated degrees of freedom where edf = 1.0 suggests a linear relationship."}
+```{r gam-smooth, include = FALSE}
 
 # gam_4 = readRDS(paste0(fig_loc, 'roms-gam-model-fit.rds'))
+png("appendix_fig5.png", res = 300, units = "in", width = 5, height = 5)
 par( mar = c(4,4,1,0), pty = 's')
 plot(gam_4, residuals = TRUE, se=T, rug=TRUE, pages=1, scale = -1, cex=2, pch=20, col=fish_roms$color)
+dev.off()
 
 ```
 
-# Replacing ROMS predictors with observed variables
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "appendix_fig5.png", 
+  width = 100*4/6.5,
+  caption = 
+  "Smooths from the four-factor GAM. Black points are 1981-2010. Red points are 2012-2018. Numbers in parentheses on the y-axis are the estimated degrees of freedom where edf = 1.0 suggests a linear relationship.",
+  label = "gam-smooth",
+  alt_caption = "Four-panel plot showing black and red points with smooth curved lines through them. The first panel (with x-axis label 'DDpre') has most of the red points far to the right of the black points and a curvy line showing an implausible relationship among them all."
+)
+```
+
+## Replacing ROMS predictors with observed variables
 
 Because of the difficulties with the updated ROMS outputs, we also examined replacing specific ROMS predictors with observed variables or variables derived from observations, like the cumulative upwelling index.
 
-## West Coast Groundfish Bottom Trawl Survey (WCGBTS) bottom temperature data
+### West Coast Groundfish Bottom Trawl Survey (WCGBTS) bottom temperature data
 
-In addition to bottom trawls for groundfish biomass and biological data, the WCGBTS [@keller2017wcgbts] collects environmental data like bottom temperature. The survey time series begins in 2003, covers approximately 50 - 1200 m, and is conducted from May to October. This time period overlaps with the preconditioning period for petrale sole [@haltuch2019petrale] suggesting that directly observed bottom temperature might be used to replace the DDpre term from the ROMS model. 
+In addition to bottom trawls for groundfish biomass and biological data, the WCGBTS [@keller2017wcgbts] collects environmental data like bottom temperature. The survey time series begins in 2003, covers approximately 50 - 1200 m, and is conducted from May to October. This time period overlaps with the preconditioning period for petrale sole [@haltuch_oceanographic_2020] suggesting that directly observed bottom temperature might be used to replace the DDpre term from the ROMS model. 
 
-Bottom temperature (btemp) from the WCGBTS was averaged for each year for May - October and then lagged one year to match the pre-conditioning year (btemp_pre). This lagging sets the available observed time series at 2004-2022. Degree days was also calculated as bottom temperature minus the reference temperature of 3.5 `r degree_C` and averaged for each year. Normally one would sum degree days, but it was averaged here due varying samples sizes each year and multiple observations each year. Estimated this way degree days (btemp_DDpre) is essentially the same as btemp_pre but 3.5 degrees `r degree_C` lower. The resulting time series are shown in Figure \@ref(fig:fram-temperature) along with DDpre and Tpre.a from the ROMS output for comparison. Interestingly, there were no significant correlations between the ROMS predictors and observed bottom temperature data whether compared across 2004-2022 or when separated by time period (2004-2010, 2011-2022) (Fig. A\@ref(fig:fram-temperature)).
+Bottom temperature (btemp) from the WCGBTS was averaged for each year for May - October and then lagged one year to match the pre-conditioning year (btemp_pre). This lagging sets the available observed time series at 2004-2022. Degree days was also calculated as bottom temperature minus the reference temperature of 3.5 `r degree_C` and averaged for each year. Normally one would sum degree days, but it was averaged here due varying samples sizes each year and multiple observations each year. Estimated this way degree days (btemp_DDpre) is essentially the same as btemp_pre but 3.5 degrees `r degree_C` lower. The resulting time series are shown in Figure \@ref(fig:fram-temperature) along with DDpre and Tpre.a from the ROMS output for comparison. Interestingly, there were no significant correlations between the ROMS predictors and observed bottom temperature data whether compared across 2004-2022 or when separated by time period (2004-2010, 2011-2022) (Fig. \@ref(fig:fram-temperature)).
 
-```{r fram-temperature, fig.width=4, fig.height=6, fig.cap="Relationships between observed temperature from the trawl survey (WCGBTS) and modeled ROMS variables.  a) time series of observed bottom temperature during the preconditioning period (btemp_pre), observed degree days during the preconditioning period (btemp_DDpre), DDpre, and Tpre.a, b) correlation between Tre.a and trawl bottom temperature, and c) correlation between DDpre and trawl bottom temperature. There were no significant correlations between observed bottom temperature data and modeled ROMS variables whether tested across both time periods (2004-2022, extent of the trawl data) or separated by ROMS time periods (2004-2010 and 2011-2022, p > 0.05 in all cases)."}
+```{r fram-temperature, include = FALSE}
 
 
 # source("_FRAM-temp-data.r")
@@ -426,13 +477,26 @@ ggarrange(p1,p2,p3,
           font.label = list(size=10,face='plain')
 )
 
+# save as png
+ggsave(filename = "appendix_fig6.png", width = 4, height = 6, units = "in")
 ```
 
-## Cumulative upwelling index (CUTI)
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "appendix_fig6.png", 
+  width = 100*3.5/6.5,
+  caption = 
+  "Relationships between observed temperature from the trawl survey (WCGBTS) and modeled ROMS variables.  a) time series of observed bottom temperature during the preconditioning period (btemp_pre), observed degree days during the preconditioning period (btemp_DDpre), DDpre, and Tpre.a, b) correlation between Tre.a and trawl bottom temperature, and c) correlation between DDpre and trawl bottom temperature. There were no significant correlations between observed bottom temperature data and modeled ROMS variables whether tested across both time periods (2004-2022, extent of the trawl data) or separated by ROMS time periods (2004-2010 and 2011-2022, p > 0.05 in all cases).",
+  label = "fram-temperature",
+  alt_caption = "Three-panel figure. The first shows time series of temperature from 4 sources where the average is different in all three (ranging from about 4 to 8 degrees C), and the one labeled 'DDpre' jumps from an average around 4 to an average of around 9 in 2012." 
+)
+```
 
-The negative correlation with cross-shelf transport during the larval and benthic juvenile stages seen by @haltuch2019petrale indicates that recruitment is better when there is offshore transport in surface waters. This condition implies that better recruitment may correlate with upwelling either due to some transport-related interaction or better productivity during upwelling conditions leading to better feeding conditions. Therefore, CUTI was examined as a potential replacement for CSTlarv and CSTbjuv.a by averaging daily values for December-May and April-October, respectively (Fig. A\@ref(fig:cuti)).  
+### Cumulative upwelling index (CUTI)
 
-```{r cuti, fig.width=6, fig.height=2.5, fig.cap="Cumulative upwelling indices (CUTI) calculated for the larval and benthic juvenile stages. Error envelopes indicate 1.0 s.d."}
+The negative correlation with cross-shelf transport during the larval and benthic juvenile stages seen by @haltuch_oceanographic_2020 indicates that recruitment is better when there is offshore transport in surface waters. This condition implies that better recruitment may correlate with upwelling either due to some transport-related interaction or better productivity during upwelling conditions leading to better feeding conditions. Therefore, CUTI was examined as a potential replacement for CSTlarv and CSTbjuv.a by averaging daily values for December-May and April-October, respectively (Fig. \@ref(fig:cuti)).  
+
+```{r cuti, include = FALSE}
 
 # source("_CUTI-esr-data.r")
 # cuti = data.frame(read.csv(  paste0( data_loc, "Data_CUTI-mean-data.csv"), header=TRUE))
@@ -451,8 +515,21 @@ juv = ggplot(cuti, aes(x=year, y = cuti_juv)) +
 
 ggpubr::ggarrange(larv, juv, nrow=1)
 
-
+# save as png
+ggsave(filename = "appendix_fig7.png", width = 6, height = 2.5, units = "in")
 ```
+
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "appendix_fig7.png", 
+  width = 100*5/6.5,
+  caption = 
+  "Cumulative upwelling indices (CUTI) calculated for the larval and benthic juvenile stages. Error envelopes indicate 1.0 s.d.",
+  label = "cuti",
+  alt_caption = "Two panel figure. The left panel shows CUTI larval varying over time from 1988 to 2023 with values between about -1 and 4 with no obvious trend. The uncertainty interval spans the range from about -10 to 12. The right panel shows a similar pattern for CUTI juvenline only the range is slightly higher: 0 to 5." 
+)
+```
+
 
 ```{r cuti-roms-corr}
 # roms_mean = data.frame(read.csv(paste0(data_loc,"/Data_ROMS.for.analysis.4day.mean.csv")))
@@ -466,9 +543,9 @@ plarv = ifelse(cor_larv$p.value < 0.001, "p < 0.001", paste0( 'p = ', round(cor_
 pjuv = ifelse(cor_juv$p.value < 0.001, "p < 0.001", paste0( 'p = ', round(cor_juv$p.value,3)))
 ```
 
-Cross-shelf transport and CUTI were correlated during the larval stage (Fig. A\@ref(fig:cuti-roms)a, r = `r round(cor_larv$estimate,2)`, `r plarv`), but not during the benthic juvenile stage Fig. A\@ref(fig:cuti-roms)b, r = `r round(cor_juv$estimate,2)`, `r pjuv`). 
+Cross-shelf transport and CUTI were correlated during the larval stage (Fig. \@ref(fig:cuti-roms)a, r = `r round(cor_larv$estimate,2)`, `r plarv`), but not during the benthic juvenile stage Fig. \@ref(fig:cuti-roms)b, r = `r round(cor_juv$estimate,2)`, `r pjuv`). 
 
-```{r cuti-roms, fig.width=6, fig.height=2.5, fig.cap="Relationships between CUTI and ROMS variables."}
+```{r cuti-roms, include = FALSE}
 
 uplarv = ggplot( dfx, aes(x=cuti_larv, y=CSTlarv)) + 
   geom_point() + 
@@ -479,9 +556,22 @@ upjuv = ggplot( dfx, aes(x=cuti_juv, y=CSTbjuv.a)) +
 
 ggarrange(uplarv, upjuv, nrow=1)
 
+# save as png
+ggsave(filename = "appendix_fig8.png", width = 6, height = 2.5, units = "in")
+```
+ 
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "appendix_fig8.png", 
+  width = 100*5/6.5,
+  caption = 
+  "Relationships between CUTI and ROMS variables.",
+  label = "cuti-roms",
+  alt_caption = "Two panel figure. The left panel shows points showing the negative correlation between cuti_larv and CSTlarv as described in the caption. The right panel shows a cloud of points with little relationships between cuti_juv and CSTbjuv.a." 
+)
 ```
 
-## Fitting new models
+### Fitting new models
 
 ```{r obs-var-model, eval=F}
 # sourced above
@@ -490,13 +580,13 @@ ggarrange(uplarv, upjuv, nrow=1)
 
 ```
 
-Although correlations between the ROMS variables in the best-fit model from @haltuch2019petrale and observed ocean temperature and the CUTI time series were weak, these new variables were used to fit the following model:
+Although correlations between the ROMS variables in the best-fit model from @haltuch_oceanographic_2020 and observed ocean temperature and the CUTI time series were weak, these new variables were used to fit the following model:
 
 _Recruitment deviations = btemp_pre + cuti_larv + cuti_juv_
 
-This model explained only `r round(obs_var_sum$r.squared,2)*100`% of the variance and was non-significant (p = `r round(pf(obs_var_sum$fstatistic[1],obs_var_sum$fstatistic[2],obs_var_sum$fstatistic[3], lower.tail = FALSE),2)`). The model did capture some trends in recruitment deviations (Fig. A\@ref(fig:obs-var-fig)) but missed both high and low recruitment events, suggesting that while it might be improved, but the relationship does not seem valuable at present. 
+This model explained only `r round(obs_var_sum$r.squared,2)*100`% of the variance and was non-significant (p = `r round(pf(obs_var_sum$fstatistic[1],obs_var_sum$fstatistic[2],obs_var_sum$fstatistic[3], lower.tail = FALSE),2)`). The model did capture some trends in recruitment deviations (Fig. \@ref(fig:obs-var-fig)) but missed both high and low recruitment events, suggesting that while it might be improved, but the relationship does not seem valuable at present. 
 
-```{r obs-var-fig, fig.width=3.5, fig.height=2, fig.cap='Model fit for the bottom-temperature and CUTI predictors. Points are the recruitment devations from the 2019 stock assessment; line is the predicted fit with standard error. Note that there is no prediction for 2021 because there was no bottom trawl temperature data in 2020, which was necessary for calculating btemp_pre.'}
+```{r obs-var-fig, include = FALSE}
 
 # obs_var_predictions = readRDS(paste0(results_loc, 'Obs_var_mdoel_predictions.rds'))
 
@@ -507,19 +597,44 @@ ggplot() +
   xlab("") + ylab("Recruitment deviations") + 
   scale_x_continuous( breaks = seq(2005,2020,5),minor_breaks = 2003:2022)
 
+# save as png
+ggsave(filename = "appendix_fig9.png", width = 3.5, height = 2, units = "in")
 ```
 
-## Basin scale predictors 
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "appendix_fig9.png", 
+  width = 100*3.5/6.5,
+  caption = 
+  "Model fit for the bottom-temperature and CUTI predictors. Points are the recruitment devations from the 2019 stock assessment; line is the predicted fit with standard error. Note that there is no prediction for 2021 because there was no bottom trawl temperature data in 2020, which was necessary for calculating btemp_pre.",
+  label = "obs-var-fig",
+  alt_caption = "Black line with uncertainty intervals showing lack of fit to high points in 2006-2008 and low points in 2013-2015." 
+)
+```
 
-The Ecosystem Status Report from the California Current Integrated Ecosystem Assessment reports several basin-scale indicators as indicative of environmental conditions along the west coast of the USA [@harvey2023esr]. These indicators include the Ocean Niño Index (ONI), Pacific Decadal Oscillation (PDO) index, and the North Pacific Gyre Oscillation (NPGO) index. These indicators were tested here to determine whether they could be used as the basis of an environmental index of petrale recruitment. The Coastal Upwelling Transport Index (CUTI) was also included as a measure of large scale cross-shelf transport for the basin. Indices were averaged for the spring (April-June) and summer (July-Sept). The ONI, PDO, and NPGO were also lagged to the pre-conditioning year for females because prior analyses [@haltuch2019petrale] suggested that climate in the form of degree days was important during the pre-conditioning period (May-October).
+### Basin scale predictors 
 
-Model selection (delta AIC < 2.0 and fewest parameters, @burnham1998) was then used to select the best-fit model with the restriction that no model could have more than five predictor variables. Predictors that were correlated (r > 0.75) were excluded from the same model. For example, spring and summer NPGO indices were highly correlated and excluded from the same model (Fig. A\@ref(fig:basin-correlations)). See @tolimieri2018sablefish and @haltuch2019petrale for more detail on overall methodology.
+The Ecosystem Status Report from the California Current Integrated Ecosystem Assessment reports several basin-scale indicators as indicative of environmental conditions along the west coast of the USA [@harvey2023esr]. These indicators include the Ocean Niño Index (ONI), Pacific Decadal Oscillation (PDO) index, and the North Pacific Gyre Oscillation (NPGO) index. These indicators were tested here to determine whether they could be used as the basis of an environmental index of petrale recruitment. The Coastal Upwelling Transport Index (CUTI) was also included as a measure of large scale cross-shelf transport for the basin. Indices were averaged for the spring (April-June) and summer (July-Sept). The ONI, PDO, and NPGO were also lagged to the pre-conditioning year for females because prior analyses [@haltuch_oceanographic_2020] suggested that climate in the form of degree days was important during the pre-conditioning period (May-October).
 
-```{r basin-correlations, fig.width=6.5, fig.height=6.5, fig.cap="Correlations among basin-scale predictors."}
+Model selection (delta AIC < 2.0 and fewest parameters, @burnham1998) was then used to select the best-fit model with the restriction that no model could have more than five predictor variables. Predictors that were correlated (r > 0.75) were excluded from the same model. For example, spring and summer NPGO indices were highly correlated and excluded from the same model (Fig. \@ref(fig:basin-correlations)). See @tolimieri_oceanographic_2018 and @haltuch_oceanographic_2020 for more detail on overall methodology.
+
+```{r basin-correlations, include = FALSE}
 # basin_correlations = readRDS(paste0(results_loc, "basin-scale-correlations.rds"))
 # mtable2 = readRDS(paste0(results_loc, "Results-Dredge-table-all-seasons.rds"))
 
+png("appendix_fig10.png", res = 300, units = "in", width = 7, height = 7)
 corrplot(basin_correlations, method='number', type='lower', number.cex = 0.6 )
+dev.off()
+```
+
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "appendix_fig10.png", 
+  caption = 
+  "Correlations among basin-scale predictors.",
+  label = "basin-correlations",
+  alt_caption = "Colored table showing positive and negative correlations among numerous variables." 
+)
 ```
 
 Model selection produced a large number of similarly weighted models. There were `r nrow(data.frame(mtable2))` models with an AICc < 2.0 (Table \@ref(tab:basin-aic-table)). AICc weights for these models were low and relatively similar. Most models included the NPGO during the pre-conditioning spring (npgo_spr_pre), NPGO during the summer of recruitment (npgo_sum), and PDO in the spring of the recruitment year (pdo_spring), while other terms occurred in some model but not all. Because it had the fewest terms and these terms were consistent across all models, the following model was chosen as the best-fit for the basin-scale parameters:
@@ -528,6 +643,8 @@ _`r basin_scale_formula`_
 
 \newpage
 
+<!-- make next table have larger row heights -->
+\renewcommand{\arraystretch}{2}
 ```{r basin-aic-table}
 
 aic = data.frame(mtable2)
@@ -538,35 +655,30 @@ cs$y = rownames(cs)
 cs = cs %>%  filter( !(y %in% c('F','df','logLik')))
 aic = aic %>% select(cs$y)
 colnames(aic)[1] = 'Intercept'
-aic_table = aic %>% flextable() %>% 
-set_table_properties(layout = "autofit") %>%
- # fit_to_width(6.5) %>%
-  set_header_labels( delta = "delta AICc",
-                     weight = "Weight") %>%
- rotate(i=1, rotation = 'btlr', align = 'bottom',part = 'header') %>% 
- height( height = 1, part='header') %>%
- hrule(i = 1, rule = "exact", part = "header") %>%
- colformat_double(digits = 2) %>%
- fontsize(size = 8, part = 'header') %>%
- fontsize(size = 7, part = 'body') %>%
-  bold(i=9)
 
-aic_table <- set_caption(aic_table, 'Model selection parameters and coefficients for the models with delta AIC < 2.0. NPGO/npgo = Northern Pacific Gyre Oscillation; ONI/oni = Ocean Nino Index, PDO/pdo = Pacific decadal oscillation; spr = spring; sum = summer; pre = female precoditioning year. The best-fit model is shown in bold.', 
-  autonum = officer::run_autonum(seq_id = "tab", bkm = "basin-aic-table"))
-
-FitFlextableToPage <- function(ft, pgwidth = 7){
-
-  ft_out <- ft %>% autofit()
-
-  ft_out <- width(ft_out, width = dim(ft_out)$widths*pgwidth /(flextable_dim(ft_out)$widths))
-  return(ft_out)
-}
-
-aic_table = FitFlextableToPage(aic_table)
-
-aic_table
-
+# aic_table
+# round and then replace NA values
+aic <- round(aic, 2)
+aic[is.na(aic)] <- ""
+# make table
+widths <- rep("2em", 17)
+widths[c(1,4,8,9,10,13)] <- "2.2em"
+aic %>%
+  tibble::remove_rownames() %>%
+sa4ss::table_format(
+  caption = paste("Model selection parameters and coefficients for the models with delta AIC < 2.0. NPGO/npgo = Northern Pacific Gyre Oscillation; ONI/oni = Ocean Nino Index, PDO/pdo = Pacific decadal oscillation; spr = spring; sum = summer; pre = female precoditioning year. The best-fit model is shown in bold."),
+  label = "basin-aic-table",
+  custom_width = TRUE,
+  width = widths,
+  col_to_adjust = 1:17,
+  font_size = 8) %>%
+    kableExtra::kable_styling(latex_options = "striped") %>%
+    kableExtra::row_spec(0, angle = 45)
+  
 ```
+<!-- reset row heights -->
+\renewcommand{\arraystretch}{1}
+\newpage
 
 Petrale recruitment deviations were negatively correlated with the NPGO in the pre-condition spring and with the PDO in the spring of the age-0 year.  Recruitment was positively correlated with the NPGO in the summer of the recruitment year (Table \@ref(tab:basin-scale-bf-table)). 
 
@@ -585,28 +697,28 @@ best_refit_coef = best_refit_coef %>%
 
 best_refit_coef['(Intercept)',1] <- "Intercept"
 
-refit_coef = best_refit_coef %>% flextable() %>% autofit() %>%
-  colformat_double(j = ~ Estimate, digits=3) %>%
-  colformat_double(j = ~ SE, digits=3) %>%
-  colformat_double(j = ~ `t-value`, digits=3) %>%
-  colformat_double(j = ~ `p-value`, digits=3) %>%
-  add_footer_lines("NPGO/npgo = Nothern Pacific Gyre Ossilation; ONI/oni = Ocean Nino Index, PDO/pdo = Pacific decadal oscillation; spr = spring; sum = summer; pre = female precoditioning year.")
+model_cap = paste0("Parameter estimates from the best-fit model using basin scale predictors: ONI, PDO, NGPO, and CUTI. Model $r^2 = ", Model_Stats[1,'r2'], ', ',  Model_Stats[1,'pval'],'$.' )
 
-model_cap = paste0("Parameter estimates from the best-fit model using basin scale predictors: ONI, PDO, NGPO, and CUTI. Model r^2 = ", Model_Stats[1,'r2'], ', ',  Model_Stats[1,'pval'],'.' )
-
-refit_coef <- set_caption(refit_coef, model_cap, 
-  autonum = officer::run_autonum(seq_id = "tab", bkm = "basin-scale-bf-table"))
-
-refit_coef
+# refit_coef
+best_refit_coef %>% 
+  tibble::remove_rownames() %>%
+  dplyr::mutate(dplyr::across(c(2:5), round, 3)) %>%
+  sa4ss::table_format(
+    col_names = c("Model", "Estimate", "SE", "t-value", "p-value"),
+    caption = paste(model_cap, 
+      "NPGO/npgo = Nothern Pacific Gyre Ossilation; PDO/pdo = Pacific decadal oscillation; spr = spring; sum = summer; pre = female precoditioning year."),
+    label = "basin-scale-bf-table",
+    align = 'lrrrr'
+    )
 
 
 ```
 
-This basin-scale predictors model explained `r Model_Stats['Best-fit','r2']*100`% of the variation in recruitment deviations (r^2^ = `r  Model_Stats['Best-fit','r2']`, `r  Model_Stats['Best-fit','pval']`, Fig. A\@ref(fig:basin-scale-4fig)). The model under-estimated highs and lows in petrale recruitment and predicted increases in recruitment later in the time series. While basin-scale predictors lack direct mechanistic explanations (compared to the ROMS predictors) and there are always concerns about the non-stationarity of relationships between the basin-scale indicators and physical processes, this model does track recruitment well. 
+This basin-scale predictors model explained `r Model_Stats['Best-fit','r2']*100`% of the variation in recruitment deviations (r^2^ = `r  Model_Stats['Best-fit','r2']`, `r  Model_Stats['Best-fit','pval']`, Fig. \@ref(fig:basin-scale-4fig)). The model under-estimated highs and lows in petrale recruitment and predicted increases in recruitment later in the time series. While basin-scale predictors lack direct mechanistic explanations (compared to the ROMS predictors) and there are always concerns about the non-stationarity of relationships between the basin-scale indicators and physical processes, this model does track recruitment well. 
 
-For comparison, the predictions and fit for the model with the highest r^2^ (and delta AIC < 2.0) are also shown in Figure A\@ref(fig:basin-scale-4fig). This model explained about `r 100*( Model_Stats['Highest r-squared','r2'] - Model_Stats['Best-fit','r2'])`% more variance (Table \@ref(tab:basin-aic-table)) and did a better job of matching the higher and lower recruitment (as one would expect from a model with more terms). These results suggest that the three-term model is generally good at capturing variation in petrale recruitment but that other drivers impact the more extreme recruitment that the base mode either over or under predicts.
+For comparison, the predictions and fit for the model with the highest r^2^ (and delta AIC < 2.0) are also shown in Figure \@ref(fig:basin-scale-4fig). This model explained about `r 100*( Model_Stats['Highest r-squared','r2'] - Model_Stats['Best-fit','r2'])`% more variance (Table \@ref(tab:basin-aic-table)) and did a better job of matching the higher and lower recruitment (as one would expect from a model with more terms). These results suggest that the three-term model is generally good at capturing variation in petrale recruitment but that other drivers impact the more extreme recruitment that the base mode either over or under predicts.
 
-```{r basin-scale-4fig, fig.width=6.5, fig.height=5, fig.cap='Model fits for different models using the basin-scale predictors. NPGO = North Pacific Gyre Oscillation; PDO = Pacific Decadal Oscillation; spr = April=June; sum = July-September; pre = pre-conditioning year. Line is the predicted fit with standard error; Points are the recruitment deviations; dotted line indicates the zero recruitment deviation for reference.' }
+```{r basin-scale-4fig, include = FALSE}
 
 # df_basin_plots = data.frame(read.csv( paste0(data_loc, "Basin-scale-model-predictions.csv"), header = TRUE))
 
@@ -632,40 +744,63 @@ df_basin_plots$model = factor(df_basin_plots$model,
     geom_segment( aes(x=1988, xend=2023, y=0, yend=0), linetype='dotted') + 
     facet_wrap(facets = 'model') +
     geom_text(data = Model_Stats, aes(x = 1988, y = 0.9, label =  paste0('r^2 = ',r2),hjust='left'))
+
+# save as png
+ggsave(filename = "appendix_fig11.png", width = 6.5, height = 5, units = "in")
 ```
 
-From a stock assessment context, the inclusion of the npgo_sum term (Table \@ref(tab:basin-scale-bf-table)) is a problem since the index would be available until the end of September at the earliest, causing the index to be a year behind the assessment. Removing the npgo_sum (and npgo_spr) term explained less variance but the model was also significant (r^2^ = `r Model_Stats['NPGO_spr_pre + PDO_spr','r2']`, `r Model_Stats['NPGO_spr_pre + PDO_spr','pval']`)(Fig. A\@ref(fig:basin-scale-4fig)). However, the spring and summer NPGO are highly correlated (r = 0.97, Fig. A\@ref(fig:basin-correlations)). Therefore, the best-fit model was re-run replacing npgo_sum with npgo_spr. This model explained slightly less variation in recruitment than the best-fit model but performed well overall (r^2^ = `r Model_Stats['Replace NPGO_sum with NPGO_spr','r2']`, `r Model_Stats['Replace NPGO_sum with NPGO_spr','pval']`) (Fig. A\@ref(fig:basin-scale-4fig)). 
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "appendix_fig11.png", 
+  caption = 
+  "Model fits for different models using the basin-scale predictors. NPGO = North Pacific Gyre Oscillation; PDO = Pacific Decadal Oscillation; spr = April=June; sum = July-September; pre = pre-conditioning year. Line is the predicted fit with standard error; Points are the recruitment deviations; dotted line indicates the zero recruitment deviation for reference.",
+  label = "basin-scale-4fig",
+  alt_caption = "Four-panel plot showing time series of predicted recruitment deviations fit to values estimated in 2019 assessment. The r-shared value is reported in each panel as discussed in the main text."
+)
+```
 
-# Copernicus Marine Environment Monitoring Service (CMEMS) Oceanographic Products
+From a stock assessment context, the inclusion of the npgo_sum term (Table \@ref(tab:basin-scale-bf-table)) is a problem since the index would be available until the end of September at the earliest, causing the index to be a year behind the assessment. Removing the npgo_sum (and npgo_spr) term explained less variance but the model was also significant (r^2^ = `r Model_Stats['NPGO_spr_pre + PDO_spr','r2']`, `r Model_Stats['NPGO_spr_pre + PDO_spr','pval']`)(Fig. \@ref(fig:basin-scale-4fig)). However, the spring and summer NPGO are highly correlated (r = 0.97, Fig. \@ref(fig:basin-correlations)). Therefore, the best-fit model was re-run replacing npgo_sum with npgo_spr. This model explained slightly less variation in recruitment than the best-fit model but performed well overall (r^2^ = `r Model_Stats['Replace NPGO_sum with NPGO_spr','r2']`, `r Model_Stats['Replace NPGO_sum with NPGO_spr','pval']`) (Fig. \@ref(fig:basin-scale-4fig)). 
+
+## Copernicus Marine Environment Monitoring Service (CMEMS) Oceanographic Products
 
 Given the difficulties with the combined ROMS analyses across 2010/2011, we also investigated alternative oceanographic model products produced by Copernicus Marine Environment Monitoring Service (CMEMS) (https://marine.copernicus.eu/) and Mercator Ocean International (MOI) (https://www.mercator-ocean.eu/) to test if this modelling framework could be used to produce an environmental index of petrale recruitment. 
 
 We combined two CMEMS products: the Global Ocean Reanalysis and Simulation (GLORYS12V1: GLOBAL_MULTIYEAR_PHY_001_030,  https://doi.org/10.48670/moi-000211) [@Fernandex2018glorys; @Lellouche2021glorys; @Drevillon2022glorys] and the Copernicus Marine global analysis and forecast (CMGAF,  GLOBAL_ANALYSISFORECAST_PHY_001_024; https://doi.org/10.48670/moi-00016) [@LeGalloudec2022forecast]. The data are served by the Copernicus Marine Service (https://marine.copernicus.eu/). When downloaded the data covered: GLORYS: 1993-01-01 to 2020-10-31 and CMGAF: 2020-11-01 to 2023-06-01. Note both the reanalysis and the analysis and forecast walk forward in time. For the CMGAF, time series are updated at regular intervals beginning with a daily forecast and hindcast simulation, and a weekly 'hindcast-best analysis' with data assimilation through -15 days [@LeGalloudec2022forecast]. 
 
-Overall the CMEMS analysis followed @tolimieri2018sablefish and @haltuch2019petrale. More specifically, data for water column temperature, bottom temperature, and mixed-layer depth were downloaded as daily values for 40-48 `r degree_N` and processed as follows for each life-history-stage predictor:  
+Overall the CMEMS analysis followed @tolimieri_oceanographic_2018 and @haltuch_oceanographic_2020. More specifically, data for water column temperature, bottom temperature, and mixed-layer depth were downloaded as daily values for 40-48 `r degree_N` and processed as follows for each life-history-stage predictor:  
 
-1. Subsetted data by bottom depth, mixed-layer depth, and distance from shore as relevant (see Table A\@ref(tab:life-history-table))
+1. Subsetted data by bottom depth, mixed-layer depth, and distance from shore as relevant (see Table \@ref(tab:life-history-table))
 2. Calculated the daily average
-3. Subsetted #2 by the relevant time periods (months in Table A\@ref(tab:life-history-table))
+3. Subsetted #2 by the relevant time periods (months in Table \@ref(tab:life-history-table))
 4. Calculated the annual average (or sum for degree days) for 1993-2023 for that potential predictor
 
-For transport variables, monthly means from the CMEMS models were used to reduce processing time but followed the same overall model selection process as as above. Overall, the combined CMEMS time series did not show obvious break points from 2020 to 2021 (Fig. A\@ref(fig:glorys-timeseries)). 
+For transport variables, monthly means from the CMEMS models were used to reduce processing time but followed the same overall model selection process as as above. Overall, the combined CMEMS time series did not show obvious break points from 2020 to 2021 (Fig. \@ref(fig:glorys-timeseries)). 
 
-Model selection followed @tolimieri2018sablefish and @haltuch2019petrale. Briefly, CMEMS predictors were pre-screened for correlations among variables and non-linear relationships with petrale recruitment deviations. Correlated predictors (r >= 0.75, Fig. A\@ref(fig: glorys-correlations)) were excluded from the same model. Non-linearity for individual terms was evaluated by comparing the linear model to a model including both the linear and quadratic forms of the predictor. If the AICc of the quadratic form was lower, we included the quadratic form as a potential predictor as well, but required that the linear term appear in models that included the quadratic from. 
+Model selection followed @tolimieri_oceanographic_2018 and @haltuch_oceanographic_2020. Briefly, CMEMS predictors were pre-screened for correlations among variables and non-linear relationships with petrale recruitment deviations. Correlated predictors (r >= 0.75, Fig. \@ref(fig: glorys-correlations)) were excluded from the same model. Non-linearity for individual terms was evaluated by comparing the linear model to a model including both the linear and quadratic forms of the predictor. If the AICc of the quadratic form was lower, we included the quadratic form as a potential predictor as well, but required that the linear term appear in models that included the quadratic from. 
 
 Model selection was carried out using the 'dredge' function in the MuMIn package in R (@R-base, @MuMIn-cite). Candidate models were evaluated based on their delta AIC and number of predictors. 
 
-```{r glorys-timeseries, fig.cap="Time series of processed CMEMS indicators used in the model fitting."}
-
-knitr::include_graphics( "../recruit_index/Petrale-Appendix-2023/Figures/glorys_time_series.png" )
-
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "../recruit_index/Petrale-Appendix-2023/Figures/glorys_time_series.png", 
+  height = 80,
+  caption = 
+  "Time series of processed CMEMS indicators used in the model fitting.",
+  label = "glorys-timeseries",
+  alt_caption = "22-panel figure showing time series of each predictor variable."
+)
 ```
 
 \newpage
 
-```{r glorys-correlations, fig.cap="Correlations between CMEMS time series. DD = degree days, T = temperature, MLD = mixed-layer depth, LST = longshore transport, CST = cross-shelf transport, pre = female precondition period prior to spawning, egg = egg stage, larv = larval stage, pjuv = pelagic juveniles, bjuv = benthic juveniles."}
-
-knitr::include_graphics( "../recruit_index/Petrale-Appendix-2023/Figures/glorys-correlations-among-variables.png" )
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "../recruit_index/Petrale-Appendix-2023/Figures/glorys-correlations-among-variables.png", 
+  caption = 
+  "Correlations between CMEMS time series. DD = degree days, T = temperature, MLD = mixed-layer depth, LST = longshore transport, CST = cross-shelf transport, pre = female precondition period prior to spawning, egg = egg stage, larv = larval stage, pjuv = pelagic juveniles, bjuv = benthic juveniles.",
+  label = "glorys-correlations",
+  alt_caption = "Colored table showing positive and negative correlations among numerous variables." 
+)
 
 # |  <!-- -->   | 
 # | :------------ | 
@@ -674,7 +809,7 @@ knitr::include_graphics( "../recruit_index/Petrale-Appendix-2023/Figures/glorys-
 
 ```
 
-## Results
+### Results
 
 ```{r mtab-data}
 mtab = readRDS( "../recruit_index/Petrale-glorys/Results/Table_model.fits.rds"  )
@@ -683,7 +818,7 @@ mt4 = mtab4 %>%
   dplyr::select(X.Intercept., DDpjuv, I.DDpjuv.2., LSTlarv, I.LSTlarv.2., LSTpjuv, I.LSTpjuv.2., R2,AICc, delta, weight)
 ```
 
-Only two candidate models had delta AICc values of 4.0 or less; only one model had a delta AICc of less than 2.0. (Table A\ref(tab:mtable)). The best-fit model included degree days during the pelagic juvenile period (DDpjuv) in both its linear and quadratic form, and long-shore transport (LSTlarv) in the larval stage  (Table A\ref(tab:mtable)).
+Only two candidate models had delta AICc values of 4.0 or less; only one model had a delta AICc of less than 2.0. (Table \@ref(tab:mtable)). The best-fit model included degree days during the pelagic juvenile period (DDpjuv) in both its linear and quadratic form, and long-shore transport (LSTlarv) in the larval stage  (Table \@ref(tab:mtable)).
 
 \newpage
 
@@ -691,44 +826,41 @@ Only two candidate models had delta AICc values of 4.0 or less; only one model h
 
 dd = as_paragraph('DDpjuv', as_sup('2'))
 
-delta4table = mt4 %>% flextable() %>%
-  set_header_labels(X.Intercept. = "Int") %>%
-  compose(i=1, j="I.DDpjuv.2.", part = 'header', value = as_paragraph("DDpjuv",as_sup("2"))) %>%
-  compose(i=1, j="I.LSTlarv.2.", part = 'header', value = as_paragraph("LSTlarv",as_sup("2"))) %>%
-  compose(i=1, j="I.LSTpjuv.2.", part = 'header', value = as_paragraph("LSTpjuv",as_sup("2"))) %>%
-  compose(i=1, j="R2", part = 'header', value = as_paragraph("R",as_sup("2"))) %>%
-  colformat_double(digits=3) %>%
-  # width(j = "Hypothesis", width = 2) %>%
-  # width(j = "ROMS", width = 1.5) %>%
-  # width(j = "Abbrv.", width = 0.7) %>%
-  # valign(valign='top') %>%
-  fontsize(size = 8, part = 'all') %>%
-  add_footer_lines("DD = degree days; LST = longshore transport, larv = larval stage, pjuv = pelagic juveniles.")
-
-# "DD = degree days; T = temperature; MLD = mixed-layer depth, LST = longshore transport, CST = cross-shelf transport; pre = female preconditioning stage; egg = egg stage, larv = larval stage, pjuv = pelagic juveniles, bjuv = benthic juveniles. "
-
-
-delta4table <- set_caption(delta4table, 
-  "Terms and coefficients for the candidate models with a delta AIC value of 4.0 or less.", 
-  autonum = officer::run_autonum(seq_id = "tab", bkm = "mtable"))
-
-delta4table <- FitFlextableToPage(delta4table, pgwidth=6.5)
-
-delta4table
+mt4 %>% 
+  tibble::remove_rownames() %>%
+  dplyr::mutate(dplyr::across(tidyselect::everything(), round, 3)) %>%
+  sa4ss::table_format(
+    col_names = c("Int", "DDpjuv", "DDpjuv2", "LSTlarv", "LSTlarv2", "LSTpjuv", "LSTpjuv2", "$r^2$", "AICc", "delta", "weight"),
+    caption = paste(
+      "Terms and coefficients for the candidate models with a delta AIC value of 4.0 or less.",
+      "DD = degree days; LST = longshore transport, larv = larval stage, pjuv = pelagic juveniles."
+    ),
+    label = "mtable",
+    custom_width = TRUE,
+    width = "3em",
+    col_to_adjust = 1:11,
+    escape = FALSE
+  )
 
 ```
 
-This best-fit model explained `r round(mt4$R2[1],2)*100`% of the variance in the petrale recruitment deviations from 1993-2018 (Fig A\@ref(fig:glorys-index)) and generally captured the peaks and lows in the recruitment deviations well. Predictions of potential petrale recruitment through 2023 are included in Figure A\@ref(fig:glorys-index). However, the model did over-predict recruitment in 2015 during the large marine heatwave off the us west coast. When predicted through 2023, this index suggests strong incoming recruitment equivalent to historical highs during the 2006-2008 period.
+This best-fit model explained `r round(mt4$R2[1],2)*100`% of the variance in the petrale recruitment deviations from 1993-2018 (Fig \@ref(fig:glorys-index)) and generally captured the peaks and lows in the recruitment deviations well. Predictions of potential petrale recruitment through 2023 are included in Figure \@ref(fig:glorys-index). However, the model did over-predict recruitment in 2015 during the large marine heatwave off the us west coast. When predicted through 2023, this index suggests strong incoming recruitment equivalent to historical highs during the 2006-2008 period.
 
-```{r glorys-index, fig.cap="Environmental index of petrale recuitment deviations predicted through 2023.", fig.cap="Relationship between recruitment deviations from the 2019 assessment and the MOI index for 1993-2018 and predictions for 2019-2023. Points are the recruitment deviations from the assessment; solid like is the MOI environemental index of recruitment, and grey envelope represents 95 confidence intervals."}
-
-knitr::include_graphics( "../recruit_index/Petrale-Appendix-2023/Figures/Predicted_petrale_recruitment.png" )
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "../recruit_index/Petrale-Appendix-2023/Figures/Predicted_petrale_recruitment.png",
+  width = 100*3.5/6.5,
+  caption = 
+  "Relationship between recruitment deviations from the 2019 assessment and the MOI index for 1993-2018 and predictions for 2019-2023. Points are the recruitment deviations from the assessment; solid like is the MOI environemental index of recruitment, and grey envelope represents 95 confidence intervals.",
+  label = "glorys-index",
+  alt_caption = "Time series of predictions for 1993 to 2023 showing better fit than many of the similar figures shown previously." 
+)
 
 ```
 
-## Model diagnostics and testing
+### Model diagnostics and testing
 
-Model diagnostics and testing followed @tolimieri2018sablefish and @haltuch2019petrale. Model testing was carried out to determine how stable the best-fit model was to both individual years and the precision of the estimates of recruitment deviations. Tests included:
+Model diagnostics and testing followed @tolimieri_oceanographic_2018 and @haltuch_oceanographic_2020. Model testing was carried out to determine how stable the best-fit model was to both individual years and the precision of the estimates of recruitment deviations. Tests included:
 
 1. Boot-strap analysis on the best-fit model was used to estimate bias
 2. Jackknife analysis on the best-fit model was used to determine the impact of individual years on the model fit.
@@ -737,98 +869,108 @@ Model diagnostics and testing followed @tolimieri2018sablefish and @haltuch2019p
 5. Individual years were jackknifed and then the entire model selection process was rerun to determine the impact of individual years on the selection of the predictors in the best-fit model.
 6. Recruitment deviations were re-sampled 100 times and the entire model selection process rerun to evaluate the impact of the precision of these estimates on the predictors included in the best-fit model.
 
-### Diagnostics for the best-fit model
+#### Diagnostics for the best-fit model
 
-There was no obvious autocorrelation in the residuals (Fig. A\@ref(fig:acr-plot)). Diagnostic plots did suggest some under-prediction when recruitment deviations were high (Fig. A\@ref(fig:diagnostics-plots). 
+There was no obvious autocorrelation in the residuals (Fig. \@ref(fig:acr-plot)). Diagnostic plots did suggest some under-prediction when recruitment deviations were high (Fig. \@ref(fig:diagnostics-plots). 
 
-```{r acr-plot, fig.cap="Autocorrelation plot for the best-fit model"}
-
-knitr::include_graphics( "../recruit_index/Petrale-Appendix-2023/Figures/ACF_Model_1.png" )
-
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "../recruit_index/Petrale-Appendix-2023/Figures/ACF_Model_1.png",
+  caption = 
+  "Autocorrelation plot for the best-fit model.",
+  width = 100*3/6.5,
+  label = "acr-plot",
+  alt_caption = "Bar graph showing autocorrelation as a funtion of lag with ACF = 1.0 at lag = 0 and ACF varying between about -0.2 and 0.2 for lags 1 through 14." 
+)
 ```
 
-```{r diagnostics-plots, fig.cap="Diagnostic plots for the best-fit model."}
-
-knitr::include_graphics( "../recruit_index/Petrale-Appendix-2023/Figures/Diagnoistic_plots.png" )
-
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "../recruit_index/Petrale-Appendix-2023/Figures/Diagnoistic_plots.png",
+  width = 100 * 4.5 / 6.5,
+  caption = "Diagnostic plots for the best-fit model.",
+  label = "diagnostics-plots",
+  alt_caption = "Four-panel figure showing standard diagnostics created by the plot.lm() function with no obvious lack of fit."
+)
 ```
 
-### Model testing
+
+#### Model testing
 ```{r bias-std-coef}
 df = read.csv("../recruit_index/Petrale-glorys/Model.Testing/01b_Bootstrap_Bias/Table_3.csv")
 
 ```
 
-Bias (estimated from bootstrap analysis with 1000 bootstraps) was generally low (Table A\@ref(tab:bias-table)) at around 5-15% of the scaled coefficient with the exception of LSTlarv, which had a small impact overall on the model relationship (standardized coefficient of `r round(df$Std.Coefficient[3],3)`. 
+Bias (estimated from bootstrap analysis with 1000 bootstraps) was generally low (Table \@ref(tab:bias-table)) at around 5-15% of the scaled coefficient with the exception of LSTlarv, which had a small impact overall on the model relationship (standardized coefficient of `r round(df$Std.Coefficient[3],3)`. 
 
 ```{r bias-std-coef-table}
 
-bias_table = df %>% dplyr::select(!X) %>% flextable() %>%
-  set_header_labels( Std.Coefficient = "Std Coef",
-                     Std.bias = "Std Bias",
-                     Std.SE = "Std SE") %>%
-  colformat_double(digits=3) %>%
-  fontsize(size = 8, part = 'all') %>%
-  add_footer_lines("DD = degree days; LST = longshore transport, larv = larval stage, pjuv = pelagic juveniles.")
-
-bias_table <- set_caption(bias_table, 
-  "Standardized coefficients and estimates of bias from 1000 bootstraps.", 
-  autonum = officer::run_autonum(seq_id = "tab", bkm = "bias-table"))
-
-bias_table
-
-```
-
-Jackknifing the best-fit model by year (removing individual years and refitting the best-fit model) did not show strong effects of individual years on the fit of the model (Fig. A\@ref(fig:jackknife-plot)) with the majority of r^2^ values falling between 0.65 and 0.70. 
-
-```{r jackknife-plot, fig.cap="Results of jackknife re-fitting of the best-fit model to evaluate the impact of individual years on the model fit."}
-
-knitr::include_graphics( "../recruit_index/Petrale-Appendix-2023/Figures/Figure_5.png" ) 
+df %>% 
+  dplyr::select(!X) %>%
+  dplyr::mutate(Predictor = gsub("^I.", "", Predictor, fixed = FALSE)) %>%
+  dplyr::mutate(Predictor = gsub(".2.", "$^2$", Predictor, fixed = TRUE)) %>%
+  dplyr::mutate(dplyr::across(2:7, round, 3)) %>%
+  sa4ss::table_format(
+    col_names = c("Predictor", "Coefficient", "Bias", "SE", "Std Coef", "Std Bias", "Std SE"),
+    caption = paste(
+      "Standardized coefficients and estimates of bias from 1000 bootstraps.",
+      "DD = degree days; LST = longshore transport, larv = larval stage, pjuv = pelagic juveniles."
+    ),
+    label = "bias-table",
+    escape = FALSE
+  )
 
 ```
 
-Predictions of individuals years from the jackknife analysis fell largely along the same trend as for the best-fit model and within the 95% confidence limits (Fig. A\@ref(fig:model-test-plot)). Prediction 2014 to 2018 based on refitting the best-fit model to data for 1993-2013 captured the last five years relatively well, although estimates for 2015 and 2016 were high (Fig. A\@ref(fig:model-test-plot)). 
+Jackknifing the best-fit model by year (removing individual years and refitting the best-fit model) did not show strong effects of individual years on the fit of the model (Fig. \@ref(fig:jackknife-plot)) with the majority of r^2^ values falling between 0.65 and 0.70. 
 
-```{r model-test-plot, fig.cap="Fit of the best-fit model to the recruitment deviations from the 2019 petrale asessment. Solid line is the predicted fit and dashed lines are the 95% confidence limits. Open circles are the log recruitment deviations from the 2015 sablefish assessment. Stars are predicted values from jackknife analysis removing individual years one at a time. Red points are predictions from fitting best-fit model to 1993-2013 and then predicting 2014-2018."}
-
-knitr::include_graphics( "../recruit_index/Petrale-glorys/Figures/Figure_3.png" )
-
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "../recruit_index/Petrale-Appendix-2023/Figures/Figure_5.png",
+  width = 100 * 3.5 / 6.5,
+  caption = "Results of jackknife re-fitting of the best-fit model to evaluate the impact of individual years on the model fit.",
+  label = "jackknife-plot",
+  alt_caption = "Two-panel figure showing distribution of R-squared values between 0.6 and 0.8 with no obvious  pattern related to the year of data that is removed."
+)
 ```
 
+Predictions of individuals years from the jackknife analysis fell largely along the same trend as for the best-fit model and within the 95% confidence limits (Fig. \@ref(fig:model-test-plot)). Prediction 2014 to 2018 based on refitting the best-fit model to data for 1993-2013 captured the last five years relatively well, although estimates for 2015 and 2016 were high (Fig. \@ref(fig:model-test-plot)). 
+
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "../recruit_index/Petrale-Appendix-2023/Figures/Figure_3.png",
+  width = 100 * 3.5 / 6.5,
+  caption = "Fit of the best-fit model to the recruitment deviations from the 2019 petrale asessment. Solid line is the predicted fit and dashed lines are the 95% confidence limits. Open circles are the log recruitment deviations from the 2019 assessment. Stars are predicted values from jackknife analysis removing individual years one at a time. Red points are predictions from fitting best-fit model to 1993-2013 and then predicting 2014-2018.",
+  label = "model-test-plot",
+  alt_caption = "Figure showing that there is little change in predicted values from the jackknife procedure and removing the most recent 5 observations and predicting for those years also produces similar trends."
+)
+```
 ```{r resample-recdev}
 resample_rds = data.frame(read.csv("../recruit_index/Petrale-glorys/Model.Testing/03_Resample_Recruitment_w_error/R_boot.stats_sd.csv"))
 resample = resample_rds %>% dplyr::select(X, r2, Intercept, DDpjuv, I.DDpjuv.2.,LSTlarv,  I.LSTlarv.2., p)
 
-resample$X[1:3] = c('Best-fit','Mean','Median')
+resample$X[1:5] = c('Best-fit','Mean','Median', "2.5\\%", "97.5\\%")
 ```
 
-To examine the impact of the precision of the estimate of recruitment deviations on the fit of the best-fit model, recruitment deviations were re-sampled from a log-normal distribution using the estimate and standard error for each year and the model refit. This procedure was completed 1000 times. The performance of the best-fit model was fairly stable (Table A\@ref(tab:resample-recdev-table)). The mean r^2^ for the across all 1000 iterations was r^2^ =`r round(resample[2,2],3)` with a lower 95% quantile of r^2^ = `r round(resample[2,4],3)`.
+To examine the impact of the precision of the estimate of recruitment deviations on the fit of the best-fit model, recruitment deviations were re-sampled from a log-normal distribution using the estimate and standard error for each year and the model refit. This procedure was completed 1000 times. The performance of the best-fit model was fairly stable (Table \@ref(tab:resample-recdev-table)). The mean r^2^ for the across all 1000 iterations was r^2^ =`r round(resample[2,2],3)` with a lower 95% quantile of r^2^ = `r round(resample[2,4],3)`.
 
 ```{r resample-recdev-table}
-resample_table = resample %>% flextable() %>% 
-  set_header_labels(Intercept = "Int", X = "Term"  ) %>%
-  compose(i=1, j="r2", part = 'header', value = as_paragraph("R",as_sup("2"))) %>%
-  compose(i=1, j="I.DDpjuv.2.", part = 'header', value = as_paragraph("DDpjuv",as_sup("2"))) %>%
-  compose(i=1, j="I.LSTlarv.2.", part = 'header', value = as_paragraph("LSTlarv",as_sup("2"))) %>%
-    colformat_double(digits=3) %>%
-  # width(j = "Hypothesis", width = 2) %>%
-  # width(j = "ROMS", width = 1.5) %>%
-  # width(j = "Abbrv.", width = 0.7) %>%
-  # valign(valign='top') %>%
-  fontsize(size = 8, part = 'all') %>%
-  add_footer_lines("DD = degree days; LST = longshore transport, larv = larval stage, pjuv = pelagic juveniles.")
 
-# "DD = degree days; T = temperature; MLD = mixed-layer depth, LST = longshore transport, CST = cross-shelf transport; pre = female preconditioning stage; egg = egg stage, larv = larval stage, pjuv = pelagic juveniles, bjuv = benthic juveniles. "
-
-
-
-resample_table <- set_caption(resample_table, 
-  "Results of resampling recruitment deviations and refitting the best fit model 1000 times. Best-fit = best-fit model; Mean = mean values over the 1000 refits, median = median values over the 1000 refits; and 2.5 and 97.5% confidence intervals.", 
-  autonum = officer::run_autonum(seq_id = "tab", bkm = "resample-recdev-table"))
-
-
-resample_table
-
+resample %>% 
+  tibble::remove_rownames() %>%
+  dplyr::mutate(dplyr::across(2:8, round, 3)) %>%
+  sa4ss::table_format(
+    col_names = c("Term", "$r^2$", "Int", "DDpjuv", "DDpjuv$^2$", "LSTlarv", "LSTlarv$^2$", "p"),
+    caption = paste(
+      "Results of resampling recruitment deviations and refitting the best fit model 1000 times. Best-fit = best-fit model; Mean = mean values over the 1000 refits, median = median values over the 1000 refits; and 2.5 and 97.5 confidence intervals.",
+      "DD = degree days; LST = longshore transport, larv = larval stage, pjuv = pelagic juveniles."
+    ),
+    custom_width = TRUE,
+    width = "3.5em",
+    col_to_adjust = 1:8,
+    label = "resample-recdev-table",
+    escape = FALSE
+  )
 ```
 
 ```{r jackknife-refit}
@@ -843,60 +985,49 @@ colnames(df_table)[1] = "No"
 df_table = df_table[,c('Predictor','No')]
 df_table = df_table[ df_table$Predictor %in% c('CSTegg1','DDegg1','DDpjuv','I.DDpjuv.2.','LSTlarv','I.LSTlarv.2.', 'MLDegg','I.MLDegg.2.') ,]
 
-df_table['I.DDpjuv.2.',1] <- "DDpjuv^2"
-df_table['I.LSTlarv.2.',1] <- "LSTlarv^2"
-df_table['I.MLDegg.2.',1] <- "MLDegg^2"
+df_table['I.DDpjuv.2.',1] <- "DDpjuv$^2$"
+df_table['I.LSTlarv.2.',1] <- "LSTlarv$^2$"
+df_table['I.MLDegg.2.',1] <- "MLDegg$^2$"
 ```
 
-Jackknifing years and re-running the entire model selection process also produced stable results (Table A\@ref(tab:jackknife-refit-table)). DDpjuv and LSTlarv occurred in the 23 and 24 (0 respectively) of the top model across the 100 jackknifes.  CSTegg1 and DDegg1 each occurred in three models, while MLDegg and its quadratic form occurred in two. 
+Jackknifing years and re-running the entire model selection process also produced stable results (Table \@ref(tab:jackknife-refit-table)). DDpjuv and LSTlarv occurred in the 23 and 24 (0 respectively) of the top model across the 100 jackknifes.  CSTegg1 and DDegg1 each occurred in three models, while MLDegg and its quadratic form occurred in two. 
 
 ```{r jackknife-refit-table}
-tab1 = df_table %>% flextable() %>%
-  width(width = 2) %>%
-  
-  compose(i=4, j=1, part = 'body', value = as_paragraph("DDpjuv",as_sup("2"))) %>%
-  compose(i=6, j=1, part = 'body', value = as_paragraph("LSTlarv",as_sup("2"))) %>%
-  compose(i=8, j=1, part = 'body', value = as_paragraph("MLDegg",as_sup("2"))) %>%
-  
-  add_footer_lines( "DD = degree days; T = temperature; MLD = mixed-layer depth, LST = longshore transport, CST = cross-shelf transport; egg = egg stage, larv = larval stage, pjuv = pelagic juveniles.")
-
-tab1 <- set_caption(tab1, 
-  "Result of jackknifing individual years and re-running the model selection process.  The results are the number of times a predictor appeared in the model with the lowest AICc in each iteration of the re-selection. ", 
-  autonum = officer::run_autonum(seq_id = "tab", bkm = "jackknife-refit-table"))
-
-tab1
-
+df_table %>% 
+  tibble::remove_rownames() %>%
+  sa4ss::table_format(
+    col_names = c("Predictor", "Number"),
+    caption = paste(
+      "Result of jackknifing individual years and re-running the model selection process.  The results are the number of times a predictor appeared in the model with the lowest AICc in each iteration of the re-selection.",
+      "DD = degree days; T = temperature; MLD = mixed-layer depth, LST = longshore transport, CST = cross-shelf transport; egg = egg stage, larv = larval stage, pjuv = pelagic juveniles."
+    ),
+    label = "jackknife-refit-table",
+    escape = FALSE
+  )
 ```
 
-A similar analysis was conducted in which recruitment deviations were re-sample from a log-normal distribution and the entire model selection process was rerun to determine how the variability in recruitment estimates might impact the overall model selection process. LSTlarv and DDpjuv and their quadratic terms were included in at least 79% of the refits (Table A\@ref(tab:resample-dredge)). The two linear terms alone appeared in 90% (LSTlarv) and 85% (DDpjuv) of models, providing strong support for stability these terms in relation to the precision of estimates of recruitment deviations. 
+A similar analysis was conducted in which recruitment deviations were re-sample from a log-normal distribution and the entire model selection process was rerun to determine how the variability in recruitment estimates might impact the overall model selection process. LSTlarv and DDpjuv and their quadratic terms were included in at least 79% of the refits (Table \@ref(tab:resample-dredge)). The two linear terms alone appeared in 90% (LSTlarv) and 85% (DDpjuv) of models, providing strong support for stability these terms in relation to the precision of estimates of recruitment deviations. 
 
+\newpage
 ```{r resample-dredge}
 
 df = data.frame(read.csv("../recruit_index/Petrale-glorys/Model.Testing/05_Resample_Recuitment_and_ReDredge/Table_6_terms.in.models.csv"))
 df = df %>% dplyr::select( !X)
 rownames(df) <- df[,"ROMS"]
 
-re_dredge = df %>% flextable() %>% 
-  width(width = 2)  %>%
-  set_header_labels(ROMS = "Predictor",
-                    Number.of.models = 'No. models',
-                    Number.of.jackknifes = 'No. jackknifes') %>%
-  fontsize(size = 8, part = 'all') %>%
-  
-  compose(i="I.DDpjuv.2.", j=1, part = 'body', value = as_paragraph("DDpjuv",as_sup("2"))) %>%
-  compose(i="I.CSTegg2.2.", j=1, part = 'body', value = as_paragraph("CSTegg2",as_sup("2"))) %>%
-  compose(i="I.LSTlarv.2.", j=1, part = 'body', value = as_paragraph("LSTlarv",as_sup("2"))) %>%
-  compose(i="I.LSTpjuv.2.", j=1, part = 'body', value = as_paragraph("LSTpjuv",as_sup("2"))) %>%
-  compose(i="I.MLDegg.2.", j=1, part = 'body', value = as_paragraph("LSTpjuv",as_sup("2"))) %>%
-  
-  add_footer_lines( "DD = degree days; T = temperature; MLD = mixed-layer depth, LST = longshore transport, CST = cross-shelf transport; pre = female preconditioning stage; egg = egg stage, larv = larval stage, pjuv = pelagic juveniles, bjuv = benthic juveniles. ")
-
-re_dredge <- set_caption(re_dredge, 
-  "Result of resampling recruitment deviations and completing the model selection process 100 times. The results are the number of times a predictor appeared in the model with the lowest AICc from each re-dredging iteration. ", 
-  autonum = officer::run_autonum(seq_id = "tab", bkm = "resample-dredge"))
-
-re_dredge
-
+df %>% 
+  tibble::remove_rownames() %>%
+  dplyr::mutate(ROMS = gsub("^I.", "", ROMS, fixed = FALSE)) %>%
+  dplyr::mutate(ROMS = gsub(".2.", "$^2$", ROMS, fixed = TRUE)) %>%
+  sa4ss::table_format(
+    col_names = c("Predictor", "No. models", "No jackknifes"),
+    caption = paste(
+      "Result of resampling recruitment deviations and completing the model selection process 100 times. The results are the number of times a predictor appeared in the model with the lowest AICc from each re-dredging iteration.",
+      "DD = degree days; T = temperature; MLD = mixed-layer depth, LST = longshore transport, CST = cross-shelf transport; pre = female preconditioning stage; egg = egg stage, larv = larval stage, pjuv = pelagic juveniles, bjuv = benthic juveniles."
+    ),
+    label = "resample-dredge",
+    escape = FALSE
+  )
 ```
 
 ```{r minus5}
@@ -906,17 +1037,21 @@ r2 = round(s1$r.squared,2)
 
 ```
 
-Finally, the data were subset to 1993-2013 and the entire model selection process was re-run. The resulting best-fit model included the same terms as for the full analysis. This 1993-2013 model was then used to predict petrale recruitment deviations through 2023. The overall fit of the model though 2013 was high (r^2^ = `r r2`) (Fig. A\@ref(fig:minus5-plot)). However, like the best-fit model, it over-predicted recruitment for 2015 and 2016 during the height of the marine heatwave, suggesting that some fundamental dynamics may have shifted during this period. 
+Finally, the data were subset to 1993-2013 and the entire model selection process was re-run. The resulting best-fit model included the same terms as for the full analysis. This 1993-2013 model was then used to predict petrale recruitment deviations through 2023. The overall fit of the model though 2013 was high (r^2^ = `r r2`) (Fig. \@ref(fig:minus5-plot)). However, like the best-fit model, it over-predicted recruitment for 2015 and 2016 during the height of the marine heatwave, suggesting that some fundamental dynamics may have shifted during this period. 
 
-```{r minus5-plot, fig.cap="Fit of the best-fit model from the 1993-2013 analysis and predictions through 2023. Black line is the model prediction with 95% confidence limits. Black points are the recruitment deviations used in the model development; red points are future recruitments."}
-
-knitr::include_graphics( "../recruit_index/Petrale-Appendix-2023/Figures/Dredge_minus5.png" ) 
-
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "../recruit_index/Petrale-Appendix-2023/Figures/Dredge_minus5.png",
+  width = 100 * 3.5 / 6.5,
+  caption = "Fit of the best-fit model from the 1993-2013 analysis and predictions through 2023. Black line is the model prediction with 95% confidence limits. Black points are the recruitment deviations used in the model development; red points are future recruitments.",
+  label = "minus5-plot",
+  alt_caption = "Figure showing the extension of the predictions to 2023 showing similar results to the model that was fit to all observations."
+)
 ```
 
-# Distribution and abundance of juvenile petrale
+## Distribution and abundance of juvenile petrale
 
-@tolimieri2020spatio used spatio-temporal models to examine the distribution and abundance of 13 species of juvenile fishes along the West Coast. Those results are updated here following @tolimieri2020spatio but using the 'sdmTMB' package [@anderson2022sdmtmb] for R instead of the 'VAST' package [@thorson2019guidance]. 
+@tolimieri2020spatio used spatio-temporal models to examine the distribution and abundance of 13 species of juvenile fishes along the West Coast. Those results are updated here following @tolimieri2020spatio but using the 'sdmTMB' package [@anderson2022sdmtmb] for R instead of the 'VAST' package [@thorson_guidance_2019]. 
 
 Data come from the West Coast Groundfish Bottom Trawl Survey (WCGBTS)[@keller2017wcgbts] for 2003-2022. There are no data for 2020 as COVID restrictions prevented the survey from being completed. The individual biomass data contain estimates of age, length, and biomass for subsamples of each haul and occasionally data for the entire haul when catch is low. There is length information (cm total length) for all individuals in the subsample but many individual fishes lack weight or age data due to time-constraints in the field. To expand the subsample, the following procedure was followed: 
 
@@ -926,31 +1061,26 @@ Data come from the West Coast Groundfish Bottom Trawl Survey (WCGBTS)[@keller201
 
 3. The proportional biomass of juveniles in each subsamble was calculated and used to estimate the total biomass of juvenile fishes in the full trawl.
 
-The juvenile biomass index was low in recent years (Fig. A\@ref(fig:juv-timeseries)), which does not match up with the predictions of recruitment from the basin-scale models. Observed modeled recruitment deviations from the 2019 assessment and the observed juvenile biomass in the trawl survey do not align either. Juvenile abundance for petrale was highest in the 2008-2011 time period (Fig. A\@ref(fig:juv-timeseries)) with high densities just south of 45`r degree_N` and moderate abundance to the south until about 37 `r degree_N`. This period of high abundance followed several strong recruitment events from 2006-2008 (Fig. A\@ref(fig:glorys-index)) suggesting a 2-3 year delay between recruitment events and when they are observed in the trawl survey, which is consistent with the age of the fishes in the trawl survey. This delay would also function to reduce the correlation between the recruitment deviations from the assessment and observed abundance of agee-1 and age-2 petrale since the index in Figure A\@ref(fig:juv-timeseries) integrates several age classes. 
+The juvenile biomass index was low in recent years (Fig. \@ref(fig:juv-timeseries)), which does not match up with the predictions of recruitment from the basin-scale models. Observed modeled recruitment deviations from the 2019 assessment and the observed juvenile biomass in the trawl survey do not align either. Juvenile abundance for petrale was highest in the 2008-2011 time period (Fig. \@ref(fig:juv-timeseries)) with high densities just south of 45`r degree_N` and moderate abundance to the south until about 37 `r degree_N`. This period of high abundance followed several strong recruitment events from 2006-2008 (Fig. \@ref(fig:glorys-index)) suggesting a 2-3 year delay between recruitment events and when they are observed in the trawl survey, which is consistent with the age of the fishes in the trawl survey. This delay would also function to reduce the correlation between the recruitment deviations from the assessment and observed abundance of agee-1 and age-2 petrale since the index in Figure \@ref(fig:juv-timeseries) integrates several age classes. 
 
-Age-1 and age-2 petrale were widely distributed from 35 to 46 `r degree_N` during the period of high abundance from 2008-2011 (Fig. A\@ref(fig:juv-distribution)). Abundance was highest around the bank system at approximately 44 `r degree_N`, even in years of lower abundance.
+Age-1 and age-2 petrale were widely distributed from 35 to 46 `r degree_N` during the period of high abundance from 2008-2011 (Fig. \@ref(fig:juv-distribution)). Abundance was highest around the bank system at approximately 44 `r degree_N`, even in years of lower abundance.
 
-```{r juv-timeseries, fig.cap="Index of juvenile abudance from the species distribution modelling."}
-
-knitr::include_graphics( "../recruit_index/ESR-Recruitment-Indices/Figures/Groundfish_recruitment_indices-index-Petrale sole.png" )
-
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "../recruit_index/ESR-Recruitment-Indices/Figures/Groundfish_recruitment_indices-index-Petrale sole.png",
+  width = 100 * 4.5 / 6.5,
+  caption = "Index of juvenile abudance from the species distribution modeling.",
+  label = "juv-timeseries",
+  alt_caption = "Time series showing a stable pattern of biomass index with a large increase from 2007 to a peak in 2010 followed by a decline to a point similar to the old values in 2012."
+)
 ```
 
-```{r juv-distribution, fig.cap="Distribution juvenile petrale sole along the West Coast from 2003-2022 from the species distribution modeling."}
-
-knitr::include_graphics( "../recruit_index/ESR-Recruitment-Indices/Figures/Dist_map-combined-petrale.png" )
-
+```{r results = "asis"}
+sa4ss::add_figure(
+  filein = "../recruit_index/ESR-Recruitment-Indices/Figures/Dist_map-combined-petrale.png",
+  width = 100,
+  caption = "Distribution juvenile petrale sole along the West Coast from 2003-2022 from the species distribution modeling.",
+  label = "juv-distribution",
+  alt_caption = "Colored map showing repeating spatial distribution for each year showing hot spots off of central Oregon and Northern California with large increases in the 2008-2011 period."
+)
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
