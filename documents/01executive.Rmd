@@ -193,7 +193,7 @@ The estimated time series of exploitation (Figures \ref{fig:es-1-spr} and \ref{f
 ```{r, results = 'asis'}
 add_figure(
 filein = file.path(mod_loc_relative, "plots", "SPR3_ratiointerval.png"), 
-caption = "Estimated time series of the fishing intensity (1 - SPR), where SPR is the spawning potential ratio, with approximate 95% asymptotic intervals. The horizontal line at 0.7 corresponds to SPR = 0.3, the management reference point for petrale sole. The horizontal line at 1.0 corresponds to SPR = 0 (all spawning fish removed from the population).",
+caption = "Estimated time series of the fishing intensity (1 - SPR), where SPR is the spawning potential ratio, with approximate 95\\% asymptotic intervals. The horizontal line at 0.7 corresponds to SPR = 0.3, the management reference point for petrale sole. The horizontal line at 1.0 corresponds to SPR = 0 (all spawning fish removed from the population).",
 label = 'es-1-spr')
 ```
 

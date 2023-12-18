@@ -1,10 +1,13 @@
 \clearpage
 
-\newgeometry{left=1in,right=1in, bottom=1cm, top=1cm} 
+<!-- shrink margins so 2 figs can fit on a page
+info from https://tex.stackexchange.com/questions/97995/changing-margins-removes-page-number
+about footskip -->
+\newgeometry{left=1in,right=1in, bottom=1cm, top=1cm, footskip=15pt}
 
 # Figures
 ```{r, read-csv, results = "asis"}
-plot_info = read.csv(file.path(mod_loc_relative, "plots", "plotinfotable_for_doc.csv"))
+plot_info <- read.csv(file.path(mod_loc_relative, "plots", "plotinfotable_for_doc.csv"))
 ```
 
 <!-- don't allow section headers to float relative to figure locations -->
@@ -17,24 +20,25 @@ plot_info = read.csv(file.path(mod_loc_relative, "plots", "plotinfotable_for_doc
 
 ```{r, results = "asis"}
 sa4ss::add_figure(
-filein = "../figures/map/map_of_fleet_areas_42.png", 
-caption = 
-  "Map of the U.S. West Coast Exclusive Economic Zone within which the assessment is focused. The dashed line and colors delineate the two fishing fleets represented in the model: North (blue) and South (red).",
-  alt_caption = "Outline of U.S. West Coast split at forty-two degrees north latitude",
-label = "map"
+  filein = "../figures/map/map_of_fleet_areas_42.png",
+  caption =
+    "Map of the U.S. West Coast Exclusive Economic Zone within which the assessment is focused. The dashed line and colors delineate the two fishing fleets represented in the model: North (blue) and South (red).",
+  alt_caption = "Outline of U.S. West Coast with a polygon showing the area of the ocean within 200 miles of the coast which is split at forty-two degrees north latitude",
+  label = "map"
 )
 ```
 
 ```{r, data-plot, results = "asis"}
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "data_plot2.png"), 
-caption = 
-  "Data presence by year for each fleet, where circle area is
+  filein = file.path(mod_loc_relative, "plots", "data_plot2.png"),
+  caption =
+    "Data presence by year for each fleet, where circle area is
 relative within a data type. Circles are proportional to
 total catch for catches; to precision for indices, discards, and
 mean body weight observations; and to total sample size for
 compositions.",
-label = "data-plot"
+  alt_caption = "Tabular information for this figure can be found in the data file.",
+  label = "data-plot"
 )
 ```
 
@@ -44,23 +48,25 @@ label = "data-plot"
 
 ```{r, catch-figures-r4ss, results = "asis"}
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "catch2 landings stacked.png"), 
-caption = "Landings (mt) by fleet used in the base model.",
-label = "catch-figures-r4ss"
+  filein = file.path(mod_loc_relative, "plots", "catch2 landings stacked.png"),
+  caption = "Landings (mt) by fleet used in the base model.",
+  alt_caption = "See Table \\@ref{tab:catch-table} for the time series shown in this figure.",
+  label = "catch-figures-r4ss"
 )
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "catch16 landings + dead discards.png"), 
-caption = "Landings plus dead discards (mt) by fleet as estimated in the base model.",
-label = "catchdiscard-figures-r4ss"
+  filein = file.path(mod_loc_relative, "plots", "catch16 landings + dead discards.png"),
+  caption = "Landings plus dead discards (mt) by fleet as estimated in the base model.",
+  alt_caption = "See TIME_SERIES table in Report.sso for the time series of dead catch by fleet.",
+  label = "catchdiscard-figures-r4ss"
 )
 
 sa4ss::add_figure(
-filein = "../figures/Catch comparison graph.png", 
-caption = "Comparison of landings used in this assessment (red line) with landings used in 2019 assessment (dashed black line) by state and fleet. Please see section on Historical landings for details.",
-label = "catch-comparison"
+  filein = "../figures/Catch comparison graph.png",
+  caption = "Comparison of landings used in this assessment (red line) with landings used in 2019 assessment (dashed black line) by state and fleet. Please see section on Historical landings for details.",
+  alt_caption = "Four-panel figure showing that little change has occurred in the assumed catch for all fleets except Washington which is much lower from 1930 to about 1975.",
+  label = "catch-comparison"
 )
-
 ```
 
 <!-- ====================================================================== --> 
@@ -69,51 +75,61 @@ label = "catch-comparison"
 
 ```{r, index-figures, results = "asis"}
 sa4ss::add_figure(
-filein = "../figures/indices/survey_density.png", 
-caption = "Predicted density from the geostatistical standardization of the Triennial Survey (left) and the West Coast Groundfish Bottom Trawl Survey (WCGBTS, right) in 2004, the one year in which both surveys were conducted. Density is on a log scale and the colors correspond to different scales as shown in the two legends.",
-label = "survey-density"
+  filein = "../figures/indices/survey_density.png",
+  caption = "Predicted density from the geostatistical standardization of the Triennial Survey (left) and the West Coast Groundfish Bottom Trawl Survey (WCGBTS, right) in 2004, the one year in which both surveys were conducted. Density is on a log scale and the colors correspond to different scales as shown in the two legends.",
+  alt_caption = "Colored map showing spatial distribution of density with lighter colors indicating higher density near San Francisco Bay and various regions along the coast of Oregon and Washington.",
+  label = "survey-density"
 )
 
 sa4ss::add_figure(
-filein = "../figures/indices/depth_vs_lat_tri_petrale.png", 
-caption = paste("Distribution of petrale catch rates in the Triennial survey. The dashed lines represent the 366 m and 37 degree limits of the early years of the survey which were used to truncate the data to provide a consistent spatial coverage for the index standardization and length composition data"),
-label = "depth-vs-lat-tri"
+  filein = "../figures/indices/depth_vs_lat_tri_petrale.png",
+  caption = paste("Distribution of petrale catch rates in the Triennial survey. The dashed lines represent the 366 m and 37 degree limits of the early years of the survey which were used to truncate the data to provide a consistent spatial coverage for the index standardization and length composition data"),
+  alt_caption = "Bubble plot as a function of depth and latitude showing the largest bubbles between 55 and 200 meter depth with very few bubbles beyond 366 m and south of 37 degrees north latitude.",
+  label = "depth-vs-lat-tri"
 )
 
 sa4ss::add_figure(
-filein = "../figures/indices/presence-absence_by_depth.png", 
-caption = paste("Presence/absence of petrale sole by depth",
-  "in the WCGBTS. Bar widths are proportional to the number of hauls in that bin.",
-  "Values are aggregated across all years of the survey."),
-label = "presence-absence-by-depth"
+  filein = "../figures/indices/presence-absence_by_depth.png",
+  caption = paste(
+    "Presence/absence of petrale sole by depth",
+    "in the WCGBTS. Bar widths are proportional to the number of hauls in that bin.",
+    "Values are aggregated across all years of the survey."
+  ),
+  alt_caption = "Bar plot showing more than 75\\% of the tows shallower than 200 meters had petrale and then declining quickly to fewer than 10\\% beyond 400 meters.",
+  label = "presence-absence-by-depth"
 )
 
 sa4ss::add_figure(
-filein = "../figures/indices/presence-absence_by_latitude.png", 
-caption = paste("Presence/absence of petrale sole by latitude",
-  "in the WCGBTS. Bar widths are proportional to the number of hauls in that bin.",
-  "Values are aggregated across all years of the survey."),
-label = "presence-absence-by-latitude"
+  filein = "../figures/indices/presence-absence_by_latitude.png",
+  caption = paste(
+    "Presence/absence of petrale sole by latitude",
+    "in the WCGBTS. Bar widths are proportional to the number of hauls in that bin.",
+    "Values are aggregated across all years of the survey."
+  ),
+  alt_caption = "Bar plot showing more than 20\\% of the tows between 33 and 48 degrees north had petrale with the highest density between 37 and 38 degrees where it is greater than 80\\% and relatively frequency greater than 50\\% between 42 and 44 degrees and 45 to 48 degrees.",
+  label = "presence-absence-by-latitude"
 )
 
 sa4ss::add_figure(
-filein = "../figures/indices/index_Tri.png", 
-caption = "Estimated coastwide index from the geostatistical standardization of the Triennial Survey. The subset of the biomass estimated within the waters off each state is shown as well.",
-label = "survey-tri"
+  filein = "../figures/indices/index_Tri.png",
+  caption = "Estimated coastwide index from the geostatistical standardization of the Triennial Survey. The subset of the biomass estimated within the waters off each state is shown as well.",
+  alt_caption = "See Report.sso for index values. The contributions from Washington Oregon and California are similar in magnitude.",
+  label = "survey-tri"
 )
 
 sa4ss::add_figure(
-filein = "../figures/indices/index_WCGBTS.png", 
-caption = "Estimated coastwide index from the geostatistical standardization of the WCGBTS. The subset of the biomass estimated within the waters off each state is shown as well.",
-label = "survey-wcgbts"
+  filein = "../figures/indices/index_WCGBTS.png",
+  caption = "Estimated coastwide index from the geostatistical standardization of the WCGBTS. The subset of the biomass estimated within the waters off each state is shown as well.",
+  alt_caption = "See Report.sso for index values. The contributions from California are the largest followed by Oregon and then Washington.",
+  label = "survey-wcgbts"
 )
 
 sa4ss::add_figure(
-filein = "../figures/indices/2021 NA large Petrale sole catch combined.png", 
-caption = "Photos from the largest recorded petrale sole catch on the WCGBTS: 8390 kg from a 15-minute tow on 23 September 2021. The photos were taken by John Buchanan on board the F/V Noah's Ark. The location was 123.9581 W, 38.92528 N with average haul depth of 310 m.",
-label = "large-2021-haul"
+  filein = "../figures/indices/2021 NA large Petrale sole catch combined.png",
+  caption = "Photos from the largest recorded petrale sole catch on the WCGBTS: 8390 kg from a 15-minute tow on 23 September 2021. The photos were taken by John Buchanan on board the F/V Noah's Ark. The location was 123.9581 W, 38.92528 N with average haul depth of 310 m.",
+  alt_caption = "The first photo shows a trawl net pulled onto the deck of a vessel which is bulging with fish inside. The second photo shows a large number of big petrale sole dumped on the deck (whereas typically the catch fits within a sorting table).",
+  label = "large-2021-haul"
 )
-
 ```
 
 \clearpage
@@ -122,36 +138,47 @@ label = "large-2021-haul"
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path("../figures/historical_assessment_timeseries.png"), 
-caption = paste("Comparison of biomass time series (colored lines) across recent assessments.",
-  "Units are estimated biomass of females and males ages 3 and older.",
-  "Total mortality from the base model (black bars) is included as well.",
-  "Spawning biomass is not comparable across these assessments because the inclusion",
-  "of a fecundity relationship starting in 2023 which results in spawning output in units of eggs."),
-label = 'smry-bio-historical')
+  filein = file.path("../figures/historical_assessment_timeseries.png"),
+  caption = paste(
+    "Comparison of biomass time series (colored lines) across recent assessments.",
+    "Units are estimated biomass of females and males ages 3 and older.",
+    "Total mortality from the base model (black bars) is included as well.",
+    "Spawning biomass is not comparable across these assessments because the inclusion",
+    "of a fecundity relationship starting in 2023 which results in spawning output in units of eggs."
+  ),
+  alt_caption = "Time series for each assessment starts at a range of values from about 25000 tons to 52000 tons in 1910 but in all cases show very similar values from the 1980s onward with a low point around 5000 tons in 1990. See Report.sso for time series from current assessment.",
+  label = "smry-bio-historical"
+)
 ```
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path("../figures/bridging/Comparison plots - first set/compare1_spawnbio.png"),
-caption = "Time series of estimated spawning biomass (1,000s of mt) for the 2019 assessment model and bridging steps 1 to 5. The changes are cumulative.",
-label = 'bridge1-ssb')
+  filein = file.path("../figures/bridging/Comparison plots - first set/compare1_spawnbio.png"),
+  caption = "Time series of estimated spawning biomass (1,000s of mt) for the 2019 assessment model and bridging steps 1 to 5. The changes are cumulative.",
+  alt_caption = "Relatively small changes to the time series are shown with the biggest impact coming from updating the catch time series.",
+  label = "bridge1-ssb"
+)
 
 sa4ss::add_figure(
-filein = file.path("../figures/bridging/Comparison plots - second set/compare1_spawnbio.png"),
-caption = "Time series of estimated spawning biomass (1,000s of mt) for bridging steps 5 to 8. The changes are cumulative.",
-label = 'bridge2-ssb')
+  filein = file.path("../figures/bridging/Comparison plots - second set/compare1_spawnbio.png"),
+  caption = "Time series of estimated spawning biomass (1,000s of mt) for bridging steps 5 to 8. The changes are cumulative.",
+  alt_caption = "Relatively small changes to the time series are shown with the biggest impact coming from re-weighting the model.",
+  label = "bridge2-ssb"
+)
 
 sa4ss::add_figure(
-filein = file.path("../figures/bridging/Comparison plots - third set/compare1_spawnbio.png"),
-caption = "Time series of estimated spawning biomass (1,000s of mt) for briding steps 8 to 13, where the final step is the 2023 base model. The change in fecundity associated with the final step (2023 base, red line) changes the units of spawning output to trillions of eggs so the values are not comparable. The changes are cumulative.",
-label = 'bridge3-ssb')
+  filein = file.path("../figures/bridging/Comparison plots - third set/compare1_spawnbio.png"),
+  caption = "Time series of estimated spawning biomass (1,000s of mt) for briding steps 8 to 13, where the final step is the 2023 base model. The change in fecundity associated with the final step (2023 base, red line) changes the units of spawning output to trillions of eggs so the values are not comparable. The changes are cumulative.",
+  alt_caption = "Relatively small changes to the time series are shown with the biggest impact coming from updating blocks and selectivity.",
+  label = "bridge3-ssb"
+)
 
 sa4ss::add_figure(
-filein = file.path("../figures/bridging/Comparison plots - third set/compare3_Bratio.png"),
-caption = "Time series of fraction of unfished spawning output for briding steps 8 to 13, where the final step is the 2023 base model. The changes are cumulative.",
-label = 'bridge3-bratio')
-
+  filein = file.path("../figures/bridging/Comparison plots - third set/compare3_Bratio.png"),
+  caption = "Time series of fraction of unfished spawning output for briding steps 8 to 13, where the final step is the 2023 base model. The changes are cumulative.",
+  alt_caption = "The changes shown in the previous figure are even smaller when represented relative to unfished spawning biomass.",
+  label = "bridge3-bratio"
+)
 ```
 
 \clearpage
@@ -159,55 +186,77 @@ label = 'bridge3-bratio')
 <!--  Biology -->
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "bio1_sizeatage.png"),
-caption = "Model estimated length-at-age in the beginning of the year. Shaded area indicates 95 percent distribution of length-at-age around the estimated growth curve",
-label = 'mod-est-len-age')
+  filein = file.path(mod_loc_relative, "plots", "bio1_sizeatage.png"),
+  caption = "Model estimated length-at-age in the beginning of the year. Shaded area indicates 95 percent distribution of length-at-age around the estimated growth curve",
+  alt_caption = "Growth curves for females and males diverge around age 4 and get close to L-infinity around age 20. See parameter table for growth parameters.",
+  label = "mod-est-len-age"
+)
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots_bio_tall", "bio3_sizeatage_plus_WT_and_MAT.png"),
-caption = "Relationship between growth, maturity, and weight. Length at age is in the top-left panel with weight (thick lines) and maturity (thin lines) shown in top-right and lower-left panels",
-label = 'mod-est-len-age2')
+  filein = file.path(mod_loc_relative, "plots_bio_tall", "bio3_sizeatage_plus_WT_and_MAT.png"),
+  caption = "Relationship between growth, maturity, and weight. Length at age is in the top-left panel with weight (thick lines) and maturity (thin lines) shown in top-right and lower-left panels",
+  alt_caption = "See biology at age and biology at length tables in Report.sso for information on the relationship between growth maturity and weight.",
+  label = "mod-est-len-age2"
+)
 
 sa4ss::add_figure(
-filein = file.path("../figures/Petrale_fxn_ogive.png"),
-caption = "Maturity ogive showing fit to observed fraction mature within each length bin.",
-label = 'maturity')
+  filein = file.path("../figures/Petrale_fxn_ogive.png"),
+  caption = "Maturity ogive showing fit to observed fraction mature within each length bin.",
+  alt_caption = "Maturity curve shows good fit to observed fraction mature in each length bin with outliers at 26cm (1 out of 7 fish mature in spite of less than 1\\% expected to be mature) and 55 cm (1 out of 6 fish not mature in spite of greater than 99\\% expected to be mature).",
+  label = "maturity"
+)
 
 sa4ss::add_figure(
-filein = file.path("../figures/fecundity.png"),
-caption = "Fecundity relationship relative to body weight at length for females. The distribution of estimated numbers of mature females in unfished equilibrium and at the start of 2023 is shown for comparison. The population size bins extend to 78 cm, but the number of individuals beyond 70cm is negligible.",
-label = 'fecundity')
-
+  filein = file.path("../figures/fecundity.png"),
+  caption = "Fecundity relationship relative to body weight at length for females. The distribution of estimated numbers of mature females in unfished equilibrium and at the start of 2023 is shown for comparison. The population size bins extend to 78 cm, but the number of individuals beyond 70cm is negligible.",
+  alt_caption = "Fecundity increases faster than weight as a function of length. When combined with numbers at age to get the number of mature females the maximum occurs in the 42cm bin at unfished equilibrium. In 2023 the maximum number of mature females is shifted to the 40cm bin and is about half that at unfished equilibrium.",
+  label = "fecundity"
+)
 ```
 
 
 <!--  Selectivity -->
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "sel01_multiple_fleets_length1.png"), 
-caption = paste("Ending-year selectivity at length for multiple fleets.",
-  "Solid lines are female selectivity, dashed are male."),
-label = 'sel_length')
+  filein = file.path(mod_loc_relative, "plots", "sel01_multiple_fleets_length1.png"),
+  caption = paste(
+    "Ending-year selectivity at length for multiple fleets.",
+    "Solid lines are female selectivity, dashed are male."
+  ),
+  alt_caption = "See the LEN\\_SELEX table (with Factor = 'Lsel') in Report.sso for values.",
+  label = "sel_length"
+)
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "sel02_multiple_fleets_age2.png"), 
-caption = paste("Ending-year selectivity at age derived from selectivity at length",
-  "(solid female, dashed male)."),
-label = 'sel-age')
+  filein = file.path(mod_loc_relative, "plots", "sel02_multiple_fleets_age2.png"),
+  caption = paste(
+    "Ending-year selectivity at age derived from selectivity at length",
+    "(solid female, dashed male)."
+  ),
+  alt_caption = "See the AGE\\_SELEX table (with Factor = 'Asel2') in Report.sso for values.",
+  label = "sel-age"
+)
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "custom_plots", "selectivity_time-varying_fem.png"), 
-caption = paste("Time-varying female selectivity (top) and retention (bottom)",
-  "for the fishing fleets. Retention is the same for females and males.",
-  "Note: the legend shows the time periods in which there are blocks on either retention or discards even if they don't apply in each case."),
-label = 'sel-tv-fem')
+  filein = file.path(mod_loc_relative, "custom_plots", "selectivity_time-varying_fem.png"),
+  caption = paste(
+    "Time-varying female selectivity (top) and retention (bottom)",
+    "for the fishing fleets. Retention is the same for females and males.",
+    "Note: the legend shows the time periods in which there are blocks on either retention or discards even if they don't apply in each case."
+  ),
+  alt_caption = "See the LEN\\_SELEX table (with Factor = 'Lsel' and 'RET') in Report.sso for values.",
+  label = "sel-tv-fem"
+)
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "custom_plots",  "selectivity_time-varying_mal.png"), 
-caption = paste("Time-varying male selectivity (top) and retention (bottom)",
-  "for the fishing fleets. Retention is the same for females and males.",
-  "Note: the legend shows the time periods in which there are blocks on either retention or discards even if they don't apply in each case."),  
-label = 'sel-tv-mal')
-
+  filein = file.path(mod_loc_relative, "custom_plots", "selectivity_time-varying_mal.png"),
+  caption = paste(
+    "Time-varying male selectivity (top) and retention (bottom)",
+    "for the fishing fleets. Retention is the same for females and males.",
+    "Note: the legend shows the time periods in which there are blocks on either retention or discards even if they don't apply in each case."
+  ),
+  alt_caption = "See the LEN\\_SELEX table (with Factor = 'Lsel' and 'RET') in Report.sso for values.",
+  label = "sel-tv-mal"
+)
 ```
 
 <!--  Fits to Data -->
@@ -215,133 +264,195 @@ label = 'sel-tv-mal')
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "index2_cpuefit_WCGBTS.png"), 
-caption = paste("Fit to index data for WCGBTS. Lines indicate 95% uncertainty",
-  "interval around index values based on the model assumption of lognormal error."),
-label = 'index-wcgbts-fit')
+  filein = file.path(mod_loc_relative, "plots", "index2_cpuefit_WCGBTS.png"),
+  caption = paste(
+    "Fit to index data for WCGBTS. Lines indicate 95\\% uncertainty",
+    "interval around index values based on the model assumption of lognormal error."
+  ),
+  alt_caption = "Index fit is good. In 2018 the expectation is above the 95\\% interval for the observed value. See the INDEX_2 table in Report.sso for values.",
+  label = "index-wcgbts-fit"
+)
 ```
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "index2_cpuefit_Triennial.png"), 
-caption = paste("Fit to index data for the Triennial survey. Lines indicate 95% uncertainty",
-  "interval around index values based on the model assumption of lognormal error with and without estimated additional uncertainty parameter."),
-label = 'index-tri-fit')
-```
-
-```{r, results = 'asis'}
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "comp_lenfit__aggregated_across_time.png"), 
-caption = paste("Length composition aggregated across years by fleet with the",
-  "model estimated fit to the data by sex (red female and blue male)."),
-label = 'len-agg-fit')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "comp_lendat__multi-fleet_comparison.png"), 
-caption = paste("Length composition data for all fleets",
-  "(red female, blue male, grey unsexed)."),
-label = 'len-all-bubbles')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "comp_lenfit__multi-fleet_comparison.png"), 
-caption = paste("Pearson residuals for fit to length composition data for all fleets",
-  "(red female, blue male, grey unsexed).",
-  "Closed bubbles are positive residuals (observed > expected) and open bubbles",
-  "are negative residuals (observed < expected)."),
-label = 'len-all-pearson')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "comp_lenfit_data_weighting_TA1.8_North.png"), 
-caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the North fleet. Retained catch is shown in the top and discards on the bottom (NOTE: the figure title indicates that discards and retained are shown in both plots, but this is incorrect.). 95% intervals for the observations are based on the adjusted input sample sizes."),
-label = 'len-francis-north')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "comp_lenfit_data_weighting_TA1.8_South.png"), 
-caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the South fleet. Retained catch is shown in the top and discards on the bottom. (NOTE: the figure title indicates that discards and retained are shown in both plots, but this is incorrect.) 95% intervals for the observations are based on the adjusted input sample sizes."),
-label = 'len-francis-south')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "comp_lenfit_data_weighting_TA1.8_Triennial.png"), 
-caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the Triennial Survey. 95% intervals for the observations are based on the adjusted input sample sizes."),
-label = 'len-francis-tri')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "comp_lenfit_data_weighting_TA1.8_WCGBTS.png"), 
-caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the WCGBTS. 95% intervals for the observations are based on the adjusted input sample sizes."),
-label = 'len-francis-wcgbt')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "comp_agefit__aggregated_across_time.png"), 
-caption = "Age composition data aggregated across time by fleet and sex (red female and blue male).",
-label = 'agg-marg-age-fit')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "comp_agedat__multi-fleet_comparison.png"), 
-caption = paste("Age composition data for all fleets",
-  "(red female, blue male)."),
-label = 'age-all-bubbles')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "comp_agefit__multi-fleet_comparison.png"), 
-caption = paste("Pearson residuals for fit to age composition data for all fleets",
-  "(red female, blue male).",
-  "Closed bubbles are positive residuals (observed > expected) and open bubbles",
-  "are negative residuals (observed < expected)."),
-label = 'age-all-pearson')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "comp_condAALdat_bubflt4mkt0_page1.png"), 
-caption = paste("Conditional age-at-length data from WCGBTS",
-  "(data plot 1 of 2, interleaved with the residual plots to facilitate flipping back and forth)."),
-label = 'caal-dat1')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "comp_condAALfit_residsflt4mkt0_page1.png"), 
-caption = paste("Pearson residuals for conditional age-at-length data from WCGBTS",
-  "(residual plot 1 of 2, interleaved with the data plots to facilitate flipping back and forth)."),
-label = 'caal-fit1')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "comp_condAALdat_bubflt4mkt0_page2.png"), 
-caption = paste("Conditional age-at-length data from WCGBTS",
-  "(data plot 2 of 2, interleaved with the residual plots to facilitate flipping back and forth)."),
-label = 'caal-dat2')
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "comp_condAALfit_residsflt4mkt0_page2.png"), 
-caption = paste("Pearson residuals for conditional age-at-length data from WCGBTS",
-  "(residual plot 2 of 2, interleaved with the data plots to facilitate flipping back and forth)."),
-label = 'caal-fit2')
-
+  filein = file.path(mod_loc_relative, "plots", "index2_cpuefit_Triennial.png"),
+  caption = paste(
+    "Fit to index data for the Triennial survey. Lines indicate 95\\% uncertainty",
+    "interval around index values based on the model assumption of lognormal error with and without estimated additional uncertainty parameter."
+  ),
+  alt_caption = "Index fit is good except for 2004 where the observation is well above the expectation. A large extra standard deviation is applied to all years. See the INDEX_2 table in Report.sso for values.",
+  label = "index-tri-fit"
+)
 ```
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "discard_fitNorth.png"), 
-caption = paste("Discard fraction for the North fishery with 95% intervals (black) with fit of expected value (blue)."),
-label = 'discard_fitNorth')
+  filein = file.path(mod_loc_relative, "plots", "comp_lenfit__aggregated_across_time.png"),
+  caption = paste(
+    "Length composition aggregated across years by fleet with the",
+    "model estimated fit to the data by sex (red female and blue male)."
+  ),
+  alt_caption = "Aggregated length comps are fit very well.",
+  label = "len-agg-fit"
+)
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "discard_fitSouth.png"), 
-caption = paste("Discard fraction for the South fishery with 95% intervals (black) with fit of expected value (blue)."),
-label = 'discard_fitSouth')
+  filein = file.path(mod_loc_relative, "plots", "comp_lendat__multi-fleet_comparison.png"),
+  caption = paste(
+    "Length composition data for all fleets",
+    "(red female, blue male, grey unsexed)."
+  ),
+  alt_caption = "See 'Obs' column in CompReport.sso for values.",
+  label = "len-all-bubbles"
+)
 
 sa4ss::add_figure(
-filein = "../figures/discard_comparison.png",
-caption = "Estimated total discards (top) and discard fractions (bottom) for each fleet in the 2019 assessment (left) and base model (right).",
-label = 'discard_comparison')
+  filein = file.path(mod_loc_relative, "plots", "comp_lenfit__multi-fleet_comparison.png"),
+  caption = paste(
+    "Pearson residuals for fit to length composition data for all fleets",
+    "(red female, blue male, grey unsexed).",
+    "Closed bubbles are positive residuals (observed > expected) and open bubbles",
+    "are negative residuals (observed < expected)."
+  ),
+  alt_caption = "See 'Pearson' column in CompReport.sso for values.",
+  label = "len-all-pearson"
+)
+
+sa4ss::add_figure(
+  filein = file.path(mod_loc_relative, "plots", "comp_lenfit_data_weighting_TA1.8_North.png"),
+  caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the North fleet. Retained catch is shown in the top and discards on the bottom (NOTE: the figure title indicates that discards and retained are shown in both plots, but this is incorrect.). 95\\% intervals for the observations are based on the adjusted input sample sizes."),
+  alt_caption = "Plots show good fit to mean length in all years with mean length of retained fish declining from 1950s to 1990s and then mostly increasing through 2022.",
+  label = "len-francis-north"
+)
+
+sa4ss::add_figure(
+  filein = file.path(mod_loc_relative, "plots", "comp_lenfit_data_weighting_TA1.8_South.png"),
+  caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the South fleet. Retained catch is shown in the top and discards on the bottom. (NOTE: the figure title indicates that discards and retained are shown in both plots, but this is incorrect.) 95\\% intervals for the observations are based on the adjusted input sample sizes."),
+  alt_caption = "Plots show good fit to mean length in all years with mean length of retained fish declining from 1950s to late 1980s and then mostly increasing through 2022.",
+  label = "len-francis-south"
+)
+
+sa4ss::add_figure(
+  filein = file.path(mod_loc_relative, "plots", "comp_lenfit_data_weighting_TA1.8_Triennial.png"),
+  caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the Triennial Survey. 95\\% intervals for the observations are based on the adjusted input sample sizes."),
+  alt_caption = "Plots show reasonable fit to mean length in all years.",
+  label = "len-francis-tri"
+)
+
+sa4ss::add_figure(
+  filein = file.path(mod_loc_relative, "plots", "comp_lenfit_data_weighting_TA1.8_WCGBTS.png"),
+  caption = paste("Mean lengths calculated from the observed (black) and expected (blue) length compositions from the WCGBTS. 95\\% intervals for the observations are based on the adjusted input sample sizes."),
+  alt_caption = "Plots show reasonable fit to mean length in all years.",
+  label = "len-francis-wcgbt"
+)
+
+sa4ss::add_figure(
+  filein = file.path(mod_loc_relative, "plots", "comp_agefit__aggregated_across_time.png"),
+  caption = "Age composition data aggregated across time by fleet and sex (red female and blue male).",
+  alt_caption = "Plots show reasonable fit to mean length in all years except 2021 where the observed mean is well above the adjacent years (driven by a single large haul of large petrale sole)",
+  label = "agg-marg-age-fit"
+)
+
+sa4ss::add_figure(
+  filein = file.path(mod_loc_relative, "plots", "comp_agedat__multi-fleet_comparison.png"),
+  caption = paste(
+    "Age composition data for all fleets",
+    "(red female, blue male)."
+  ),
+  alt_caption = "Aggregated marginal age comps are fit well for the north fleet and less well for the south.",
+  label = "age-all-bubbles"
+)
+
+sa4ss::add_figure(
+  filein = file.path(mod_loc_relative, "plots", "comp_agefit__multi-fleet_comparison.png"),
+  caption = paste(
+    "Pearson residuals for fit to age composition data for all fleets",
+    "(red female, blue male).",
+    "Closed bubbles are positive residuals (observed > expected) and open bubbles",
+    "are negative residuals (observed < expected)."
+  ),
+  alt_caption = "See 'Pearson' column in CompReport.sso for values.",
+  label = "age-all-pearson"
+)
+
+sa4ss::add_figure(
+  filein = file.path(mod_loc_relative, "plots", "comp_condAALdat_bubflt4mkt0_page1.png"),
+  caption = paste(
+    "Conditional age-at-length data from WCGBTS",
+    "(data plot 1 of 2, interleaved with the residual plots to facilitate flipping back and forth)."
+  ),
+  alt_caption = "See 'Obs' column in CompReport.sso for values.",
+  label = "caal-dat1"
+)
+
+sa4ss::add_figure(
+  filein = file.path(mod_loc_relative, "plots", "comp_condAALfit_residsflt4mkt0_page1.png"),
+  caption = paste(
+    "Pearson residuals for conditional age-at-length data from WCGBTS",
+    "(residual plot 1 of 2, interleaved with the data plots to facilitate flipping back and forth)."
+  ),
+  alt_caption = "See 'Pearson' column in CompReport.sso for values.",
+  label = "caal-fit1"
+)
+
+sa4ss::add_figure(
+  filein = file.path(mod_loc_relative, "plots", "comp_condAALdat_bubflt4mkt0_page2.png"),
+  caption = paste(
+    "Conditional age-at-length data from WCGBTS",
+    "(data plot 2 of 2, interleaved with the residual plots to facilitate flipping back and forth)."
+  ),
+  alt_caption = "See 'Obs' column in CompReport.sso for values.",
+  label = "caal-dat2"
+)
+
+sa4ss::add_figure(
+  filein = file.path(mod_loc_relative, "plots", "comp_condAALfit_residsflt4mkt0_page2.png"),
+  caption = paste(
+    "Pearson residuals for conditional age-at-length data from WCGBTS",
+    "(residual plot 2 of 2, interleaved with the data plots to facilitate flipping back and forth)."
+  ),
+  alt_caption = "See 'Pearson' column in CompReport.sso for values.",
+  label = "caal-fit2"
+)
 ```
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "bodywt_fit_fltNorth.png"), 
-caption = paste("Mean individual body weight of the discards for the North fishery with 95% intervals (black) with fit of expected value (blue)."),
-label = 'mnwt_fitNorth')
+  filein = file.path(mod_loc_relative, "plots", "discard_fitNorth.png"),
+  caption = paste("Discard fraction for the North fishery with 95\\% intervals (black) with fit of expected value (blue)."),
+  alt_caption = "See DISCARD_OUTPUT table in Report.sso for values.",
+  label = "discard_fitNorth"
+)
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots",  "bodywt_fit_fltSouth.png"), 
-caption = paste("Mean individual body weight of the discards for the South fishery with 95% intervals (black) with fit of expected value (blue)."),
-label = 'mnwt_fitSouth')
+  filein = file.path(mod_loc_relative, "plots", "discard_fitSouth.png"),
+  caption = paste("Discard fraction for the South fishery with 95\\% intervals (black) with fit of expected value (blue)."),
+  alt_caption = "See 'DISCARD_OUTPUT' table in Report.sso for values.",
+  label = "discard_fitSouth"
+)
 
+sa4ss::add_figure(
+  filein = "../figures/discard_comparison.png",
+  caption = "Estimated total discards (top) and discard fractions (bottom) for each fleet in the 2019 assessment (left) and base model (right).",
+  alt_caption = "See TIME_SERIES table in Report.sso for discard and retained catch by fleet.",
+  label = "discard_comparison"
+)
+```
+
+```{r, results = 'asis'}
+sa4ss::add_figure(
+  filein = file.path(mod_loc_relative, "plots", "bodywt_fit_fltNorth.png"),
+  caption = paste("Mean individual body weight of the discards for the North fishery with 95\\% intervals (black) with fit of expected value (blue)."),
+  alt_caption = "See MEAN_BODY_WT_OUTPUT table in Report.sso for values.",
+  label = "mnwt_fitNorth"
+)
+
+sa4ss::add_figure(
+  filein = file.path(mod_loc_relative, "plots", "bodywt_fit_fltSouth.png"),
+  caption = paste("Mean individual body weight of the discards for the South fishery with 95\\% intervals (black) with fit of expected value (blue)."),
+  alt_caption = "See MEAN_BODY_WT_OUTPUT table in Report.sso for values.",
+  label = "mnwt_fitSouth"
+)
 ```
 
 
@@ -353,71 +464,114 @@ label = 'mnwt_fitSouth')
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"), 
-caption = "Estimated time series of female spawning output (in trillions of eggs) with approximate 95% asymptotic intervals.",
-label = 'ssb')
+  filein = file.path(mod_loc_relative, "plots", "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"),
+  caption = "Estimated time series of female spawning output (in trillions of eggs) with approximate 95\\% asymptotic intervals.",
+  alt_caption = "See DERIVED\\_QUANTITIES table (Labels starting with 'SSB') in Report.sso for values.",
+  label = "ssb"
+)
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "ts9_Relative_spawning_output_intervals.png"), 
-caption = "Estimated time series of relative spawning output with approximate 95% asymptotic intervals.",
-label = 'depl')
+  filein = file.path(mod_loc_relative, "plots", "ts9_Relative_spawning_output_intervals.png"),
+  caption = "Estimated time series of relative spawning output with approximate 95\\% asymptotic intervals.",
+  alt_caption = "See DERIVED\\_QUANTITIES table (Labels starting with 'Bratio') in Report.sso for values.",
+  label = "depl"
+)
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "SR_curve2.png"), 
-caption = "Stock-recruit curve. Labels indicate first, last, and years with (log) deviations > 0.5. Point colors indicate year, with warmer colors indicating earlier years and cooler colors in showing later years.",
-label = 'stock-recruit')
+  filein = file.path(mod_loc_relative, "plots", "SR_curve2.png"),
+  caption = "Stock-recruit curve. Labels indicate first, last, and years with (log) deviations > 0.5. Point colors indicate year, with warmer colors indicating earlier years and cooler colors in showing later years.",
+  alt_caption = "See SPAWN\\_RECRUIT table in Report.sso for values.",
+  label = "stock-recruit"
+)
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png"), 
-caption = "Estimated time series of age-0 recruits (1,000s) with approximate 95% asymptotic intervals",
-label = 'recruits')
+  filein = file.path(mod_loc_relative, "plots", "ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png"),
+  caption = "Estimated time series of age-0 recruits (1,000s) with approximate 95\\% asymptotic intervals",
+  alt_caption = "See DERIVED\\_QUANTITIES table (Labels starting with 'Recr') in Report.sso for values.",
+  label = "recruits"
+)
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "recdevs2_withbars.png"), 
-caption = "Estimated time series of recruitment deviations with approximate 95% asymptotic intervals. The black color indicates the 'main' recruitment period.",
-label = 'rec-devs')
-
+  filein = file.path(mod_loc_relative, "plots", "recdevs2_withbars.png"),
+  caption = "Estimated time series of recruitment deviations with approximate 95\\% asymptotic intervals. The black color indicates the 'main' recruitment period.",
+  alt_caption = "See parameter estimates table for values.",
+  label = "rec-devs"
+)
 ```
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "custom_plots",  "recruit_fit_bias_adjust.png"), 
-caption = paste0("Bias adjustment applied to the recruitment deviations (red line). ",
-  "Points are transformed variances relative to $\\sigma_R = ", mod_base$sigma_R_in, "$."),
-label = 'biasadj')
+  filein = file.path(mod_loc_relative, "custom_plots", "recruit_fit_bias_adjust.png"),
+  caption = paste0(
+    "Bias adjustment applied to the recruitment deviations (red line). ",
+    "Points are transformed variances relative to $\\sigma_R = ", mod_base$sigma_R_in, "$."
+  ),
+  alt_caption = "See bias adjustment inputs in model input control file for values.",
+  label = "biasadj"
+)
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "SPR3_ratiointerval.png"), 
-caption = "Estimated time series of the fishing intensity (1 - SPR), where SPR is the spawning potential ratio, with approximate 95% asymptotic intervals. The horizontal line at 0.7 corresponds to SPR = 0.3, the management reference point for petrale sole. The horizontal line at 1.0 corresponds to SPR = 0 (all spawning fish removed from the population).",
-label = 'spr')
+  filein = file.path(mod_loc_relative, "plots", "SPR3_ratiointerval.png"),
+  caption = "Estimated time series of the fishing intensity (1 - SPR), where SPR is the spawning potential ratio, with approximate 95\\% asymptotic intervals. The horizontal line at 0.7 corresponds to SPR = 0.3, the management reference point for petrale sole. The horizontal line at 1.0 corresponds to SPR = 0 (all spawning fish removed from the population).",
+  alt_caption = "See DERIVED\\_QUANTITIES table (Labels starting with 'SPRratio') in Report.sso for values.",
+  label = "spr"
+)
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "ts_summaryF.png"), 
-caption = "Estimated time series of the exploitation rate (total catch / age 3+ biomass) with approximate 95% asymptotic intervals.",
-label = 'exploit')
+  filein = file.path(mod_loc_relative, "plots", "ts_summaryF.png"),
+  caption = "Estimated time series of the exploitation rate (total catch / age 3+ biomass) with approximate 95\\% asymptotic intervals.",
+  alt_caption = "See DERIVED\\_QUANTITIES table (Labels starting with 'F') in Report.sso for values.",
+  label = "exploit"
+)
+```
 
+```{r phase-plot1, include = FALSE}
+# clean up caption
 info <- plot_info %>% dplyr::filter(grepl("SPR4_phase", label))
 caption <- info$caption
 # remove sentence from caption
-caption <- gsub(paste("The vertical line at 0.25 indicates the reference point as defined",
-  "in the forecast.ss which can be removed from the plot via SS_plots(…, btarg = -1)."), 
-  "", 
-  caption)
+caption <- gsub(
+  pattern = "The vertical line at (.*).",
+  replacement = "",
+  x = caption
+)
+# convert %
+caption <- gsub(
+  pattern = "%",
+  replacement = "\\%",
+  x = caption,
+  fixed = TRUE
+)
+caption <- gsub(
+  pattern = "<br>",
+  replacement = "",
+  x = caption,
+  fixed = TRUE
+)
+```
+
+```{r phase-plot2, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "plots", "SPR4_phase.png"), 
-caption = caption,
-label = 'phase')
+  filein = file.path(mod_loc_relative, "plots", "SPR4_phase.png"),
+  caption = caption,
+  alt_caption = "See DERIVED\\_QUANTITIES table (Labels starting with 'Bratio' and 'SPRratio') in Report.sso for values.",
+  label = "phase"
+)
 
 add_figure(
-filein = file.path(mod_loc_relative, "plots", "yield2_yield_curve_with_refpoints.png"), 
-caption = "Equilibrium yield curve for the base case model. Values are based on the most recent
+  filein = file.path(mod_loc_relative, "plots", "yield2_yield_curve_with_refpoints.png"),
+  caption = "Equilibrium yield curve for the base case model. Values are based on the most recent
 fishery selectivities and retention curves and with steepness fixed at 0.80.",
-label = 'yield')
+  alt_caption = "See SPR/YPR\\_Profile table in Report.sso for values.",
+  label = "yield"
+)
 
 add_figure(
-filein = file.path(mod_loc_relative, "custom_plots", "ts_DynamicB0.png"), 
-caption = "Dynamic B0 plot. The lower line shows the time series of estimated spawning output in the presence of fishing mortality. The upper line shows the time series that could occur under the same dynamics (including deviations in recruitment), but without fishing. The point at the left represents the unfished equilibrium.",
-label = 'dynamic-b0')
+  filein = file.path(mod_loc_relative, "custom_plots", "ts_DynamicB0.png"),
+  caption = "Dynamic B0 plot. The lower line shows the time series of estimated spawning output in the presence of fishing mortality. The upper line shows the time series that could occur under the same dynamics (including deviations in recruitment), but without fishing. The point at the left represents the unfished equilibrium.",
+  alt_caption = "See Dynamic_Bzero output in Report.sso for values.",
+  label = "dynamic-b0"
+)
 ```
 
 \clearpage
@@ -426,71 +580,99 @@ label = 'dynamic-b0')
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_index1.png"), 
-label = 'sens-index1',
-caption = paste("Time series of spawning output (trillions of eggs, top) and fraction of unfished",
-            "(bottom) for the sensitivity analyses related to",
-            "index data."))
+  filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_index1.png"),
+  caption = paste(
+    "Time series of spawning output (trillions of eggs, top) and fraction of unfished",
+    "(bottom) for the sensitivity analyses related to",
+    "index data."
+  ),
+  alt_caption = "All sensitivities shown are very similar to base model.",
+  label = "sens-index1"
+)
 ```
 
 ```{r, results = 'asis'}
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_comp1.png"), 
-label = 'sens-comp1',
-caption = paste("Time series of spawning output (trillions of eggs, top) and fraction of unfished",
-            "(bottom) for the sensitivity analyses related to",
-            "composition data."))
+  filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_comp1.png"),
+  caption = paste(
+    "Time series of spawning output (trillions of eggs, top) and fraction of unfished",
+    "(bottom) for the sensitivity analyses related to",
+    "composition data."
+  ),
+  alt_caption = "Sensitivities differ in scale prior to 1980 and after 2015.",
+  label = "sens-comp1"
+)
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_comp2.png"), 
-label = 'sens-comp2',
-caption = paste("Time series of recruitment (top) and recruitment deviations",
-            "(bottom) for the sensitivity analyses related to",
-            "composition data."))
+  filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_comp2.png"),
+  caption = paste(
+    "Time series of recruitment (top) and recruitment deviations",
+    "(bottom) for the sensitivity analyses related to",
+    "composition data."
+  ),
+  alt_caption = "Sensitivities have spikier recruitment than base model.",
+  label = "sens-comp2"
+)
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_bio1.png"), 
-label = 'sens-bio1',
-caption = paste("Time series of spawning output (trillions of eggs, top) and fraction of unfished",
-            "(bottom) for the sensitivity analyses related to",
-            "biology."))
+  filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_bio1.png"),
+  caption = paste(
+    "Time series of spawning output (trillions of eggs, top) and fraction of unfished",
+    "(bottom) for the sensitivity analyses related to",
+    "biology."
+  ),
+  alt_caption = "Sensitivities differ in scale prior to 1980 and diverge slightly in the last few years.",
+  label = "sens-bio1"
+)
 
 # recruitment sensitivities
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_recruit1.png"), 
-label = 'sens-recruit1',
-caption = paste("Time series of spawning output (trillions of eggs, top) and fraction of unfished",
-            "(bottom) for the sensitivity analyses related to",
-            "recruitment."))
-
-sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_recruit2.png"), 
-label = 'sens-recruit2',
-caption = paste("Time series of recruitment (top) and recruitment deviations",
-            "(bottom) for the sensitivity analyses related to",
-            "recruitment."))
-
-sa4ss::add_figure(
-filein = file.path("../figures/diags_model34/env_index_fit.png"), 
-label = 'env-index-fit',
-caption = paste0("Environmental index of recruitment used in the sensitivity analysis (black points) shown with estimated recruitment deviations from the base model (blue) and from the sensitivity analysis in which the environmental index was included (green). The black intervals show the input uncertainty associated with the index while the blue and green intervals show the uncertainty associated with the estimated recruitment deviation parameters. The 2023 recruitment deviation is not informed by any observations so estimated at zero with uncertainty associated with $\\sigma_R = ", mod_base$sigma_R_in, "$")
+  filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_recruit1.png"),
+  caption = paste(
+    "Time series of spawning output (trillions of eggs, top) and fraction of unfished",
+    "(bottom) for the sensitivity analyses related to",
+    "recruitment."
+  ),
+  alt_caption = "All sensitivities shown are very similar to base model.",
+  label = "sens-recruit1"
 )
 
+sa4ss::add_figure(
+  filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_recruit2.png"),
+  caption = paste(
+    "Time series of recruitment (top) and recruitment deviations",
+    "(bottom) for the sensitivity analyses related to",
+    "recruitment."
+  ),
+  alt_caption = "Environmental index sensitivity shows higher recruitment in the recent period (2013-2022). Others are very similar to the base model.",
+  label = "sens-recruit2"
+)
+
+sa4ss::add_figure(
+  filein = file.path("../figures/diags_model34/env_index_fit.png"),
+  caption = paste0("Environmental index of recruitment used in the sensitivity analysis (black points) shown with estimated recruitment deviations from the base model (blue) and from the sensitivity analysis in which the environmental index was included (green). The black intervals show the input uncertainty associated with the index while the blue and green intervals show the uncertainty associated with the estimated recruitment deviation parameters. The 2023 recruitment deviation is not informed by any observations so estimated at zero with uncertainty associated with $\\sigma_R = ", mod_base$sigma_R_in, "$"),
+  alt_caption = "Model fit to index shows recruit devs are pulled toward the index observations.",
+  label = "env-index-fit"
+)
 
 # Canada sensitivities
 sa4ss::add_figure(
   filein = "../figures/index9_standcpueall.png",
-  label = 'sens-Canada0',
-  caption = "Standardized indices showing comparison of the WCGBTS and Canadian indices as well as the Triennial index."
+  caption = "Standardized indices showing comparison of the WCGBTS and Canadian indices as well as the Triennial index.",
+  alt_caption = "WCGBTS and Canadian indices show very similar trends over the period they overlap (2004-2022).",
+  label = "sens-Canada0"
 )
 
 sa4ss::add_figure(
-filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_Canada1.png"), 
-label = 'sens-Canada1',
-caption = paste("Time series of spawning output (trillions of eggs, top) and fraction of unfished",
-            "(bottom) for the sensitivity analyses related to",
-            "data from Canada."))
-
+  filein = file.path(mod_loc_relative, "custom_plots", "sens_timeseries_Canada1.png"),
+  caption = paste(
+    "Time series of spawning output (trillions of eggs, top) and fraction of unfished",
+    "(bottom) for the sensitivity analyses related to",
+    "data from Canada."
+  ),
+  alt_caption = "Including Canadian index shows little change adding Canadian catches shifts scale upwards.",
+  label = "sens-Canada1"
+)
 ```
 
 ```{r, results = 'asis'}
@@ -500,52 +682,65 @@ figures_diags <- "../figures/diags_model34/"
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(figures_diags, "updated_retro/compare2_spawnbio_uncertainty.png"), 
-caption = "Retrospective results: change in the estimate of spawning output when the most recent 5 years of data area removed sequentially. The Mohn's rho values are averages across the respective number of peels in each case. See equation (2) in Hurtado-Ferro et al. [-@hurtado-ferro_looking_2015] for additional details.",
-label = 'retro-ssb')
+  filein = file.path(figures_diags, "updated_retro/compare2_spawnbio_uncertainty.png"),
+  caption = "Retrospective results: change in the estimate of spawning output when the most recent 5 years of data area removed sequentially. The Mohn's rho values are averages across the respective number of peels in each case. See equation (2) in Hurtado-Ferro et al. for additional details.",
+  alt_caption = "Time series is similar for all models.",
+  label = "retro-ssb"
+)
 ```
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(figures_diags, "updated_retro/retro_percent_difference_4_panel.png"), 
-caption = "Retrospective results: percent change from the base model for exploitation rate (F), fraction unfished, and spawning output.",
-label = 'retro-percent-change')
+  filein = file.path(figures_diags, "updated_retro/retro_percent_difference_4_panel.png"),
+  caption = "Retrospective results: percent change from the base model for exploitation rate (F), fraction unfished, recruitment, and spawning output.",
+  alt_caption = "Four-panel figure shows biggest change in recent recruitment as a result of retrospectives.",
+  label = "retro-percent-change"
+)
 ```
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(figures_diags, "retro_compare13_indices_flt4.png"), 
-caption = "Retrospective results: change in the fit to the WCGBTS index when the most recent 5 years of data area removed sequentially",
-label = 'retro-index')
+  filein = file.path(figures_diags, "retro_compare13_indices_flt4.png"),
+  caption = "Retrospective results: change in the fit to the WCGBTS index when the most recent 5 years of data area removed sequentially",
+  alt_caption = "Expected index declines faster when the 2021 and 2022 observations are removed but declines less when the low observations in 2018 and 2019 are removed.",
+  label = "retro-index"
+)
 ```
 
 ```{r, results = 'asis'}
 # add_figure(
 # filein = file.path(figures_diags, "retro_compare4_Bratio_uncertainty.png"),
 # caption = "Change in the estimate of fraction unfished when the most recent 5 years of data area removed sequentially",
-# label = 'retro-depl')
+# alt_caption = "zzz",
+# label ='retro-depl')
 ```
 
 <!--  Likelihood Profiles -->
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(figures_diags, "piner_panel_SR_LN(R0).png"), 
-caption = "Change in the negative log-likelihood across a range of log(R~0~) values",
-label = 'r0-profile')
+  filein = file.path(figures_diags, "piner_panel_SR_LN(R0).png"),
+  caption = "Change in the negative log-likelihood across a range of log($R\\_0$) values",
+  alt_caption = "U-shaped profiles show some differences among data types and fleets over log-R0 values between 9.0 and 10.6.",
+  label = "r0-profile"
+)
 ```
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(figures_diags, "parameter_panel_SR_LN(R0).png"), 
-caption = paste("Change in quantities of interest related to spawning output",
-  "across a range of log(R~0~) values:",
-  "Fraction of unfished spawning output in 2023 (top-right),",
-  "Spawning output in 2023 (bottom-right), and ",
-  "Unfished equilibrium spawning output (bottom-left).",
-  "These are shown along with the change in total negative log-likelihood",
-  "(top-left, matches previous figure)."),
-label = 'r0-profile-pars')
+  filein = file.path(figures_diags, "parameter_panel_SR_LN(R0).png"),
+  caption = paste(
+    "Change in quantities of interest related to spawning output",
+    "across a range of log($R\\_0$) values:",
+    "Fraction of unfished spawning output in 2023 (top-right),",
+    "Spawning output in 2023 (bottom-right), and ",
+    "Unfished equilibrium spawning output (bottom-left).",
+    "These are shown along with the change in total negative log-likelihood",
+    "(top-left, matches previous figure)."
+  ),
+  alt_caption = "Little change in estimated SSB or fraction unfished is observed over the profile values.",
+  label = "r0-profile-pars"
+)
 ```
 
 
@@ -553,53 +748,71 @@ label = 'r0-profile-pars')
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(figures_diags, "piner_panel_SR_BH_steep.png"), 
-caption = "Change in the negative log-likelihood across a range of steepness (h) values",
-label = 'h-profile')
+  filein = file.path(figures_diags, "piner_panel_SR_BH_steep.png"),
+  caption = "Change in the negative log-likelihood across a range of steepness (h) values",
+  alt_caption = "All data sources with the exception of the steepness prior and the commercial length comps from the south support a high steepness value (close to 1.0).",
+  label = "h-profile"
+)
 ```
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(figures_diags, "parameter_panel_SR_BH_steep.png"), 
-caption = paste("Change in quantities of interest related to spawning output",
-  "across a range of steepness (h) values:",
-  "Fraction of unfished spawning output in 2023 (top-right),",
-  "Spawning output in 2023 (bottom-right), and ",
-  "Unfished equilibrium spawning output (bottom-left).",
-  "These are shown along with the change in total negative log-likelihood",
-  "(top-left, matches previous figure)."),
-label = 'h-profile-pars')
+  filein = file.path(figures_diags, "parameter_panel_SR_BH_steep.png"),
+  caption = paste(
+    "Change in quantities of interest related to spawning output",
+    "across a range of steepness (h) values:",
+    "Fraction of unfished spawning output in 2023 (top-right),",
+    "Spawning output in 2023 (bottom-right), and ",
+    "Unfished equilibrium spawning output (bottom-left).",
+    "These are shown along with the change in total negative log-likelihood",
+    "(top-left, matches previous figure)."
+  ),
+  alt_caption = "Very little change in estimated SSB or fraction unfished is observed over the profile values.",
+  label = "h-profile-pars"
+)
 ```
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(figures_diags, "piner_panel_NatM_uniform_Fem_GP_1.png"), 
-caption = "Change in the negative log-likelihood across a range of female natural mortality (M) values",
-label = 'm-profile')
+  filein = file.path(figures_diags, "piner_panel_NatM_uniform_Fem_GP_1.png"),
+  caption = "Change in the negative log-likelihood across a range of female natural mortality (M) values",
+  alt_caption = "U-shaped profiles show some differences among data types and fleets over M values between 0.09 and 0.20.",
+  label = "m-profile"
+)
 ```
 
 ```{r, results = 'asis'}
 add_figure(
-filein = file.path(figures_diags, "parameter_panel_NatM_uniform_Fem_GP_1.png"), 
-caption = paste("Change in quantities of interest related to spawning output",
-  "across a range of female natural mortality (M) values:",
-  "Fraction of unfished spawning output in 2023 (top-right),",
-  "Spawning output in 2023 (bottom-right), and ",
-  "Unfished equilibrium spawning output (bottom-left).",
-  "These are shown along with the change in total negative log-likelihood",
-  "(top-left, matches previous figure)."),
-label = 'm-profile-pars')
+  filein = file.path(figures_diags, "parameter_panel_NatM_uniform_Fem_GP_1.png"),
+  caption = paste(
+    "Change in quantities of interest related to spawning output",
+    "across a range of female natural mortality (M) values:",
+    "Fraction of unfished spawning output in 2023 (top-right),",
+    "Spawning output in 2023 (bottom-right), and ",
+    "Unfished equilibrium spawning output (bottom-left).",
+    "These are shown along with the change in total negative log-likelihood",
+    "(top-left, matches previous figure)."
+  ),
+  alt_caption = "Larger changes in estimated unfished equilibrium SSB and fraction unfished over the profile values with the lowest M value associated with a stock below the management target (25\\%).",
+  label = "m-profile-pars"
+)
 ```
-
 
 <!-- ### Reference Points and Forecasts -->
 ```{r, results = 'asis'}
 add_figure(
-filein = "../figures/forecasts/states_Pstar45_compare1_spawnbio.png", 
-caption = "Spawning output time series and projections for the base model and states of nature using the default harvest control rule as shown in the decision table.",
-label = 'states-bio')
+  filein = "../figures/forecasts/states_Pstar45_compare1_spawnbio.png",
+  caption = "Spawning output time series and projections for the base model and states of nature using the default harvest control rule as shown in the decision table.",
+  alt_caption = "Low state starts at high biomass and ends lowest. High state starts at lowest biomass and ends highest. See decision table corresponding values in projection years.",
+  label = "states-bio"
+)
 
 add_figure(
-filein = "../figures/forecasts/states_Pstar45_compare3_Bratio.png", 
-caption = "Fraction unfished time series and projections for the base model and states of nature using the default harvest control rule as shown in the decision table.",
-label = 'states-fraction')
+  filein = "../figures/forecasts/states_Pstar45_compare3_Bratio.png",
+  caption = "Fraction unfished time series and projections for the base model and states of nature using the default harvest control rule as shown in the decision table.",
+  alt_caption = "States all start at fraction unfished = 1.0 but low state ends close to 0.125 while high state ends close to 0.40. See decision table corresponding values in projection years.",
+  label = "states-fraction"
+)
 ```
+
+<!-- restore margins -->
+\newgeometry{left=1in,right=1in, bottom=1in, top=1in, footskip=30pt} 
