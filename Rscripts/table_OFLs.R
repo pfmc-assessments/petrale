@@ -1,3 +1,5 @@
+# Data in "GMT016-final specifications.csv"
+# extracted from https://reports.psmfc.org/pacfin/f?p=501:5302:16067970531079:::::,,,,,,
 gmt_table <- read.csv("tables/GMT016-final specifications.csv", skip = 1)
 head(gmt_table)
 

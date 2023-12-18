@@ -9,11 +9,13 @@ Petrale Sole stock assessment for the U.S. West Coast
 readLines("DESCRIPTION")[1]
 
 # load everything in the petrale folder
-# first time: install.packages("devtools")
+# first time: 
+#   install.packages("devtools")
+#   install.packages("markdown")
+#   pak::pak("pfmc-assessments/sa4ss")
+#   pak::pak("pfmc-assessments/nwfscSurvey")
 devtools::load_all()
-# load other libraries
-library(sa4ss)
-library(magrittr)
+
 # compile document for current base model
 # (depends on model files in "models" directory)
 compile_petrale()

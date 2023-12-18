@@ -48,6 +48,7 @@ In this assessment, fishery removals have been divided between two fleets: 1) No
 add_figure(
 filein = file.path(mod_loc_relative, "plots", "catch2 landings stacked.png"), 
 caption = "Landings by fleet used in the base model where catches in metric tons by fleet are stacked",
+alt_caption = "See Table 1 for landings by fleet.",
 label = 'es-catch')
 ```
 
@@ -112,6 +113,7 @@ if (!is.na(mod_base$log_det_hessian)) {
   filein = file.path(mod_loc_relative, "plots",
   "ts7_Spawning_output_with_95_asymptotic_intervals_intervals.png"), 
   caption = "Estimated time series of spawning output (circles and line: median; light broken lines: 95 percent intervals) for the base model",
+  alt_caption = "See Table 22 for spawning output time series.",
   label = 'es-ssb')
 } else {
   # no uncertainty (model not converged or run with -nohess)
@@ -119,6 +121,7 @@ if (!is.na(mod_base$log_det_hessian)) {
   filein = file.path(mod_loc_relative, "plots",
   "ts7_Spawning_output.png"), 
   caption = "Estimated time series of spawning output for the base model",
+  alt_caption = "See Table 22 for spawning output time series.",
   label = 'es-ssb')
 }
 ```
@@ -129,12 +132,14 @@ if (!is.na(mod_base$log_det_hessian)) {
   add_figure(
   filein = file.path(mod_loc_relative, "plots", "ts9_Relative_spawning_output_intervals.png"), 
   caption = "Estimated time series of fraction of unfished spawning output (circles and line: median; light broken lines: 95 percent intervals) for the base model",
+  alt_caption = "See Table 22 for fraction unfished time series.",
   label = 'es-depl')
 } else {
   # no uncertainty (model not converged or run with -nohess)
   add_figure(
   filein = file.path(mod_loc_relative, "plots", "ts9_Relative_spawning_output.png"), 
   caption = "Estimated time series of fraction of unfished spawning output for the base model",
+  alt_caption = "See Table 22 for fraction unfished time series.",
   label = 'es-depl')
 }
 ```
@@ -155,12 +160,14 @@ if (!is.na(mod_base$log_det_hessian)) {
   add_figure(
   filein = file.path(mod_loc_relative, "plots", "ts11_Age-0_recruits_(1000s)_with_95_asymptotic_intervals.png"), 
   caption = "Estimated time series of age-0 recruits (1000s) for the base model with 95 percent intervals",
+  alt_caption = "See Table 22 for recruitment time series.",
   label = 'es-recruits')
 } else {
   # no uncertainty (model not converged or run with -nohess)
   add_figure(
   filein = file.path(mod_loc_relative, "plots", "ts11_Age-0_recruits_(1000s).png"), 
   caption = "Estimated time series of age-0 recruits (1000s) for the base model",
+  alt_caption = "See Table 22 for recruitment time series.",
   label = 'es-recruits')
 }
 ```
@@ -171,12 +178,14 @@ if (!is.na(mod_base$log_det_hessian)) {
   add_figure(
   filein = file.path(mod_loc_relative, "plots", "recdevs2_withbars.png"), 
   caption = "Estimated time series of recruitment deviations",
+  alt_caption = "See Table 14-19 for estimates of recruitment deviation parameters.",
   label = 'es-rec-devs')
 } else {
   # no uncertainty (model not converged or run with -nohess)
   add_figure(
   filein = file.path(mod_loc_relative, "plots", "recdevs1_points.png"), 
   caption = "Estimated time series of recruitment deviations",
+  alt_caption = "See Table 14-19 for estimates of recruitment deviation parameters.",
   label = 'es-rec-devs')
 }
 ```
@@ -194,6 +203,7 @@ The estimated time series of exploitation (Figures \ref{fig:es-1-spr} and \ref{f
 add_figure(
 filein = file.path(mod_loc_relative, "plots", "SPR3_ratiointerval.png"), 
 caption = "Estimated time series of the fishing intensity (1 - SPR), where SPR is the spawning potential ratio, with approximate 95\\% asymptotic intervals. The horizontal line at 0.7 corresponds to SPR = 0.3, the management reference point for petrale sole. The horizontal line at 1.0 corresponds to SPR = 0 (all spawning fish removed from the population).",
+alt_caption = "See Table 22 for 1-SPR time series.",
 label = 'es-1-spr')
 ```
 
@@ -214,6 +224,7 @@ Unfished spawning stock output for `r spp` is estimated to be 22.9 trillion eggs
 add_figure(
 filein = file.path(mod_loc_relative, "plots", "SPR4_phase.png"), 
 caption = "Phase plot of estimated 1-SPR versus fraction unfished for the base model.",
+alt_caption = "See Table 22 for fraction unfished and 1-SPR in each year.",
 label = 'es-phase')
 ```
 
@@ -222,6 +233,7 @@ add_figure(
 filein = file.path(mod_loc_relative, "plots", "yield2_yield_curve_with_refpoints.png"), 
 caption = "Equilibrium yield curve for the base case model. Values are based on the most recent
 fishery selectivities and retention curves and with steepness fixed at 0.80.",
+alt_caption = "See SPR/YPR\\_Profile table in Report.sso for values.",
 label = 'es-yield')
 ```
 

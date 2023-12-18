@@ -95,6 +95,7 @@ compile_petrale <- function(
   stopifnot(length(dir) == 1)
   stopifnot(utils::file_test("-d", fullpathbasemodel))
   olddir <- getwd()
+  message("olddir: ", olddir)
   # setwd(file.path(dirname(system.file(package = "petrale")), "documents"))
   setwd("documents")
   on.exit(setwd(olddir), add = TRUE)

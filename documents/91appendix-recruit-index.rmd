@@ -4,7 +4,7 @@
 \counterwithin{figure}{section}
 # (APPENDIX) Appendix {-} 
 
-# Appendix A Environmental indices of petrale recruitment, and estimates of the abundance spatial distribution of juveniles
+# Environmental indices of petrale recruitment, and estimates of the abundance spatial distribution of juveniles
 
 \begin{center}
 Nick Tolimieri
@@ -111,7 +111,6 @@ These results suggested that ROMS output might be useful as the basis for an env
 
 Here, outputs from the updated ROMS model for 2011-2022 were compared to the 1980-2010 mode looking for discontinuities in ROMS time series used in @haltuch_oceanographic_2020 with a focus on the the four predictors identified as important in that work. The conceptual life-history model and abbreviation for terms are shown in Table \@ref(tab:life-history-table).
 
-\newpage
 ```{r life-history-table, eval=TRUE}
 
 # replace NAs with blank cells
@@ -131,7 +130,6 @@ sa4ss::table_format(life_hist_table,
 
 ```
 
-\newpage
 
 ### ROMS outputs
 
@@ -292,6 +290,8 @@ _Recruitment Deviations ~ Period + DDpre + MLDegg + CSTlarv + CSTbjuv.a + DDpre*
 This model explained slightly less variance (r^2^ = `r round(roms_best_refit_summary$r.squared,2)`) than the original 1980-2010 model (r^2^ = 0.73), but had `r roms_aic_table[best_fit,'Parameters'] - 1` parameters (excluding the intercept) and `r length(c(1981:2010, 2012:2018))` data points (1981:2010, 2012-2018), or just over five points per predictor term. Examination of the model coefficients (Table \@ref(tab:best-refit-coef)) indicates that the relationships between recruitment deviations and DDpre and MLDegg changed across the 2010/2011 boundary from positive to negative.
 
 Overall the model fit to the data was good and captured a decline in recruitment later in the time series (Fig. \@ref(fig:fig-best-fit)). Forecasting through 2022 (latest ROMS output availability), suggested high recruitment in 2022. This model also over-predicted recruitment in 2015 during the 2014-2016 marine heatwave.  
+
+\newpage
 
 ```{r best-refit-coef}
 
@@ -485,10 +485,9 @@ ggsave(filename = "appendix_fig6.png", width = 4, height = 6, units = "in")
 sa4ss::add_figure(
   filein = "appendix_fig6.png", 
   width = 100*3.5/6.5,
-  caption = 
-  "Relationships between observed temperature from the trawl survey (WCGBTS) and modeled ROMS variables.  a) time series of observed bottom temperature during the preconditioning period (btemp_pre), observed degree days during the preconditioning period (btemp_DDpre), DDpre, and Tpre.a, b) correlation between Tre.a and trawl bottom temperature, and c) correlation between DDpre and trawl bottom temperature. There were no significant correlations between observed bottom temperature data and modeled ROMS variables whether tested across both time periods (2004-2022, extent of the trawl data) or separated by ROMS time periods (2004-2010 and 2011-2022, p > 0.05 in all cases).",
+  caption = "Relationships between observed temperature from the trawl survey (WCGBTS) and modeled ROMS variables.  (a) time series of observed bottom temperature during the preconditioning period (btemp\\_pre), observed degree days during the preconditioning period (btemp\\_DDpre), DDpre, and Tpre.a, (b) correlation between Tre.a and trawl bottom temperature, and (c) correlation between DDpre and trawl bottom temperature. There were no significant correlations between observed bottom temperature data and modeled ROMS variables whether tested across both time periods (2004-2022, extent of the trawl data) or separated by ROMS time periods (2004-2010 and 2011-2022, p > 0.05 in all cases).",
   label = "fram-temperature",
-  alt_caption = "Three-panel figure. The first shows time series of temperature from 4 sources where the average is different in all three (ranging from about 4 to 8 degrees C), and the one labeled 'DDpre' jumps from an average around 4 to an average of around 9 in 2012." 
+  alt_caption = "Three-panel figure. The first shows time series of temperature from 4 sources where the average is different in all three (ranging from about 4 to 8 degrees C) and the one labeled 'DDpre' jumps from an average around 4 to an average of around 9 in 2012." 
 )
 ```
 
@@ -606,7 +605,7 @@ sa4ss::add_figure(
   filein = "appendix_fig9.png", 
   width = 100*3.5/6.5,
   caption = 
-  "Model fit for the bottom-temperature and CUTI predictors. Points are the recruitment devations from the 2019 stock assessment; line is the predicted fit with standard error. Note that there is no prediction for 2021 because there was no bottom trawl temperature data in 2020, which was necessary for calculating btemp_pre.",
+  "Model fit for the bottom-temperature and CUTI predictors. Points are the recruitment devations from the 2019 stock assessment; line is the predicted fit with standard error. Note that there is no prediction for 2021 because there was no bottom trawl temperature data in 2020, which was necessary for calculating btemp\\_pre.",
   label = "obs-var-fig",
   alt_caption = "Black line with uncertainty intervals showing lack of fit to high points in 2006-2008 and low points in 2013-2015." 
 )
@@ -637,9 +636,6 @@ sa4ss::add_figure(
 )
 ```
 
-Model selection produced a large number of similarly weighted models. There were `r nrow(data.frame(mtable2))` models with an AICc < 2.0 (Table \@ref(tab:basin-aic-table)). AICc weights for these models were low and relatively similar. Most models included the NPGO during the pre-conditioning spring (npgo_spr_pre), NPGO during the summer of recruitment (npgo_sum), and PDO in the spring of the recruitment year (pdo_spring), while other terms occurred in some model but not all. Because it had the fewest terms and these terms were consistent across all models, the following model was chosen as the best-fit for the basin-scale parameters:
-
-_`r basin_scale_formula`_
 
 \newpage
 
@@ -678,7 +674,12 @@ sa4ss::table_format(
 ```
 <!-- reset row heights -->
 \renewcommand{\arraystretch}{1}
+
 \newpage
+
+Model selection produced a large number of similarly weighted models. There were `r nrow(data.frame(mtable2))` models with an AICc < 2.0 (Table \@ref(tab:basin-aic-table)). AICc weights for these models were low and relatively similar. Most models included the NPGO during the pre-conditioning spring (npgo_spr_pre), NPGO during the summer of recruitment (npgo_sum), and PDO in the spring of the recruitment year (pdo_spring), while other terms occurred in some model but not all. Because it had the fewest terms and these terms were consistent across all models, the following model was chosen as the best-fit for the basin-scale parameters:
+
+_`r basin_scale_formula`_
 
 Petrale recruitment deviations were negatively correlated with the NPGO in the pre-condition spring and with the PDO in the spring of the age-0 year.  Recruitment was positively correlated with the NPGO in the summer of the recruitment year (Table \@ref(tab:basin-scale-bf-table)). 
 
@@ -791,7 +792,6 @@ sa4ss::add_figure(
 )
 ```
 
-\newpage
 
 ```{r results = "asis"}
 sa4ss::add_figure(
@@ -819,8 +819,6 @@ mt4 = mtab4 %>%
 ```
 
 Only two candidate models had delta AICc values of 4.0 or less; only one model had a delta AICc of less than 2.0. (Table \@ref(tab:mtable)). The best-fit model included degree days during the pelagic juvenile period (DDpjuv) in both its linear and quadratic form, and long-shore transport (LSTlarv) in the larval stage  (Table \@ref(tab:mtable)).
-
-\newpage
 
 ```{r mtable}
 
@@ -940,7 +938,7 @@ Predictions of individuals years from the jackknife analysis fell largely along 
 sa4ss::add_figure(
   filein = "../recruit_index/Petrale-Appendix-2023/Figures/Figure_3.png",
   width = 100 * 3.5 / 6.5,
-  caption = "Fit of the best-fit model to the recruitment deviations from the 2019 petrale asessment. Solid line is the predicted fit and dashed lines are the 95% confidence limits. Open circles are the log recruitment deviations from the 2019 assessment. Stars are predicted values from jackknife analysis removing individual years one at a time. Red points are predictions from fitting best-fit model to 1993-2013 and then predicting 2014-2018.",
+  caption = "Fit of the best-fit model to the recruitment deviations from the 2019 petrale asessment. Solid line is the predicted fit and dashed lines are the 95\\% confidence limits. Open circles are the log recruitment deviations from the 2019 assessment. Stars are predicted values from jackknife analysis removing individual years one at a time. Red points are predictions from fitting best-fit model to 1993-2013 and then predicting 2014-2018.",
   label = "model-test-plot",
   alt_caption = "Figure showing that there is little change in predicted values from the jackknife procedure and removing the most recent 5 observations and predicting for those years also produces similar trends."
 )
@@ -1008,7 +1006,6 @@ df_table %>%
 
 A similar analysis was conducted in which recruitment deviations were re-sample from a log-normal distribution and the entire model selection process was rerun to determine how the variability in recruitment estimates might impact the overall model selection process. LSTlarv and DDpjuv and their quadratic terms were included in at least 79% of the refits (Table \@ref(tab:resample-dredge)). The two linear terms alone appeared in 90% (LSTlarv) and 85% (DDpjuv) of models, providing strong support for stability these terms in relation to the precision of estimates of recruitment deviations. 
 
-\newpage
 ```{r resample-dredge}
 
 df = data.frame(read.csv("../recruit_index/Petrale-glorys/Model.Testing/05_Resample_Recuitment_and_ReDredge/Table_6_terms.in.models.csv"))
@@ -1043,7 +1040,7 @@ Finally, the data were subset to 1993-2013 and the entire model selection proces
 sa4ss::add_figure(
   filein = "../recruit_index/Petrale-Appendix-2023/Figures/Dredge_minus5.png",
   width = 100 * 3.5 / 6.5,
-  caption = "Fit of the best-fit model from the 1993-2013 analysis and predictions through 2023. Black line is the model prediction with 95% confidence limits. Black points are the recruitment deviations used in the model development; red points are future recruitments.",
+  caption = "Fit of the best-fit model from the 1993-2013 analysis and predictions through 2023. Black line is the model prediction with 95\\% confidence limits. Black points are the recruitment deviations used in the model development; red points are future recruitments.",
   label = "minus5-plot",
   alt_caption = "Figure showing the extension of the predictions to 2023 showing similar results to the model that was fit to all observations."
 )
