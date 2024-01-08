@@ -1,22 +1,13 @@
-# get U.S.-landed catch from area "3S"
-# depends on confidential file only available to Vlada and Ian
-# which is described as "SOUTHERN PORTION OF AREA 3C (UNITED STATES ONLY)"
-load("data-raw/PacFIN.PTRL.CompFT.27.Jan.2023.RData")
-catch_agg <- aggregate(LANDED_WEIGHT_MTONS ~ LANDING_YEAR + PACFIN_CATCH_AREA_CODE, data = catch.pacfin, FUN = sum)
-catch_agg_3S <- catch_agg[catch_agg$PACFIN_CATCH_AREA_CODE == "3S",]
-plot(catch_agg_3S$LANDING_YEAR, catch_agg_3S$LANDED_WEIGHT_MTONS, type = 'h', lwd = 10, lend = 3)
-write.csv(catch_agg_3S, file = "data-raw/pacfin/catch_US_portion_of_3C.csv",
-          row.names = FALSE)
-
-# load different set of data
+# load data from PacFIN which includes foreign catches, 
+# extracted by Kelli Johnson on 27 Feb 2023
+# file is confidential and only available to Vlada and Ian
 load('data-raw/foreign/PacFIN.PTRL.CompFT.27.Feb.2023.RData')
 catch_agg_CAN <- aggregate(LANDED_WEIGHT_MTONS ~ LANDING_YEAR + PACFIN_CATCH_AREA_CODE, data = catch.pacfin, FUN = sum)
 plot(catch_agg_CAN$LANDING_YEAR, catch_agg_CAN$LANDED_WEIGHT_MTONS, type = 'h', lwd = 10, lend = 3)
 
-library(tidyverse)
-# which years have too few vessels
-dplyr::group_by(catch.pacfin,LANDING_YEAR) %>% 
-  dplyr::summarize(count=dplyr::n_distinct(VESSEL_ID)) %>% 
+# which years have fewer than 3 vessels so total catch can't be shared publicly
+dplyr::group_by(catch.pacfin,LANDING_YEAR) |> 
+  dplyr::summarize(count=dplyr::n_distinct(VESSEL_ID)) |> 
   dplyr::filter(count<3)
 # # A tibble: 8 x 2
 #   LANDING_YEAR count
@@ -31,8 +22,8 @@ dplyr::group_by(catch.pacfin,LANDING_YEAR) %>%
 # 8         2022     1
 
 # which areas have too few vessels
-dplyr::group_by(catch.pacfin, PACFIN_CATCH_AREA_NAME) %>%
-  dplyr::summarize(count=dplyr::n_distinct(VESSEL_ID)) %>% 
+dplyr::group_by(catch.pacfin, PACFIN_CATCH_AREA_NAME) |>
+  dplyr::summarize(count=dplyr::n_distinct(VESSEL_ID)) |> 
   dplyr::filter(count<3)
 # # A tibble: 2 x 2
 #   PACFIN_CATCH_AREA_NAME count
@@ -59,32 +50,42 @@ table(catch.pacfin$PACFIN_CATCH_AREA_NAME)
   # VNCVR-BC    YAKUTAT
   #      958          2
 
+# list of Canadian areas from https://pacfin.psmfc.org/pacfin_pub/data_rpts_pub/code_lists/ar_tree.txt
+# CANADIAN    \_CAN                INPFC-grp      -       All Canadian INPFC areas combined                                           
+# CHARLOTTE      \_CT              INPFC          -       50 30' N TO 54 40' N                                                        
+# 5A                \_5A           PSMFC          -       50 30' N TO 51 15' N                                                        
+# 5B                \_5B           PSMFC          -       51 15' N TO 52 00' N WEST OF C. ST.JAMES & TO 52 10' EAST OF C. ST.JAMES    
+# 5C                \_5C           PSMFC          -       52 10' N TO ~53 N & EAST OF QUEEN CHARLOTTE ISLANDS                         
+# 5D                \_5D           PSMFC          -       ~53 N TO 54 40' N & EAST OF QUEEN CHARLOTTE ISLANDS                         
+# 5E                \_5E           PSMFC          -       52 00' N TO 54 40' N & WEST OF QUEEN CHARLOTTE ISLANDS                      
+# 5A-5D             \_5F           PSMFC          -       AREAS 5A THRU 5D COMBINED                                                   
+# UNKN-DFO          \_5U           PSMFC          -       UNKNOWN CANADIAN AREA                                                       
+# 62                \_62           Shrimp         -       52 10' N (EAST OF CHARLOTTE) & 52 00' N (WEST OF CHARLOTTE) TO 54 40' N     
+# 64                \_64           Shrimp         -       50 30' N TO 52 00' N (W. OF C. ST.JAMES) & TO 52 10' N (E. OF C. ST.JAMES)  
+# GRGIA STRT     \_GS              INPFC          -       GEORGIA STRAIT                                                              
+# 4B                \_4B           PSMFC          -       GEORGIA STRAIT                                                              
+# 68                \_68           Shrimp         -       GEORGIA STRAIT                                                              
+# VNCVR-BC       \_VC              INPFC          -       47 30' N TO 50 30' N; CANADIAN CATCH ONLY                                   
+# 3D                \_3D           PSMFC          -       49 00' N TO 50 30' N EXCLUDING 49 00' TO 200(T.)                            
+# 3C-N              \_3N           PSMFC          -       NORTHERN PORTION OF AREA 3C (CANADIAN ONLY)   
+
+CAN_areas <- c(
+  "CHARLOTTE", "5A", "5B", "5C", "5D", "5E", "5A-5D", "UNKN-DFO", 
+  "62", "64", "GRGIA STRT", "4B", "68", "VNCVR-BC", "3D", "3C-N"
+)
+
+
 # summarize total catch by area
-catch.pacfin %>% dplyr::group_by(PACFIN_CATCH_AREA_NAME) %>% 
+catch.pacfin |> dplyr::group_by(PACFIN_CATCH_AREA_NAME) |> 
   dplyr::summarize(sum = sum(LANDED_WEIGHT_MTONS))
 
-# # A tibble: 11 x 2
-#    PACFIN_CATCH_AREA_NAME        sum
-#    <chr>                       <dbl>
-#  1 3C-N                      1.78   
-#  2 3D                        2.43   
-#  3 4A                       75.0    
-#  4 6A                        0.151
-#  5 6B                        0.00490
-#  6 9Z                        0.00136
-#  7 CHARLOTTE               473.
-#  8 GRGIA STRT                4.24
-#  9 S. EASTERN                0.216
-# 10 VNCVR-BC               1031.
-# 11 YAKUTAT                   0.00816
-
-# only three areas have catches > 5 mt and 4A is Puget Sound
+# only three areas (CHARLOTTE, VNCVR-BC, and 4A) have catches > 5 mt and 4A is Puget Sound
 
 # fewer than 3 vessels by year / area
-catch.pacfin %>% 
-  dplyr::filter(PACFIN_CATCH_AREA_NAME %in% c("CHARLOTTE", "VNCVR-BC")) %>%
-  dplyr::group_by(PACFIN_CATCH_AREA_NAME, LANDING_YEAR) %>% 
-  dplyr::summarize(count=dplyr::n_distinct(VESSEL_ID)) %>% 
+catch.pacfin |> 
+  dplyr::filter(PACFIN_CATCH_AREA_NAME %in% c("CHARLOTTE", "VNCVR-BC")) |>
+  dplyr::group_by(PACFIN_CATCH_AREA_NAME, LANDING_YEAR) |> 
+  dplyr::summarize(count=dplyr::n_distinct(VESSEL_ID)) |> 
   dplyr::filter(count<3)
 
 # # A tibble: 9 x 3
@@ -102,23 +103,50 @@ catch.pacfin %>%
 # 9 VNCVR-BC                       2002     2
 
 # fewer than 3 vessels by year (grouped across areas)
-catch.pacfin %>% 
-  dplyr::filter(PACFIN_CATCH_AREA_NAME %in% c("CHARLOTTE", "VNCVR-BC")) %>%
-  dplyr::group_by(LANDING_YEAR) %>% 
-  dplyr::summarize(count=dplyr::n_distinct(VESSEL_ID)) %>% 
+catch.pacfin |> 
+  dplyr::filter(PACFIN_CATCH_AREA_NAME %in% c("CHARLOTTE", "VNCVR-BC")) |>
+  dplyr::group_by(LANDING_YEAR) |> 
+  dplyr::summarize(count=dplyr::n_distinct(VESSEL_ID)) |> 
   dplyr::filter(count<3)
+# # A tibble: 3 x 2
+#   LANDING_YEAR count
+#          <int> <int>
+# 1         1981     2
+# 2         1983     1
+# 3         2002     2
 
-dat <- catch.pacfin %>% 
-  dplyr::filter(PACFIN_CATCH_AREA_NAME %in% c("CHARLOTTE", "VNCVR-BC")) %>%
-  dplyr::group_by(LANDING_YEAR, PACFIN_CATCH_AREA_NAME) %>% 
-  dplyr::summarize(sum = sum(LANDED_WEIGHT_MTONS)) 
-# dat %>%
-#   ggplot(aes(PACFIN_CATCH_AREA_NAME, LANDING_YEAR)) + geom_col()
-
-catch.pacfin %>% 
-  dplyr::filter(PACFIN_CATCH_AREA_NAME %in% c("CHARLOTTE", "VNCVR-BC")) %>%
+library(ggplot2)
+catch.pacfin |> 
+  dplyr::filter(PACFIN_CATCH_AREA_NAME %in% c("CHARLOTTE", "VNCVR-BC")) |>
   ggplot(aes(factor(LANDING_YEAR))) + 
   geom_bar(aes(weight = LANDED_WEIGHT_MTONS, fill = PACFIN_CATCH_AREA_NAME), position = "dodge")
+
+dat <- catch.pacfin |> 
+  dplyr::filter(PACFIN_CATCH_AREA_NAME %in% CAN_areas) |> # include only Canadian areas
+  dplyr::filter(!LANDING_YEAR %in% c(1981, 1983, 2002)) |> # exclude years with too few vessels
+  dplyr::group_by(LANDING_YEAR) |> 
+  dplyr::summarize(sum = round(sum(LANDED_WEIGHT_MTONS), digits = 1)) |>
+  dplyr::rename(year = LANDING_YEAR, catch_mt = sum)
+
+writeLines(con = "data-raw/foreign/Canadian_catch_landed_in_Washington.csv", 
+  text = c(
+    "# Canadian catch of Petrale Sole from PacFIN",
+    "# https://pacfin.psmfc.org/",
+    "# Data have been aggregated across areas within Canada",
+    "# and data from 1981 1983 and 2002 have been excluded due to fewer than 3 vessels represented.",
+    "# Compiled by Ian Taylor <ian.taylor@noaa.gov> using the R script",
+    "# https://github.com/pfmc-assessments/petrale/blob/main/Rscripts/process_data_for_Canada.R",
+    "# raw data extracted by Kelli Johnson on 27 Feb 2023 contains confidential information.",
+    ""
+  )
+)
+write.table(
+  dat, 
+  "data-raw/foreign/Canadian_catch_landed_in_Washington.csv", 
+  row.names = FALSE, 
+  sep = ",",
+  append = TRUE
+)
 
 
 # Use modified version of {nwfscSurvey} package to get data from the 
