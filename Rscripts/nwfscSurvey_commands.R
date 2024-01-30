@@ -269,24 +269,35 @@ abline(v = -366, h = 36 + 48 / 60)
 #######################################################################
 
 ### running some commands again in 2024 after 2023 data added
+
+# define a directory to store output
 mydir <- "data-raw/nwfscSurvey/2024"
 # dir.create(mydir)
 
+# install package
+pak::pak("pfmc-assessments/nwfscSurvey")
 library(nwfscSurvey)
+
+# pull catch per haul data
 catch <- nwfscSurvey::pull_catch(
   common = "petrale sole",
   survey = "NWFSC.Combo",
   dir = "data-raw/nwfscSurvey"
 )
+# pull bio sample data
 bio <- nwfscSurvey::pull_bio(
   common_name = "petrale sole",
   survey = "NWFSC.Combo",
   dir = "data-raw/nwfscSurvey"
 )
-# load("data-raw/nwfscSurvey/catch_petrale sole_NWFSC.Combo_2024-01-29.rdata")
-# catch <- x
-# load("data-raw/nwfscSurvey/bio_petrale sole_NWFSC.Combo_2024-01-29.rdata")
-# bio <- x
+
+# load local files saved by functions above
+if (FALSE) {
+  load("data-raw/nwfscSurvey/catch_petrale sole_NWFSC.Combo_2024-01-29.rdata")
+  catch <- x
+  load("data-raw/nwfscSurvey/bio_petrale sole_NWFSC.Combo_2024-01-29.rdata")
+  bio <- x
+}
 
 nwfscSurvey::plot_cpue(
   dir = mydir,
