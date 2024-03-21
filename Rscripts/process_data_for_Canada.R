@@ -175,3 +175,9 @@ bio <- PullBio.fn(Name = "petrale sole",
 table(bio$Year)
 # 1989 1992 1998 
 #   60   35    2 
+
+
+
+# looking deeper at vessel info
+x <- catch.pacfin |> 
+  dplyr::filter(PACFIN_CATCH_AREA_NAME %in% c("CHARLOTTE", "VNCVR-BC"))

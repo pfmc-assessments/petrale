@@ -14,7 +14,7 @@ recdevs <- recdevs |>
     Year = stringr::str_extract(Label, "[0-9]+"),
     .before = Label
   )
-# convert initial age (1 to 31) to year of birth (1876 - 1) to (1976 - 31)
+# convert initial age (1 to 31) to year of birth (1876 - 1 = 1875) to (1876 - 31 = 1845)
 recdevs$Year[grepl("InitAge", recdevs$Label)] <-
   model$startyr - as.numeric(recdevs$Year[grepl("InitAge", recdevs$Label)])
 
