@@ -66,20 +66,35 @@ results_north <- est_by_area |>
   dplyr::filter(area == "North of 46deg 53.3min") |> 
   dplyr::mutate(ratio = est / results_coast$est)
 
-p <- results_north |> 
+
+(mean_all <- results_north$ratio |> mean() |> round(3))
+# [1] 0.157
+
+(mean_recent5 <- results_north |> 
+  dplyr::filter(year >= 2018) |> 
+  dplyr::pull(ratio) |> 
+  mean() |> 
+  round(3))
+# [1] 0.18
+
+results_north |> 
   ggplot(aes(x = year, y = ratio)) + 
-    geom_line(aes(y = mean(ratio)), col = "red", lwd = 1) +
-    stat_summary(fun.data=mean_cl_normal) + 
-    geom_smooth(method='lm') + 
+    geom_point() + 
+    geom_line(aes(y = mean_all, color = "mean of all obs"), lwd = 1) +
+    geom_segment(aes(x = x1, y = y1, xend = x2, yend = y2, color = "mean of recent 5 obs"), 
+      lwd = 1,
+      data = data.frame(x1 = 2018, x2 = 2023, y1 = mean_recent5, y2 = mean_recent5)) +
+    # commented out regression
+    # stat_summary(fun.data=mean_cl_normal) + 
+    # geom_smooth(method='lm') + 
     expand_limits(y = c(0, 0.25)) + 
     scale_x_continuous(breaks = seq(2003, 2023, 2)) +
-    ylab(expression("Ratio of estimated biomass North of 46\u00B053.3'")) +
+    ylab(expression("Ratio of estimated biomass North of 46\u00B053.3' to coastwide biomass")) +
     theme_bw()
+
 ggsave("data-raw/wcgbts/delta_lognormal_with2023_and_UandA_boundary/ratio_plot.png", 
     width = 10, height = 7)
 
-results_north$ratio |> mean() |> round(3)
-# [1] 0.157
 results_north |> dplyr::select(ratio, year) |> lm()
 # Call:
 # lm(formula = dplyr::select(results_north, ratio, year))
@@ -89,3 +104,12 @@ results_north |> dplyr::select(ratio, year) |> lm()
 #   -4.883590     0.002504
 results_north |> dplyr::pull(ratio) |> range() |> round(3)
 # [1] 0.127 0.217
+
+results_coast |> dplyr::select(year, est) |> 
+  round() |> 
+  dplyr::rename(Year = year, "Coastwide biomass (mt)" = est) |> 
+  dplyr::mutate("Biomass North of 46\u00B053.3' (mt)" = round(results_north$est)) |> 
+  dplyr::mutate(Ratio = round(results_north$ratio, 3)) |> 
+  knitr::kable(format = "html") |> 
+  writeLines("data-raw/wcgbts/delta_lognormal_with2023_and_UandA_boundary/results_table.html")
+
