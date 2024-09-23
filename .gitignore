@@ -54,6 +54,8 @@ vignettes/*.pdf
 # not sure what makes NA file appear
 /documents/NA 
 /models/
+!/models/2023.a034.001/custom_plots/*
+!/models/2023.a034.001/
 /data-raw/
 /data-raw*
 /Rscripts/ignored/
@@ -82,7 +84,19 @@ vignettes/*.pdf
 petrale_on_U.lnk
 # GIMP file
 *.xcf
+# zip files
+*.zip
 
 /figures/bridging/
 *.docx
 /ignored/
+/figures/forecasts/states_v1*
+/figures/forecasts/states_Pstar40*
+/figures/forecasts/states_Pstar45_compare*
+!/figures/forecasts/states_Pstar45_compare1_
+!/figures/forecasts/states_Pstar45_compare3_
+/petrale_sole/wcgbts/
+/petrale_sole/wcgbts*/
+
+# appendix figs
+appendix_fig*.png

@@ -172,3 +172,76 @@ tab <- table_decision(
   list(mod.34.911, mod.34.921, mod.34.931)
 )
 write.csv(tab, "tables/decision_table.csv", row.names = FALSE)
+
+
+#### 2024 investigation into discrepencies between archived model and projection tables
+# see also these issues that were initially forgotten when investigation began
+# https://github.com/nmfs-ost/ss3-source-code/issues/485 and 
+# https://github.com/nmfs-ost/ss3-source-code/issues/486
+
+get_mod(34, 11)
+get_mod(34, 920)
+get_mod(34, 922)
+get_mod(34, 12)
+get_mod(34, 13)
+
+new_fixed_catches <- SS_ForeCatch(mod.34.11, yrs = 2025:2034)
+r4ss::copy_SS_inputs(
+  dir.old = "models/2023.a034.920_base_Pstar45",
+  dir.new = "models/2023.a034.923_base_Pstar45_new_fixed_catches",
+  copy_exe = FALSE,
+  copy_par = TRUE,
+  overwrite = TRUE
+)
+inputs <- SS_read(get_dir_petrale(34,923))
+inputs$start$init_values_src
+inputs$fore$ForeCatch[inputs$fore$ForeCatch$year %in% 2025:2034,] <- new_fixed_catches[,1:4] # exclude comment column
+SS_write(inputs, inputs$dir, overwrite = TRUE)
+run(get_dir_petrale(34,923))
+
+SSexecutivesummary(mod.34.11, forecast_ofl = c(3763, 3563),
+  format = FALSE, 
+  plotfolder = file.path(mod.34.11$inputs$dir, "tables_no_format"))
+projection_table(mod.34.11, file = "projections_34.11v2")
+
+round(mod.34.11$derived_quants[paste0("ForeCatch_", 2023:2034),"Value"] / 
+  mod.34.11$derived_quants[paste0("OFLCatch_", 2023:2034),"Value"], 3)
+
+x <- data.frame(
+  OFL = mod.34.11$derived_quants[paste0("OFLCatch_", 2023:2034),"Value"],
+  ACL = mod.34.11$derived_quants[paste0("ForeCatch_", 2023:2034),"Value"]
+)
+x$ratio <- round(x$ACL / x$OFL, 3)
+x$buffer <- PEPtools::get_buffer(2023:2034, 0.5, 0.45)$buffer
+x
+#        OFL     ACL ratio buffer
+# 1  3357.16 3485.00 1.038  1.000
+# 2  2893.62 3285.00 1.135  1.000
+# 3  2517.67 2356.47 0.936  0.935
+# 4  2423.66 2241.27 0.925  0.930
+# 5  2419.26 2218.99 0.917  0.926
+# 6  2471.14 2263.66 0.916  0.922
+# 7  2543.69 2330.20 0.916  0.917
+# 8  2612.19 2387.43 0.914  0.913
+# 9  2665.46 2424.59 0.910  0.909
+# 10 2702.35 2443.81 0.904  0.904
+# 11 2726.64 2454.52 0.900  0.900
+# 12 2742.71 2457.85 0.896  0.896
+
+# illustrating impact of smoother on ACL calculation
+petrale_forecast <- read.table("models/2023.a034.011_forecast_SR/Forecast-report.sso", 
+  skip = 292, header = TRUE, nrows = length(2023:2034))
+
+petrale_forecast <- read.table("models/2023.a034.011_forecast_SR/Forecast-report.sso", 
+      skip = 292, header = TRUE, nrows = length(2023:2034))
+plot(petrale_forecast$Depletion, petrale_forecast$Ramp, xlim = c(0.2, 0.35), ylim = c(0.97, 1.01),
+xlab = "Fraction unfished", ylab = "Ramp on F")
+abline(h = 1, v = 0.25, lty = 3)
+
+# SS3 model with modified to make smoothing function steeper (closer to piecewise linear control rule)
+get_mod(34,15)
+dir.create(file.path(mod.34.15$inputs$dir, "tables_no_format"))
+SSexecutivesummary(mod.34.15, forecast_ofl = c(3763, 3563),
+  format = FALSE, 
+  plotfolder = file.path(mod.34.15$inputs$dir, "tables_no_format"))
+projection_table(mod.34.15, file = "projections_34.15")
