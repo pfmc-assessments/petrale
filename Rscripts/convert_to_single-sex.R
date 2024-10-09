@@ -1,6 +1,9 @@
 ## converting a petrale model from 2-sex to 1-sex
 ## code by Kiva Oken and Ian Taylor
 
+library(r4ss)
+library(dplyr)
+
 # read model
 mod <- SS_read('models/2023.a034.011_forecast_SR')
 # remove male mortality and growth parameters
@@ -10,7 +13,7 @@ mod$ctl$size_selex_types$Male <- 0
 # remove male selectivity parameters
 mod$ctl$size_selex_parms <- mod$ctl$size_selex_parms[-grep('MalOff', rownames(mod$ctl$size_selex_parms)),]
 # change data file settings
-mod$dat$Nsexes <- 1
+mod$dat$Nsexes <- -1
 # assign length comps to combined sex
 mod$dat$lencomp$sex <- 0
 # remove male columns from length comps
@@ -24,4 +27,4 @@ mod$dat$agecomp <- filter(mod$dat$agecomp, sex != 2) |>
 mod$start$init_values_src <- 0
 
 # write modified files
-SS_write(mod, 'models/2024.a001.001_single-sex', overwrite = TRUE)
+SS_write(mod, 'models/2024.a001.002_1sex', overwrite = TRUE)
