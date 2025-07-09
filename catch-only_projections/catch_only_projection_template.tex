@@ -1,13 +1,14 @@
-\documentclass{report}
+\documentclass[12pt]{report}
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{lscape} % Add this package for landscape support
 \usepackage{array} 
+\usepackage[margin=1in]{geometry}
 \pagenumbering{gobble} % Suppress page numbers
 \begin{document}
-\begin{landscape} % Begin landscape mode
+% \begin{landscape} % Begin landscape mode
 \begin{center}
-\vspace*{-1.5in}
+\vspace*{-.5in}
 {\LARGE $title$} \\[1.5ex]
 {\large $author$} \\
 $affiliation$ \\[1.5ex]
@@ -15,5 +16,5 @@ $affiliation$ \\[1.5ex]
 \end{center}
 
 $body$
-\end{landscape} % End landscape mode
+% \end{landscape} % End landscape mode
 \end{document}
