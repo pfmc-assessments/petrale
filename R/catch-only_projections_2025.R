@@ -1,5 +1,6 @@
 # read 2023 petrale model
 inputs_original <- r4ss::SS_read("models/2023.a034.011_forecast_SR")
+#inputs_original <- r4ss::SS_read("models/2023.a034.920_base_Pstar45")
 inputs <- inputs_original
 inputs$fore$Flimitfraction_m
 #                      year fraction
@@ -22,8 +23,7 @@ inputs$fore$Flimitfraction_m <- PEPtools::get_buffer(
     pstar = 0.45
 )
 # change the buffer column to 1.0 for the years with fixed forecast catches
-# TODO redo this to stop in 2025 for projeciton 2
-inputs$fore$Flimitfraction_m[inputs$fore$year <= 2026, "buffer"] <- 1.0
+inputs$fore$Flimitfraction_m[inputs$fore$Flimitfraction_m$year <= 2026, "buffer"] <- 1.0
 
 # GMT catches emailed by Brian on Jun 10, 2025, also found in
 # https://docs.google.com/spreadsheets/d/1UtxsXxbwQTWMgn1TwYZaCyptq-S0BZtO3wGH0LJ7M1w/edit?gid=537713331#gid=537713331
@@ -57,10 +57,7 @@ GMT_catch <- GMT_catch |>
     dplyr::select(year, seas, fleet, catch_or_F)
 
 
-inputs$fore$ForeCatch <- rbind(
-    dplyr::as_tibble(inputs$fore$ForeCatch),
-    GMT_catch
-)
+inputs$fore$ForeCatch <- GMT_catch
 
 # increase the number of years in the forecast
 old_Nforecastyrs <- inputs$fore$Nforecastyrs
@@ -100,6 +97,44 @@ r4ss::run(
 quarto::quarto_render(
     file.path(
         "catch-only_projections",
-        "catch_only_projection_petrale_2025.qmd"
+        "catch_only_projection_petrale_2025_1table.qmd"
     )
 )
+
+### alternative 1: apply 2025 attainment to 2026 ACL to get 2026 catches
+
+# read output from standard catch-only projection above
+run1 <- r4ss::SS_output("catch-only_projections/2025_standard", verbose = FALSE, printstats = FALSE)
+# read input from standard catch-only projection above to use for alterative approach
+inputs2 <- r4ss::SS_read("catch-only_projections/2025_standard")
+
+inputs2$fore$Flimitfraction_m <- PEPtools::get_buffer(
+    years = 2023:2036,
+    sigma = 0.5,
+    pstar = 0.45
+)
+# change the buffer column to 1.0 for the years with fixed forecast catches
+# differs from run 1 in only fixing catches up through 2025
+inputs2$fore$Flimitfraction_m[inputs$fore$Flimitfraction_m$year <= 2025, "buffer"] <- 1.0
+# buffer for 2026 is 92% of the HCR buffer
+inputs2$fore$Flimitfraction_m[inputs$fore$Flimitfraction_m$year == 2026, "buffer"] <- 
+  0.92 * inputs2$fore$Flimitfraction_m[inputs$fore$Flimitfraction_m$year == 2026, "buffer"]
+
+# remove 2026 fixed catches
+inputs2$fore$ForeCatch <- inputs2$fore$ForeCatch |>
+    dplyr::filter(year <= 2025)
+
+# write run2 inputs
+r4ss::SS_write(
+    inputs2,
+    dir = "catch-only_projections/2025_alternative1",
+    overwrite = TRUE
+)
+
+r4ss::run(
+    dir = "catch-only_projections/2025_alternative1",
+    extras = "-nohess -phase 10", # start in late phase if using .par as input
+    show_in_console = TRUE,
+    skipfinished = FALSE
+)
+run2 <- r4ss::SS_output("catch-only_projections/2025_alternative1", verbose = FALSE, printstats = FALSE)
