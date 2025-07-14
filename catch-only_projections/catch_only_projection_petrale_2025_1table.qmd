@@ -55,7 +55,7 @@ model <- r4ss::SS_output(
 table_caption <- glue::glue("Original {assess_year} projection and new catch-only projection for OFLs (mt), buffer, ABCs (mt), actual & assumed catch (mt), ACLs (mt), spawning output {params$spawn_output_units}, and stock status (fraction of unfished spawning output) given the removals. The gray shading indicates values associated with the original {assess_year} assessment projection. In both the original model and the new projection, the removals for years beyond the values in the 'Actual & Assumed Removals' columns are the ACL values estimated from that model.")
 ```
 
-This document details a catch-only projection for `r species`. The most recent assessment for `r species` was conducted in `r assess_year`. This analysis updates catches between `r assess_year` - `r current_year` to the removals by year from the Groundfish Multiyear Mortality (GEMM) report. The removals for `r current_year` and `r current_year + 1` were set equal to mortality projections provided by the Groundfish Management Team (GMT) for each fleet in the model. For years `r current_year + 2` and beyond, removals were set equal to the projected Annual Catch Limit (ACL) based on a category `r category` time-varying $\sigma$ of `r sigma` and a P* value of `r p_star`. These buffers are the same as in the previous stock assessment, with two additional years of buffers for years `r current_year + 10` and `r current_year + 11`. 
+This document details a catch-only projection for `r species`. The most recent assessment for `r species` was conducted in `r assess_year`. "This analysis updates catches between `r assess_year` - `r current_year - 1` to the best information about observed removals as provided by the GMT. The removals for `r current_year` and `r current_year + 1` were set equal to mortality projections provided by the Groundfish Management Team (GMT) for each fleet in the model. For years `r current_year + 2` and beyond, removals were set equal to the projected Annual Catch Limit (ACL) based on a category `r category` time-varying $\sigma$ of `r sigma` and a P* value of `r p_star`. These buffers are the same as in the previous stock assessment, with two additional years of buffers for years `r current_year + 10` and `r current_year + 11`. 
 
 ```{r}
 #| label: calc-table
@@ -207,13 +207,19 @@ table_original <- catch_only_projection_table(model_original,
 #| warning: true
 #| message: true
 
+# check for bad ACL vs ABC
+if (any(table$ACL > table$ABC, na.rm = TRUE)) {
+    cli::cli_alert_warning("ACL > ABC check table below.")
+    print(table)
+}
+# check for bad ratios
 if (any(abs(table$Buffer_from_ratio - table$Buffer) > 0.01, na.rm = TRUE)) {
     cli::cli_alert_warning("ACL / OFL differs from buffer calculated by PEPtools::get_buffer() by more than 0.01 for years with status > target. See values below.")
     print(table)
 } else {
     table <- dplyr::select(table, -Buffer_from_ratio)
 }
-
+# check for bad ratios in original model
 if (any(abs(table_original$Buffer_from_ratio - table_original$Buffer) > 0.01, na.rm = TRUE)) {
     cli::cli_alert_warning("ACL / OFL differs from buffer calculated by PEPtools::get_buffer() by more than 0.01 for years with status > target. See values below.")
     print(table_original)
