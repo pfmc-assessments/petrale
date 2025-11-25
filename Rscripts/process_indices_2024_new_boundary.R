@@ -54,12 +54,13 @@ run_sdmtmb(
     spatiotemporal = list("iid", "iid")
 )
 
-# manually copy results from 
-# "petrale_sole/wcgbts/delta_lognormal"
-# to 
-# "data-raw/wcgbts/delta_lognormal_with2023_and_UandA_boundary"
+# Copy entire directory from "petrale_sole/wcgbts/delta_lognormal" to "data-raw/wcgbts/delta_lognormal_with2023_and_UandA_boundary"
+source_dir <- "petrale_sole/wcgbts/delta_lognormal"
+target_dir <- "data-raw/wcgbts/delta_lognormal_with2024_and_UandA_boundary"
+dir.create(target_dir, recursive = TRUE, showWarnings = FALSE)
+file.copy(list.files(source_dir, full.names = TRUE), target_dir, recursive = TRUE)
 
-est_by_area <- read.csv("data-raw/wcgbts/delta_lognormal_with2023_and_UandA_boundary/index/est_by_area.csv")
+est_by_area <- read.csv("data-raw/wcgbts/delta_lognormal_with2024_and_UandA_boundary/index/est_by_area.csv")
 results_coast <- est_by_area |> 
   dplyr::filter(area == "Coastwide") 
 results_north <- est_by_area |> 
@@ -68,14 +69,14 @@ results_north <- est_by_area |>
 
 
 (mean_all <- results_north$ratio |> mean() |> round(3))
-# [1] 0.157
+# [1] 0.159
 
 (mean_recent5 <- results_north |> 
-  dplyr::filter(year >= 2018) |> 
+  dplyr::filter(year >= 2019) |> 
   dplyr::pull(ratio) |> 
   mean() |> 
   round(3))
-# [1] 0.18
+# [1] 0.183
 
 results_north |> 
   ggplot(aes(x = year, y = ratio)) + 
@@ -83,27 +84,28 @@ results_north |>
     geom_line(aes(y = mean_all, color = "mean of all obs"), lwd = 1) +
     geom_segment(aes(x = x1, y = y1, xend = x2, yend = y2, color = "mean of recent 5 obs"), 
       lwd = 1,
-      data = data.frame(x1 = 2018, x2 = 2023, y1 = mean_recent5, y2 = mean_recent5)) +
+      data = data.frame(x1 = 2019, x2 = 2024, y1 = mean_recent5, y2 = mean_recent5)) +
     # commented out regression
     # stat_summary(fun.data=mean_cl_normal) + 
     # geom_smooth(method='lm') + 
     expand_limits(y = c(0, 0.25)) + 
-    scale_x_continuous(breaks = seq(2003, 2023, 2)) +
+    scale_x_continuous(breaks = seq(2003, 2024, 2)) +
     ylab(expression("Ratio of estimated biomass North of 46\u00B053.3' to coastwide biomass")) +
     theme_bw()
 
-ggsave("data-raw/wcgbts/delta_lognormal_with2023_and_UandA_boundary/ratio_plot.png", 
+ggsave("data-raw/wcgbts/delta_lognormal_with2024_and_UandA_boundary/ratio_plot.png", 
     width = 10, height = 7)
 
 results_north |> dplyr::select(ratio, year) |> lm()
 # Call:
 # lm(formula = dplyr::select(results_north, ratio, year))
 
-# Coefficients:
-# (Intercept)         year
-#   -4.883590     0.002504
+
+# (Intercept)         year  
+#    -4.99565      0.00256
+
 results_north |> dplyr::pull(ratio) |> range() |> round(3)
-# [1] 0.127 0.217
+# [1] 0.127 0.215
 
 results_coast |> dplyr::select(year, est) |> 
   round() |> 
@@ -111,5 +113,5 @@ results_coast |> dplyr::select(year, est) |>
   dplyr::mutate("Biomass North of 46\u00B053.3' (mt)" = round(results_north$est)) |> 
   dplyr::mutate(Ratio = round(results_north$ratio, 3)) |> 
   knitr::kable(format = "html") |> 
-  writeLines("data-raw/wcgbts/delta_lognormal_with2023_and_UandA_boundary/results_table.html")
+  writeLines("data-raw/wcgbts/delta_lognormal_with2024_and_UandA_boundary/results_table.html")
 
