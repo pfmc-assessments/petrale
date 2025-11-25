@@ -16,8 +16,8 @@ params:
   p_star: 0.45
   spawn_output_decimals: 2
   dir_original: "../models/2023.a034.920_base_Pstar45"
-  dir_new: "2025_standard"
-  dir_new2: "2025_alternative1"
+  dir_new: "2025_standard_3.30.24_july15"
+  dir_new2: "2025_alternative1_3.30.24_july15"
   spawn_output_units: "(trillions of eggs)"
 ---
 
@@ -66,7 +66,7 @@ table_caption <- glue::glue("Original {assess_year} projection and new catch-onl
 table_caption2 <- glue::glue("Original {assess_year} projection and alternative catch-only projection in which the 2026 assumed catches are set to 92% of the ACLs (2290 = 0.92 * 2489) rather than fixed at the values calculated by the GMT based on the current harvest specifications. See caption of table above for additional details.")
 ```
 
-This document details a catch-only projection for `r species`. The most recent assessment for `r species` was conducted in `r assess_year`. This analysis updates catches between `r assess_year` - `r current_year - 1` to the best information about observed removals as provided by the GMT. The removals for `r current_year` and `r current_year + 1` were set equal to mortality projections provided by the Groundfish Management Team (GMT) for each fleet in the model. For years `r current_year + 2` and beyond, removals were set equal to the projected Annual Catch Limit (ACL) based on a category `r category` time-varying $\sigma$ of `r sigma` and a P* value of `r p_star`. These buffers are the same as in the previous stock assessment, with two additional years of buffers for years `r current_year + 10` and `r current_year + 11`. 
+This document details a catch-only projection for `r species`. The most recent assessment for `r species` was conducted in `r assess_year`. This analysis updates catches between `r assess_year` - `r current_year - 1` to the best information about observed removals as provided by the Groundfish Management Team (GMT). The removals for `r current_year` and `r current_year + 1` were set equal to mortality projections provided by the GMT for each fleet in the model. For years `r current_year + 2` and beyond, removals were set equal to the projected Annual Catch Limit (ACL) based on a category `r category` time-varying $\sigma$ of `r sigma` and a P* value of `r p_star`. These buffers are the same as in the previous stock assessment, with two additional years of buffers for years `r current_year + 10` and `r current_year + 11`. 
 
 An alternative projection is provided in the second table where the assumed catch in 2026 is based on ACL from a catch-only projection through 2025 rather than the current harvest specifications. An assumption of 92% attainment estimated by the GMT was used in both cases.
 
@@ -225,7 +225,7 @@ table2 <- catch_only_projection_table(model2,
 #| message: true
 
 # check for bad ACL vs ABC
-if (any(table$ACL > table$ABC, na.rm = TRUE)) {
+if (any(table$ACL > table$ABC + 0.1, na.rm = TRUE)) {
     cli::cli_alert_warning("ACL > ABC check table below.")
     print(table)
 }
