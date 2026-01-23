@@ -64,7 +64,7 @@ model2 <- r4ss::SS_output(
 
 # catch-only projection Alternative 2 (Nov 2025)
 model3 <- r4ss::SS_output(
-    dir = params$dir_new3, 
+    dir = params$dir_new3,
     verbose = FALSE,
     printstats = FALSE,
     hidewarn = TRUE
@@ -93,37 +93,38 @@ all_years <- assess_year:final_proj_year
 proj_years <- (current_year + 2):final_proj_year
 proj_years2 <- (current_year + 1):final_proj_year
 catch_years <- assess_year:(current_year + 1)
+catch_years <- 2025:2026
 catch_years2 <- assess_year:(current_year)
 diff_years <- current_year - assess_year
 
-# function to get model outputs
-catch_only_projection_table <- function(model, all_years, proj_years, catch_years) {
-    # get realized catch from model output
-    catch <- model$derived_quants |>
+# function to get model3 outputs
+catch_only_projection_table <- function(model3, all_years, proj_years, catch_years) {
+    # get realized catch from model3 output
+    catch <- model3$derived_quants |>
         dplyr::filter(Label %in% paste0("ForeCatch_", catch_years)) |>
         dplyr::reframe(
             Year = stringr::str_extract(Label, "\\d+") |> as.numeric(),
             Catch = Value
         )
-    ofl <- model$derived_quants |>
+    ofl <- model3$derived_quants |>
         dplyr::filter(Label %in% paste0("OFLCatch_", proj_years)) |>
         dplyr::reframe(
             Year = stringr::str_extract(Label, "\\d+") |> as.numeric(),
             OFL = Value
         )
-    acl <- model$derived_quants |>
+    acl <- model3$derived_quants |>
         dplyr::filter(Label %in% paste0("ForeCatch_", proj_years)) |>
         dplyr::reframe(
             Year = stringr::str_extract(Label, "\\d+") |> as.numeric(),
             ACL = Value
         )
-    sb <- model$derived_quants |>
+    sb <- model3$derived_quants |>
         dplyr::filter(Label %in% paste0("SSB_", all_years)) |>
         dplyr::reframe(
             Year = stringr::str_extract(Label, "\\d+") |> as.numeric(),
             SB = Value
         )
-    status <- model$derived_quants |>
+    status <- model3$derived_quants |>
         dplyr::filter(Label %in% paste0("Bratio_", all_years)) |>
         dplyr::reframe(
             Year = stringr::str_extract(Label, "\\d+") |> as.numeric(),
@@ -147,7 +148,7 @@ catch_only_projection_table <- function(model, all_years, proj_years, catch_year
         dplyr::relocate(Catch, .after = Year) |>
         dplyr::mutate(
             Buffer_from_ratio = dplyr::case_when(
-                status >= model$btarg ~ round(ACL / OFL, 3),
+                status >= model3$btarg ~ round(ACL / OFL, 3),
                 .default = NA # ratio doesn't work for years with 40-10 adjustment
             ),
             .after = Buffer
@@ -161,28 +162,6 @@ catch_only_projection_table <- function(model, all_years, proj_years, catch_year
             `Stock Status` = status,
             `Spawning Output` = SB,
         )
-}
-
-combine_tables <- function(table1, table2) {
-    dplyr::full_join(
-        table1,
-        table2,
-        by = "Year"
-    ) |>
-        dplyr::select(
-            c(
-                "Year",
-                "OFL (yyyy)", "OFL",
-                "Buffer",
-                "ABC (yyyy)", "ABC",
-                "Actual & Assumed Removals (yyyy)", "Actual & Assumed Removals",
-                "ACL (yyyy)", "ACL",
-                "Spawning Output", "Stock Status (yyyy)", "Stock Status"
-            )
-        ) |>
-        dplyr::rename_with(.fn = function(x) {
-            gsub("yyyy", assess_year, x)
-        })
 }
 
 # function to apply gt formatting to the table
@@ -212,26 +191,28 @@ format_table <- function(table) {
             everything() ~ px(65)
         ) |>
         gt::data_color(
-            columns = tidyselect::contains(paste(assess_year)),
+            columns = tidyselect::contains("HCR"),
             palette = "gray90",
             na_color = "gray90"
         ) |>
         gt::as_latex()
 }
 
-table <- catch_only_projection_table(model,
+table <- catch_only_projection_table(model3,
     all_years = all_years, proj_years = proj_years, catch_years = catch_years
-)
-table_original <- catch_only_projection_table(model_original,
-    all_years = head(all_years, 12), proj_years = proj_years - diff_years, catch_years = catch_years - diff_years
-)
-table2 <- catch_only_projection_table(model2,
-    all_years = all_years, proj_years = proj_years2, catch_years = catch_years2
-)
+) |>
+    dplyr::select(-`Spawning Output`, -`Actual & Assumed Removals`, -Buffer) |>
+    dplyr::mutate( # Buffer = Buffer_from_ratio, # overwrite buffer from PEPtools::get_buffer
+        ABC = ACL
+    ) |> # overwrite externally calculated ABC
+    dplyr::rename_with(~ paste(.x, "(yyyy)"), .cols = -Year)
 
-table3 <- catch_only_projection_table(model3,
-    all_years = all_years, proj_years = proj_years2, catch_years = catch_years2
-)
+table_new2 <- catch_only_projection_table(model2,
+    all_years = head(all_years, 12), proj_years = proj_years - diff_years, catch_years = catch_years - diff_years
+) |>
+    dplyr::select(-`Spawning Output`)
+
+
 ```
 
 ```{r}
@@ -240,74 +221,25 @@ table3 <- catch_only_projection_table(model3,
 #| warning: true
 #| message: true
 
-# check for bad ACL vs ABC
-if (any(table$ACL > table$ABC + 0.1, na.rm = TRUE)) {
-    cli::cli_alert_warning("ACL > ABC check table below.")
-    print(table)
-}
-# check for bad ratios
-if (any(abs(table$Buffer_from_ratio - table$Buffer) > 0.01, na.rm = TRUE)) {
-    cli::cli_alert_warning("ACL / OFL differs from buffer calculated by PEPtools::get_buffer() by more than 0.01 for years with status > target. See values below.")
-    print(table)
-} else {
-    table <- dplyr::select(table, -Buffer_from_ratio)
-}
-# check for bad ratios in original model
-if (any(abs(table_original$Buffer_from_ratio - table_original$Buffer) > 0.01, na.rm = TRUE)) {
-    cli::cli_alert_warning("ACL / OFL differs from buffer calculated by PEPtools::get_buffer() by more than 0.01 for years with status > target. See values below.")
-    print(table_original)
-} else {
-    table_original <- dplyr::select(table_original, -"Buffer_from_ratio")
-}
-
-
-table_original <- table_original |>
-    dplyr::select(-Buffer, -"Spawning Output") |>
-    dplyr::rename_with(~ paste(.x, "(yyyy)"), .cols = -Year)
 # combine the two tables
-wide_table <- combine_tables(table, table_original)
 
-wide_table2 <- combine_tables(table2, table_original)
-
-# move 2026 ACL (which is really fixed catch from SSL) to the assumed catch column
-wide_table2$"Actual & Assumed Removals"[wide_table2$Year == 2026] <- 
-  wide_table2$ACL[wide_table2$Year == 2026]
-# calculate 2026 ACL from ABC
-# get 2026 stock status for use in 40-10 or 25-5 rule
-D <- wide_table2$"Stock Status"[wide_table2$Year == 2026]
-#
-adj <- 1.0
-# 40-10 rule for most species
-if (D < model$btarg & model$btarg == 0.40) {
-  adj <- (4/3)*(D-0.1)/D
-}
-# 25-5 rule for flatfish
-if (D < model$btarg & model$btarg == 0.25) {
-  adj <- (25/20)*(D-0.05)/D
-}
-# calculate ACL from adjustment * ABC
-wide_table2$ACL[wide_table2$Year == 2026] <- 
-  adj * wide_table2$ABC[wide_table2$Year == 2026]
-
-wide_table3 <- combine_tables(table3, table_original)
-wide_table3$"Actual & Assumed Removals"[wide_table3$Year %in% 2026:2028] <- 
-  wide_table3$ACL[wide_table3$Year %in% 2026:2028]
-# calculate 2026 ACL from ABC
-# get 2026 stock status for use in 40-10 or 25-5 rule
-D <- wide_table3$"Stock Status"[wide_table3$Year %in% 2026:2028]
-#
-adj <- rep(1.0, length(D))
-# 40-10 rule for most species
-if (model$btarg == 0.40) {
-  adj[D < model$btarg] <- (4/3)*(D-0.1)/D
-}
-# 25-5 rule for flatfish
-if (model$btarg == 0.25) {
-  adj[D < model$btarg] <- (25/20)*(D-0.05)/D
-}
-# calculate ACL from adjustment * ABC
-wide_table3$ACL[wide_table3$Year %in% 2026:2028] <- 
-  adj * wide_table3$ABC[wide_table3$Year %in% 2026:2028]
+wide_table3 <- dplyr::full_join(
+    table,
+    table_new2,
+    by = "Year"
+) |>
+    dplyr::select(
+        Year,
+        `OFL (yyyy)`, OFL,
+        `Buffer`,
+        `ABC (yyyy)`, ABC,
+        `Actual & Assumed Removals`,
+        `ACL (yyyy)`, ACL,
+        `Stock Status (yyyy)`, `Stock Status`
+    ) |>
+    dplyr::rename_with(.fn = function(x) {
+        gsub("yyyy", "alt HCR", x)
+    })
 
 ```
 

@@ -1,6 +1,8 @@
 # read 2023 petrale model
 inputs_original <- r4ss::SS_read("models/2023.a034.011_forecast_SR")
-#inputs_original <- r4ss::SS_read("models/2023.a034.920_base_Pstar45")
+# NOTE: model 2023.a034.920 has fixed catch values to avoid numerical issue with SS3 HCR
+#   see: https://github.com/nmfs-ost/ss3-source-code/issues/485
+#inputs_original <- r4ss::SS_read("models/2023.a034.920_base_Pstar45") 
 inputs <- inputs_original
 inputs$fore$Flimitfraction_m
 #                      year fraction
@@ -138,3 +140,12 @@ r4ss::run(
     skipfinished = FALSE
 )
 run2 <- r4ss::SS_output("catch-only_projections/2025_alternative1", verbose = FALSE, printstats = FALSE)
+
+# models were re-run from the command line using an SS3 executable which had been modified to resolve a numerical issue with the HCR
+# see https://github.com/nmfs-ost/ss3-source-code/pull/687 for additional info
+
+
+# get unique combinations of fleet and Calc_Q in the table above
+unique(r1$cpue[, c("Fleet_name", "Calc_Q")]) |>
+    dplyr::arrange(Calc_Q) |> 
+    dplyr::mutate(Calc_Q = round(Calc_Q, 3))

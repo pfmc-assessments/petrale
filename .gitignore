@@ -100,3 +100,37 @@ petrale_on_U.lnk
 
 # appendix figs
 appendix_fig*.png
+
+# # model files that we don't want to track (for now)
+admodel.cov
+admodel.dep
+admodel.hes
+checkup.sso
+*.tmp
+console.output.txt
+covar.sso
+CumReport.sso
+derived_posteriors.sso
+echoinput.sso
+fmin.log
+gradient.*
+ParmTrace.sso
+posterior_obj_func.sso
+posterior_vectors.sso
+posteriors.sso
+rebuild.sso
+runnumber.ss
+SIS_table.sso
+*.b0*
+*.bar
+*.ecm
+*.eva
+*.exe
+*.log
+*.mc2
+*.mcm
+*.p0*
+*.r0*
+*.rep
+*.std
+suggested_tuning.ss
