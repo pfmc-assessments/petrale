@@ -1,10 +1,10 @@
 #C file created using an r4ss function
-#C file write time: 2026-02-12  12:00:02
+#C file write time: 2026-03-16  12:43:19
 #
 petrale_data.ss #_datfile
 petrale_control.ss #_ctlfile
 0 #_init_values_src
-1 #_run_display_detail
+0 #_run_display_detail
 1 #_detailed_age_structure
 0 #_checkup
 0 #_parmtrace

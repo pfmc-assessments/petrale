@@ -1,5 +1,5 @@
 #C file created using an r4ss function
-#C file write time: 2026-02-12  12:00:02
+#C file write time: 2026-03-16  12:43:19
 #
 1 # 0 means do not read wtatage.ss; 1 means read and usewtatage.ss and also read and use growth parameters
 1 #_N_Growth_Patterns
@@ -16,13 +16,9 @@
 #_Cond 1.0 # first age that moves (real age at begin of season, not integer) also cond on do_migration>0
 #_Cond 1 1 1 2 4 10 # example move definition for seas=1, morph=1, source=1 dest=2, age1=4, age2=10
 #
-4 #_Nblock_Patterns
-6 4 2 1 #_blocks_per_pattern
-#_begin and end years of blocks
-1973 1982 1983 1992 1993 2002 2003 2010 2011 2017 2018 2022
-2002 2002 2003 2008 2009 2010 2011 2022
-2010 2010 2011 2022
-1995 2004
+0 #_Nblock_Patterns
+#_Cond 0 #_blocks_per_pattern
+# begin and end years of blocks
 #
 # controls for all timevary parameters 
 1 #_env/block/dev_adjust_method for all time-vary parms (1=warn relative to base parm bounds; 3=no bound check)
@@ -52,11 +48,11 @@
 #_growth_parms
 #_LO	HI	INIT	PRIOR	PR_SD	PR_type	PHASE	env_var&link	dev_link	dev_minyr	dev_maxyr	dev_PH	Block	Block_Fxn
 0.005	0.5	 0.142675	  -1.7793	0.31	3	 2	0	0	0	0	0	0	0	#_NatM_p_1_Fem_GP_1  
-    5	 45	  8.87713	    17.18	  10	0	 3	0	0	0	0	0	0	0	#_L_at_Amin_Fem_GP_1 
-   35	 80	  47.4413	     54.2	  10	0	 3	0	0	0	0	0	0	0	#_L_at_Amax_Fem_GP_1 
- 0.04	0.5	 0.197191	    0.157	  99	0	 3	0	0	0	0	0	0	0	#_VonBert_K_Fem_GP_1 
-  0.5	 15	   1.2682	        3	  99	0	 3	0	0	0	0	0	0	0	#_CV_young_Fem_GP_1  
-  0.5	 15	   4.8766	        3	  99	0	 4	0	0	0	0	0	0	0	#_CV_old_Fem_GP_1    
+    5	 45	  8.87713	    17.18	  10	0	-3	0	0	0	0	0	0	0	#_L_at_Amin_Fem_GP_1 
+   35	 80	  47.4413	     54.2	  10	0	-3	0	0	0	0	0	0	0	#_L_at_Amax_Fem_GP_1 
+ 0.04	0.5	 0.197191	    0.157	  99	0	-3	0	0	0	0	0	0	0	#_VonBert_K_Fem_GP_1 
+  0.5	 15	   1.2682	        3	  99	0	-3	0	0	0	0	0	0	0	#_CV_young_Fem_GP_1  
+  0.5	 15	   4.8766	        3	  99	0	-4	0	0	0	0	0	0	0	#_CV_old_Fem_GP_1    
    -3	  3	2.035e-06	2.035e-06	  99	0	-3	0	0	0	0	0	0	0	#_Wtlen_1_Fem_GP_1   
     1	  5	    3.478	    3.478	  99	0	-3	0	0	0	0	0	0	0	#_Wtlen_2_Fem_GP_1   
    10	 50	    35.45	    35.45	  99	0	-3	0	0	0	0	0	0	0	#_Mat50%_Fem_GP_1    
@@ -83,13 +79,13 @@
   0	 0	      0	  0	   0	0	-99	0	0	0	0	0	0	0	#_SR_autocorr
 #_no timevary SR parameters
 2 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
-1959 # first year of main recr_devs; early devs can preceed this era
-2020 # last year of main recr_devs; forecast devs start in following year
-1 #_recdev phase
+1861 # first year of main recr_devs; early devs can preceed this era
+2022 # last year of main recr_devs; forecast devs start in following year
+5 #_recdev phase
 1 # (0/1) to read 13 advanced options
 1845 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
-3 #_recdev_early_phase
-0 #_forecast_recruitment phase (incl. late recr) (0 value resets to maxphase+1)
+-3 #_recdev_early_phase
+-4 #_forecast_recruitment phase (incl. late recr) (0 value resets to maxphase+1)
 1 #_lambda for Fcast_recr_like occurring before endyr+1
 1935.3 #_last_yr_nobias_adj_in_MPD; begin of ramp
 2002 #_first_yr_fullbias_adj_in_MPD; begin of plateau

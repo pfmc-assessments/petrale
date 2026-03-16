@@ -1,15 +1,13 @@
 Note 1 Information: Max data length bin: 62  < max pop len bins: 78; so will accumulate larger pop len bins
-Warning 1 Adjustment: basis for HCR anchor was not set; setting to 2 to match default before 3.30.24
-Warning 2 : depletion_basis is using virgin but HCR anchor is using SSB_unf from benchmark. Are you sure?
-Warning 3 : At least one block pattern ends in endyr. Check the output parameter value time series to see if the values in forecast years are as intended.
-Warning 4 : There is timevary biology and the legacy approach to benchmark calculations is being used; user should be aware of possible impacts to benchmark results
-Warning 5 : There is timevary biology, so the flag for timevary_bio_4SRR must be set to 0 (old default) or 1 (new improved) in starter.ss
-Warning 6 Adjustment: Adjusting recdev_early to: 1859
-Warning 7 : fleet: 1 lencomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 65
-Warning 8 Adjustment: Fleet: 1  agecomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 40
-Warning 9 : fleet: 2 lencomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 54
-Warning 10 Adjustment: Fleet: 2  agecomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 18
-Warning 11 : Early recdev biasadj is >2 times ratio of rmse to sigmaR
-Note 2 Information: A revised protocol for the Fcast_yr specification is available and recommended.
-Note 3 Information:  N parameters that are on or within 1% of min-max bound: 2; check results, variance may be suspect
- 11 warnings  and 3 notes 
+Warning 1 : Forecast=0 or -1, so rest of forecast file will not be read and can be omitted;
+Warning 2 : A one year forecast using recent F will be done automatically
+Warning 3 : There is timevary biology and the legacy approach to benchmark calculations is being used; user should be aware of possible impacts to benchmark results
+Warning 4 : There is timevary biology, so the flag for timevary_bio_4SRR must be set to 0 (old default) or 1 (new improved) in starter.ss
+Warning 5 Adjustment: Adjusting recdev_early to: 1859
+Note 2 Suggestion: Are you sure you want so few early recrdevs? Better to include in range of main recdevs 2
+Warning 6 : fleet: 1 lencomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 65
+Warning 7 Adjustment: Fleet: 1  agecomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 40
+Warning 8 : fleet: 2 lencomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 54
+Warning 9 Adjustment: Fleet: 2  agecomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 18
+Note 3 Information: A revised protocol for the Fcast_yr specification is available and recommended.
+ 9 warnings  and 3 notes 
