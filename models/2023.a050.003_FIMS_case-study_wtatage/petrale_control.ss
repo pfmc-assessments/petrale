@@ -1,5 +1,5 @@
 #C file created using an r4ss function
-#C file write time: 2026-03-16  12:43:19
+#C file write time: 2026-03-18  16:12:35
 #
 1 # 0 means do not read wtatage.ss; 1 means read and usewtatage.ss and also read and use growth parameters
 1 #_N_Growth_Patterns

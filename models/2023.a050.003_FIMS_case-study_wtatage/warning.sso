@@ -5,9 +5,11 @@ Warning 3 : There is timevary biology and the legacy approach to benchmark calcu
 Warning 4 : There is timevary biology, so the flag for timevary_bio_4SRR must be set to 0 (old default) or 1 (new improved) in starter.ss
 Warning 5 Adjustment: Adjusting recdev_early to: 1859
 Note 2 Suggestion: Are you sure you want so few early recrdevs? Better to include in range of main recdevs 2
-Warning 6 : fleet: 1 lencomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 65
-Warning 7 Adjustment: Fleet: 1  agecomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 40
-Warning 8 : fleet: 2 lencomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 54
-Warning 9 Adjustment: Fleet: 2  agecomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 18
+Warning 6 : WTATAGE.SS has positive fecundity at age 0 for year = 1876 Are you sure? fecundity is for the time of spawning and age 0 fish normally do not exist at time of spawning
+Warning 7 : WTATAGE.SS has positive fecundity at age 0 for year = 9999 Are you sure? fecundity is for the time of spawning and age 0 fish normally do not exist at time of spawning
+Warning 8 : fleet: 1 lencomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 65
+Warning 9 Adjustment: Fleet: 1  agecomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 40
+Warning 10 : fleet: 2 lencomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 54
+Warning 11 Adjustment: Fleet: 2  agecomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 18
 Note 3 Information: A revised protocol for the Fcast_yr specification is available and recommended.
- 9 warnings  and 3 notes 
+ 11 warnings  and 3 notes 
