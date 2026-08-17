@@ -1,0 +1,11 @@
+Note 1 Information: Max data length bin: 62  < max pop len bins: 78; so will accumulate larger pop len bins
+Warning 1 : Forecast=0 or -1, so rest of forecast file will not be read and can be omitted;
+Warning 2 : A one year forecast using recent F will be done automatically
+Warning 3 Adjustment: Adjusting recdev_early to: 1859
+Note 2 Suggestion: Are you sure you want so few early recrdevs? Better to include in range of main recdevs 2
+Warning 4 : fleet: 1 lencomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 65
+Warning 5 Adjustment: Fleet: 1  agecomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 40
+Warning 6 : fleet: 2 lencomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 54
+Warning 7 Adjustment: Fleet: 2  agecomp has N obs with partition==2 (retained); changed to partition=0 because retention not defined; N= 18
+Note 3 Information: A revised protocol for the Fcast_yr specification is available and recommended.
+ 7 warnings  and 3 notes 
