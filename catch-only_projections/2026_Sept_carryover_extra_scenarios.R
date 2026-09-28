@@ -17,7 +17,7 @@ inputs <- r4ss::SS_read(file.path("catch-only_projections", dir_old))
 
 # get catch by fleet from the estimated timeseries output
 # in the format required by the forecast file
-catch <- r4ss::SS_ForeCatch(output, yrs = 2023:2034)
+catch <- r4ss::SS_ForeCatch(output, yrs = 2023:2036)
 names(catch)
 # [1] "#Year"   "Seas"    "Fleet"   "dead(B)" "comment"
 # remove comment column from catch data which is hard to keep in sync with changes
@@ -25,11 +25,11 @@ catch <- catch[, -which(names(catch) == "comment")]
 # improve names for clarity using dplyr::rename()
 catch <- dplyr::rename(catch, Year = "#Year", Catch = "dead(B)")
 
-# get the OFL and ACL limits for the years 2027 to 2034
+# get the OFL and ACL limits for the years 2027 to 2036
 limits <- data.frame(
-  Year = 2027:2034,
-  OFL = output$derived_quants[paste0("OFLCatch_", 2027:2034), "Value"],
-  ACL = output$derived_quants[paste0("ForeCatch_", 2027:2034), "Value"]
+  Year = 2027:2036,
+  OFL = output$derived_quants[paste0("OFLCatch_", 2027:2036), "Value"],
+  ACL = output$derived_quants[paste0("ForeCatch_", 2027:2036), "Value"]
 ) |>
   dplyr::mutate(
     Ratio = ACL / OFL,
@@ -103,13 +103,60 @@ catch_new_M_adjusted <- catch |>
     )
   )
 
+if (extra_scenarios) {
+  # "M-adjusted (larger)" has larger underutilization so catch plus carryover equals
+  # the full OFL even after discount by exp(-2*M)
+  catch_new_M_adjusted_larger <- catch |>
+    dplyr::mutate(
+      Year = Year,
+      Catch = dplyr::case_when(
+        Year == 2027 ~ Catch - calc_diff_ratio(catch, 2029) / exp(-2 * M),
+        Year == 2028 ~ Catch - calc_diff_ratio(catch, 2030) / exp(-2 * M),
+        Year == 2029 ~ Catch + calc_diff_ratio(catch, 2029),
+        Year == 2030 ~ Catch + calc_diff_ratio(catch, 2030),
+        Year == 2031 ~ Catch - calc_diff_ratio(catch, 2033) / exp(-2 * M),
+        Year == 2032 ~ Catch - calc_diff_ratio(catch, 2034) / exp(-2 * M),
+        Year == 2033 ~ Catch + calc_diff_ratio(catch, 2033),
+        Year == 2034 ~ Catch + calc_diff_ratio(catch, 2034),
+        TRUE ~ Catch
+      )
+    )
+
+# "M-adjusted (half M)" is like option 1, has the same underutilization as
+# the "full" case so after discount by M, the catch + carryover
+# is less than the full OFL, but in this case the discount is half as large: exp(-M)
+catch_new_M_adjusted_halfM <- catch |>
+  dplyr::mutate(
+    Year = Year,
+    Catch = dplyr::case_when(
+      Year == 2027 ~ Catch - calc_diff_ratio(catch, 2029),
+      Year == 2028 ~ Catch - calc_diff_ratio(catch, 2030),
+      Year == 2029 ~ Catch + calc_diff_ratio(catch, 2029) * exp(-M),
+      Year == 2030 ~ Catch + calc_diff_ratio(catch, 2030) * exp(-M),
+      Year == 2031 ~ Catch - calc_diff_ratio(catch, 2033),
+      Year == 2032 ~ Catch - calc_diff_ratio(catch, 2034),
+      Year == 2033 ~ Catch + calc_diff_ratio(catch, 2033) * exp(-M),
+      Year == 2034 ~ Catch + calc_diff_ratio(catch, 2034) * exp(-M),
+      TRUE ~ Catch
+    )
+  )
+}
+
 # combine old and new annual tallies for plotting purposes
 # to confirm that the adjustments have been applied correctly
 catch_combined <- dplyr::bind_rows(
   catch |> dplyr::mutate(source = "2025 catch-only projection"),
   catch_new_full |> dplyr::mutate(source = "Carryover 100%"),
-  catch_new_M_adjusted |> dplyr::mutate(source = "Carryover M-adjusted")
+  catch_new_M_adjusted |> dplyr::mutate(source = "Carryover M-adjusted"),
+  catch_new_M_adjusted_larger |>
+    dplyr::mutate(source = "Carryover M-adjusted (larger)"),
+  catch_new_M_adjusted_halfM |>
+    dplyr::mutate(source = "Carryover M-adjusted (half M)"),
 )
+
+# remove M-adjusted larger from all the plots
+catch_combined <- catch_combined |>
+  dplyr::filter(source != "Carryover M-adjusted (larger)")
 
 # add an additional line for the total catch across all fleets by year
 catch_combined <- catch_combined |>
@@ -156,49 +203,11 @@ ggsave(
   filename = file.path(
     "catch-only_projections",
     dir_new,
-    "total_catch_by_year_with_fleets.png"
-  ),
-  width = 8,
-  height = 6
-)
-
-catch_combined |>
-  dplyr::filter(Year >= 2027, Fleet %in% c("Total", "OFL")) |>
-  ggplot(aes(
-    x = Year,
-    y = Catch,
-    color = source,
-    linetype = source,
-    group = source
-  )) +
-  geom_line(linewidth = 0.8) +
-  geom_point() +
-  labs(title = "Total Catch by Year", x = "Year", y = "Total catch (mt)") +
-  scale_x_continuous(
-    breaks = 2027:2036,
-    labels = 2027:2036,
-    minor_breaks = NULL
-  ) +
-  scale_linetype_manual(values = c(
-    "2025 catch-only projection" = "dashed",
-    "Carryover 100%" = "dashed",
-    "Carryover M-adjusted" = "dashed",
-    "OFL" = "dashed"
-  )) +
-  expand_limits(y = 0) +
-  geom_hline(yintercept = 0) +
-  theme_minimal()
-
-ggsave(
-  filename = file.path(
-    "catch-only_projections",
-    dir_new,
     "total_catch_by_year.png"
   ),
   width = 8,
   height = 6
 )
-
 
 # update buffer so all fixed forecast (up to 2034), the fraction is set to 1
 # values for 2035 and 2036 will remain as before
@@ -208,10 +217,14 @@ inputs$fore$Flimitfraction_m <- inputs$fore$Flimitfraction_m |>
 # make two new sets of inputs
 inputs_carryover_full <- inputs
 inputs_carryover_M_adjusted <- inputs
+inputs_carryover_M_adjusted_larger <- inputs
+inputs_carryover_M_adjusted_halfM <- inputs
 
 # update fixed catches in forecast file with the new catch values
 inputs_carryover_full$fore$ForeCatch <- catch_new_full
 inputs_carryover_M_adjusted$fore$ForeCatch <- catch_new_M_adjusted
+inputs_carryover_M_adjusted_larger$fore$ForeCatch <- catch_new_M_adjusted_larger
+inputs_carryover_M_adjusted_halfM$fore$ForeCatch <- catch_new_M_adjusted_halfM
 
 # write updated files
 r4ss::SS_write(
@@ -224,22 +237,39 @@ r4ss::SS_write(
   dir = file.path("catch-only_projections", dir_new, "carryover_M_adjusted"),
   overwrite = TRUE
 )
-
-# run full carryover model
-r4ss::run(
-  file.path("catch-only_projections", dir_new, "carryover_full"),
-  skipfinished = FALSE,
-  extras = "-nohess -phase 10",
-  show_in_console = TRUE
+r4ss::SS_write(
+  inputs_carryover_M_adjusted_larger,
+  dir = file.path(
+    "catch-only_projections",
+    dir_new,
+    "carryover_M_adjusted_larger"
+  ),
+  overwrite = TRUE
+)
+r4ss::SS_write(
+  inputs_carryover_M_adjusted_halfM,
+  dir = file.path(
+    "catch-only_projections",
+    dir_new,
+    "carryover_M_adjusted_halfM"
+  ),
+  overwrite = TRUE
 )
 
-# run M-adjusted carryover model
-r4ss::run(
-  file.path("catch-only_projections", dir_new, "carryover_M_adjusted"),
-  skipfinished = FALSE,
-  extras = "-nohess -phase 10",
-  show_in_console = TRUE
-)
+# run models
+for (dir in c(
+  "carryover_full",
+  "carryover_M_adjusted",
+  "carryover_M_adjusted_larger",
+  "carryover_M_adjusted_halfM"
+)) {
+  r4ss::run(
+    file.path("catch-only_projections", dir_new, dir),
+    skipfinished = FALSE,
+    extras = "-nohess -phase 10",
+    show_in_console = TRUE
+  )
+}
 
 # read in new model outputs
 newoutput_full <- r4ss::SS_output(
@@ -252,13 +282,26 @@ newoutput_M_adjusted <- r4ss::SS_output(
   printstats = FALSE,
   verbose = FALSE
 )
+newoutput_M_adjusted_larger <- r4ss::SS_output(
+  file.path("catch-only_projections", dir_new, "carryover_M_adjusted_larger"),
+  printstats = FALSE,
+  verbose = FALSE
+)
+newoutput_M_adjusted_halfM <- r4ss::SS_output(
+  file.path("catch-only_projections", dir_new, "carryover_M_adjusted_halfM"),
+  printstats = FALSE,
+  verbose = FALSE
+)
+
 # colors from ggplot figure above
-default_hex <- scales::hue_pal()(4)
+default_hex <- scales::hue_pal()(6)
 
 model_summary <- r4ss::SSsummarize(list(
   output,
   newoutput_full,
-  newoutput_M_adjusted
+  newoutput_M_adjusted,
+  newoutput_M_adjusted_halfM, # note: order change to match alphabetical adjustments in ggplot above
+  newoutput_M_adjusted_larger
 ))
 model_summary$SpawnOutputLabels <- rep(
   "Spawning output (trillions of eggs)",
@@ -267,10 +310,12 @@ model_summary$SpawnOutputLabels <- rep(
 )
 r4ss::SSplotComparisons(
   model_summary,
-  legendlabels = c(
+  models = legendlabels <- c(
     "Original",
     "Carryover 100%",
-    "Carryover M adjusted"
+    "Carryover M adjusted",
+    "Carryover M adjusted (half M)" #,
+    #"Carryover M adjusted (larger)"
   ),
   xlim = c(2020, 2037),
   subplots = c(1, 3),
@@ -279,16 +324,24 @@ r4ss::SSplotComparisons(
   plot = FALSE,
   plotdir = file.path("catch-only_projections", dir_new),
   uncertainty = FALSE,
-  col = default_hex[1:3] # remaining colors are used in the catch plot
+  col = default_hex[1:5] # 6th color is OFL in plot above
 )
 
-# get fixed catches (up through 2034, but not 2035-2036)
-output_catch_original <- r4ss::SS_ForeCatch(output, yrs = 2027:2034)
-output_catch_full <- r4ss::SS_ForeCatch(newoutput_full, yrs = 2027:2034)
+output_catch_original <- r4ss::SS_ForeCatch(output, yrs = 2027:2036)
+output_catch_full <- r4ss::SS_ForeCatch(newoutput_full, yrs = 2027:2036)
 output_catch_M_adjusted <- r4ss::SS_ForeCatch(
   newoutput_M_adjusted,
-  yrs = 2027:2034
+  yrs = 2027:2036
 )
+output_catch_M_adjusted_larger <- r4ss::SS_ForeCatch(
+  newoutput_M_adjusted_larger,
+  yrs = 2027:2036
+)
+output_catch_M_adjusted_halfM <- r4ss::SS_ForeCatch(
+  newoutput_M_adjusted_halfM,
+  yrs = 2027:2036
+)
+
 # add cli message if these three values aren't all equal
 if (
   !all.equal(
@@ -301,9 +354,18 @@ if (
   )
 } else {
   cli::cli_alert_success(
-    "Total dead catch is consistent between original and full up through 2034"
+    "Total dead catch is consistent between original and full"
   )
 }
+
+output_catch_original
+#    #Year Seas Fleet dead(B)                comment
+# 1   2027    1     1 1825.32    #sum_for_2027: 2489
+# 2   2027    1     2  663.68
+# 3   2028    1     1 1825.32    #sum_for_2028: 2489
+# 4   2028    1     2  663.68
+# 5   2029    1     1 1758.15 #sum_for_2029: 2408.66
+# 6   2029    1     2  650.51
 
 # function gets the year, fleet, and dead(B) columns, then adds
 # year-specific fleet totals and grand totals averaged across years
@@ -360,6 +422,14 @@ catch_by_year <- dplyr::bind_rows(
   add_fleet_totals(
     output_catch_M_adjusted,
     scenario = "Carryover M adjusted"
+  ),
+  add_fleet_totals(
+    output_catch_M_adjusted_larger,
+    scenario = "Carryover M adjusted (larger)"
+  ),
+  add_fleet_totals(
+    output_catch_M_adjusted_halfM,
+    scenario = "Carryover M adjusted (half M)"
   )
 ) |>
   dplyr::group_by(Year, Fleet, Scenario) |>
@@ -369,7 +439,7 @@ catch_by_year <- dplyr::bind_rows(
   dplyr::select(Year, Fleet, Original, dplyr::everything())
 
 # convert to HTML (opens in browser for Ian)
-# catch_by_year |> gt::gt()
+catch_by_year |> gt::gt()
 
 write.csv(
   catch_by_year,
@@ -386,22 +456,6 @@ catch_totals_by_year <-
   dplyr::bind_rows(
     catch_totals_by_year,
     tibble::tibble(
-      Year = "OFL in 2035",
-      model_summary$quants |>
-        dplyr::filter(Label == "OFLCatch_2035") |>
-        dplyr::select(1:(ncol(catch_totals_by_year) - 1)) |>
-        round(1) |>
-        dplyr::rename_with(~ names(catch_totals_by_year)[-1])
-    ),
-    tibble::tibble(
-      Year = "ACL in 2035",
-      model_summary$quants |>
-        dplyr::filter(Label == "ForeCatch_2035") |>
-        dplyr::select(1:(ncol(catch_totals_by_year) - 1)) |>
-        round(1) |>
-        dplyr::rename_with(~ names(catch_totals_by_year)[-1])
-    ),
-    tibble::tibble(
       Year = "OFL in 2036",
       model_summary$quants |>
         dplyr::filter(Label == "OFLCatch_2036") |>
@@ -416,7 +470,15 @@ catch_totals_by_year <-
         dplyr::select(1:(ncol(catch_totals_by_year) - 1)) |>
         round(1) |>
         dplyr::rename_with(~ names(catch_totals_by_year)[-1])
-    )
+    ),
+    # tibble::tibble(
+    #   Year = "Frac. unfished in 2036",
+    #   model_summary$Bratio |>
+    #     dplyr::filter(Yr == 2036) |>
+    #     dplyr::select(1:(ncol(catch_totals_by_year) - 1)) |>
+    #     round(3) |>
+    #     dplyr::rename_with(~ names(catch_totals_by_year)[-1])
+    # )
   )
 
 catch_totals_by_year |> gt::gt()
