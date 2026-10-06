@@ -303,8 +303,12 @@ newoutput_M_adjusted <- r4ss::SS_output(
   printstats = FALSE,
   verbose = FALSE
 )
-# colors from ggplot figure above
-default_hex <- scales::hue_pal()(4)
+scenario_colors <- c(
+  "OFL" = "#F8766D",
+  "Baseline ACL" = "#B79F00",
+  "Carryover ACL (up to OFL)" = "#00BA38",
+  "Carryover ACL (with M adjustment, up to OFL)" = "#00BFC4"
+)
 
 model_summary <- r4ss::SSsummarize(list(
   output,
@@ -330,7 +334,11 @@ r4ss::SSplotComparisons(
   plot = FALSE,
   plotdir = file.path("catch-only_projections", dir_new),
   uncertainty = FALSE,
-  col = default_hex[1:3] # remaining colors are used in the catch plot
+  col = unname(scenario_colors[c(
+    "Baseline ACL",
+    "Carryover ACL (up to OFL)",
+    "Carryover ACL (with M adjustment, up to OFL)"
+  )])
 )
 
 # get fixed catches (up through 2034, but not 2035-2036)
