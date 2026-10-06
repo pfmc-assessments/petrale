@@ -125,6 +125,25 @@ catch_combined <- limits |>
   dplyr::mutate(Fleet = "OFL", source = "OFL") |>
   dplyr::bind_rows(catch_combined |> dplyr::mutate(Fleet = as.character(Fleet)))
 
+catch_combined <- catch_combined |>
+  dplyr::mutate(
+    source = factor(
+      source,
+      levels = c(
+        "OFL",
+        "2025 catch-only projection",
+        "Carryover 100%",
+        "Carryover M-adjusted"
+      ),
+      labels = c(
+        "OFL",
+        "Baseline ACL",
+        "Carryover ACL (up to OFL)",
+        "Carryover ACL (with M adjustment, up to OFL)"
+      )
+    )
+  )
+
 # plot total catch by year for both the original and adjusted catch data
 # use colors for fleet and lines for source
 library(ggplot2)
@@ -147,10 +166,25 @@ catch_combined |>
     labels = 2027:2036,
     minor_breaks = NULL
   ) +
+  scale_color_manual(
+    values = c(
+      "OFL" = "#F8766D",
+      "Baseline ACL" = "#B79F00",
+      "Carryover ACL (up to OFL)" = "#00BA38",
+      "Carryover ACL (with M adjustment, up to OFL)" = "#00BFC4"
+    )
+  ) +
   expand_limits(y = 0) +
   # add line at y = 0
   geom_hline(yintercept = 0) +
-  theme_minimal()
+  theme_minimal() +
+  # put legend on top of plot to save space
+  theme(
+    legend.position = c(0.5, 0.06),
+    legend.justification = c(0.5, 0),
+    legend.direction = "vertical",
+    legend.background = element_rect(fill = "white", color = NA)
+  )
 
 ggsave(
   filename = file.path(
@@ -158,8 +192,8 @@ ggsave(
     dir_new,
     "total_catch_by_year_with_fleets.png"
   ),
-  width = 8,
-  height = 6
+  width = 6.5,
+  height = 5
 )
 
 catch_combined |>
@@ -179,15 +213,32 @@ catch_combined |>
     labels = 2027:2036,
     minor_breaks = NULL
   ) +
-  scale_linetype_manual(values = c(
-    "2025 catch-only projection" = "dashed",
-    "Carryover 100%" = "dashed",
-    "Carryover M-adjusted" = "dashed",
-    "OFL" = "dashed"
-  )) +
+  scale_color_manual(
+    values = c(
+      "OFL" = "#F8766D",
+      "Baseline ACL" = "#B79F00",
+      "Carryover ACL (up to OFL)" = "#00BA38",
+      "Carryover ACL (with M adjustment, up to OFL)" = "#00BFC4"
+    )
+  ) +
+  scale_linetype_manual(
+    values = c(
+      "OFL" = "dashed",
+      "Baseline ACL" = "dashed",
+      "Carryover ACL (up to OFL)" = "dashed",
+      "Carryover ACL (with M adjustment, up to OFL)" = "dashed"
+    )
+  ) +
   expand_limits(y = 0) +
   geom_hline(yintercept = 0) +
-  theme_minimal()
+  theme_minimal() +
+  # put legend on top of plot to save space
+  theme(
+    legend.position = c(0.5, 0.06),
+    legend.justification = c(0.5, 0),
+    legend.direction = "vertical",
+    legend.background = element_rect(fill = "white", color = NA)
+  )
 
 ggsave(
   filename = file.path(
@@ -195,8 +246,8 @@ ggsave(
     dir_new,
     "total_catch_by_year.png"
   ),
-  width = 8,
-  height = 6
+  width = 6.5,
+  height = 5
 )
 
 
@@ -268,9 +319,9 @@ model_summary$SpawnOutputLabels <- rep(
 r4ss::SSplotComparisons(
   model_summary,
   legendlabels = c(
-    "Original",
-    "Carryover 100%",
-    "Carryover M adjusted"
+    "Baseline ACL",
+    "Carryover ACL (up to OFL)",
+    "Carryover ACL (with M adjustment, up to OFL)"
   ),
   xlim = c(2020, 2037),
   subplots = c(1, 3),
